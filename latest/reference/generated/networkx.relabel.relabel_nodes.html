@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.relabel.relabel_nodes &mdash; NetworkX 2.1 documentation</title>
+  <title>networkx.relabel.relabel_nodes &mdash; NetworkX 2.5rc1.dev20191017033512 documentation</title>
   
 
   
@@ -17,47 +17,42 @@
   
 
   
-
-  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.1 documentation" href="../../_static/opensearch.xml"/>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/copybutton.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within NetworkX 2.5rc1.dev20191017033512 documentation"
+          href="../../_static/opensearch.xml"/>
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../genindex.html"/>
-        <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="NetworkX 2.1 documentation" href="../../index.html"/>
-        <link rel="up" title="Relabeling nodes" href="../relabel.html"/>
-        <link rel="next" title="Reading and writing graphs" href="../readwrite/index.html"/>
-        <link rel="prev" title="networkx.relabel.convert_node_labels_to_integers" href="networkx.relabel.convert_node_labels_to_integers.html"/> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Reading and writing graphs" href="../readwrite/index.html" />
+    <link rel="prev" title="networkx.relabel.convert_node_labels_to_integers" href="networkx.relabel.convert_node_labels_to_integers.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -71,7 +66,7 @@
             
             
               <div class="version">
-                2.1
+                2.5rc1.dev_20191017033512
               </div>
             
           
@@ -116,6 +111,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../readwrite/index.html">Reading and writing graphs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../drawing.html">Drawing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../randomness.html">Randomness</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exceptions.html">Exceptions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../utils.html">Utilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
@@ -139,7 +135,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">NetworkX</a>
@@ -147,9 +143,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -197,26 +194,22 @@
 <h1>networkx.relabel.relabel_nodes<a class="headerlink" href="#networkx-relabel-relabel-nodes" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.relabel.relabel_nodes">
-<code class="descname">relabel_nodes</code><span class="sig-paren">(</span><em>G</em>, <em>mapping</em>, <em>copy=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/relabel.html#relabel_nodes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.relabel.relabel_nodes" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">relabel_nodes</code><span class="sig-paren">(</span><em class="sig-param">G</em>, <em class="sig-param">mapping</em>, <em class="sig-param">copy=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/networkx/relabel.html#relabel_nodes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.relabel.relabel_nodes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Relabel the nodes of the graph G.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>G</strong> (<em>graph</em>) – A NetworkX graph</li>
-<li><strong>mapping</strong> (<em>dictionary</em>) – A dictionary with the old labels as keys and new labels as values.
-A partial mapping is allowed.</li>
-<li><strong>copy</strong> (<em>bool (optional, default=True)</em>) – If True return a copy, or if False relabel the nodes in place.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>G</strong> (<em>graph</em>) – A NetworkX graph</p></li>
+<li><p><strong>mapping</strong> (<em>dictionary</em>) – A dictionary with the old labels as keys and new labels as values.
+A partial mapping is allowed.</p></li>
+<li><p><strong>copy</strong> (<em>bool (optional, default=True)</em>) – If True return a copy, or if False relabel the nodes in place.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Examples</p>
 <p>To create a new graph with nodes relabeled according to a given
 dictionary:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 <span class="go">[0, 1, 2]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;c&#39;</span><span class="p">}</span>
@@ -227,7 +220,7 @@ dictionary:</p>
 </div>
 <p>Nodes can be relabeled with any hashable object, including numbers
 and strings:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">string</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">string</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">26</span><span class="p">)</span>  <span class="c1"># nodes are integers 0 through 25</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="n">G</span><span class="p">)[:</span><span class="mi">3</span><span class="p">]</span>
 <span class="go">[0, 1, 2]</span>
@@ -242,9 +235,9 @@ and strings:</p>
 </pre></div>
 </div>
 <p>To perform a partial in-place relabeling, provide a dictionary
-mapping only a subset of the nodes, and set the <a class="reference external" href="https://docs.python.org/2/library/copy.html#module-copy" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">copy</span></code></a> keyword
+mapping only a subset of the nodes, and set the <a class="reference external" href="https://docs.python.org/2/library/copy.html#module-copy" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a> keyword
 argument to False:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># nodes 0-1-2</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># nodes 0-1-2</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;b&#39;</span><span class="p">}</span> <span class="c1"># 0-&gt;&#39;a&#39; and 1-&gt;&#39;b&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">relabel_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">mapping</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
@@ -252,7 +245,7 @@ argument to False:</p>
 </pre></div>
 </div>
 <p>A mapping can also be given as a function:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">H</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">relabel_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
 <span class="go">[0, 1, 4]</span>
@@ -262,15 +255,15 @@ argument to False:</p>
 <p>Only the nodes specified in the mapping will be relabeled.</p>
 <p>The keyword setting copy=False modifies the graph in place.
 Relabel_nodes avoids naming collisions by building a
-directed graph from <code class="docutils literal"><span class="pre">mapping</span></code> which specifies the order of
+directed graph from <code class="docutils literal notranslate"><span class="pre">mapping</span></code> which specifies the order of
 relabelings. Naming collisions, such as a-&gt;b, b-&gt;c, are ordered
 such that “b” gets renamed to “c” before “a” gets renamed “b”.
 In cases of circular mappings (e.g. a-&gt;b, b-&gt;a), modifying the
 graph is not possible in-place and an exception is raised.
 In that case, use copy=True.</p>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.relabel.convert_node_labels_to_integers.html#networkx.relabel.convert_node_labels_to_integers" title="networkx.relabel.convert_node_labels_to_integers"><code class="xref py py-func docutils literal"><span class="pre">convert_node_labels_to_integers()</span></code></a></p>
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="networkx.relabel.convert_node_labels_to_integers.html#networkx.relabel.convert_node_labels_to_integers" title="networkx.relabel.convert_node_labels_to_integers"><code class="xref py py-func docutils literal notranslate"><span class="pre">convert_node_labels_to_integers()</span></code></a></p>
 </div>
 </dd></dl>
 
@@ -278,9 +271,7 @@ In that case, use copy=True.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -289,7 +280,7 @@ In that case, use copy=True.</p>
         <a href="../readwrite/index.html" class="btn btn-neutral float-right" title="Reading and writing graphs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="networkx.relabel.convert_node_labels_to_integers.html" class="btn btn-neutral" title="networkx.relabel.convert_node_labels_to_integers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="networkx.relabel.convert_node_labels_to_integers.html" class="btn btn-neutral float-left" title="networkx.relabel.convert_node_labels_to_integers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -298,12 +289,14 @@ In that case, use copy=True.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2004-2018, NetworkX Developers.
-      Last updated on Jan 22, 2018.
+        &copy; Copyright 2004-2019, NetworkX Developers
+      <span class="lastupdated">
+        Last updated on Oct 17, 2019.
+      </span>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -316,38 +309,15 @@ In that case, use copy=True.</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../',
-            VERSION:'2.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  false,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="../../_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

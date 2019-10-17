@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.link_analysis.hits_alg &mdash; NetworkX 2.1 documentation</title>
+  <title>networkx.algorithms.link_analysis.hits_alg &mdash; NetworkX 2.5rc1.dev20191017033512 documentation</title>
   
 
   
@@ -17,45 +17,40 @@
   
 
   
-
-  
+  <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.1 documentation" href="../../../../_static/opensearch.xml"/>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../../_static/copybutton.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within NetworkX 2.5rc1.dev20191017033512 documentation"
+          href="../../../../_static/opensearch.xml"/>
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../../../../_static/gallery.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../../search.html"/>
-    <link rel="top" title="NetworkX 2.1 documentation" href="../../../../index.html"/>
-        <link rel="up" title="Module code" href="../../../index.html"/> 
-
-  
-  <script src="../../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -69,7 +64,7 @@
             
             
               <div class="version">
-                2.1
+                2.5rc1.dev_20191017033512
               </div>
             
           
@@ -115,7 +110,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../../index.html">NetworkX</a>
@@ -123,9 +118,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -155,8 +151,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -183,7 +177,7 @@
 
 
 <div class="viewcode-block" id="hits"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.link_analysis.hits_alg.hits.html#networkx.algorithms.link_analysis.hits_alg.hits">[docs]</a><span class="k">def</span> <span class="nf">hits</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1.0e-8</span><span class="p">,</span> <span class="n">nstart</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">normalized</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return HITS hubs and authorities values for nodes.</span>
+    <span class="sd">&quot;&quot;&quot;Returns HITS hubs and authorities values for nodes.</span>
 
 <span class="sd">    The HITS algorithm computes two numbers for a node.</span>
 <span class="sd">    Authorities estimates the node value based on the incoming links.</span>
@@ -194,7 +188,7 @@
 <span class="sd">    G : graph</span>
 <span class="sd">      A NetworkX graph</span>
 
-<span class="sd">    max_iter : interger, optional</span>
+<span class="sd">    max_iter : integer, optional</span>
 <span class="sd">      Maximum number of iterations in power method.</span>
 
 <span class="sd">    tol : float, optional</span>
@@ -297,19 +291,19 @@
 
 
 <div class="viewcode-block" id="authority_matrix"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.link_analysis.hits_alg.authority_matrix.html#networkx.algorithms.link_analysis.hits_alg.authority_matrix">[docs]</a><span class="k">def</span> <span class="nf">authority_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return the HITS authority matrix.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Returns the HITS authority matrix.&quot;&quot;&quot;</span>
     <span class="n">M</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">M</span><span class="o">.</span><span class="n">T</span> <span class="o">*</span> <span class="n">M</span></div>
 
 
 <div class="viewcode-block" id="hub_matrix"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.link_analysis.hits_alg.hub_matrix.html#networkx.algorithms.link_analysis.hits_alg.hub_matrix">[docs]</a><span class="k">def</span> <span class="nf">hub_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return the HITS hub matrix.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Returns the HITS hub matrix.&quot;&quot;&quot;</span>
     <span class="n">M</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_numpy_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">M</span> <span class="o">*</span> <span class="n">M</span><span class="o">.</span><span class="n">T</span></div>
 
 
 <div class="viewcode-block" id="hits_numpy"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.link_analysis.hits_alg.hits_numpy.html#networkx.algorithms.link_analysis.hits_alg.hits_numpy">[docs]</a><span class="k">def</span> <span class="nf">hits_numpy</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">normalized</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return HITS hubs and authorities values for nodes.</span>
+    <span class="sd">&quot;&quot;&quot;Returns HITS hubs and authorities values for nodes.</span>
 
 <span class="sd">    The HITS algorithm computes two numbers for a node.</span>
 <span class="sd">    Authorities estimates the node value based on the incoming links.</span>
@@ -380,7 +374,7 @@
 
 
 <div class="viewcode-block" id="hits_scipy"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.link_analysis.hits_alg.hits_scipy.html#networkx.algorithms.link_analysis.hits_alg.hits_scipy">[docs]</a><span class="k">def</span> <span class="nf">hits_scipy</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1.0e-6</span><span class="p">,</span> <span class="n">normalized</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return HITS hubs and authorities values for nodes.</span>
+    <span class="sd">&quot;&quot;&quot;Returns HITS hubs and authorities values for nodes.</span>
 
 <span class="sd">    The HITS algorithm computes two numbers for a node.</span>
 <span class="sd">    Authorities estimates the node value based on the incoming links.</span>
@@ -391,7 +385,7 @@
 <span class="sd">    G : graph</span>
 <span class="sd">      A NetworkX graph</span>
 
-<span class="sd">    max_iter : interger, optional</span>
+<span class="sd">    max_iter : integer, optional</span>
 <span class="sd">      Maximum number of iterations in power method.</span>
 
 <span class="sd">    tol : float, optional</span>
@@ -481,25 +475,16 @@
     <span class="n">authorities</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">a</span><span class="p">)))</span>
     <span class="k">return</span> <span class="n">hubs</span><span class="p">,</span> <span class="n">authorities</span></div>
 
-<span class="c1"># fixture for nose tests</span>
 
-
+<span class="c1"># fixture for pytest</span>
 <span class="k">def</span> <span class="nf">setup_module</span><span class="p">(</span><span class="n">module</span><span class="p">):</span>
-    <span class="kn">from</span> <span class="nn">nose</span> <span class="k">import</span> <span class="n">SkipTest</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">numpy</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">SkipTest</span><span class="p">(</span><span class="s2">&quot;NumPy not available&quot;</span><span class="p">)</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">scipy</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">SkipTest</span><span class="p">(</span><span class="s2">&quot;SciPy not available&quot;</span><span class="p">)</span>
+    <span class="kn">import</span> <span class="nn">pytest</span>
+    <span class="n">numpy</span> <span class="o">=</span> <span class="n">pytest</span><span class="o">.</span><span class="n">importorskip</span><span class="p">(</span><span class="s1">&#39;numpy&#39;</span><span class="p">)</span>
+    <span class="n">scipy</span> <span class="o">=</span> <span class="n">pytest</span><span class="o">.</span><span class="n">importorskip</span><span class="p">(</span><span class="s1">&#39;scipy&#39;</span><span class="p">)</span>
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -508,12 +493,14 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2004-2018, NetworkX Developers.
-      Last updated on Jan 22, 2018.
+        &copy; Copyright 2004-2019, NetworkX Developers
+      <span class="lastupdated">
+        Last updated on Oct 17, 2019.
+      </span>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -526,38 +513,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../../',
-            VERSION:'2.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  false,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="../../../../_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

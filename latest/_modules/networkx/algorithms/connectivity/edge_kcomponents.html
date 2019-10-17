@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.connectivity.edge_kcomponents &mdash; NetworkX 2.1 documentation</title>
+  <title>networkx.algorithms.connectivity.edge_kcomponents &mdash; NetworkX 2.5rc1.dev20191017033512 documentation</title>
   
 
   
@@ -17,45 +17,40 @@
   
 
   
-
-  
+  <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.1 documentation" href="../../../../_static/opensearch.xml"/>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../../_static/copybutton.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within NetworkX 2.5rc1.dev20191017033512 documentation"
+          href="../../../../_static/opensearch.xml"/>
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../../../../_static/gallery.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../../search.html"/>
-    <link rel="top" title="NetworkX 2.1 documentation" href="../../../../index.html"/>
-        <link rel="up" title="Module code" href="../../../index.html"/> 
-
-  
-  <script src="../../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -69,7 +64,7 @@
             
             
               <div class="version">
-                2.1
+                2.5rc1.dev_20191017033512
               </div>
             
           
@@ -115,7 +110,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../../index.html">NetworkX</a>
@@ -123,9 +118,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -155,8 +151,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -169,7 +163,7 @@
             
   <h1>Source code for networkx.algorithms.connectivity.edge_kcomponents</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="c1">#    Copyright (C) 2004-2018 by</span>
+<span class="c1">#    Copyright (C) 2004-2019 by</span>
 <span class="c1">#    Aric Hagberg &lt;hagberg@lanl.gov&gt;</span>
 <span class="c1">#    Dan Schult &lt;dschult@colgate.edu&gt;</span>
 <span class="c1">#    Pieter Swart &lt;swart@lanl.gov&gt;</span>
@@ -424,9 +418,9 @@
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-<span class="sd">    This implementation is based on [1]_. The idea is to construct an auxillary</span>
+<span class="sd">    This implementation is based on [1]_. The idea is to construct an auxiliary</span>
 <span class="sd">    graph from which the k-edge-ccs can be extracted in linear time. The</span>
-<span class="sd">    auxillary graph is constructed in $O(|V|\cdot F)$ operations, where F is the</span>
+<span class="sd">    auxiliary graph is constructed in $O(|V|\cdot F)$ operations, where F is the</span>
 <span class="sd">    complexity of max flow. Querying the components takes an additional $O(|V|)$</span>
 <span class="sd">    operations. This algorithm can be slow for large graphs, but it handles an</span>
 <span class="sd">    arbitrary k and works for both directed and undirected inputs.</span>
@@ -470,7 +464,7 @@
 
 <span class="sd">    Example</span>
 <span class="sd">    -------</span>
-<span class="sd">    &gt;&gt;&gt; # The auxillary graph is primarilly used for k-edge-ccs but it</span>
+<span class="sd">    &gt;&gt;&gt; # The auxiliary graph is primarilly used for k-edge-ccs but it</span>
 <span class="sd">    &gt;&gt;&gt; # can also speed up the queries of k-edge-subgraphs by refining the</span>
 <span class="sd">    &gt;&gt;&gt; # search space.</span>
 <span class="sd">    &gt;&gt;&gt; import itertools as it</span>
@@ -492,19 +486,19 @@
     <span class="c1"># @not_implemented_for(&#39;multigraph&#39;)  # TODO: fix decor for classmethods</span>
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">construct</span><span class="p">(</span><span class="n">EdgeComponentAuxGraph</span><span class="p">,</span> <span class="n">G</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Builds an auxillary graph encoding edge-connectivity between nodes.</span>
+        <span class="sd">&quot;&quot;&quot;Builds an auxiliary graph encoding edge-connectivity between nodes.</span>
 
 <span class="sd">        Notes</span>
 <span class="sd">        -----</span>
-<span class="sd">        Given G=(V, E), initialize an empty auxillary graph A.</span>
+<span class="sd">        Given G=(V, E), initialize an empty auxiliary graph A.</span>
 <span class="sd">        Choose an arbitrary source node s.  Initialize a set N of available</span>
 <span class="sd">        nodes (that can be used as the sink). The algorithm picks an</span>
 <span class="sd">        arbitrary node t from N - {s}, and then computes the minimum st-cut</span>
 <span class="sd">        (S, T) with value w. If G is directed the the minimum of the st-cut or</span>
 <span class="sd">        the ts-cut is used instead. Then, the edge (s, t) is added to the</span>
-<span class="sd">        auxillary graph with weight w. The algorithm is called recursively</span>
+<span class="sd">        auxiliary graph with weight w. The algorithm is called recursively</span>
 <span class="sd">        first using S as the available nodes and s as the source, and then</span>
-<span class="sd">        using T and t. Recusion stops when the source is the only available</span>
+<span class="sd">        using T and t. Recursion stops when the source is the only available</span>
 <span class="sd">        node.</span>
 
 <span class="sd">        Parameters</span>
@@ -534,11 +528,11 @@
             <span class="n">_recursive_build</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">sink</span><span class="p">,</span> <span class="n">avail</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">T</span><span class="p">))</span>
 
         <span class="c1"># Copy input to ensure all edges have unit capacity</span>
-        <span class="n">H</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">fresh_copy</span><span class="p">()</span>
+        <span class="n">H</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="vm">__class__</span><span class="p">()</span>
         <span class="n">H</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
         <span class="n">H</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(),</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-        <span class="c1"># A is the auxillary graph to be constructed</span>
+        <span class="c1"># A is the auxiliary graph to be constructed</span>
         <span class="c1"># It is a weighted undirected tree</span>
         <span class="n">A</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
 
@@ -551,7 +545,7 @@
             <span class="c1"># This constructs A</span>
             <span class="n">_recursive_build</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">avail</span><span class="p">)</span>
 
-        <span class="c1"># This class is a container the holds the auxillary graph A and</span>
+        <span class="c1"># This class is a container the holds the auxiliary graph A and</span>
         <span class="c1"># provides access the the k_edge_components function.</span>
         <span class="bp">self</span> <span class="o">=</span> <span class="n">EdgeComponentAuxGraph</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">=</span> <span class="n">A</span>
@@ -559,7 +553,7 @@
         <span class="k">return</span> <span class="bp">self</span>
 
     <span class="k">def</span> <span class="nf">k_edge_components</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Queries the auxillary graph for k-edge-connected components.</span>
+        <span class="sd">&quot;&quot;&quot;Queries the auxiliary graph for k-edge-connected components.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -572,9 +566,9 @@
 
 <span class="sd">        Notes</span>
 <span class="sd">        -----</span>
-<span class="sd">        Given the auxillary graph, the k-edge-connected components can be</span>
+<span class="sd">        Given the auxiliary graph, the k-edge-connected components can be</span>
 <span class="sd">        determined in linear time by removing all edges with weights less than</span>
-<span class="sd">        k from the auxillary graph.  The resulting connected components are the</span>
+<span class="sd">        k from the auxiliary graph.  The resulting connected components are the</span>
 <span class="sd">        k-edge-ccs in the original graph.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
@@ -583,7 +577,7 @@
         <span class="c1"># &quot;traverse the auxiliary graph A and delete all edges with weights less</span>
         <span class="c1"># than k&quot;</span>
         <span class="n">aux_weights</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">get_edge_attributes</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="s1">&#39;weight&#39;</span><span class="p">)</span>
-        <span class="c1"># Create a relevant graph with the auxillary edges with weights &gt;= k</span>
+        <span class="c1"># Create a relevant graph with the auxiliary edges with weights &gt;= k</span>
         <span class="n">R</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
         <span class="n">R</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
         <span class="n">R</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span><span class="p">,</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">aux_weights</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">w</span> <span class="o">&gt;=</span> <span class="n">k</span><span class="p">)</span>
@@ -593,7 +587,7 @@
             <span class="k">yield</span> <span class="n">cc</span>
 
     <span class="k">def</span> <span class="nf">k_edge_subgraphs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Queries the auxillary graph for k-edge-connected subgraphs.</span>
+        <span class="sd">&quot;&quot;&quot;Queries the auxiliary graph for k-edge-connected subgraphs.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -620,7 +614,7 @@
         <span class="c1"># &quot;traverse the auxiliary graph A and delete all edges with weights less</span>
         <span class="c1"># than k&quot;</span>
         <span class="n">aux_weights</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">get_edge_attributes</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="s1">&#39;weight&#39;</span><span class="p">)</span>
-        <span class="c1"># Create a relevant graph with the auxillary edges with weights &gt;= k</span>
+        <span class="c1"># Create a relevant graph with the auxiliary edges with weights &gt;= k</span>
         <span class="n">R</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
         <span class="n">R</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
         <span class="n">R</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span><span class="p">,</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">aux_weights</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">w</span> <span class="o">&gt;=</span> <span class="n">k</span><span class="p">)</span>
@@ -660,7 +654,7 @@
 
 
 <span class="k">def</span> <span class="nf">_high_degree_components</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Helper for filtering components that cant be k-edge-connected.</span>
+    <span class="sd">&quot;&quot;&quot;Helper for filtering components that can&#39;t be k-edge-connected.</span>
 
 <span class="sd">    Removes and generates each node with degree less than k.  Then generates</span>
 <span class="sd">    remaining components where all nodes have degree at least k.</span>
@@ -702,7 +696,7 @@
 <span class="sd">    graph is a k-edge-connected subgraph and can be added to the results.</span>
 <span class="sd">    Otherwise, the cut is used to split the graph in two and the procedure is</span>
 <span class="sd">    applied recursively. If the graph is just a single node, then it is also</span>
-<span class="sd">    added to the results. At the end, each result is either gaurenteed to be</span>
+<span class="sd">    added to the results. At the end, each result is either guaranteed to be</span>
 <span class="sd">    a single node or a subgraph of G that is k-edge-connected.</span>
 
 <span class="sd">    This implementation contains optimizations for reducing the number of calls</span>
@@ -743,7 +737,7 @@
     <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">number_of_nodes</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">():</span>
             <span class="k">yield</span> <span class="n">G</span><span class="o">.</span><span class="n">subgraph</span><span class="p">([</span><span class="n">node</span><span class="p">])</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-        <span class="k">raise</span> <span class="ne">StopIteration</span><span class="p">()</span>
+        <span class="k">return</span>
 
     <span class="c1"># Intermediate results</span>
     <span class="n">R0</span> <span class="o">=</span> <span class="p">{</span><span class="n">G</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">cc</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="k">for</span> <span class="n">cc</span> <span class="ow">in</span> <span class="n">find_ccs</span><span class="p">(</span><span class="n">G</span><span class="p">)}</span>
@@ -767,9 +761,7 @@
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -778,12 +770,14 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2004-2018, NetworkX Developers.
-      Last updated on Jan 22, 2018.
+        &copy; Copyright 2004-2019, NetworkX Developers
+      <span class="lastupdated">
+        Last updated on Oct 17, 2019.
+      </span>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -796,38 +790,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../../',
-            VERSION:'2.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  false,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="../../../../_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

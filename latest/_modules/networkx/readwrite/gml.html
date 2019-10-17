@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.readwrite.gml &mdash; NetworkX 2.1 documentation</title>
+  <title>networkx.readwrite.gml &mdash; NetworkX 2.5rc1.dev20191017033512 documentation</title>
   
 
   
@@ -17,45 +17,40 @@
   
 
   
-
-  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.1 documentation" href="../../../_static/opensearch.xml"/>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within NetworkX 2.5rc1.dev20191017033512 documentation"
+          href="../../../_static/opensearch.xml"/>
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="NetworkX 2.1 documentation" href="../../../index.html"/>
-        <link rel="up" title="Module code" href="../../index.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -69,7 +64,7 @@
             
             
               <div class="version">
-                2.1
+                2.5rc1.dev_20191017033512
               </div>
             
           
@@ -115,7 +110,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">NetworkX</a>
@@ -123,9 +118,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -155,8 +151,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -169,7 +163,7 @@
             
   <h1>Source code for networkx.readwrite.gml</h1><div class="highlight"><pre>
 <span></span><span class="c1"># encoding: utf-8</span>
-<span class="c1">#    Copyright (C) 2008-2018 by</span>
+<span class="c1">#    Copyright (C) 2008-2019 by</span>
 <span class="c1">#    Aric Hagberg &lt;hagberg@lanl.gov&gt;</span>
 <span class="c1">#    Dan Schult &lt;dschult@colgate.edu&gt;</span>
 <span class="c1">#    Pieter Swart &lt;swart@lanl.gov&gt;</span>
@@ -180,7 +174,7 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Read graphs in GML format.</span>
 
-<span class="sd">&quot;GML, the G&gt;raph Modelling Language, is our proposal for a portable</span>
+<span class="sd">&quot;GML, the Graph Modelling Language, is our proposal for a portable</span>
 <span class="sd">file format for graphs. GML&#39;s key features are portability, simple</span>
 <span class="sd">syntax, extensibility and flexibility. A GML file consists of a</span>
 <span class="sd">hierarchical key-value lists. Graphs can be annotated with arbitrary</span>
@@ -363,9 +357,9 @@
 <span class="sd">    `stringizer`/`destringizer`.</span>
 
 <span class="sd">    For additional documentation on the GML file format, please see the</span>
-<span class="sd">    `GML website &lt;http://www.infosun.fim.uni-passau.de/Graphlet/GML/gml-tr.html&gt;`_.</span>
+<span class="sd">    `GML url &lt;http://www.infosun.fim.uni-passau.de/Graphlet/GML/gml-tr.html&gt;`_.</span>
 
-<span class="sd">    See the module docstring :mod:`networkx.readwrite.gml` for additional details.</span>
+<span class="sd">    See the module docstring :mod:`networkx.readwrite.gml` for more details.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -433,9 +427,9 @@
 <span class="sd">    `stringizer`/`destringizer`.</span>
 
 <span class="sd">    For additional documentation on the GML file format, please see the</span>
-<span class="sd">    `GML website &lt;http://www.infosun.fim.uni-passau.de/Graphlet/GML/gml-tr.html&gt;`_.</span>
+<span class="sd">    `GML url &lt;http://www.infosun.fim.uni-passau.de/Graphlet/GML/gml-tr.html&gt;`_.</span>
 
-<span class="sd">    See the module docstring :mod:`networkx.readwrite.gml` for additional details.</span>
+<span class="sd">    See the module docstring :mod:`networkx.readwrite.gml` for more details.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">decode_line</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
@@ -472,7 +466,8 @@
     <span class="k">def</span> <span class="nf">tokenize</span><span class="p">():</span>
         <span class="n">patterns</span> <span class="o">=</span> <span class="p">[</span>
             <span class="sa">r</span><span class="s1">&#39;[A-Za-z][0-9A-Za-z_]*\b&#39;</span><span class="p">,</span>  <span class="c1"># keys</span>
-            <span class="sa">r</span><span class="s1">&#39;[+-]?(?:[0-9]*\.[0-9]+|[0-9]+\.[0-9]*)(?:[Ee][+-]?[0-9]+)?&#39;</span><span class="p">,</span>  <span class="c1"># reals</span>
+            <span class="c1"># reals</span>
+            <span class="sa">r</span><span class="s1">&#39;[+-]?(?:[0-9]*\.[0-9]+|[0-9]+\.[0-9]*)(?:[Ee][+-]?[0-9]+)?&#39;</span><span class="p">,</span>
             <span class="sa">r</span><span class="s1">&#39;[+-]?[0-9]+&#39;</span><span class="p">,</span>   <span class="c1"># ints</span>
             <span class="sa">r</span><span class="s1">&#39;&quot;.*?&quot;&#39;</span><span class="p">,</span>         <span class="c1"># strings</span>
             <span class="sa">r</span><span class="s1">&#39;\[&#39;</span><span class="p">,</span>            <span class="c1"># dict start</span>
@@ -541,7 +536,23 @@
             <span class="k">elif</span> <span class="n">category</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>  <span class="c1"># dict start</span>
                 <span class="n">curr_token</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">parse_dict</span><span class="p">(</span><span class="n">curr_token</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">unexpected</span><span class="p">(</span><span class="n">curr_token</span><span class="p">,</span> <span class="s2">&quot;an int, float, string or &#39;[&#39;&quot;</span><span class="p">)</span>
+                <span class="c1"># Allow for string convertible id and label values</span>
+                <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="s2">&quot;source&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="p">):</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="c1"># String convert the token value</span>
+                        <span class="n">value</span> <span class="o">=</span> <span class="n">unescape</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">curr_token</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+                        <span class="k">if</span> <span class="n">destringizer</span><span class="p">:</span>
+                            <span class="k">try</span><span class="p">:</span>
+                                <span class="n">value</span> <span class="o">=</span> <span class="n">destringizer</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                                <span class="k">pass</span>
+                        <span class="n">curr_token</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+                    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;an int, float, string, &#39;[&#39; or string&quot;</span> <span class="o">+</span> \
+                              <span class="s2">&quot; convertable ASCII value for node id or label&quot;</span>
+                        <span class="n">unexpected</span><span class="p">(</span><span class="n">curr_token</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>  <span class="c1"># Otherwise error out</span>
+                    <span class="n">unexpected</span><span class="p">(</span><span class="n">curr_token</span><span class="p">,</span> <span class="s2">&quot;an int, float, string or &#39;[&#39;&quot;</span><span class="p">)</span>
             <span class="n">dct</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
         <span class="n">dct</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="p">(</span><span class="n">value</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span>
                      <span class="k">else</span> <span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">dct</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
@@ -585,17 +596,18 @@
 
     <span class="n">nodes</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;node&#39;</span><span class="p">,</span> <span class="p">[])</span>
     <span class="n">mapping</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">labels</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">node_labels</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nodes</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="k">else</span> <span class="p">[</span><span class="n">nodes</span><span class="p">]):</span>
         <span class="nb">id</span> <span class="o">=</span> <span class="n">pop_attr</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;node&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="s1">&#39;node id </span><span class="si">%r</span><span class="s1"> is duplicated&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">id</span><span class="p">,))</span>
-        <span class="k">if</span> <span class="n">label</span> <span class="o">!=</span> <span class="s1">&#39;id&#39;</span><span class="p">:</span>
-            <span class="n">label</span> <span class="o">=</span> <span class="n">pop_attr</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;node&#39;</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="s1">&#39;node label </span><span class="si">%r</span><span class="s1"> is duplicated&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">label</span><span class="p">,))</span>
-            <span class="n">labels</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
-            <span class="n">mapping</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span> <span class="o">=</span> <span class="n">label</span>
+        <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">label</span> <span class="o">!=</span> <span class="s1">&#39;id&#39;</span><span class="p">:</span>
+            <span class="n">node_label</span> <span class="o">=</span> <span class="n">pop_attr</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s1">&#39;node&#39;</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">node_label</span> <span class="ow">in</span> <span class="n">node_labels</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="s1">&#39;node label </span><span class="si">%r</span><span class="s1"> is duplicated&#39;</span> <span class="o">%</span>
+                                    <span class="p">(</span><span class="n">node_label</span><span class="p">,))</span>
+            <span class="n">node_labels</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">node_label</span><span class="p">)</span>
+            <span class="n">mapping</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_label</span>
         <span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="o">**</span><span class="n">node</span><span class="p">)</span>
 
     <span class="n">edges</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;edge&#39;</span><span class="p">,</span> <span class="p">[])</span>
@@ -612,11 +624,10 @@
             <span class="k">if</span> <span class="ow">not</span> <span class="n">G</span><span class="o">.</span><span class="n">has_edge</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
                 <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="o">**</span><span class="n">edge</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span>
-                    <span class="sd">&quot;&quot;&quot;edge #%d (%r%s%r) is duplicated</span>
-
-<span class="sd">Hint:  If this is a multigraph, add &quot;multigraph 1&quot; to the header of the file.&quot;&quot;&quot;</span> <span class="o">%</span>
-                    <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="s1">&#39;-&gt;&#39;</span> <span class="k">if</span> <span class="n">directed</span> <span class="k">else</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">target</span><span class="p">))</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;edge #</span><span class="si">%d</span><span class="s2"> (</span><span class="si">%r%s%r</span><span class="s2">) is duplicated.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="n">msg2</span> <span class="o">=</span> <span class="s1">&#39;Hint: If multigraph add &quot;multigraph 1&quot; to file header.&#39;</span>
+                <span class="n">info</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="s1">&#39;-&gt;&#39;</span> <span class="k">if</span> <span class="n">directed</span> <span class="k">else</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">((</span><span class="n">msg</span> <span class="o">%</span> <span class="n">info</span><span class="p">)</span> <span class="o">+</span> <span class="n">msg2</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">key</span> <span class="o">=</span> <span class="n">edge</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">key</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">G</span><span class="o">.</span><span class="n">has_edge</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
@@ -625,7 +636,7 @@
                     <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="s1">&#39;-&gt;&#39;</span> <span class="k">if</span> <span class="n">directed</span> <span class="k">else</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span>
             <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="o">**</span><span class="n">edge</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">label</span> <span class="o">!=</span> <span class="s1">&#39;id&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">label</span> <span class="o">!=</span> <span class="s1">&#39;id&#39;</span><span class="p">:</span>
         <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">relabel_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">mapping</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">G</span>
 
@@ -779,9 +790,9 @@
 <span class="sd">    `stringizer`/`destringizer`.</span>
 
 <span class="sd">    For additional documentation on the GML file format, please see the</span>
-<span class="sd">    `GML website &lt;http://www.infosun.fim.uni-passau.de/Graphlet/GML/gml-tr.html&gt;`_.</span>
+<span class="sd">    `GML url &lt;http://www.infosun.fim.uni-passau.de/Graphlet/GML/gml-tr.html&gt;`_.</span>
 
-<span class="sd">    See the module docstring :mod:`networkx.readwrite.gml` for additional details.</span>
+<span class="sd">    See the module docstring :mod:`networkx.readwrite.gml` for more details.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -836,6 +847,9 @@
                     <span class="k">yield</span> <span class="n">indent</span> <span class="o">+</span> <span class="n">key</span> <span class="o">+</span> <span class="s1">&#39; 1&#39;</span>
                 <span class="k">elif</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
                     <span class="k">yield</span> <span class="n">indent</span> <span class="o">+</span> <span class="n">key</span> <span class="o">+</span> <span class="s1">&#39; 0&#39;</span>
+                <span class="c1"># GML only supports signed 32-bit integers</span>
+                <span class="k">elif</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">2</span><span class="o">**</span><span class="mi">31</span> <span class="ow">or</span> <span class="n">value</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="o">**</span><span class="mi">31</span><span class="p">:</span>
+                    <span class="k">yield</span> <span class="n">indent</span> <span class="o">+</span> <span class="n">key</span> <span class="o">+</span> <span class="s1">&#39; &quot;&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&quot;&#39;</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="k">yield</span> <span class="n">indent</span> <span class="o">+</span> <span class="n">key</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
             <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
@@ -963,10 +977,13 @@
 <span class="sd">    specification.  For other data types, you need to explicitly supply a</span>
 <span class="sd">    `stringizer`/`destringizer`.</span>
 
+<span class="sd">    Note that while we allow non-standard GML to be read from a file, we make</span>
+<span class="sd">    sure to write GML format. In particular, underscores are not allowed in</span>
+<span class="sd">    attribute names.</span>
 <span class="sd">    For additional documentation on the GML file format, please see the</span>
-<span class="sd">    `GML website &lt;http://www.infosun.fim.uni-passau.de/Graphlet/GML/gml-tr.html&gt;`_.</span>
+<span class="sd">    `GML url &lt;http://www.infosun.fim.uni-passau.de/Graphlet/GML/gml-tr.html&gt;`_.</span>
 
-<span class="sd">    See the module docstring :mod:`networkx.readwrite.gml` for additional details.</span>
+<span class="sd">    See the module docstring :mod:`networkx.readwrite.gml` for more details.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -981,7 +998,7 @@
         <span class="n">path</span><span class="o">.</span><span class="n">write</span><span class="p">((</span><span class="n">line</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">))</span></div>
 
 
-<span class="c1"># fixture for nose</span>
+<span class="c1"># fixture for pytest</span>
 <span class="k">def</span> <span class="nf">teardown_module</span><span class="p">(</span><span class="n">module</span><span class="p">):</span>
     <span class="kn">import</span> <span class="nn">os</span>
     <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;test.gml&#39;</span><span class="p">,</span> <span class="s1">&#39;test.gml.gz&#39;</span><span class="p">]:</span>
@@ -990,9 +1007,7 @@
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -1001,12 +1016,14 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2004-2018, NetworkX Developers.
-      Last updated on Jan 22, 2018.
+        &copy; Copyright 2004-2019, NetworkX Developers
+      <span class="lastupdated">
+        Last updated on Oct 17, 2019.
+      </span>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1019,38 +1036,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'2.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  false,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="../../../_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

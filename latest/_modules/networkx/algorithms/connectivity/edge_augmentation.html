@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.connectivity.edge_augmentation &mdash; NetworkX 2.1 documentation</title>
+  <title>networkx.algorithms.connectivity.edge_augmentation &mdash; NetworkX 2.5rc1.dev20191017033512 documentation</title>
   
 
   
@@ -17,45 +17,40 @@
   
 
   
-
-  
+  <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.1 documentation" href="../../../../_static/opensearch.xml"/>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../../_static/copybutton.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within NetworkX 2.5rc1.dev20191017033512 documentation"
+          href="../../../../_static/opensearch.xml"/>
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../../../../_static/gallery.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../../search.html"/>
-    <link rel="top" title="NetworkX 2.1 documentation" href="../../../../index.html"/>
-        <link rel="up" title="Module code" href="../../../index.html"/> 
-
-  
-  <script src="../../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -69,7 +64,7 @@
             
             
               <div class="version">
-                2.1
+                2.5rc1.dev_20191017033512
               </div>
             
           
@@ -115,7 +110,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../../index.html">NetworkX</a>
@@ -123,9 +118,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -155,8 +151,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -169,7 +163,7 @@
             
   <h1>Source code for networkx.algorithms.connectivity.edge_augmentation</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="c1">#    Copyright (C) 2004-2018 by</span>
+<span class="c1">#    Copyright (C) 2004-2019 by</span>
 <span class="c1">#    Aric Hagberg &lt;hagberg@lanl.gov&gt;</span>
 <span class="c1">#    Dan Schult &lt;dschult@colgate.edu&gt;</span>
 <span class="c1">#    Pieter Swart &lt;swart@lanl.gov&gt;</span>
@@ -183,7 +177,7 @@
 <span class="sd">A k-edge-augmentation is a set of edges, that once added to a graph, ensures</span>
 <span class="sd">that the graph is k-edge-connected; i.e. the graph cannot be disconnected</span>
 <span class="sd">unless k or more edges are removed.  Typically, the goal is to find the</span>
-<span class="sd">augmentation with minimum weight.  In general, it is not gaurenteed that a</span>
+<span class="sd">augmentation with minimum weight.  In general, it is not guaranteed that a</span>
 <span class="sd">k-edge-augmentation exists.</span>
 
 <span class="sd">See Also</span>
@@ -191,12 +185,11 @@
 <span class="sd">:mod:`edge_kcomponents` : algorithms for finding k-edge-connected components</span>
 <span class="sd">:mod:`connectivity` : algorithms for determening edge connectivity.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">itertools</span> <span class="k">as</span> <span class="nn">it</span>
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
-<span class="kn">from</span> <span class="nn">networkx.utils</span> <span class="k">import</span> <span class="n">not_implemented_for</span>
+<span class="kn">from</span> <span class="nn">networkx.utils</span> <span class="k">import</span> <span class="n">not_implemented_for</span><span class="p">,</span> <span class="n">py_random_state</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">defaultdict</span><span class="p">,</span> <span class="n">namedtuple</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
@@ -338,7 +331,7 @@
 <span class="sd">        The available edges that can be used in the augmentation.</span>
 
 <span class="sd">        If unspecified, then all edges in the complement of G are available.</span>
-<span class="sd">        Otherwise, each item is an available edge (with an optinal weight).</span>
+<span class="sd">        Otherwise, each item is an available edge (with an optional weight).</span>
 
 <span class="sd">        In the unweighted case, each item is an edge ``(u, v)``.</span>
 
@@ -386,7 +379,7 @@
 <span class="sd">    Otherwise when k=2, this returns a 2-approximation of the optimal solution.</span>
 
 <span class="sd">    For k&gt;3, this problem is NP-hard and this uses a randomized algorithm that</span>
-<span class="sd">        produces a feasible solution, but provides no gaurentees on the</span>
+<span class="sd">        produces a feasible solution, but provides no guarantees on the</span>
 <span class="sd">        solution weight.</span>
 
 <span class="sd">    Example</span>
@@ -457,7 +450,7 @@
             <span class="k">if</span> <span class="n">avail</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">aug_edges</span> <span class="o">=</span> <span class="n">complement_edges</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="c1"># If we cant k-edge-connect the entire graph, try to</span>
+                <span class="c1"># If we can&#39;t k-edge-connect the entire graph, try to</span>
                 <span class="c1"># k-edge-connect as much as possible</span>
                 <span class="n">aug_edges</span> <span class="o">=</span> <span class="n">partial_k_edge_augmentation</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">avail</span><span class="o">=</span><span class="n">avail</span><span class="p">,</span>
                                                         <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
@@ -722,7 +715,7 @@
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
 <span class="sd">    Each node in the metagraph is a k-edge-connected component in the original</span>
-<span class="sd">    graph.  We dont care about any edge within the same k-edge-connected</span>
+<span class="sd">    graph.  We don&#39;t care about any edge within the same k-edge-connected</span>
 <span class="sd">    component, so we ignore self edges.  We also are only intereseted in the</span>
 <span class="sd">    minimum weight edge bridging each k-edge-connected component so, we group</span>
 <span class="sd">    the edges by meta-edge and take the lightest in each group.</span>
@@ -886,7 +879,7 @@
 <span class="sd">    -----</span>
 <span class="sd">    Input: a graph G.</span>
 <span class="sd">    First find the bridge components of G and collapse each bridge-cc into a</span>
-<span class="sd">    node of a metagraph graph C, which is gaurenteed to be a forest of trees.</span>
+<span class="sd">    node of a metagraph graph C, which is guaranteed to be a forest of trees.</span>
 
 <span class="sd">    C contains p &quot;leafs&quot; --- nodes with exactly one incident edge.</span>
 <span class="sd">    C contains q &quot;isolated nodes&quot; --- nodes with no incident edges.</span>
@@ -983,7 +976,10 @@
         <span class="n">A2</span> <span class="o">=</span> <span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">leafs</span><span class="p">)]</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="c1"># Choose an arbitrary non-leaf root</span>
-        <span class="n">root</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">T</span><span class="o">.</span><span class="n">degree</span><span class="p">()</span> <span class="k">if</span> <span class="n">d</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">root</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">T</span><span class="o">.</span><span class="n">degree</span><span class="p">()</span> <span class="k">if</span> <span class="n">d</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>  <span class="c1"># no nodes found with degree &gt; 1</span>
+            <span class="k">return</span>
         <span class="c1"># order the leaves of C by (induced directed) preorder</span>
         <span class="n">v2</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nx</span><span class="o">.</span><span class="n">dfs_preorder_nodes</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">root</span><span class="p">)</span> <span class="k">if</span> <span class="n">T</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
         <span class="c1"># connecting first half of the leafs in pre-order to the second</span>
@@ -1124,7 +1120,10 @@
     <span class="c1">#     nx.least_common_ancestor on the reversed Tree.</span>
 
     <span class="c1"># Pick an arbitrary leaf from C as the root</span>
-    <span class="n">root</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">C</span><span class="o">.</span><span class="n">nodes</span><span class="p">()</span> <span class="k">if</span> <span class="n">C</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">C</span><span class="o">.</span><span class="n">degree</span><span class="p">()</span> <span class="k">if</span> <span class="n">d</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>  <span class="c1"># no nodes found with degree == 1</span>
+        <span class="k">return</span>
     <span class="c1"># Root C into a tree TR by directing all edges away from the root</span>
     <span class="c1"># Note in their paper T directs edges towards the root</span>
     <span class="n">TR</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">dfs_tree</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">root</span><span class="p">)</span>
@@ -1165,7 +1164,7 @@
         <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXUnfeasible</span><span class="p">(</span><span class="s1">&#39;no 2-edge-augmentation possible&#39;</span><span class="p">)</span>
 
     <span class="c1"># For each edge e, in the branching that did not belong to the directed</span>
-    <span class="c1"># tree T, add the correponding edge that **GENERATED** it (this is not</span>
+    <span class="c1"># tree T, add the corresponding edge that **GENERATED** it (this is not</span>
     <span class="c1"># necesarilly e itself!)</span>
 
     <span class="c1"># ensure the third case does not generate edges twice</span>
@@ -1334,10 +1333,11 @@
             <span class="nb">input</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="nb">input</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">input</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="nb">input</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">_compat_shuffle</span><span class="p">(</span><span class="n">rng</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;wraper around rng.shuffle for python 2 compatibility reasons&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;wrapper around rng.shuffle for python 2 compatibility reasons&quot;&quot;&quot;</span>
         <span class="n">rng</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 
 
+<span class="nd">@py_random_state</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s1">&#39;multigraph&#39;</span><span class="p">)</span>
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s1">&#39;directed&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">greedy_k_edge_augmentation</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">avail</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -1358,8 +1358,9 @@
 <span class="sd">        key to use to find weights if ``avail`` is a set of 3-tuples.</span>
 <span class="sd">        For more details, see :func:`k_edge_augmentation`.</span>
 
-<span class="sd">    seed : integer or None</span>
-<span class="sd">        seed for the random number generator used in this algorithm</span>
+<span class="sd">    seed : integer, random_state, or None (default)</span>
+<span class="sd">        Indicator of random number generation state.</span>
+<span class="sd">        See :ref:`Randomness&lt;randomness&gt;`.</span>
 
 <span class="sd">    Yields</span>
 <span class="sd">    ------</span>
@@ -1372,7 +1373,7 @@
 <span class="sd">    graph that are not yet locally k-edge-connected. Then edges are from the</span>
 <span class="sd">    augmenting set are pruned as long as local-edge-connectivity is not broken.</span>
 
-<span class="sd">    This algorithm is greedy and does not provide optimiality gaurentees. It</span>
+<span class="sd">    This algorithm is greedy and does not provide optimality guarantees. It</span>
 <span class="sd">    exists only to provide :func:`k_edge_augmentation` with the ability to</span>
 <span class="sd">    generate a feasible solution for arbitrary k.</span>
 
@@ -1400,7 +1401,7 @@
 
     <span class="n">done</span> <span class="o">=</span> <span class="n">is_k_edge_connected</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">done</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">StopIteration</span><span class="p">()</span>
+        <span class="k">return</span>
     <span class="k">if</span> <span class="n">avail</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="c1"># all edges are available</span>
         <span class="n">avail_uv</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">complement_edges</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
@@ -1434,10 +1435,9 @@
             <span class="s1">&#39;not able to k-edge-connect with available edges&#39;</span><span class="p">)</span>
 
     <span class="c1"># Randomized attempt to reduce the size of the solution</span>
-    <span class="n">rng</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">Random</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
-    <span class="n">_compat_shuffle</span><span class="p">(</span><span class="n">rng</span><span class="p">,</span> <span class="n">aug_edges</span><span class="p">)</span>
+    <span class="n">_compat_shuffle</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">aug_edges</span><span class="p">)</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">aug_edges</span><span class="p">):</span>
-        <span class="c1"># Dont remove if we know it would break connectivity</span>
+        <span class="c1"># Don&#39;t remove if we know it would break connectivity</span>
         <span class="k">if</span> <span class="n">H</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">k</span> <span class="ow">or</span> <span class="n">H</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">k</span><span class="p">:</span>
             <span class="k">continue</span>
         <span class="n">H</span><span class="o">.</span><span class="n">remove_edge</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
@@ -1453,9 +1453,7 @@
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -1464,12 +1462,14 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2004-2018, NetworkX Developers.
-      Last updated on Jan 22, 2018.
+        &copy; Copyright 2004-2019, NetworkX Developers
+      <span class="lastupdated">
+        Last updated on Oct 17, 2019.
+      </span>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1482,38 +1482,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../../',
-            VERSION:'2.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  false,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="../../../../_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

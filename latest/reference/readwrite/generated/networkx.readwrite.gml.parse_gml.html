@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.readwrite.gml.parse_gml &mdash; NetworkX 2.1 documentation</title>
+  <title>networkx.readwrite.gml.parse_gml &mdash; NetworkX 2.5rc1.dev20191017033512 documentation</title>
   
 
   
@@ -17,47 +17,42 @@
   
 
   
-
-  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.1 documentation" href="../../../_static/opensearch.xml"/>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within NetworkX 2.5rc1.dev20191017033512 documentation"
+          href="../../../_static/opensearch.xml"/>
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="NetworkX 2.1 documentation" href="../../../index.html"/>
-        <link rel="up" title="GML" href="../gml.html"/>
-        <link rel="next" title="networkx.readwrite.gml.generate_gml" href="networkx.readwrite.gml.generate_gml.html"/>
-        <link rel="prev" title="networkx.readwrite.gml.write_gml" href="networkx.readwrite.gml.write_gml.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="networkx.readwrite.gml.generate_gml" href="networkx.readwrite.gml.generate_gml.html" />
+    <link rel="prev" title="networkx.readwrite.gml.write_gml" href="networkx.readwrite.gml.write_gml.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -71,7 +66,7 @@
             
             
               <div class="version">
-                2.1
+                2.5rc1.dev_20191017033512
               </div>
             
           
@@ -132,6 +127,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../drawing.html">Drawing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../randomness.html">Randomness</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../exceptions.html">Exceptions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../utils.html">Utilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
@@ -155,7 +151,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">NetworkX</a>
@@ -163,9 +159,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -215,58 +212,52 @@
 <h1>networkx.readwrite.gml.parse_gml<a class="headerlink" href="#networkx-readwrite-gml-parse-gml" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.readwrite.gml.parse_gml">
-<code class="descname">parse_gml</code><span class="sig-paren">(</span><em>lines</em>, <em>label='label'</em>, <em>destringizer=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/networkx/readwrite/gml.html#parse_gml"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.readwrite.gml.parse_gml" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">parse_gml</code><span class="sig-paren">(</span><em class="sig-param">lines</em>, <em class="sig-param">label='label'</em>, <em class="sig-param">destringizer=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/networkx/readwrite/gml.html#parse_gml"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.readwrite.gml.parse_gml" title="Permalink to this definition">¶</a></dt>
 <dd><p>Parse GML graph from a string or iterable.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>lines</strong> (<em>string or iterable of strings</em>) – Data in GML format.</li>
-<li><strong>label</strong> (<em>string, optional</em>) – If not None, the parsed nodes will be renamed according to node
-attributes indicated by <code class="xref py py-obj docutils literal"><span class="pre">label</span></code>. Default value: ‘label’.</li>
-<li><strong>destringizer</strong> (<em>callable, optional</em>) – A <code class="xref py py-obj docutils literal"><span class="pre">destringizer</span></code> that recovers values stored as strings in GML. If it
-cannot convert a string to a value, a <code class="xref py py-obj docutils literal"><span class="pre">ValueError</span></code> is raised. Default
-value : None.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lines</strong> (<em>string or iterable of strings</em>) – Data in GML format.</p></li>
+<li><p><strong>label</strong> (<em>string, optional</em>) – If not None, the parsed nodes will be renamed according to node
+attributes indicated by <code class="xref py py-obj docutils literal notranslate"><span class="pre">label</span></code>. Default value: ‘label’.</p></li>
+<li><p><strong>destringizer</strong> (<em>callable, optional</em>) – A <code class="xref py py-obj docutils literal notranslate"><span class="pre">destringizer</span></code> that recovers values stored as strings in GML. If it
+cannot convert a string to a value, a <code class="xref py py-obj docutils literal notranslate"><span class="pre">ValueError</span></code> is raised. Default
+value : None.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>G</strong> – The parsed graph.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">NetworkX graph</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">NetworkXError</span></code> – If the input cannot be parsed.</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>G</strong> – The parsed graph.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>NetworkX graph</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="../../exceptions.html#networkx.NetworkXError" title="networkx.NetworkXError"><strong>NetworkXError</strong></a> – If the input cannot be parsed.</p>
+</dd>
+</dl>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="networkx.readwrite.gml.write_gml.html#networkx.readwrite.gml.write_gml" title="networkx.readwrite.gml.write_gml"><code class="xref py py-func docutils literal"><span class="pre">write_gml()</span></code></a>, <a class="reference internal" href="networkx.readwrite.gml.read_gml.html#networkx.readwrite.gml.read_gml" title="networkx.readwrite.gml.read_gml"><code class="xref py py-func docutils literal"><span class="pre">read_gml()</span></code></a>, <a class="reference internal" href="networkx.readwrite.gml.literal_destringizer.html#networkx.readwrite.gml.literal_destringizer" title="networkx.readwrite.gml.literal_destringizer"><code class="xref py py-func docutils literal"><span class="pre">literal_destringizer()</span></code></a></p>
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="networkx.readwrite.gml.write_gml.html#networkx.readwrite.gml.write_gml" title="networkx.readwrite.gml.write_gml"><code class="xref py py-func docutils literal notranslate"><span class="pre">write_gml()</span></code></a>, <a class="reference internal" href="networkx.readwrite.gml.read_gml.html#networkx.readwrite.gml.read_gml" title="networkx.readwrite.gml.read_gml"><code class="xref py py-func docutils literal notranslate"><span class="pre">read_gml()</span></code></a>, <a class="reference internal" href="networkx.readwrite.gml.literal_destringizer.html#networkx.readwrite.gml.literal_destringizer" title="networkx.readwrite.gml.literal_destringizer"><code class="xref py py-func docutils literal notranslate"><span class="pre">literal_destringizer()</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
 <p>This stores nested GML attributes as dictionaries in the NetworkX graph,
 node, and edge attribute structures.</p>
 <p>GML files are stored using a 7-bit ASCII encoding with any extended
 ASCII characters (iso8859-1) appearing as HTML character entities.
-Without specifying a <code class="xref py py-obj docutils literal"><span class="pre">stringizer</span></code>/<code class="xref py py-obj docutils literal"><span class="pre">destringizer</span></code>, the code is capable of
-handling <a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">int</span></code></a>/<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">float</span></code></a>/<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">str</span></code></a>/<a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">dict</span></code></a>/<code class="xref py py-obj docutils literal"><span class="pre">list</span></code> data as required by the GML
+Without specifying a <code class="xref py py-obj docutils literal notranslate"><span class="pre">stringizer</span></code>/<code class="xref py py-obj docutils literal notranslate"><span class="pre">destringizer</span></code>, the code is capable of
+handling <a class="reference external" href="https://docs.python.org/2/library/functions.html#int" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>/<a class="reference external" href="https://docs.python.org/2/library/functions.html#float" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code></a>/<a class="reference external" href="https://docs.python.org/2/library/functions.html#str" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>/<a class="reference external" href="https://docs.python.org/2/library/stdtypes.html#dict" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></a>/<code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> data as required by the GML
 specification.  For other data types, you need to explicitly supply a
-<code class="xref py py-obj docutils literal"><span class="pre">stringizer</span></code>/<code class="xref py py-obj docutils literal"><span class="pre">destringizer</span></code>.</p>
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">stringizer</span></code>/<code class="xref py py-obj docutils literal notranslate"><span class="pre">destringizer</span></code>.</p>
 <p>For additional documentation on the GML file format, please see the
-<a class="reference external" href="http://www.infosun.fim.uni-passau.de/Graphlet/GML/gml-tr.html">GML website</a>.</p>
-<p>See the module docstring <a class="reference internal" href="../gml.html#module-networkx.readwrite.gml" title="networkx.readwrite.gml"><code class="xref py py-mod docutils literal"><span class="pre">networkx.readwrite.gml</span></code></a> for additional details.</p>
+<a class="reference external" href="http://www.infosun.fim.uni-passau.de/Graphlet/GML/gml-tr.html">GML url</a>.</p>
+<p>See the module docstring <a class="reference internal" href="../gml.html#module-networkx.readwrite.gml" title="networkx.readwrite.gml"><code class="xref py py-mod docutils literal notranslate"><span class="pre">networkx.readwrite.gml</span></code></a> for more details.</p>
 </dd></dl>
 
 </div>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -275,7 +266,7 @@ specification.  For other data types, you need to explicitly supply a
         <a href="networkx.readwrite.gml.generate_gml.html" class="btn btn-neutral float-right" title="networkx.readwrite.gml.generate_gml" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="networkx.readwrite.gml.write_gml.html" class="btn btn-neutral" title="networkx.readwrite.gml.write_gml" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="networkx.readwrite.gml.write_gml.html" class="btn btn-neutral float-left" title="networkx.readwrite.gml.write_gml" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -284,12 +275,14 @@ specification.  For other data types, you need to explicitly supply a
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2004-2018, NetworkX Developers.
-      Last updated on Jan 22, 2018.
+        &copy; Copyright 2004-2019, NetworkX Developers
+      <span class="lastupdated">
+        Last updated on Oct 17, 2019.
+      </span>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -302,38 +295,15 @@ specification.  For other data types, you need to explicitly supply a
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'2.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  false,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="../../../_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>SparseGraph6 &mdash; NetworkX 2.1 documentation</title>
+  <title>SparseGraph6 &mdash; NetworkX 2.5rc1.dev20191017033512 documentation</title>
   
 
   
@@ -17,47 +17,42 @@
   
 
   
-
-  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.1 documentation" href="../../_static/opensearch.xml"/>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/copybutton.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within NetworkX 2.5rc1.dev20191017033512 documentation"
+          href="../../_static/opensearch.xml"/>
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../genindex.html"/>
-        <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="NetworkX 2.1 documentation" href="../../index.html"/>
-        <link rel="up" title="Reading and writing graphs" href="index.html"/>
-        <link rel="next" title="networkx.readwrite.graph6.from_graph6_bytes" href="generated/networkx.readwrite.graph6.from_graph6_bytes.html"/>
-        <link rel="prev" title="networkx.readwrite.nx_yaml.write_yaml" href="generated/networkx.readwrite.nx_yaml.write_yaml.html"/> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="networkx.readwrite.graph6.from_graph6_bytes" href="generated/networkx.readwrite.graph6.from_graph6_bytes.html" />
+    <link rel="prev" title="networkx.readwrite.nx_yaml.write_yaml" href="generated/networkx.readwrite.nx_yaml.write_yaml.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -71,7 +66,7 @@
             
             
               <div class="version">
-                2.1
+                2.5rc1.dev_20191017033512
               </div>
             
           
@@ -128,6 +123,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../drawing.html">Drawing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../randomness.html">Randomness</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exceptions.html">Exceptions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../utils.html">Utilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
@@ -151,7 +147,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">NetworkX</a>
@@ -159,9 +155,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -216,7 +213,7 @@ compact manner, using only printable ASCII characters. Files in these
 formats have text type and contain one line per graph.</p>
 <p><em>graph6</em> is suitable for small graphs, or large dense graphs. <em>sparse6</em> is
 more space-efficient for large sparse graphs.</p>
-<p class="attribution">&mdash;<a class="reference external" href="http://users.cecs.anu.edu.au/~bdm/data/formats.html">graph6 and sparse6 homepage</a></p>
+<p class="attribution">—<a class="reference external" href="http://users.cecs.anu.edu.au/~bdm/data/formats.html">graph6 and sparse6 homepage</a></p>
 </div></blockquote>
 <div class="section" id="module-networkx.readwrite.graph6">
 <span id="graph6"></span><h2>Graph6<a class="headerlink" href="#module-networkx.readwrite.graph6" title="Permalink to this headline">¶</a></h2>
@@ -224,23 +221,23 @@ more space-efficient for large sparse graphs.</p>
 <p>The <em>graph6</em> file format is suitable for small graphs or large dense
 graphs. For large sparse graphs, use the <em>sparse6</em> format.</p>
 <p>For more information, see the <a class="reference external" href="http://users.cecs.anu.edu.au/~bdm/data/formats.html">graph6</a> homepage.</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.readwrite.graph6.from_graph6_bytes.html#networkx.readwrite.graph6.from_graph6_bytes" title="networkx.readwrite.graph6.from_graph6_bytes"><code class="xref py py-obj docutils literal"><span class="pre">from_graph6_bytes</span></code></a>(string)</td>
-<td>Read a simple undirected graph in graph6 format from string.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/networkx.readwrite.graph6.from_graph6_bytes.html#networkx.readwrite.graph6.from_graph6_bytes" title="networkx.readwrite.graph6.from_graph6_bytes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_graph6_bytes</span></code></a>(string)</p></td>
+<td><p>Read a simple undirected graph in graph6 format from string.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.readwrite.graph6.read_graph6.html#networkx.readwrite.graph6.read_graph6" title="networkx.readwrite.graph6.read_graph6"><code class="xref py py-obj docutils literal"><span class="pre">read_graph6</span></code></a>(path)</td>
-<td>Read simple undirected graphs in graph6 format from path.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/networkx.readwrite.graph6.read_graph6.html#networkx.readwrite.graph6.read_graph6" title="networkx.readwrite.graph6.read_graph6"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_graph6</span></code></a>(path)</p></td>
+<td><p>Read simple undirected graphs in graph6 format from path.</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.readwrite.graph6.to_graph6_bytes.html#networkx.readwrite.graph6.to_graph6_bytes" title="networkx.readwrite.graph6.to_graph6_bytes"><code class="xref py py-obj docutils literal"><span class="pre">to_graph6_bytes</span></code></a>(G[,&nbsp;nodes,&nbsp;header])</td>
-<td>Convert a simple undirected graph to bytes in graph6 format.</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/networkx.readwrite.graph6.to_graph6_bytes.html#networkx.readwrite.graph6.to_graph6_bytes" title="networkx.readwrite.graph6.to_graph6_bytes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_graph6_bytes</span></code></a>(G[, nodes, header])</p></td>
+<td><p>Convert a simple undirected graph to bytes in graph6 format.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.readwrite.graph6.write_graph6.html#networkx.readwrite.graph6.write_graph6" title="networkx.readwrite.graph6.write_graph6"><code class="xref py py-obj docutils literal"><span class="pre">write_graph6</span></code></a>(G,&nbsp;path[,&nbsp;nodes,&nbsp;header])</td>
-<td>Write a simple undirected graph to a path in graph6 format.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/networkx.readwrite.graph6.write_graph6.html#networkx.readwrite.graph6.write_graph6" title="networkx.readwrite.graph6.write_graph6"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_graph6</span></code></a>(G, path[, nodes, header])</p></td>
+<td><p>Write a simple undirected graph to a path in graph6 format.</p></td>
 </tr>
 </tbody>
 </table>
@@ -252,23 +249,23 @@ graphs. For large sparse graphs, use the <em>sparse6</em> format.</p>
 graphs. For small graphs or large dense graphs, use the <em>graph6</em> file
 format.</p>
 <p>For more information, see the <a class="reference external" href="http://users.cecs.anu.edu.au/~bdm/data/formats.html">sparse6</a> homepage.</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.readwrite.sparse6.from_sparse6_bytes.html#networkx.readwrite.sparse6.from_sparse6_bytes" title="networkx.readwrite.sparse6.from_sparse6_bytes"><code class="xref py py-obj docutils literal"><span class="pre">from_sparse6_bytes</span></code></a>(string)</td>
-<td>Read an undirected graph in sparse6 format from string.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/networkx.readwrite.sparse6.from_sparse6_bytes.html#networkx.readwrite.sparse6.from_sparse6_bytes" title="networkx.readwrite.sparse6.from_sparse6_bytes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_sparse6_bytes</span></code></a>(string)</p></td>
+<td><p>Read an undirected graph in sparse6 format from string.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.readwrite.sparse6.read_sparse6.html#networkx.readwrite.sparse6.read_sparse6" title="networkx.readwrite.sparse6.read_sparse6"><code class="xref py py-obj docutils literal"><span class="pre">read_sparse6</span></code></a>(path)</td>
-<td>Read an undirected graph in sparse6 format from path.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/networkx.readwrite.sparse6.read_sparse6.html#networkx.readwrite.sparse6.read_sparse6" title="networkx.readwrite.sparse6.read_sparse6"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_sparse6</span></code></a>(path)</p></td>
+<td><p>Read an undirected graph in sparse6 format from path.</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.readwrite.sparse6.to_sparse6_bytes.html#networkx.readwrite.sparse6.to_sparse6_bytes" title="networkx.readwrite.sparse6.to_sparse6_bytes"><code class="xref py py-obj docutils literal"><span class="pre">to_sparse6_bytes</span></code></a>(G[,&nbsp;nodes,&nbsp;header])</td>
-<td>Convert an undirected graph to bytes in sparse6 format.</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/networkx.readwrite.sparse6.to_sparse6_bytes.html#networkx.readwrite.sparse6.to_sparse6_bytes" title="networkx.readwrite.sparse6.to_sparse6_bytes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_sparse6_bytes</span></code></a>(G[, nodes, header])</p></td>
+<td><p>Convert an undirected graph to bytes in sparse6 format.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.readwrite.sparse6.write_sparse6.html#networkx.readwrite.sparse6.write_sparse6" title="networkx.readwrite.sparse6.write_sparse6"><code class="xref py py-obj docutils literal"><span class="pre">write_sparse6</span></code></a>(G,&nbsp;path[,&nbsp;nodes,&nbsp;header])</td>
-<td>Write graph G to given path in sparse6 format.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/networkx.readwrite.sparse6.write_sparse6.html#networkx.readwrite.sparse6.write_sparse6" title="networkx.readwrite.sparse6.write_sparse6"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_sparse6</span></code></a>(G, path[, nodes, header])</p></td>
+<td><p>Write graph G to given path in sparse6 format.</p></td>
 </tr>
 </tbody>
 </table>
@@ -277,9 +274,7 @@ format.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -288,7 +283,7 @@ format.</p>
         <a href="generated/networkx.readwrite.graph6.from_graph6_bytes.html" class="btn btn-neutral float-right" title="networkx.readwrite.graph6.from_graph6_bytes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="generated/networkx.readwrite.nx_yaml.write_yaml.html" class="btn btn-neutral" title="networkx.readwrite.nx_yaml.write_yaml" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="generated/networkx.readwrite.nx_yaml.write_yaml.html" class="btn btn-neutral float-left" title="networkx.readwrite.nx_yaml.write_yaml" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -297,12 +292,14 @@ format.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2004-2018, NetworkX Developers.
-      Last updated on Jan 22, 2018.
+        &copy; Copyright 2004-2019, NetworkX Developers
+      <span class="lastupdated">
+        Last updated on Oct 17, 2019.
+      </span>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -315,38 +312,15 @@ format.</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../',
-            VERSION:'2.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  false,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="../../_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

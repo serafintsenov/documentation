@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.generators.trees &mdash; NetworkX 2.1 documentation</title>
+  <title>networkx.generators.trees &mdash; NetworkX 2.5rc1.dev20191017033512 documentation</title>
   
 
   
@@ -17,45 +17,40 @@
   
 
   
-
-  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.1 documentation" href="../../../_static/opensearch.xml"/>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within NetworkX 2.5rc1.dev20191017033512 documentation"
+          href="../../../_static/opensearch.xml"/>
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="NetworkX 2.1 documentation" href="../../../index.html"/>
-        <link rel="up" title="Module code" href="../../index.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -69,7 +64,7 @@
             
             
               <div class="version">
-                2.1
+                2.5rc1.dev_20191017033512
               </div>
             
           
@@ -115,7 +110,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">NetworkX</a>
@@ -123,9 +118,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -155,8 +151,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -169,7 +163,7 @@
             
   <h1>Source code for networkx.generators.trees</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- encoding: utf-8 -*-</span>
-<span class="c1">#    Copyright (C) 2015-2018 by</span>
+<span class="c1">#    Copyright (C) 2015-2019 by</span>
 <span class="c1">#        Jeffrey Finkelstein &lt;jeffrey.finkelstein@gmail.com&gt;</span>
 <span class="c1">#        NetworkX developers</span>
 <span class="c1">#    All rights reserved.</span>
@@ -177,11 +171,11 @@
 <span class="c1">#</span>
 <span class="c1"># Authors:      Jeffrey Finkelstein &lt;jeffrey.finkelstein@gmail.com&gt;</span>
 <span class="sd">&quot;&quot;&quot;Functions for generating trees.&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">defaultdict</span>
 
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="kn">from</span> <span class="nn">networkx.utils</span> <span class="k">import</span> <span class="n">generate_unique_node</span>
+<span class="kn">from</span> <span class="nn">networkx.utils</span> <span class="k">import</span> <span class="n">py_random_state</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;prefix_tree&#39;</span><span class="p">,</span> <span class="s1">&#39;random_tree&#39;</span><span class="p">]</span>
 
@@ -207,7 +201,7 @@
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    DiGraph</span>
+<span class="sd">    T: DiGraph</span>
 <span class="sd">        A directed graph representing an arborescence consisting of the</span>
 <span class="sd">        prefix tree generated by `paths`. Nodes are directed &quot;downward&quot;,</span>
 <span class="sd">        from parent to child. A special &quot;synthetic&quot; root node is added</span>
@@ -230,8 +224,11 @@
 
 <span class="sd">            &gt;&gt;&gt; from networkx.generators.trees import NIL</span>
 <span class="sd">            &gt;&gt;&gt; paths = [&#39;ab&#39;, &#39;abs&#39;, &#39;ad&#39;]</span>
-<span class="sd">            &gt;&gt;&gt; T = nx.prefix_tree(paths)</span>
+<span class="sd">            &gt;&gt;&gt; T, root = nx.prefix_tree(paths)</span>
 <span class="sd">            &gt;&gt;&gt; T.predecessors(NIL)  # doctest: +SKIP</span>
+
+<span class="sd">    root : string</span>
+<span class="sd">        The randomly generated uuid of the root node.</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
@@ -258,7 +255,7 @@
 <span class="sd">        ...     s = &#39;&#39;</span>
 <span class="sd">        ...     while v != root:</span>
 <span class="sd">        ...         # Prepend the character `v` to the accumulator `s`.</span>
-<span class="sd">        ...         s = str(T.node[v][&#39;source&#39;]) + s</span>
+<span class="sd">        ...         s = str(T.nodes[v][&#39;source&#39;]) + s</span>
 <span class="sd">        ...         # Each non-nil, non-root node has exactly one parent.</span>
 <span class="sd">        ...         v = next(T.predecessors(v))</span>
 <span class="sd">        ...     recovered.append(s)</span>
@@ -326,16 +323,17 @@
 <span class="c1"># &gt; converting them into the corresponding trees is a straightforward</span>
 <span class="c1"># &gt; method of generating uniformly distributed random labelled trees.</span>
 <span class="c1">#</span>
-<div class="viewcode-block" id="random_tree"><a class="viewcode-back" href="../../../reference/generated/networkx.generators.trees.random_tree.html#networkx.generators.trees.random_tree">[docs]</a><span class="k">def</span> <span class="nf">random_tree</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="random_tree"><a class="viewcode-back" href="../../../reference/generated/networkx.generators.trees.random_tree.html#networkx.generators.trees.random_tree">[docs]</a><span class="nd">@py_random_state</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">random_tree</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns a uniformly random tree on `n` nodes.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    n : int</span>
 <span class="sd">        A positive integer representing the number of nodes in the tree.</span>
-
-<span class="sd">    seed : int</span>
-<span class="sd">        A seed for the random number generator.</span>
+<span class="sd">    seed : integer, random_state, or None (default)</span>
+<span class="sd">        Indicator of random number generation state.</span>
+<span class="sd">        See :ref:`Randomness&lt;randomness&gt;`.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -363,15 +361,12 @@
     <span class="c1"># Cannot create a Prüfer sequence unless `n` is at least two.</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">nx</span><span class="o">.</span><span class="n">empty_graph</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
-    <span class="n">sequence</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)]</span>
+    <span class="n">sequence</span> <span class="o">=</span> <span class="p">[</span><span class="n">seed</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)]</span>
     <span class="k">return</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_prufer_sequence</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span></div>
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -380,12 +375,14 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2004-2018, NetworkX Developers.
-      Last updated on Jan 22, 2018.
+        &copy; Copyright 2004-2019, NetworkX Developers
+      <span class="lastupdated">
+        Last updated on Oct 17, 2019.
+      </span>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -398,38 +395,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'2.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  false,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="../../../_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

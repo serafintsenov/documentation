@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>GraphML &mdash; NetworkX 2.1 documentation</title>
+  <title>GraphML &mdash; NetworkX 2.5rc1.dev20191017033512 documentation</title>
   
 
   
@@ -17,47 +17,42 @@
   
 
   
-
-  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.1 documentation" href="../../_static/opensearch.xml"/>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/copybutton.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within NetworkX 2.5rc1.dev20191017033512 documentation"
+          href="../../_static/opensearch.xml"/>
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../genindex.html"/>
-        <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="NetworkX 2.1 documentation" href="../../index.html"/>
-        <link rel="up" title="Reading and writing graphs" href="index.html"/>
-        <link rel="next" title="networkx.readwrite.graphml.read_graphml" href="generated/networkx.readwrite.graphml.read_graphml.html"/>
-        <link rel="prev" title="networkx.readwrite.gpickle.write_gpickle" href="generated/networkx.readwrite.gpickle.write_gpickle.html"/> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="networkx.readwrite.graphml.read_graphml" href="generated/networkx.readwrite.graphml.read_graphml.html" />
+    <link rel="prev" title="networkx.readwrite.gpickle.write_gpickle" href="generated/networkx.readwrite.gpickle.write_gpickle.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -71,7 +66,7 @@
             
             
               <div class="version">
-                2.1
+                2.5rc1.dev_20191017033512
               </div>
             
           
@@ -118,6 +113,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#id1">GraphML</a></li>
 <li class="toctree-l4"><a class="reference internal" href="generated/networkx.readwrite.graphml.read_graphml.html">networkx.readwrite.graphml.read_graphml</a></li>
 <li class="toctree-l4"><a class="reference internal" href="generated/networkx.readwrite.graphml.write_graphml.html">networkx.readwrite.graphml.write_graphml</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/networkx.readwrite.graphml.generate_graphml.html">networkx.readwrite.graphml.generate_graphml</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/networkx.readwrite.graphml.parse_graphml.html">networkx.readwrite.graphml.parse_graphml</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="json_graph.html">JSON</a></li>
@@ -129,6 +126,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../drawing.html">Drawing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../randomness.html">Randomness</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exceptions.html">Exceptions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../utils.html">Utilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
@@ -152,7 +150,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">NetworkX</a>
@@ -160,9 +158,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -219,13 +218,13 @@ graph and a flexible extension mechanism to add application-specific
 data. Its main features include support of</p>
 <blockquote>
 <div><ul class="simple">
-<li>directed, undirected, and mixed graphs,</li>
-<li>hypergraphs,</li>
-<li>hierarchical graphs,</li>
-<li>graphical representations,</li>
-<li>references to external data,</li>
-<li>application-specific attribute data, and</li>
-<li>light-weight parsers.</li>
+<li><p>directed, undirected, and mixed graphs,</p></li>
+<li><p>hypergraphs,</p></li>
+<li><p>hierarchical graphs,</p></li>
+<li><p>graphical representations,</p></li>
+<li><p>references to external data,</p></li>
+<li><p>application-specific attribute data, and</p></li>
+<li><p>light-weight parsers.</p></li>
 </ul>
 </div></blockquote>
 <p>Unlike many other file formats for graphs, GraphML does not use a
@@ -241,17 +240,23 @@ or processing graphs.”</p>
 for examples.</p>
 </div>
 </div>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.readwrite.graphml.read_graphml.html#networkx.readwrite.graphml.read_graphml" title="networkx.readwrite.graphml.read_graphml"><code class="xref py py-obj docutils literal"><span class="pre">read_graphml</span></code></a>(path[,&nbsp;node_type,&nbsp;edge_key_type])</td>
-<td>Read graph in GraphML format from path.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/networkx.readwrite.graphml.read_graphml.html#networkx.readwrite.graphml.read_graphml" title="networkx.readwrite.graphml.read_graphml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_graphml</span></code></a>(path[, node_type, edge_key_type])</p></td>
+<td><p>Read graph in GraphML format from path.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.readwrite.graphml.write_graphml.html#networkx.readwrite.graphml.write_graphml" title="networkx.readwrite.graphml.write_graphml"><code class="xref py py-obj docutils literal"><span class="pre">write_graphml</span></code></a>(G,&nbsp;path[,&nbsp;encoding,&nbsp;…])</td>
-<td>Write G in GraphML XML format to path</td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/networkx.readwrite.graphml.write_graphml.html#networkx.readwrite.graphml.write_graphml" title="networkx.readwrite.graphml.write_graphml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_graphml</span></code></a>(G, path[, encoding, …])</p></td>
+<td><p>Write G in GraphML XML format to path</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/networkx.readwrite.graphml.generate_graphml.html#networkx.readwrite.graphml.generate_graphml" title="networkx.readwrite.graphml.generate_graphml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_graphml</span></code></a>(G[, encoding, prettyprint])</p></td>
+<td><p>Generate GraphML lines for G</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/networkx.readwrite.graphml.parse_graphml.html#networkx.readwrite.graphml.parse_graphml" title="networkx.readwrite.graphml.parse_graphml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_graphml</span></code></a>(graphml_string[, node_type])</p></td>
+<td><p>Read graph in GraphML format from string.</p></td>
 </tr>
 </tbody>
 </table>
@@ -259,9 +264,7 @@ for examples.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -270,7 +273,7 @@ for examples.</p>
         <a href="generated/networkx.readwrite.graphml.read_graphml.html" class="btn btn-neutral float-right" title="networkx.readwrite.graphml.read_graphml" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="generated/networkx.readwrite.gpickle.write_gpickle.html" class="btn btn-neutral" title="networkx.readwrite.gpickle.write_gpickle" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="generated/networkx.readwrite.gpickle.write_gpickle.html" class="btn btn-neutral float-left" title="networkx.readwrite.gpickle.write_gpickle" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -279,12 +282,14 @@ for examples.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2004-2018, NetworkX Developers.
-      Last updated on Jan 22, 2018.
+        &copy; Copyright 2004-2019, NetworkX Developers
+      <span class="lastupdated">
+        Last updated on Oct 17, 2019.
+      </span>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -297,38 +302,15 @@ for examples.</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../',
-            VERSION:'2.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  false,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="../../_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

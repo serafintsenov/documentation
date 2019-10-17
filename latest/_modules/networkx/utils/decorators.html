@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.utils.decorators &mdash; NetworkX 2.1 documentation</title>
+  <title>networkx.utils.decorators &mdash; NetworkX 2.5rc1.dev20191017033512 documentation</title>
   
 
   
@@ -17,45 +17,40 @@
   
 
   
-
-  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.1 documentation" href="../../../_static/opensearch.xml"/>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within NetworkX 2.5rc1.dev20191017033512 documentation"
+          href="../../../_static/opensearch.xml"/>
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="NetworkX 2.1 documentation" href="../../../index.html"/>
-        <link rel="up" title="Module code" href="../../index.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -69,7 +64,7 @@
             
             
               <div class="version">
-                2.1
+                2.5rc1.dev_20191017033512
               </div>
             
           
@@ -115,7 +110,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">NetworkX</a>
@@ -123,9 +118,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -155,8 +151,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -169,14 +163,21 @@
             
   <h1>Source code for networkx.utils.decorators</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">warnings</span> <span class="k">import</span> <span class="n">warn</span>
 
 <span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">defaultdict</span>
 <span class="kn">from</span> <span class="nn">os.path</span> <span class="k">import</span> <span class="n">splitext</span>
 <span class="kn">from</span> <span class="nn">contextlib</span> <span class="k">import</span> <span class="n">contextmanager</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">pathlib</span> <span class="k">import</span> <span class="n">Path</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="c1"># Use Path to indicate if pathlib exists (like numpy does)</span>
+    <span class="n">Path</span> <span class="o">=</span> <span class="kc">None</span>
 
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="kn">from</span> <span class="nn">decorator</span> <span class="k">import</span> <span class="n">decorator</span>
-<span class="kn">from</span> <span class="nn">networkx.utils</span> <span class="k">import</span> <span class="n">is_string_like</span>
+<span class="kn">from</span> <span class="nn">networkx.utils</span> <span class="k">import</span> <span class="n">is_string_like</span><span class="p">,</span> <span class="n">create_random_state</span><span class="p">,</span> \
+                           <span class="n">create_py_random_state</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">&#39;not_implemented_for&#39;</span><span class="p">,</span>
@@ -184,6 +185,8 @@
     <span class="s1">&#39;nodes_or_number&#39;</span><span class="p">,</span>
     <span class="s1">&#39;preserve_random_state&#39;</span><span class="p">,</span>
     <span class="s1">&#39;random_state&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;np_random_state&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;py_random_state&#39;</span><span class="p">,</span>
 <span class="p">]</span>
 
 
@@ -378,6 +381,10 @@
             <span class="c1"># path is already a file-like object</span>
             <span class="n">fobj</span> <span class="o">=</span> <span class="n">path</span>
             <span class="n">close_fobj</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">elif</span> <span class="n">Path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">Path</span><span class="p">):</span>
+            <span class="c1"># path is a pathlib reference to a filename</span>
+            <span class="n">fobj</span> <span class="o">=</span> <span class="n">_dispatch_dict</span><span class="p">[</span><span class="n">path</span><span class="o">.</span><span class="n">suffix</span><span class="p">](</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span>
+            <span class="n">close_fobj</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="c1"># could be None, in which case the algorithm will deal with it</span>
             <span class="n">fobj</span> <span class="o">=</span> <span class="n">path</span>
@@ -512,6 +519,7 @@
     <span class="sd">&quot;&quot;&quot;Decorator to generate a numpy.random.RandomState instance.</span>
 
 <span class="sd">    Argument position `random_state_index` is processed by create_random_state.</span>
+<span class="sd">    The result is a numpy.random.RandomState instance.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -530,13 +538,17 @@
 <span class="sd">    --------</span>
 <span class="sd">    Decorate functions like this::</span>
 
-<span class="sd">       @random_state(0)</span>
+<span class="sd">       @np_random_state(0)</span>
 <span class="sd">       def random_float(random_state=None):</span>
 <span class="sd">           return random_state.rand()</span>
 
-<span class="sd">       @random_state(1)</span>
+<span class="sd">       @np_random_state(1)</span>
 <span class="sd">       def random_array(dims, random_state=1):</span>
 <span class="sd">           return random_state.rand(*dims)</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    py_random_state</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="nd">@decorator</span>
     <span class="k">def</span> <span class="nf">_random_state</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -544,24 +556,81 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="n">random_state_arg</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">random_state_index</span><span class="p">]</span>
         <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s2">&quot;random_state_arg must be an integer&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s2">&quot;random_state_index must be an integer&quot;</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s2">&quot;random_state_arg is incorrect&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s2">&quot;random_state_index is incorrect&quot;</span><span class="p">)</span>
 
         <span class="c1"># Create a numpy.random.RandomState instance</span>
-        <span class="n">random_state_instance</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">create_random_state</span><span class="p">(</span><span class="n">random_state_arg</span><span class="p">)</span>
+        <span class="n">random_state</span> <span class="o">=</span> <span class="n">create_random_state</span><span class="p">(</span><span class="n">random_state_arg</span><span class="p">)</span>
 
         <span class="c1"># args is a tuple, so we must convert to list before modifying it.</span>
         <span class="n">new_args</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
-        <span class="n">new_args</span><span class="p">[</span><span class="n">random_state_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">random_state_instance</span>
+        <span class="n">new_args</span><span class="p">[</span><span class="n">random_state_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">random_state</span>
         <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">new_args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">_random_state</span></div>
+
+
+<span class="n">np_random_state</span> <span class="o">=</span> <span class="n">random_state</span>
+
+
+<span class="k">def</span> <span class="nf">py_random_state</span><span class="p">(</span><span class="n">random_state_index</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Decorator to generate a random.Random instance (or equiv).</span>
+
+<span class="sd">    Argument position `random_state_index` processed by create_py_random_state.</span>
+<span class="sd">    The result is either a random.Random instance, or numpy.random.RandomState</span>
+<span class="sd">    instance with additional attributes to mimic basic methods of Random.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    random_state_index : int</span>
+<span class="sd">        Location of the random_state argument in args that is to be used to</span>
+<span class="sd">        generate the numpy.random.RandomState instance. Even if the argument is</span>
+<span class="sd">        a named positional argument (with a default value), you must specify</span>
+<span class="sd">        its index as a positional argument.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    _random_state : function</span>
+<span class="sd">        Function whose random_state keyword argument is a RandomState instance.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Decorate functions like this::</span>
+
+<span class="sd">       @py_random_state(0)</span>
+<span class="sd">       def random_float(random_state=None):</span>
+<span class="sd">           return random_state.rand()</span>
+
+<span class="sd">       @py_random_state(1)</span>
+<span class="sd">       def random_array(dims, random_state=1):</span>
+<span class="sd">           return random_state.rand(*dims)</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    np_random_state</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nd">@decorator</span>
+    <span class="k">def</span> <span class="nf">_random_state</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="c1"># Parse the decorator arguments.</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">random_state_arg</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">random_state_index</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s2">&quot;random_state_index must be an integer&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s2">&quot;random_state_index is incorrect&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Create a numpy.random.RandomState instance</span>
+        <span class="n">random_state</span> <span class="o">=</span> <span class="n">create_py_random_state</span><span class="p">(</span><span class="n">random_state_arg</span><span class="p">)</span>
+
+        <span class="c1"># args is a tuple, so we must convert to list before modifying it.</span>
+        <span class="n">new_args</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+        <span class="n">new_args</span><span class="p">[</span><span class="n">random_state_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">random_state</span>
+        <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">new_args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_random_state</span>
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -570,12 +639,14 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2004-2018, NetworkX Developers.
-      Last updated on Jan 22, 2018.
+        &copy; Copyright 2004-2019, NetworkX Developers
+      <span class="lastupdated">
+        Last updated on Oct 17, 2019.
+      </span>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -588,38 +659,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'2.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  false,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="../../../_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

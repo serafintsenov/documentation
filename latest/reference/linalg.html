@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Linear algebra &mdash; NetworkX 2.1 documentation</title>
+  <title>Linear algebra &mdash; NetworkX 2.5rc1.dev20191017033512 documentation</title>
   
 
   
@@ -17,47 +17,42 @@
   
 
   
-
-  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.1 documentation" href="../_static/opensearch.xml"/>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within NetworkX 2.5rc1.dev20191017033512 documentation"
+          href="../_static/opensearch.xml"/>
 
   
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="NetworkX 2.1 documentation" href="../index.html"/>
-        <link rel="up" title="Reference" href="index.html"/>
-        <link rel="next" title="networkx.linalg.graphmatrix.adjacency_matrix" href="generated/networkx.linalg.graphmatrix.adjacency_matrix.html"/>
-        <link rel="prev" title="networkx.generators.mycielski.mycielski_graph" href="generated/networkx.generators.mycielski.mycielski_graph.html"/> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="networkx.linalg.graphmatrix.adjacency_matrix" href="generated/networkx.linalg.graphmatrix.adjacency_matrix.html" />
+    <link rel="prev" title="networkx.generators.cographs.random_cograph" href="generated/networkx.generators.cographs.random_cograph.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -71,7 +66,7 @@
             
             
               <div class="version">
-                2.1
+                2.5rc1.dev_20191017033512
               </div>
             
           
@@ -116,9 +111,8 @@
 <li class="toctree-l4"><a class="reference internal" href="generated/networkx.linalg.laplacianmatrix.directed_laplacian_matrix.html">networkx.linalg.laplacianmatrix.directed_laplacian_matrix</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#module-networkx.linalg.spectrum">Spectrum</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="generated/networkx.linalg.spectrum.laplacian_spectrum.html">networkx.linalg.spectrum.laplacian_spectrum</a></li>
-<li class="toctree-l4"><a class="reference internal" href="generated/networkx.linalg.spectrum.adjacency_spectrum.html">networkx.linalg.spectrum.adjacency_spectrum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-networkx.linalg.bethehessianmatrix">Bethe Hessian Matrix</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/networkx.linalg.bethehessianmatrix.bethe_hessian_matrix.html">networkx.linalg.bethehessianmatrix.bethe_hessian_matrix</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#module-networkx.linalg.algebraicconnectivity">Algebraic Connectivity</a><ul>
@@ -132,12 +126,26 @@
 <li class="toctree-l4"><a class="reference internal" href="generated/networkx.linalg.attrmatrix.attr_sparse_matrix.html">networkx.linalg.attrmatrix.attr_sparse_matrix</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#module-networkx.linalg.modularitymatrix">Modularity Matrices</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/networkx.linalg.modularitymatrix.modularity_matrix.html">networkx.linalg.modularitymatrix.modularity_matrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/networkx.linalg.modularitymatrix.directed_modularity_matrix.html">networkx.linalg.modularitymatrix.directed_modularity_matrix</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-networkx.linalg.spectrum">Spectrum</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/networkx.linalg.spectrum.adjacency_spectrum.html">networkx.linalg.spectrum.adjacency_spectrum</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/networkx.linalg.spectrum.laplacian_spectrum.html">networkx.linalg.spectrum.laplacian_spectrum</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/networkx.linalg.spectrum.bethe_hessian_spectrum.html">networkx.linalg.spectrum.bethe_hessian_spectrum</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/networkx.linalg.spectrum.normalized_laplacian_spectrum.html">networkx.linalg.spectrum.normalized_laplacian_spectrum</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/networkx.linalg.spectrum.modularity_spectrum.html">networkx.linalg.spectrum.modularity_spectrum</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="convert.html">Converting to and from other data formats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="relabel.html">Relabeling nodes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="readwrite/index.html">Reading and writing graphs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="drawing.html">Drawing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="randomness.html">Randomness</a></li>
 <li class="toctree-l2"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="utils.html">Utilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="glossary.html">Glossary</a></li>
@@ -161,7 +169,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">NetworkX</a>
@@ -169,9 +177,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -218,17 +227,17 @@
 <div class="section" id="module-networkx.linalg.graphmatrix">
 <span id="graph-matrix"></span><h2>Graph Matrix<a class="headerlink" href="#module-networkx.linalg.graphmatrix" title="Permalink to this headline">¶</a></h2>
 <p>Adjacency matrix and incidence matrix of graphs.</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.linalg.graphmatrix.adjacency_matrix.html#networkx.linalg.graphmatrix.adjacency_matrix" title="networkx.linalg.graphmatrix.adjacency_matrix"><code class="xref py py-obj docutils literal"><span class="pre">adjacency_matrix</span></code></a>(G[,&nbsp;nodelist,&nbsp;weight])</td>
-<td>Return adjacency matrix of G.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/networkx.linalg.graphmatrix.adjacency_matrix.html#networkx.linalg.graphmatrix.adjacency_matrix" title="networkx.linalg.graphmatrix.adjacency_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">adjacency_matrix</span></code></a>(G[, nodelist, weight])</p></td>
+<td><p>Returns adjacency matrix of G.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.linalg.graphmatrix.incidence_matrix.html#networkx.linalg.graphmatrix.incidence_matrix" title="networkx.linalg.graphmatrix.incidence_matrix"><code class="xref py py-obj docutils literal"><span class="pre">incidence_matrix</span></code></a>(G[,&nbsp;nodelist,&nbsp;edgelist,&nbsp;…])</td>
-<td>Return incidence matrix of G.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/networkx.linalg.graphmatrix.incidence_matrix.html#networkx.linalg.graphmatrix.incidence_matrix" title="networkx.linalg.graphmatrix.incidence_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">incidence_matrix</span></code></a>(G[, nodelist, edgelist, …])</p></td>
+<td><p>Returns incidence matrix of G.</p></td>
 </tr>
 </tbody>
 </table>
@@ -236,38 +245,35 @@
 <div class="section" id="module-networkx.linalg.laplacianmatrix">
 <span id="laplacian-matrix"></span><h2>Laplacian Matrix<a class="headerlink" href="#module-networkx.linalg.laplacianmatrix" title="Permalink to this headline">¶</a></h2>
 <p>Laplacian matrix of graphs.</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.linalg.laplacianmatrix.laplacian_matrix.html#networkx.linalg.laplacianmatrix.laplacian_matrix" title="networkx.linalg.laplacianmatrix.laplacian_matrix"><code class="xref py py-obj docutils literal"><span class="pre">laplacian_matrix</span></code></a>(G[,&nbsp;nodelist,&nbsp;weight])</td>
-<td>Return the Laplacian matrix of G.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/networkx.linalg.laplacianmatrix.laplacian_matrix.html#networkx.linalg.laplacianmatrix.laplacian_matrix" title="networkx.linalg.laplacianmatrix.laplacian_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">laplacian_matrix</span></code></a>(G[, nodelist, weight])</p></td>
+<td><p>Returns the Laplacian matrix of G.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.linalg.laplacianmatrix.normalized_laplacian_matrix.html#networkx.linalg.laplacianmatrix.normalized_laplacian_matrix" title="networkx.linalg.laplacianmatrix.normalized_laplacian_matrix"><code class="xref py py-obj docutils literal"><span class="pre">normalized_laplacian_matrix</span></code></a>(G[,&nbsp;nodelist,&nbsp;…])</td>
-<td>Return the normalized Laplacian matrix of G.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/networkx.linalg.laplacianmatrix.normalized_laplacian_matrix.html#networkx.linalg.laplacianmatrix.normalized_laplacian_matrix" title="networkx.linalg.laplacianmatrix.normalized_laplacian_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">normalized_laplacian_matrix</span></code></a>(G[, nodelist, …])</p></td>
+<td><p>Returns the normalized Laplacian matrix of G.</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.linalg.laplacianmatrix.directed_laplacian_matrix.html#networkx.linalg.laplacianmatrix.directed_laplacian_matrix" title="networkx.linalg.laplacianmatrix.directed_laplacian_matrix"><code class="xref py py-obj docutils literal"><span class="pre">directed_laplacian_matrix</span></code></a>(G[,&nbsp;nodelist,&nbsp;…])</td>
-<td>Return the directed Laplacian matrix of G.</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/networkx.linalg.laplacianmatrix.directed_laplacian_matrix.html#networkx.linalg.laplacianmatrix.directed_laplacian_matrix" title="networkx.linalg.laplacianmatrix.directed_laplacian_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">directed_laplacian_matrix</span></code></a>(G[, nodelist, …])</p></td>
+<td><p>Returns the directed Laplacian matrix of G.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="section" id="module-networkx.linalg.spectrum">
-<span id="spectrum"></span><h2>Spectrum<a class="headerlink" href="#module-networkx.linalg.spectrum" title="Permalink to this headline">¶</a></h2>
-<p>Eigenvalue spectrum of graphs.</p>
-<table border="1" class="longtable docutils">
+<div class="section" id="module-networkx.linalg.bethehessianmatrix">
+<span id="bethe-hessian-matrix"></span><h2>Bethe Hessian Matrix<a class="headerlink" href="#module-networkx.linalg.bethehessianmatrix" title="Permalink to this headline">¶</a></h2>
+<p>Bethe Hessian or deformed Laplacian matrix of graphs.</p>
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.linalg.spectrum.laplacian_spectrum.html#networkx.linalg.spectrum.laplacian_spectrum" title="networkx.linalg.spectrum.laplacian_spectrum"><code class="xref py py-obj docutils literal"><span class="pre">laplacian_spectrum</span></code></a>(G[,&nbsp;weight])</td>
-<td>Return eigenvalues of the Laplacian of G</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.linalg.spectrum.adjacency_spectrum.html#networkx.linalg.spectrum.adjacency_spectrum" title="networkx.linalg.spectrum.adjacency_spectrum"><code class="xref py py-obj docutils literal"><span class="pre">adjacency_spectrum</span></code></a>(G[,&nbsp;weight])</td>
-<td>Return eigenvalues of the adjacency matrix of G.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/networkx.linalg.bethehessianmatrix.bethe_hessian_matrix.html#networkx.linalg.bethehessianmatrix.bethe_hessian_matrix" title="networkx.linalg.bethehessianmatrix.bethe_hessian_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bethe_hessian_matrix</span></code></a>(G[, r, nodelist])</p></td>
+<td><p>Returns the Bethe Hessian matrix of G.</p></td>
 </tr>
 </tbody>
 </table>
@@ -275,20 +281,20 @@
 <div class="section" id="module-networkx.linalg.algebraicconnectivity">
 <span id="algebraic-connectivity"></span><h2>Algebraic Connectivity<a class="headerlink" href="#module-networkx.linalg.algebraicconnectivity" title="Permalink to this headline">¶</a></h2>
 <p>Algebraic connectivity and Fiedler vectors of undirected graphs.</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.linalg.algebraicconnectivity.algebraic_connectivity.html#networkx.linalg.algebraicconnectivity.algebraic_connectivity" title="networkx.linalg.algebraicconnectivity.algebraic_connectivity"><code class="xref py py-obj docutils literal"><span class="pre">algebraic_connectivity</span></code></a>(G[,&nbsp;weight,&nbsp;…])</td>
-<td>Return the algebraic connectivity of an undirected graph.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/networkx.linalg.algebraicconnectivity.algebraic_connectivity.html#networkx.linalg.algebraicconnectivity.algebraic_connectivity" title="networkx.linalg.algebraicconnectivity.algebraic_connectivity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">algebraic_connectivity</span></code></a>(G[, weight, …])</p></td>
+<td><p>Returns the algebraic connectivity of an undirected graph.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.linalg.algebraicconnectivity.fiedler_vector.html#networkx.linalg.algebraicconnectivity.fiedler_vector" title="networkx.linalg.algebraicconnectivity.fiedler_vector"><code class="xref py py-obj docutils literal"><span class="pre">fiedler_vector</span></code></a>(G[,&nbsp;weight,&nbsp;normalized,&nbsp;tol,&nbsp;…])</td>
-<td>Return the Fiedler vector of a connected undirected graph.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/networkx.linalg.algebraicconnectivity.fiedler_vector.html#networkx.linalg.algebraicconnectivity.fiedler_vector" title="networkx.linalg.algebraicconnectivity.fiedler_vector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fiedler_vector</span></code></a>(G[, weight, normalized, tol, …])</p></td>
+<td><p>Returns the Fiedler vector of a connected undirected graph.</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.linalg.algebraicconnectivity.spectral_ordering.html#networkx.linalg.algebraicconnectivity.spectral_ordering" title="networkx.linalg.algebraicconnectivity.spectral_ordering"><code class="xref py py-obj docutils literal"><span class="pre">spectral_ordering</span></code></a>(G[,&nbsp;weight,&nbsp;normalized,&nbsp;…])</td>
-<td>Compute the spectral_ordering of a graph.</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/networkx.linalg.algebraicconnectivity.spectral_ordering.html#networkx.linalg.algebraicconnectivity.spectral_ordering" title="networkx.linalg.algebraicconnectivity.spectral_ordering"><code class="xref py py-obj docutils literal notranslate"><span class="pre">spectral_ordering</span></code></a>(G[, weight, normalized, …])</p></td>
+<td><p>Compute the spectral_ordering of a graph.</p></td>
 </tr>
 </tbody>
 </table>
@@ -296,17 +302,62 @@
 <div class="section" id="module-networkx.linalg.attrmatrix">
 <span id="attribute-matrices"></span><h2>Attribute Matrices<a class="headerlink" href="#module-networkx.linalg.attrmatrix" title="Permalink to this headline">¶</a></h2>
 <p>Functions for constructing matrix-like objects from graph attributes.</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.linalg.attrmatrix.attr_matrix.html#networkx.linalg.attrmatrix.attr_matrix" title="networkx.linalg.attrmatrix.attr_matrix"><code class="xref py py-obj docutils literal"><span class="pre">attr_matrix</span></code></a>(G[,&nbsp;edge_attr,&nbsp;node_attr,&nbsp;…])</td>
-<td>Returns a NumPy matrix using attributes from G.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/networkx.linalg.attrmatrix.attr_matrix.html#networkx.linalg.attrmatrix.attr_matrix" title="networkx.linalg.attrmatrix.attr_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">attr_matrix</span></code></a>(G[, edge_attr, node_attr, …])</p></td>
+<td><p>Returns a NumPy matrix using attributes from G.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.linalg.attrmatrix.attr_sparse_matrix.html#networkx.linalg.attrmatrix.attr_sparse_matrix" title="networkx.linalg.attrmatrix.attr_sparse_matrix"><code class="xref py py-obj docutils literal"><span class="pre">attr_sparse_matrix</span></code></a>(G[,&nbsp;edge_attr,&nbsp;…])</td>
-<td>Returns a SciPy sparse matrix using attributes from G.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/networkx.linalg.attrmatrix.attr_sparse_matrix.html#networkx.linalg.attrmatrix.attr_sparse_matrix" title="networkx.linalg.attrmatrix.attr_sparse_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">attr_sparse_matrix</span></code></a>(G[, edge_attr, …])</p></td>
+<td><p>Returns a SciPy sparse matrix using attributes from G.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-networkx.linalg.modularitymatrix">
+<span id="modularity-matrices"></span><h2>Modularity Matrices<a class="headerlink" href="#module-networkx.linalg.modularitymatrix" title="Permalink to this headline">¶</a></h2>
+<p>Modularity matrix of graphs.</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/networkx.linalg.modularitymatrix.modularity_matrix.html#networkx.linalg.modularitymatrix.modularity_matrix" title="networkx.linalg.modularitymatrix.modularity_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">modularity_matrix</span></code></a>(G[, nodelist, weight])</p></td>
+<td><p>Returns the modularity matrix of G.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/networkx.linalg.modularitymatrix.directed_modularity_matrix.html#networkx.linalg.modularitymatrix.directed_modularity_matrix" title="networkx.linalg.modularitymatrix.directed_modularity_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">directed_modularity_matrix</span></code></a>(G[, nodelist, weight])</p></td>
+<td><p>Returns the directed modularity matrix of G.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-networkx.linalg.spectrum">
+<span id="spectrum"></span><h2>Spectrum<a class="headerlink" href="#module-networkx.linalg.spectrum" title="Permalink to this headline">¶</a></h2>
+<p>Eigenvalue spectrum of graphs.</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/networkx.linalg.spectrum.adjacency_spectrum.html#networkx.linalg.spectrum.adjacency_spectrum" title="networkx.linalg.spectrum.adjacency_spectrum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">adjacency_spectrum</span></code></a>(G[, weight])</p></td>
+<td><p>Returns eigenvalues of the adjacency matrix of G.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/networkx.linalg.spectrum.laplacian_spectrum.html#networkx.linalg.spectrum.laplacian_spectrum" title="networkx.linalg.spectrum.laplacian_spectrum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">laplacian_spectrum</span></code></a>(G[, weight])</p></td>
+<td><p>Returns eigenvalues of the Laplacian of G</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/networkx.linalg.spectrum.bethe_hessian_spectrum.html#networkx.linalg.spectrum.bethe_hessian_spectrum" title="networkx.linalg.spectrum.bethe_hessian_spectrum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bethe_hessian_spectrum</span></code></a>(G[, r])</p></td>
+<td><p>Returns eigenvalues of the Bethe Hessian matrix of G.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/networkx.linalg.spectrum.normalized_laplacian_spectrum.html#networkx.linalg.spectrum.normalized_laplacian_spectrum" title="networkx.linalg.spectrum.normalized_laplacian_spectrum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">normalized_laplacian_spectrum</span></code></a>(G[, weight])</p></td>
+<td><p>Return eigenvalues of the normalized Laplacian of G</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/networkx.linalg.spectrum.modularity_spectrum.html#networkx.linalg.spectrum.modularity_spectrum" title="networkx.linalg.spectrum.modularity_spectrum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">modularity_spectrum</span></code></a>(G)</p></td>
+<td><p>Returns eigenvalues of the modularity matrix of G.</p></td>
 </tr>
 </tbody>
 </table>
@@ -315,9 +366,7 @@
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -326,7 +375,7 @@
         <a href="generated/networkx.linalg.graphmatrix.adjacency_matrix.html" class="btn btn-neutral float-right" title="networkx.linalg.graphmatrix.adjacency_matrix" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="generated/networkx.generators.mycielski.mycielski_graph.html" class="btn btn-neutral" title="networkx.generators.mycielski.mycielski_graph" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="generated/networkx.generators.cographs.random_cograph.html" class="btn btn-neutral float-left" title="networkx.generators.cographs.random_cograph" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -335,12 +384,14 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2004-2018, NetworkX Developers.
-      Last updated on Jan 22, 2018.
+        &copy; Copyright 2004-2019, NetworkX Developers
+      <span class="lastupdated">
+        Last updated on Oct 17, 2019.
+      </span>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -353,38 +404,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'2.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  false,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

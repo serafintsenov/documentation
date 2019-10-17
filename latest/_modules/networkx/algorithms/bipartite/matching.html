@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.bipartite.matching &mdash; NetworkX 2.1 documentation</title>
+  <title>networkx.algorithms.bipartite.matching &mdash; NetworkX 2.5rc1.dev20191017033512 documentation</title>
   
 
   
@@ -17,45 +17,40 @@
   
 
   
-
-  
+  <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.1 documentation" href="../../../../_static/opensearch.xml"/>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../../_static/copybutton.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within NetworkX 2.5rc1.dev20191017033512 documentation"
+          href="../../../../_static/opensearch.xml"/>
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../../../../_static/gallery.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../../search.html"/>
-    <link rel="top" title="NetworkX 2.1 documentation" href="../../../../index.html"/>
-        <link rel="up" title="Module code" href="../../../index.html"/> 
-
-  
-  <script src="../../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -69,7 +64,7 @@
             
             
               <div class="version">
-                2.1
+                2.5rc1.dev_20191017033512
               </div>
             
           
@@ -115,7 +110,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../../index.html">NetworkX</a>
@@ -123,9 +118,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -155,8 +151,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -170,7 +164,8 @@
   <h1>Source code for networkx.algorithms.bipartite.matching</h1><div class="highlight"><pre>
 <span></span><span class="c1"># matching.py - bipartite graph maximum matching algorithms</span>
 <span class="c1">#</span>
-<span class="c1"># Copyright 2015 Jeffrey Finkelstein &lt;jeffrey.finkelstein@gmail.com&gt;.</span>
+<span class="c1"># Copyright 2015 Jeffrey Finkelstein &lt;jeffrey.finkelstein@gmail.com&gt;,</span>
+<span class="c1"># Copyright 2019 Søren Fuglede Jørgensen</span>
 <span class="c1">#</span>
 <span class="c1"># This file is part of NetworkX.</span>
 <span class="c1">#</span>
@@ -187,8 +182,8 @@
 <span class="c1"># Portions of this module use code from David Eppstein&#39;s Python Algorithms and</span>
 <span class="c1"># Data Structures (PADS) library, which is dedicated to the public domain (for</span>
 <span class="c1"># proof, see &lt;http://www.ics.uci.edu/~eppstein/PADS/ABOUT-PADS.txt&gt;).</span>
-<span class="sd">&quot;&quot;&quot;Provides functions for computing a maximum cardinality matching in a</span>
-<span class="sd">bipartite graph.</span>
+<span class="sd">&quot;&quot;&quot;Provides functions for computing maximum cardinality matchings and minimum</span>
+<span class="sd">weight full matchings in a bipartite graph.</span>
 
 <span class="sd">If you don&#39;t care about the particular implementation of the maximum matching</span>
 <span class="sd">algorithm, simply use the :func:`maximum_matching`. If you do care, you can</span>
@@ -210,15 +205,21 @@
 <span class="sd">The dictionary returned by :func:`maximum_matching` includes a mapping for</span>
 <span class="sd">vertices in both the left and right vertex sets.</span>
 
+<span class="sd">Similarly, :func:`minimum_weight_full_matching` produces, for a complete</span>
+<span class="sd">weighted bipartite graph, a matching whose cardinality is the cardinality of</span>
+<span class="sd">the smaller of the two partitions, and for which the sum of the weights of the</span>
+<span class="sd">edges included in the matching is minimal.</span>
+
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">collections</span>
 <span class="kn">import</span> <span class="nn">itertools</span>
 
+<span class="kn">from</span> <span class="nn">networkx.algorithms.bipartite.matrix</span> <span class="k">import</span> <span class="n">biadjacency_matrix</span>
 <span class="kn">from</span> <span class="nn">networkx.algorithms.bipartite</span> <span class="k">import</span> <span class="n">sets</span> <span class="k">as</span> <span class="n">bipartite_sets</span>
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;maximum_matching&#39;</span><span class="p">,</span> <span class="s1">&#39;hopcroft_karp_matching&#39;</span><span class="p">,</span> <span class="s1">&#39;eppstein_matching&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;to_vertex_cover&#39;</span><span class="p">]</span>
+           <span class="s1">&#39;to_vertex_cover&#39;</span><span class="p">,</span> <span class="s1">&#39;minimum_weight_full_matching&#39;</span><span class="p">]</span>
 
 <span class="n">INFINITY</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
 
@@ -257,7 +258,6 @@
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-
 <span class="sd">    This function is implemented with the `Hopcroft--Karp matching algorithm</span>
 <span class="sd">    &lt;https://en.wikipedia.org/wiki/Hopcroft%E2%80%93Karp_algorithm&gt;`_ for</span>
 <span class="sd">    bipartite graphs.</span>
@@ -274,7 +274,7 @@
 <span class="sd">    ----------</span>
 <span class="sd">    .. [1] John E. Hopcroft and Richard M. Karp. &quot;An n^{5 / 2} Algorithm for</span>
 <span class="sd">       Maximum Matchings in Bipartite Graphs&quot; In: **SIAM Journal of Computing**</span>
-<span class="sd">       2.4 (1973), pp. 225--231. &lt;https://dx.doi.org/10.1137/0202019&gt;.</span>
+<span class="sd">       2.4 (1973), pp. 225--231. &lt;https://doi.org/10.1137/0202019&gt;.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># First we define some auxiliary search functions.</span>
@@ -375,7 +375,6 @@
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-
 <span class="sd">    This function is implemented with David Eppstein&#39;s version of the algorithm</span>
 <span class="sd">    Hopcroft--Karp algorithm (see :func:`hopcroft_karp_matching`), which</span>
 <span class="sd">    originally appeared in the `Python Algorithms and Data Structures library</span>
@@ -576,7 +575,6 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-
 <span class="sd">    G : NetworkX graph</span>
 
 <span class="sd">      Undirected bipartite graph</span>
@@ -596,7 +594,6 @@
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-
 <span class="sd">    vertex_cover : :class:`set`</span>
 
 <span class="sd">      The minimum vertex cover in `G`.</span>
@@ -612,7 +609,6 @@
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-
 <span class="sd">    This function is implemented using the procedure guaranteed by `Konig&#39;s</span>
 <span class="sd">    theorem</span>
 <span class="sd">    &lt;https://en.wikipedia.org/wiki/K%C3%B6nig%27s_theorem_%28graph_theory%29&gt;`_,</span>
@@ -653,12 +649,103 @@
 <span class="c1">#:</span>
 <span class="c1">#: This function is simply an alias for :func:`hopcroft_karp_matching`.</span>
 <span class="n">maximum_matching</span> <span class="o">=</span> <span class="n">hopcroft_karp_matching</span>
+
+
+<div class="viewcode-block" id="minimum_weight_full_matching"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.bipartite.matching.minimum_weight_full_matching.html#networkx.algorithms.bipartite.matching.minimum_weight_full_matching">[docs]</a><span class="k">def</span> <span class="nf">minimum_weight_full_matching</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">top_nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Returns the minimum weight full matching of the bipartite graph `G`.</span>
+
+<span class="sd">    Let :math:`G = ((U, V), E)` be a complete weighted bipartite graph with</span>
+<span class="sd">    real weights :math:`w : E \to \mathbb{R}`. This function then produces</span>
+<span class="sd">    a maximum matching :math:`M \subseteq E` which, since the graph is</span>
+<span class="sd">    assumed to be complete, has cardinality</span>
+<span class="sd">   </span>
+<span class="sd">    .. math::</span>
+<span class="sd">       \lvert M \rvert = \min(\lvert U \rvert, \lvert V \rvert),</span>
+
+<span class="sd">    and which minimizes the sum of the weights of the edges included in the</span>
+<span class="sd">    matching, :math:`\sum_{e \in M} w(e)`.</span>
+<span class="sd">    </span>
+<span class="sd">    When :math:`\lvert U \rvert = \lvert V \rvert`, this is commonly</span>
+<span class="sd">    referred to as a perfect matching; here, since we allow</span>
+<span class="sd">    :math:`\lvert U \rvert` and :math:`\lvert V \rvert` to differ, we</span>
+<span class="sd">    follow Karp [1]_ and refer to the matching as *full*.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : NetworkX graph</span>
+
+<span class="sd">      Undirected bipartite graph</span>
+
+<span class="sd">    top_nodes : container</span>
+
+<span class="sd">      Container with all nodes in one bipartite node set. If not supplied</span>
+<span class="sd">      it will be computed.</span>
+
+<span class="sd">    weight : string, optional (default=&#39;weight&#39;)</span>
+
+<span class="sd">       The edge data key used to provide each value in the matrix.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    matches : dictionary</span>
+
+<span class="sd">      The matching is returned as a dictionary, `matches`, such that</span>
+<span class="sd">      ``matches[v] == w`` if node `v` is matched to node `w`. Unmatched</span>
+<span class="sd">      nodes do not occur as a key in matches.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError : Exception</span>
+
+<span class="sd">      Raised if the input bipartite graph is not complete.</span>
+
+<span class="sd">    ImportError : Exception</span>
+
+<span class="sd">      Raised if SciPy is not available.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The problem of determining a minimum weight full matching is also known as</span>
+<span class="sd">    the rectangular linear assignment problem. This implementation defers the</span>
+<span class="sd">    calculation of the assignment to SciPy.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] Richard Manning Karp:</span>
+<span class="sd">       An algorithm to Solve the m x n Assignment Problem in Expected Time</span>
+<span class="sd">       O(mn log n).</span>
+<span class="sd">       Networks, 10(2):143–152, 1980.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span> <span class="nn">scipy.optimize</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s1">&#39;minimum_weight_full_matching requires SciPy: &#39;</span> <span class="o">+</span>
+                          <span class="s1">&#39;https://scipy.org/&#39;</span><span class="p">)</span>
+    <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">bipartite</span><span class="o">.</span><span class="n">sets</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">top_nodes</span><span class="p">)</span>
+    <span class="c1"># Ensure that the graph is complete. This is currently a requirement in</span>
+    <span class="c1"># the underlying  optimization algorithm from SciPy, but the constraint</span>
+    <span class="c1"># will be removed in SciPy 1.4.0, at which point it can also be removed</span>
+    <span class="c1"># here.</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
+        <span class="c1"># As the graph is undirected, make sure to check for edges in</span>
+        <span class="c1"># both directions</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">()</span> <span class="ow">and</span> <span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;The bipartite graph must be complete.&#39;</span><span class="p">)</span>
+    <span class="n">U</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">left</span><span class="p">)</span>
+    <span class="n">V</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
+    <span class="n">weights</span> <span class="o">=</span> <span class="n">biadjacency_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">row_order</span><span class="o">=</span><span class="n">U</span><span class="p">,</span>
+                                 <span class="n">column_order</span><span class="o">=</span><span class="n">V</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+    <span class="n">left_matches</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">optimize</span><span class="o">.</span><span class="n">linear_sum_assignment</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="n">U</span><span class="p">[</span><span class="n">u</span><span class="p">]:</span> <span class="n">V</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">left_matches</span><span class="p">)}</span>
+    <span class="c1"># d will contain the matching from edges in left to right; we need to</span>
+    <span class="c1"># add the ones from right to left as well.</span>
+    <span class="n">d</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">v</span><span class="p">:</span> <span class="n">u</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">()})</span>
+    <span class="k">return</span> <span class="n">d</span></div>
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -667,12 +754,14 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2004-2018, NetworkX Developers.
-      Last updated on Jan 22, 2018.
+        &copy; Copyright 2004-2019, NetworkX Developers
+      <span class="lastupdated">
+        Last updated on Oct 17, 2019.
+      </span>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -685,38 +774,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../../',
-            VERSION:'2.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  false,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="../../../../_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Making a patch &mdash; NetworkX 2.1 documentation</title>
+  <title>Making a patch &mdash; NetworkX 2.5rc1.dev20191017033512 documentation</title>
   
 
   
@@ -17,47 +17,42 @@
   
 
   
-
-  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.1 documentation" href="../../_static/opensearch.xml"/>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/copybutton.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within NetworkX 2.5rc1.dev20191017033512 documentation"
+          href="../../_static/opensearch.xml"/>
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../genindex.html"/>
-        <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="NetworkX 2.1 documentation" href="../../index.html"/>
-        <link rel="up" title="Working with networkx source code" href="index.html"/>
-        <link rel="next" title="Git for development" href="git_development.html"/>
-        <link rel="prev" title="Following the latest source" href="following_latest.html"/> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Git for development" href="git_development.html" />
+    <link rel="prev" title="Following the latest source" href="following_latest.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -71,7 +66,7 @@
             
             
               <div class="version">
-                2.1
+                2.5rc1.dev_20191017033512
               </div>
             
           
@@ -133,7 +128,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">NetworkX</a>
@@ -141,9 +136,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -202,7 +198,7 @@ quick things, please consider following the
 <span id="id1"></span><h2>Making patches<a class="headerlink" href="#making-patches" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="overview">
 <h3>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># tell git who you are</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># tell git who you are</span>
 git config --global user.email you@yourdomain.example.com
 git config --global user.name <span class="s2">&quot;Your Name Comes Here&quot;</span>
 <span class="c1"># get the repository if you don&#39;t have it</span>
@@ -228,31 +224,31 @@ mailing list</a> — where we will thank you warmly.</p>
 <div class="section" id="in-detail">
 <h3>In detail<a class="headerlink" href="#in-detail" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
-<li><p class="first">Tell git who you are so it can label the commits you’ve
+<li><p>Tell git who you are so it can label the commits you’ve
 made:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>git config --global user.email you@yourdomain.example.com
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git config --global user.email you@yourdomain.example.com
 git config --global user.name <span class="s2">&quot;Your Name Comes Here&quot;</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">If you don’t already have one, clone a copy of the
+<li><p>If you don’t already have one, clone a copy of the
 <a class="reference external" href="http://networkx.github.io">networkx</a> repository:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>git clone git://github.com/networkx/networkx.git
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone git://github.com/networkx/networkx.git
 <span class="nb">cd</span> networkx
 </pre></div>
 </div>
 </li>
-<li><p class="first">Make a ‘feature branch’.  This will be where you work on
+<li><p>Make a ‘feature branch’.  This will be where you work on
 your bug fix.  It’s nice and safe and leaves you with
 access to an unmodified copy of the code in the main
 branch:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>git branch the-fix-im-thinking-of
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git branch the-fix-im-thinking-of
 git checkout the-fix-im-thinking-of
 </pre></div>
 </div>
 </li>
-<li><p class="first">Do some edits, and commit them as you go:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># hack, hack, hack</span>
+<li><p>Do some edits, and commit them as you go:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># hack, hack, hack</span>
 <span class="c1"># Tell git about any new files you&#39;ve made</span>
 git add somewhere/tests/test_my_bug.py
 <span class="c1"># commit work in progress as you go</span>
@@ -261,24 +257,24 @@ git commit -am <span class="s1">&#39;BF - added tests for Funny bug&#39;</span>
 git commit -am <span class="s1">&#39;BF - added fix for Funny bug&#39;</span>
 </pre></div>
 </div>
-<p>Note the <code class="docutils literal"><span class="pre">-am</span></code> options to <code class="docutils literal"><span class="pre">commit</span></code>. The <code class="docutils literal"><span class="pre">m</span></code> flag just
+<p>Note the <code class="docutils literal notranslate"><span class="pre">-am</span></code> options to <code class="docutils literal notranslate"><span class="pre">commit</span></code>. The <code class="docutils literal notranslate"><span class="pre">m</span></code> flag just
 signals that you’re going to type a message on the command
-line.  The <code class="docutils literal"><span class="pre">a</span></code> flag — you can just take on faith —
+line.  The <code class="docutils literal notranslate"><span class="pre">a</span></code> flag — you can just take on faith —
 or see <a class="reference external" href="http://gitready.com/beginner/2009/01/18/the-staging-area.html">why the -a flag?</a>.</p>
 </li>
-<li><p class="first">When you have finished, check you have committed all your
+<li><p>When you have finished, check you have committed all your
 changes:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>git status
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git status
 </pre></div>
 </div>
 </li>
-<li><p class="first">Finally, make your commits into patches.  You want all the
-commits since you branched from the <code class="docutils literal"><span class="pre">master</span></code> branch:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>git format-patch -M -C master
+<li><p>Finally, make your commits into patches.  You want all the
+commits since you branched from the <code class="docutils literal notranslate"><span class="pre">master</span></code> branch:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git format-patch -M -C master
 </pre></div>
 </div>
 <p>You will now have several files named for the commits:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>0001-BF-added-tests-for-Funny-bug.patch
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>0001-BF-added-tests-for-Funny-bug.patch
 0002-BF-added-fix-for-Funny-bug.patch
 </pre></div>
 </div>
@@ -286,8 +282,8 @@ commits since you branched from the <code class="docutils literal"><span class="
 </li>
 </ol>
 <p>When you are done, to switch back to the main copy of the
-code, just return to the <code class="docutils literal"><span class="pre">master</span></code> branch:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>git checkout master
+code, just return to the <code class="docutils literal notranslate"><span class="pre">master</span></code> branch:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git checkout master
 </pre></div>
 </div>
 </div>
@@ -300,7 +296,7 @@ development mode.  You can do this with the repository you
 have.</p>
 <p>Fork the <a class="reference external" href="http://networkx.github.io">networkx</a> repository on github — <a class="reference internal" href="forking_hell.html#forking"><span class="std std-ref">Making your own copy (fork) of networkx</span></a>.
 Then:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># checkout and refresh master branch from main repo</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># checkout and refresh master branch from main repo</span>
 git checkout master
 git pull origin master
 <span class="c1"># rename pointer to main repository to &#39;upstream&#39;</span>
@@ -318,9 +314,7 @@ git push origin the-fix-im-thinking-of
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -329,7 +323,7 @@ git push origin the-fix-im-thinking-of
         <a href="git_development.html" class="btn btn-neutral float-right" title="Git for development" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="following_latest.html" class="btn btn-neutral" title="Following the latest source" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="following_latest.html" class="btn btn-neutral float-left" title="Following the latest source" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -338,12 +332,14 @@ git push origin the-fix-im-thinking-of
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2004-2018, NetworkX Developers.
-      Last updated on Jan 22, 2018.
+        &copy; Copyright 2004-2019, NetworkX Developers
+      <span class="lastupdated">
+        Last updated on Oct 17, 2019.
+      </span>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -356,38 +352,15 @@ git push origin the-fix-im-thinking-of
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../',
-            VERSION:'2.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  false,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="../../_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.community.quality &mdash; NetworkX 2.1 documentation</title>
+  <title>networkx.algorithms.community.quality &mdash; NetworkX 2.5rc1.dev20191017033512 documentation</title>
   
 
   
@@ -17,45 +17,40 @@
   
 
   
-
-  
+  <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.1 documentation" href="../../../../_static/opensearch.xml"/>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../../_static/copybutton.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within NetworkX 2.5rc1.dev20191017033512 documentation"
+          href="../../../../_static/opensearch.xml"/>
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../../../../_static/gallery.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../../search.html"/>
-    <link rel="top" title="NetworkX 2.1 documentation" href="../../../../index.html"/>
-        <link rel="up" title="Module code" href="../../../index.html"/> 
-
-  
-  <script src="../../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -69,7 +64,7 @@
             
             
               <div class="version">
-                2.1
+                2.5rc1.dev_20191017033512
               </div>
             
           
@@ -115,7 +110,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../../index.html">NetworkX</a>
@@ -123,9 +118,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -155,8 +151,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -170,7 +164,7 @@
   <h1>Source code for networkx.algorithms.community.quality</h1><div class="highlight"><pre>
 <span></span><span class="c1"># quality.py - functions for measuring partitions of a graph</span>
 <span class="c1">#</span>
-<span class="c1"># Copyright 2015-2018 NetworkX developers.</span>
+<span class="c1"># Copyright 2015-2019 NetworkX developers.</span>
 <span class="c1">#</span>
 <span class="c1"># This file is part of NetworkX.</span>
 <span class="c1">#</span>
@@ -180,7 +174,6 @@
 <span class="sd">communities).</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
 
 <span class="kn">from</span> <span class="nn">functools</span> <span class="k">import</span> <span class="n">wraps</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="k">import</span> <span class="n">product</span>
@@ -197,7 +190,6 @@
     <span class="sd">&quot;&quot;&quot;Raised if a given collection is not a partition.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">collection</span><span class="p">):</span>
         <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> is not a valid partition of the graph </span><span class="si">{}</span><span class="s1">&#39;</span>
         <span class="n">msg</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">collection</span><span class="p">)</span>
@@ -205,8 +197,7 @@
 
 
 <span class="k">def</span> <span class="nf">require_partition</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Decorator that raises an exception if a partition is not a valid</span>
-<span class="sd">    partition of the nodes of a graph.</span>
+    <span class="sd">&quot;&quot;&quot;Decorator to check that a valid partition is input to a function</span>
 
 <span class="sd">    Raises :exc:`networkx.NetworkXError` if the partition is not valid.</span>
 
@@ -234,7 +225,6 @@
 <span class="sd">        NetworkXError: `partition` is not a valid partition of the nodes of G</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">new_func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
         <span class="c1"># Here we assume that the first two arguments are (G, partition).</span>
@@ -246,12 +236,14 @@
 
 
 <span class="k">def</span> <span class="nf">intra_community_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">partition</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns the number of intra-community edges according to the given</span>
-<span class="sd">    partition of the nodes of `G`.</span>
+    <span class="sd">&quot;&quot;&quot;Returns the number of intra-community edges for a partition of `G`.</span>
 
-<span class="sd">    `G` must be a NetworkX graph.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : NetworkX graph.</span>
 
-<span class="sd">    `partition` must be a partition of the nodes of `G`.</span>
+<span class="sd">    partition : iterable of sets of nodes</span>
+<span class="sd">        This must be a partition of the nodes of `G`.</span>
 
 <span class="sd">    The &quot;intra-community edges&quot; are those edges joining a pair of nodes</span>
 <span class="sd">    in the same block of the partition.</span>
@@ -261,19 +253,22 @@
 
 
 <span class="k">def</span> <span class="nf">inter_community_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">partition</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns the number of inter-community edges according to the given</span>
+    <span class="sd">&quot;&quot;&quot;Returns the number of inter-community edges for a prtition of `G`.</span>
+<span class="sd">    according to the given</span>
 <span class="sd">    partition of the nodes of `G`.</span>
 
-<span class="sd">    `G` must be a NetworkX graph.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : NetworkX graph.</span>
 
-<span class="sd">    `partition` must be a partition of the nodes of `G`.</span>
+<span class="sd">    partition : iterable of sets of nodes</span>
+<span class="sd">        This must be a partition of the nodes of `G`.</span>
 
 <span class="sd">    The *inter-community edges* are those edges joining a pair of nodes</span>
 <span class="sd">    in different blocks of the partition.</span>
 
 <span class="sd">    Implementation note: this function creates an intermediate graph</span>
-<span class="sd">    that may require the same amount of memory as required to store</span>
-<span class="sd">    `G`.</span>
+<span class="sd">    that may require the same amount of memory as that of `G`.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Alternate implementation that does not require constructing a new</span>
@@ -284,10 +279,8 @@
     <span class="c1">#                                    for block in partition))</span>
     <span class="c1">#     return sum(1 for u, v in G.edges() if aff[u] != aff[v])</span>
     <span class="c1">#</span>
-    <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_directed</span><span class="p">():</span>
-        <span class="k">return</span> <span class="n">nx</span><span class="o">.</span><span class="n">quotient_graph</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">partition</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">MultiDiGraph</span><span class="p">())</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">nx</span><span class="o">.</span><span class="n">quotient_graph</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">partition</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">MultiGraph</span><span class="p">())</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+    <span class="n">MG</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">MultiDiGraph</span> <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_directed</span><span class="p">()</span> <span class="k">else</span> <span class="n">nx</span><span class="o">.</span><span class="n">MultiGraph</span>
+    <span class="k">return</span> <span class="n">nx</span><span class="o">.</span><span class="n">quotient_graph</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">partition</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">MG</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 
 
 <span class="k">def</span> <span class="nf">inter_community_non_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">partition</span><span class="p">):</span>
@@ -334,7 +327,6 @@
 <span class="sd">        A simple graph (directed or undirected).</span>
 
 <span class="sd">    partition : sequence</span>
-
 <span class="sd">        Partition of the nodes of `G`, represented as a sequence of</span>
 <span class="sd">        sets of nodes. Each block of the partition represents a</span>
 <span class="sd">        community.</span>
@@ -435,9 +427,8 @@
 <span class="sd">    ----------</span>
 <span class="sd">    G : NetworkX Graph</span>
 
-<span class="sd">    communities : list</span>
-<span class="sd">        List of sets of nodes of `G` representing a partition of the</span>
-<span class="sd">        nodes.</span>
+<span class="sd">    communities : list or iterable of set of nodes</span>
+<span class="sd">        These node sets must represent a partition of G&#39;s nodes.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -451,8 +442,11 @@
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import networkx.algorithms.community as nx_comm</span>
 <span class="sd">    &gt;&gt;&gt; G = nx.barbell_graph(3, 0)</span>
-<span class="sd">    &gt;&gt;&gt; nx.algorithms.community.modularity(G, [{0, 1, 2}, {3, 4, 5}])</span>
+<span class="sd">    &gt;&gt;&gt; nx_comm.modularity(G, [{0, 1, 2}, {3, 4, 5}])</span>
+<span class="sd">    0.35714285714285704</span>
+<span class="sd">    &gt;&gt;&gt; nx_comm.modularity(G, nx_comm.label_propagation_communities(G))</span>
 <span class="sd">    0.35714285714285704</span>
 
 <span class="sd">    References</span>
@@ -461,6 +455,8 @@
 <span class="sd">       Oxford University Press, 2011.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">communities</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">communities</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">communities</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">is_partition</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">communities</span><span class="p">):</span>
         <span class="k">raise</span> <span class="n">NotAPartition</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">communities</span><span class="p">)</span>
 
@@ -494,9 +490,7 @@
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -505,12 +499,14 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2004-2018, NetworkX Developers.
-      Last updated on Jan 22, 2018.
+        &copy; Copyright 2004-2019, NetworkX Developers
+      <span class="lastupdated">
+        Last updated on Oct 17, 2019.
+      </span>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -523,38 +519,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../../',
-            VERSION:'2.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  false,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="../../../../_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

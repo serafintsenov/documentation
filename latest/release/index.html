@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>API changes &mdash; NetworkX 2.1 documentation</title>
+  <title>API changes &mdash; NetworkX 2.5rc1.dev20191017033512 documentation</title>
   
 
   
@@ -17,44 +17,40 @@
   
 
   
-
-  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.1 documentation" href="../_static/opensearch.xml"/>
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within NetworkX 2.5rc1.dev20191017033512 documentation"
+          href="../_static/opensearch.xml"/>
 
   
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="NetworkX 2.1 documentation" href="../index.html"/> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -68,7 +64,7 @@
             
             
               <div class="version">
-                2.1
+                2.5rc1.dev_20191017033512
               </div>
             
           
@@ -114,7 +110,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">NetworkX</a>
@@ -122,9 +118,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -166,15 +163,67 @@
             
   <div class="section" id="api-changes">
 <h1>API changes<a class="headerlink" href="#api-changes" title="Permalink to this headline">¶</a></h1>
+<p>We don’t use semantic versioning.  The first number indicates that we have
+made a major API break (e.g., 1.x to 2.x), which has happened once and probably
+won’t happen again for some time.  The point releases are new versions and may
+contain minor API breakage.  Usually, this happens after a one cycle deprecation
+period.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Since we don’t normally make bug-fix only releases, it may not make sense
+for you to use <code class="docutils literal notranslate"><span class="pre">~=</span></code> as a pip version specifier.</p>
+</div>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="release_dev.html">Announcement: NetworkX 2.2</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="release_dev.html">Announcement: NetworkX 2.5</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="release_dev.html#highlights">Highlights</a></li>
 <li class="toctree-l2"><a class="reference internal" href="release_dev.html#improvements">Improvements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="release_dev.html#api-changes">API Changes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="release_dev.html#deprecations">Deprecations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="release_dev.html#contributors-to-this-release">Contributors to this release</a></li>
 <li class="toctree-l2"><a class="reference internal" href="release_dev.html#pull-requests-merged-in-this-release">Pull requests merged in this release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_dev.html#contributors-to-this-release">Contributors to this release</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="release_2.4.html">Announcement: NetworkX 2.4</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release_2.4.html#highlights">Highlights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_2.4.html#improvements">Improvements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_2.4.html#api-changes">API Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_2.4.html#deprecations">Deprecations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_2.4.html#pull-requests-and-commits-merged-in-this-release">Pull requests and commits merged in this release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_2.4.html#contributors-to-this-release">Contributors to this release</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="release_2.3.html">Announcement: NetworkX 2.3</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release_2.3.html#highlights">Highlights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_2.3.html#improvements">Improvements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_2.3.html#api-changes">API Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_2.3.html#deprecations">Deprecations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_2.3.html#contributors-to-this-release">Contributors to this release</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="release_2.2.html">Announcement: NetworkX 2.2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release_2.2.html#highlights">Highlights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_2.2.html#improvements">Improvements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_2.2.html#api-changes">API Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_2.2.html#deprecations">Deprecations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_2.2.html#contributors-to-this-release">Contributors to this release</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="release_2.1.html">Announcement: NetworkX 2.1</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release_2.1.html#highlights">Highlights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_2.1.html#improvements">Improvements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_2.1.html#api-changes">API Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_2.1.html#deprecations">Deprecations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_2.1.html#contributors-to-this-release">Contributors to this release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_2.1.html#pull-requests-merged-in-this-release">Pull requests merged in this release</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="release_2.0.html">Announcement: NetworkX 2.0</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release_2.0.html#highlights">Highlights</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_2.0.html#api-changes">API Changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_2.0.html#deprecations">Deprecations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_2.0.html#contributors-to-this-release">Contributors to this release</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_2.0.html#pull-requests-merged-in-this-release">Pull requests merged in this release</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api_1.11.html">Version 1.11 notes and API changes</a><ul>
@@ -236,9 +285,7 @@
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -247,12 +294,14 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2004-2018, NetworkX Developers.
-      Last updated on Jan 22, 2018.
+        &copy; Copyright 2004-2019, NetworkX Developers
+      <span class="lastupdated">
+        Last updated on Oct 17, 2019.
+      </span>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -265,38 +314,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'2.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  false,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

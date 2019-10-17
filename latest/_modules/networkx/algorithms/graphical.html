@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.graphical &mdash; NetworkX 2.1 documentation</title>
+  <title>networkx.algorithms.graphical &mdash; NetworkX 2.5rc1.dev20191017033512 documentation</title>
   
 
   
@@ -17,45 +17,40 @@
   
 
   
-
-  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.1 documentation" href="../../../_static/opensearch.xml"/>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within NetworkX 2.5rc1.dev20191017033512 documentation"
+          href="../../../_static/opensearch.xml"/>
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="NetworkX 2.1 documentation" href="../../../index.html"/>
-        <link rel="up" title="Module code" href="../../index.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -69,7 +64,7 @@
             
             
               <div class="version">
-                2.1
+                2.5rc1.dev_20191017033512
               </div>
             
           
@@ -115,7 +110,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">NetworkX</a>
@@ -123,9 +118,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -155,8 +151,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -171,7 +165,7 @@
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;Test sequences for graphiness.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="c1">#    Copyright (C) 2004-2018 by</span>
+<span class="c1">#    Copyright (C) 2004-2019 by</span>
 <span class="c1">#    Aric Hagberg &lt;hagberg@lanl.gov&gt;</span>
 <span class="c1">#    Dan Schult &lt;dschult@colgate.edu&gt;</span>
 <span class="c1">#    Pieter Swart &lt;swart@lanl.gov&gt;</span>
@@ -205,7 +199,7 @@
 <span class="sd">    sequence : list or iterable container</span>
 <span class="sd">        A sequence of integer node degrees</span>
 
-<span class="sd">    method : &quot;eg&quot; | &quot;hh&quot;</span>
+<span class="sd">    method : &quot;eg&quot; | &quot;hh&quot;  (default: &#39;eg&#39;)</span>
 <span class="sd">        The method used to validate the degree sequence.</span>
 <span class="sd">        &quot;eg&quot; corresponds to the Erdős-Gallai algorithm, and</span>
 <span class="sd">        &quot;hh&quot; to the Havel-Hakimi algorithm.</span>
@@ -242,8 +236,7 @@
 
 <span class="k">def</span> <span class="nf">_basic_graphical_tests</span><span class="p">(</span><span class="n">deg_sequence</span><span class="p">):</span>
     <span class="c1"># Sort and perform some simple tests on the sequence</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">nx</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">is_list_of_ints</span><span class="p">(</span><span class="n">deg_sequence</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXUnfeasible</span>
+    <span class="n">deg_sequence</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">make_list_of_ints</span><span class="p">(</span><span class="n">deg_sequence</span><span class="p">)</span>
     <span class="n">p</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">deg_sequence</span><span class="p">)</span>
     <span class="n">num_degs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">p</span>
     <span class="n">dmax</span><span class="p">,</span> <span class="n">dmin</span><span class="p">,</span> <span class="n">dsum</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
@@ -416,7 +409,7 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    deg_sequence : list</span>
+<span class="sd">    sequence : list</span>
 <span class="sd">        A list of integers</span>
 
 <span class="sd">    Returns</span>
@@ -434,8 +427,9 @@
 <span class="sd">       degrees of the vertices of a linear graph&quot;, J. SIAM, 10, pp. 496-506</span>
 <span class="sd">       (1962).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">deg_sequence</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">nx</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">is_list_of_ints</span><span class="p">(</span><span class="n">deg_sequence</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">deg_sequence</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">make_list_of_ints</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">False</span>
     <span class="n">dsum</span><span class="p">,</span> <span class="n">dmax</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">deg_sequence</span><span class="p">:</span>
@@ -473,10 +467,11 @@
 <span class="sd">       and their degree lists&quot;, IEEE Trans. Circuits and Systems, CAS-23(12),</span>
 <span class="sd">       pp. 778-782 (1976).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">s</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">nx</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">is_list_of_ints</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">deg_sequence</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">make_list_of_ints</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">False</span>
-    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">min</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span></div>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">deg_sequence</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">min</span><span class="p">(</span><span class="n">deg_sequence</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span></div>
 
 
 <div class="viewcode-block" id="is_digraphical"><a class="viewcode-back" href="../../../reference/algorithms/generated/networkx.algorithms.graphical.is_digraphical.html#networkx.algorithms.graphical.is_digraphical">[docs]</a><span class="k">def</span> <span class="nf">is_digraphical</span><span class="p">(</span><span class="n">in_sequence</span><span class="p">,</span> <span class="n">out_sequence</span><span class="p">):</span>
@@ -508,11 +503,10 @@
 <span class="sd">       Algorithms for Constructing Graphs and Digraphs with Given Valences</span>
 <span class="sd">       and Factors, Discrete Mathematics, 6(1), pp. 79-88 (1973)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">in_deg_sequence</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">in_sequence</span><span class="p">)</span>
-    <span class="n">out_deg_sequence</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">out_sequence</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">nx</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">is_list_of_ints</span><span class="p">(</span><span class="n">in_deg_sequence</span><span class="p">):</span>
-        <span class="k">return</span> <span class="kc">False</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">nx</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">is_list_of_ints</span><span class="p">(</span><span class="n">out_deg_sequence</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">in_deg_sequence</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">make_list_of_ints</span><span class="p">(</span><span class="n">in_sequence</span><span class="p">)</span>
+        <span class="n">out_deg_sequence</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">make_list_of_ints</span><span class="p">(</span><span class="n">out_sequence</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">False</span>
     <span class="c1"># Process the sequences and form two heaps to store degree pairs with</span>
     <span class="c1"># either zero or non-zero out degrees</span>
@@ -577,9 +571,7 @@
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -588,12 +580,14 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2004-2018, NetworkX Developers.
-      Last updated on Jan 22, 2018.
+        &copy; Copyright 2004-2019, NetworkX Developers
+      <span class="lastupdated">
+        Last updated on Oct 17, 2019.
+      </span>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -606,38 +600,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'2.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  false,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="../../../_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

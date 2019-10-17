@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.shortest_paths.astar &mdash; NetworkX 2.1 documentation</title>
+  <title>networkx.algorithms.shortest_paths.astar &mdash; NetworkX 2.5rc1.dev20191017033512 documentation</title>
   
 
   
@@ -17,45 +17,40 @@
   
 
   
-
-  
+  <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.1 documentation" href="../../../../_static/opensearch.xml"/>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../../_static/copybutton.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within NetworkX 2.5rc1.dev20191017033512 documentation"
+          href="../../../../_static/opensearch.xml"/>
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../../../../_static/gallery.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../../search.html"/>
-    <link rel="top" title="NetworkX 2.1 documentation" href="../../../../index.html"/>
-        <link rel="up" title="Module code" href="../../../index.html"/> 
-
-  
-  <script src="../../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -69,7 +64,7 @@
             
             
               <div class="version">
-                2.1
+                2.5rc1.dev_20191017033512
               </div>
             
           
@@ -115,7 +110,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../../index.html">NetworkX</a>
@@ -123,9 +118,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -155,8 +151,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -169,7 +163,7 @@
             
   <h1>Source code for networkx.algorithms.shortest_paths.astar</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="c1">#    Copyright (C) 2004-2018 by</span>
+<span class="c1">#    Copyright (C) 2004-2019 by</span>
 <span class="c1">#    Aric Hagberg &lt;hagberg@lanl.gov&gt;</span>
 <span class="c1">#    Dan Schult &lt;dschult@colgate.edu&gt;</span>
 <span class="c1">#    Pieter Swart &lt;swart@lanl.gov&gt;</span>
@@ -191,7 +185,7 @@
 
 <div class="viewcode-block" id="astar_path"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.shortest_paths.astar.astar_path.html#networkx.algorithms.shortest_paths.astar.astar_path">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s1">&#39;multigraph&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">astar_path</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">heuristic</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return a list of nodes in a shortest path between source and target</span>
+    <span class="sd">&quot;&quot;&quot;Returns a list of nodes in a shortest path between source and target</span>
 <span class="sd">    using the A* (&quot;A-star&quot;) algorithm.</span>
 
 <span class="sd">    There may be more than one shortest path.  This returns only one.</span>
@@ -255,7 +249,7 @@
     <span class="c1"># Uses Python heapq to keep in priority order.</span>
     <span class="c1"># Add a counter to the queue to prevent the underlying heap from</span>
     <span class="c1"># attempting to compare the nodes themselves. The hash breaks ties in the</span>
-    <span class="c1"># priority and is guarenteed unique for all nodes in the graph.</span>
+    <span class="c1"># priority and is guaranteed unique for all nodes in the graph.</span>
     <span class="n">c</span> <span class="o">=</span> <span class="n">count</span><span class="p">()</span>
     <span class="n">queue</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="n">source</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)]</span>
 
@@ -280,20 +274,25 @@
             <span class="k">return</span> <span class="n">path</span>
 
         <span class="k">if</span> <span class="n">curnode</span> <span class="ow">in</span> <span class="n">explored</span><span class="p">:</span>
-            <span class="k">continue</span>
+            <span class="c1"># Do not override the parent of starting node</span>
+            <span class="k">if</span> <span class="n">explored</span><span class="p">[</span><span class="n">curnode</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="c1"># Skip bad paths that were enqueued before finding a better one</span>
+            <span class="n">qcost</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">enqueued</span><span class="p">[</span><span class="n">curnode</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">qcost</span> <span class="o">&lt;</span> <span class="n">dist</span><span class="p">:</span>
+                <span class="k">continue</span>
 
         <span class="n">explored</span><span class="p">[</span><span class="n">curnode</span><span class="p">]</span> <span class="o">=</span> <span class="n">parent</span>
 
         <span class="k">for</span> <span class="n">neighbor</span><span class="p">,</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="n">curnode</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="k">if</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">explored</span><span class="p">:</span>
-                <span class="k">continue</span>
             <span class="n">ncost</span> <span class="o">=</span> <span class="n">dist</span> <span class="o">+</span> <span class="n">w</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">enqueued</span><span class="p">:</span>
                 <span class="n">qcost</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">enqueued</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span>
-                <span class="c1"># if qcost &lt; ncost, a longer path to neighbor remains</span>
-                <span class="c1"># enqueued. Removing it would need to filter the whole</span>
-                <span class="c1"># queue, it&#39;s better just to leave it there and ignore</span>
-                <span class="c1"># it when we visit the node a second time.</span>
+                <span class="c1"># if qcost &lt;= ncost, a less costly path from the</span>
+                <span class="c1"># neighbor to the source was already determined.</span>
+                <span class="c1"># Therefore, we won&#39;t attempt to push this neighbor</span>
+                <span class="c1"># to the queue</span>
                 <span class="k">if</span> <span class="n">qcost</span> <span class="o">&lt;=</span> <span class="n">ncost</span><span class="p">:</span>
                     <span class="k">continue</span>
             <span class="k">else</span><span class="p">:</span>
@@ -301,11 +300,11 @@
             <span class="n">enqueued</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span> <span class="o">=</span> <span class="n">ncost</span><span class="p">,</span> <span class="n">h</span>
             <span class="n">push</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span> <span class="p">(</span><span class="n">ncost</span> <span class="o">+</span> <span class="n">h</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="n">neighbor</span><span class="p">,</span> <span class="n">ncost</span><span class="p">,</span> <span class="n">curnode</span><span class="p">))</span>
 
-    <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXNoPath</span><span class="p">(</span><span class="s2">&quot;Node </span><span class="si">%s</span><span class="s2"> not reachable from </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">))</span></div>
+    <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXNoPath</span><span class="p">(</span><span class="s2">&quot;Node </span><span class="si">%s</span><span class="s2"> not reachable from </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">source</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="astar_path_length"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.shortest_paths.astar.astar_path_length.html#networkx.algorithms.shortest_paths.astar.astar_path_length">[docs]</a><span class="k">def</span> <span class="nf">astar_path_length</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">heuristic</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return the length of the shortest path between source and target using</span>
+    <span class="sd">&quot;&quot;&quot;Returns the length of the shortest path between source and target using</span>
 <span class="sd">    the A* (&quot;A-star&quot;) algorithm.</span>
 
 <span class="sd">    Parameters</span>
@@ -342,9 +341,7 @@
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -353,12 +350,14 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2004-2018, NetworkX Developers.
-      Last updated on Jan 22, 2018.
+        &copy; Copyright 2004-2019, NetworkX Developers
+      <span class="lastupdated">
+        Last updated on Oct 17, 2019.
+      </span>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -371,38 +370,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../../',
-            VERSION:'2.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  false,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="../../../../_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

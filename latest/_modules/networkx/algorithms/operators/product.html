@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.operators.product &mdash; NetworkX 2.1 documentation</title>
+  <title>networkx.algorithms.operators.product &mdash; NetworkX 2.5rc1.dev20191017033512 documentation</title>
   
 
   
@@ -17,45 +17,40 @@
   
 
   
-
-  
+  <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.1 documentation" href="../../../../_static/opensearch.xml"/>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../../_static/copybutton.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within NetworkX 2.5rc1.dev20191017033512 documentation"
+          href="../../../../_static/opensearch.xml"/>
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../../../../_static/gallery.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../../search.html"/>
-    <link rel="top" title="NetworkX 2.1 documentation" href="../../../../index.html"/>
-        <link rel="up" title="Module code" href="../../../index.html"/> 
-
-  
-  <script src="../../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -69,7 +64,7 @@
             
             
               <div class="version">
-                2.1
+                2.5rc1.dev_20191017033512
               </div>
             
           
@@ -115,7 +110,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../../index.html">NetworkX</a>
@@ -123,9 +118,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -154,8 +150,6 @@
     
     
       <li class="wy-breadcrumbs-aside">
-        
-            
         
       </li>
     
@@ -287,8 +281,8 @@
 
 <span class="k">def</span> <span class="nf">_init_product_graph</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">H</span><span class="p">):</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">G</span><span class="o">.</span><span class="n">is_directed</span><span class="p">()</span> <span class="o">==</span> <span class="n">H</span><span class="o">.</span><span class="n">is_directed</span><span class="p">():</span>
-        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s2">&quot;G and H must be both directed or&quot;</span><span class="p">,</span>
-                               <span class="s2">&quot;both undirected&quot;</span><span class="p">)</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;G and H must be both directed or both undirected&quot;</span>
+        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">()</span> <span class="ow">or</span> <span class="n">H</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">():</span>
         <span class="n">GH</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">MultiGraph</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
@@ -299,7 +293,7 @@
 
 
 <div class="viewcode-block" id="tensor_product"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.operators.product.tensor_product.html#networkx.algorithms.operators.product.tensor_product">[docs]</a><span class="k">def</span> <span class="nf">tensor_product</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">H</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the tensor product of G and H.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Returns the tensor product of G and H.</span>
 
 <span class="sd">    The tensor product $P$ of the graphs $G$ and $H$ has a node set that</span>
 <span class="sd">    is the tensor product of the node sets, $V(P)=V(G) \times V(H)$.</span>
@@ -354,7 +348,7 @@
 
 
 <div class="viewcode-block" id="cartesian_product"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.operators.product.cartesian_product.html#networkx.algorithms.operators.product.cartesian_product">[docs]</a><span class="k">def</span> <span class="nf">cartesian_product</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">H</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the Cartesian product of G and H.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Returns the Cartesian product of G and H.</span>
 
 <span class="sd">    The Cartesian product $P$ of the graphs $G$ and $H$ has a node set that</span>
 <span class="sd">    is the Cartesian product of the node sets, $V(P)=V(G) \times V(H)$.</span>
@@ -397,9 +391,6 @@
 <span class="sd">    Edge attributes and edge keys (for multigraphs) are also copied to the</span>
 <span class="sd">    new product graph</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">G</span><span class="o">.</span><span class="n">is_directed</span><span class="p">()</span> <span class="o">==</span> <span class="n">H</span><span class="o">.</span><span class="n">is_directed</span><span class="p">():</span>
-        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s2">&quot;G and H must be both directed or&quot;</span><span class="p">,</span>
-                               <span class="s2">&quot;both undirected&quot;</span><span class="p">)</span>
     <span class="n">GH</span> <span class="o">=</span> <span class="n">_init_product_graph</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">H</span><span class="p">)</span>
     <span class="n">GH</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">_node_product</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">H</span><span class="p">))</span>
     <span class="n">GH</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">_edges_cross_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">H</span><span class="p">))</span>
@@ -408,7 +399,7 @@
 
 
 <div class="viewcode-block" id="lexicographic_product"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.operators.product.lexicographic_product.html#networkx.algorithms.operators.product.lexicographic_product">[docs]</a><span class="k">def</span> <span class="nf">lexicographic_product</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">H</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the lexicographic product of G and H.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Returns the lexicographic product of G and H.</span>
 
 <span class="sd">    The lexicographical product $P$ of the graphs $G$ and $H$ has a node set</span>
 <span class="sd">    that is the Cartesian product of the node sets, $V(P)=V(G) \times V(H)$.</span>
@@ -460,7 +451,7 @@
 
 
 <div class="viewcode-block" id="strong_product"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.operators.product.strong_product.html#networkx.algorithms.operators.product.strong_product">[docs]</a><span class="k">def</span> <span class="nf">strong_product</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">H</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return the strong product of G and H.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Returns the strong product of G and H.</span>
 
 <span class="sd">    The strong product $P$ of the graphs $G$ and $H$ has a node set that</span>
 <span class="sd">    is the Cartesian product of the node sets, $V(P)=V(G) \times V(H)$.</span>
@@ -603,7 +594,7 @@
     <span class="k">return</span> <span class="n">H</span></div>
 
 
-<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s1">&#39;multigraph&#39;</span><span class="p">)</span>
+<div class="viewcode-block" id="rooted_product"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.operators.product.rooted_product.html#networkx.algorithms.operators.product.rooted_product">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s1">&#39;multigraph&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">rooted_product</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">root</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Return the rooted product of graphs G and H rooted at root in H.</span>
 
@@ -638,13 +629,11 @@
     <span class="n">R</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(((</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">root</span><span class="p">),</span> <span class="p">(</span><span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">root</span><span class="p">))</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">())</span>
     <span class="n">R</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(((</span><span class="n">g</span><span class="p">,</span> <span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">G</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">H</span><span class="o">.</span><span class="n">edges</span><span class="p">())</span>
 
-    <span class="k">return</span> <span class="n">R</span>
+    <span class="k">return</span> <span class="n">R</span></div>
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -653,12 +642,14 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2004-2018, NetworkX Developers.
-      Last updated on Jan 22, 2018.
+        &copy; Copyright 2004-2019, NetworkX Developers
+      <span class="lastupdated">
+        Last updated on Oct 17, 2019.
+      </span>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -671,38 +662,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../../',
-            VERSION:'2.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  false,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="../../../../_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

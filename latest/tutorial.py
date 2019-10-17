@@ -295,8 +295,8 @@ nx.shortest_path(GG, 1, 3)
 #    compose(G1,G2)           - combine graphs identifying nodes common to both
 #    complement(G)            - graph complement
 #    create_empty_copy(G)     - return an empty copy of the same graph class
-#    convert_to_undirected(G) - return an undirected representation of G
-#    convert_to_directed(G)   - return a directed representation of G
+#    to_undirected(G) - return an undirected representation of G
+#    to_directed(G)   - return a directed representation of G
 #    ```
 #
 # 1. Using a call to one of the classic small graphs, e.g.,

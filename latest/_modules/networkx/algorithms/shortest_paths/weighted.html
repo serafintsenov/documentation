@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.shortest_paths.weighted &mdash; NetworkX 2.1 documentation</title>
+  <title>networkx.algorithms.shortest_paths.weighted &mdash; NetworkX 2.5rc1.dev20191017033512 documentation</title>
   
 
   
@@ -17,45 +17,40 @@
   
 
   
-
-  
+  <script type="text/javascript" src="../../../../_static/js/modernizr.min.js"></script>
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.1 documentation" href="../../../../_static/opensearch.xml"/>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../../_static/copybutton.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within NetworkX 2.5rc1.dev20191017033512 documentation"
+          href="../../../../_static/opensearch.xml"/>
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../../../../_static/gallery.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../../search.html"/>
-    <link rel="top" title="NetworkX 2.1 documentation" href="../../../../index.html"/>
-        <link rel="up" title="Module code" href="../../../index.html"/> 
-
-  
-  <script src="../../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -69,7 +64,7 @@
             
             
               <div class="version">
-                2.1
+                2.5rc1.dev_20191017033512
               </div>
             
           
@@ -115,7 +110,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../../index.html">NetworkX</a>
@@ -123,9 +118,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -155,8 +151,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -169,7 +163,7 @@
             
   <h1>Source code for networkx.algorithms.shortest_paths.weighted</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="c1">#    Copyright (C) 2004-2018 by</span>
+<span class="c1">#    Copyright (C) 2004-2019 by</span>
 <span class="c1">#    Aric Hagberg &lt;hagberg@lanl.gov&gt;</span>
 <span class="c1">#    Dan Schult &lt;dschult@colgate.edu&gt;</span>
 <span class="c1">#    Pieter Swart &lt;swart@lanl.gov&gt;</span>
@@ -293,6 +287,9 @@
 
 <span class="sd">    Raises</span>
 <span class="sd">    ------</span>
+<span class="sd">    NodeNotFound</span>
+<span class="sd">        If `source` is not in `G`.</span>
+
 <span class="sd">    NetworkXNoPath</span>
 <span class="sd">       If no path exists between source and target.</span>
 
@@ -322,9 +319,13 @@
 <span class="sd">    In this example we take the average of start and end node</span>
 <span class="sd">    weights of an edge and add it to the weight of the edge.</span>
 
+<span class="sd">    The function :func:`single_source_dijkstra` computes both</span>
+<span class="sd">    path and length-of-path if you need both, use that.</span>
+
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
 <span class="sd">    bidirectional_dijkstra(), bellman_ford_path()</span>
+<span class="sd">    single_source_dijkstra()</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span> <span class="o">=</span> <span class="n">single_source_dijkstra</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
                                             <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
@@ -367,6 +368,9 @@
 
 <span class="sd">    Raises</span>
 <span class="sd">    ------</span>
+<span class="sd">    NodeNotFound</span>
+<span class="sd">        If `source` is not in `G`.</span>
+
 <span class="sd">    NetworkXNoPath</span>
 <span class="sd">        If no path exists between source and target.</span>
 
@@ -385,9 +389,13 @@
 <span class="sd">    So ``weight = lambda u, v, d: 1 if d[&#39;color&#39;]==&quot;red&quot; else None``</span>
 <span class="sd">    will find the shortest red path.</span>
 
+<span class="sd">    The function :func:`single_source_dijkstra` computes both</span>
+<span class="sd">    path and length-of-path if you need both, use that.</span>
+
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
 <span class="sd">    bidirectional_dijkstra(), bellman_ford_path_length()</span>
+<span class="sd">    single_source_dijkstra()</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">source</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
@@ -434,6 +442,11 @@
 <span class="sd">    -------</span>
 <span class="sd">    paths : dictionary</span>
 <span class="sd">       Dictionary of shortest path lengths keyed by target.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    NodeNotFound</span>
+<span class="sd">        If `source` is not in `G`.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -494,6 +507,11 @@
 <span class="sd">    -------</span>
 <span class="sd">    length : dict</span>
 <span class="sd">        Dict keyed by node to shortest path length from source.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    NodeNotFound</span>
+<span class="sd">        If `source` is not in `G`.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -574,6 +592,10 @@
 <span class="sd">       distance is the distance from source to target and path is a list</span>
 <span class="sd">       representing the path from source to target.</span>
 
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    NodeNotFound</span>
+<span class="sd">        If `source` is not in `G`.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -682,6 +704,8 @@
 <span class="sd">    ------</span>
 <span class="sd">    ValueError</span>
 <span class="sd">        If `sources` is empty.</span>
+<span class="sd">    NodeNotFound</span>
+<span class="sd">        If any of `sources` is not in `G`.</span>
 
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
@@ -757,6 +781,8 @@
 <span class="sd">    ------</span>
 <span class="sd">    ValueError</span>
 <span class="sd">        If `sources` is empty.</span>
+<span class="sd">    NodeNotFound</span>
+<span class="sd">        If any of `sources` is not in `G`.</span>
 
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
@@ -769,7 +795,7 @@
     <span class="k">return</span> <span class="n">_dijkstra_multisource</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">sources</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="n">cutoff</span><span class="p">)</span></div>
 
 
-<span class="k">def</span> <span class="nf">multi_source_dijkstra</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">sources</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<div class="viewcode-block" id="multi_source_dijkstra"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.shortest_paths.weighted.multi_source_dijkstra.html#networkx.algorithms.shortest_paths.weighted.multi_source_dijkstra">[docs]</a><span class="k">def</span> <span class="nf">multi_source_dijkstra</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">sources</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                           <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Find shortest weighted paths and lengths from a given set of</span>
 <span class="sd">    source nodes.</span>
@@ -859,6 +885,8 @@
 <span class="sd">    ------</span>
 <span class="sd">    ValueError</span>
 <span class="sd">        If `sources` is empty.</span>
+<span class="sd">    NodeNotFound</span>
+<span class="sd">        If any of `sources` is not in `G`.</span>
 
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
@@ -879,7 +907,7 @@
     <span class="k">try</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">dist</span><span class="p">[</span><span class="n">target</span><span class="p">],</span> <span class="n">paths</span><span class="p">[</span><span class="n">target</span><span class="p">])</span>
     <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXNoPath</span><span class="p">(</span><span class="s2">&quot;No path to </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">target</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXNoPath</span><span class="p">(</span><span class="s2">&quot;No path to </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">target</span><span class="p">))</span></div>
 
 
 <span class="k">def</span> <span class="nf">_dijkstra</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">pred</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">paths</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -934,6 +962,11 @@
 <span class="sd">        A mapping from node to shortest distance to that node from one</span>
 <span class="sd">        of the source nodes.</span>
 
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    NodeNotFound</span>
+<span class="sd">        If any of `sources` is not in `G`.</span>
+
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
 <span class="sd">    The optional predecessor and path dictionaries can be accessed by</span>
@@ -952,6 +985,8 @@
     <span class="n">c</span> <span class="o">=</span> <span class="n">count</span><span class="p">()</span>
     <span class="n">fringe</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">source</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">source</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NodeNotFound</span><span class="p">(</span><span class="s2">&quot;Source </span><span class="si">{}</span><span class="s2"> not in G&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">source</span><span class="p">))</span>
         <span class="n">seen</span><span class="p">[</span><span class="n">source</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">push</span><span class="p">(</span><span class="n">fringe</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="n">source</span><span class="p">))</span>
     <span class="k">while</span> <span class="n">fringe</span><span class="p">:</span>
@@ -1027,6 +1062,11 @@
 <span class="sd">       Warning: If target is specified, the dicts are incomplete as they</span>
 <span class="sd">       only contain information for the nodes along a path to target.</span>
 
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    NodeNotFound</span>
+<span class="sd">        If `source` is not in `G`.</span>
+
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
 <span class="sd">    Edge weight attributes must be numerical.</span>
@@ -1057,7 +1097,7 @@
     <span class="k">return</span> <span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">_dijkstra</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">pred</span><span class="o">=</span><span class="n">pred</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="n">cutoff</span><span class="p">))</span></div>
 
 
-<span class="k">def</span> <span class="nf">all_pairs_dijkstra</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="all_pairs_dijkstra"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.shortest_paths.weighted.all_pairs_dijkstra.html#networkx.algorithms.shortest_paths.weighted.all_pairs_dijkstra">[docs]</a><span class="k">def</span> <span class="nf">all_pairs_dijkstra</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Find shortest weighted paths and lengths between all nodes.</span>
 
 <span class="sd">    Parameters</span>
@@ -1121,7 +1161,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
         <span class="n">dist</span><span class="p">,</span> <span class="n">path</span> <span class="o">=</span> <span class="n">single_source_dijkstra</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="n">cutoff</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
-        <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">path</span><span class="p">))</span>
+        <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">path</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="all_pairs_dijkstra_path_length"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.shortest_paths.weighted.all_pairs_dijkstra_path_length.html#networkx.algorithms.shortest_paths.weighted.all_pairs_dijkstra_path_length">[docs]</a><span class="k">def</span> <span class="nf">all_pairs_dijkstra_path_length</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">):</span>
@@ -1233,7 +1273,7 @@
 
 
 <div class="viewcode-block" id="bellman_ford_predecessor_and_distance"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.shortest_paths.weighted.bellman_ford_predecessor_and_distance.html#networkx.algorithms.shortest_paths.weighted.bellman_ford_predecessor_and_distance">[docs]</a><span class="k">def</span> <span class="nf">bellman_ford_predecessor_and_distance</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                                          <span class="n">cutoff</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">):</span>
+                                          <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Compute shortest path lengths and predecessors on shortest paths</span>
 <span class="sd">    in weighted graphs.</span>
 
@@ -1268,11 +1308,12 @@
 <span class="sd">    pred, dist : dictionaries</span>
 <span class="sd">       Returns two dictionaries keyed by node to predecessor in the</span>
 <span class="sd">       path and to the distance from the source respectively.</span>
-<span class="sd">       Warning: If target is specified, the dicts are incomplete as they</span>
-<span class="sd">       only contain information for the nodes along a path to target.</span>
 
 <span class="sd">    Raises</span>
 <span class="sd">    ------</span>
+<span class="sd">    NodeNotFound</span>
+<span class="sd">        If `source` is not in `G`.</span>
+
 <span class="sd">    NetworkXUnbounded</span>
 <span class="sd">       If the (di)graph contains a negative cost (di)cycle, the</span>
 <span class="sd">       algorithm raises an exception to indicate the presence of the</span>
@@ -1285,21 +1326,22 @@
 <span class="sd">    &gt;&gt;&gt; G = nx.path_graph(5, create_using = nx.DiGraph())</span>
 <span class="sd">    &gt;&gt;&gt; pred, dist = nx.bellman_ford_predecessor_and_distance(G, 0)</span>
 <span class="sd">    &gt;&gt;&gt; sorted(pred.items())</span>
-<span class="sd">    [(0, [None]), (1, [0]), (2, [1]), (3, [2]), (4, [3])]</span>
+<span class="sd">    [(0, []), (1, [0]), (2, [1]), (3, [2]), (4, [3])]</span>
 <span class="sd">    &gt;&gt;&gt; sorted(dist.items())</span>
 <span class="sd">    [(0, 0), (1, 1), (2, 2), (3, 3), (4, 4)]</span>
 
 <span class="sd">    &gt;&gt;&gt; pred, dist = nx.bellman_ford_predecessor_and_distance(G, 0, 1)</span>
 <span class="sd">    &gt;&gt;&gt; sorted(pred.items())</span>
-<span class="sd">    [(0, [None]), (1, [0])]</span>
+<span class="sd">    [(0, []), (1, [0]), (2, [1]), (3, [2]), (4, [3])]</span>
 <span class="sd">    &gt;&gt;&gt; sorted(dist.items())</span>
-<span class="sd">    [(0, 0), (1, 1)]</span>
+<span class="sd">    [(0, 0), (1, 1), (2, 2), (3, 3), (4, 4)]</span>
 
-<span class="sd">    &gt;&gt;&gt; from nose.tools import assert_raises</span>
+<span class="sd">    &gt;&gt;&gt; import pytest</span>
 <span class="sd">    &gt;&gt;&gt; G = nx.cycle_graph(5, create_using = nx.DiGraph())</span>
 <span class="sd">    &gt;&gt;&gt; G[1][2][&#39;weight&#39;] = -7</span>
-<span class="sd">    &gt;&gt;&gt; assert_raises(nx.NetworkXUnbounded, \</span>
+<span class="sd">    &gt;&gt;&gt; pytest.raises(nx.NetworkXUnbounded, \</span>
 <span class="sd">                      nx.bellman_ford_predecessor_and_distance, G, 0)</span>
+<span class="sd">    &lt;ExceptionInfo NetworkXUnbounded tblen=3&gt;</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
@@ -1313,6 +1355,8 @@
 <span class="sd">    not containing the source contains a negative cost (di)cycle, it</span>
 <span class="sd">    will not be detected.</span>
 
+<span class="sd">    In NetworkX v2.1 and prior, the source node had predecessor `[None]`.</span>
+<span class="sd">    In NetworkX v2.2 this changed to the source node having predecessor `[]`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">source</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NodeNotFound</span><span class="p">(</span><span class="s2">&quot;Node </span><span class="si">%s</span><span class="s2"> is not found in the graph&quot;</span> <span class="o">%</span> <span class="n">source</span><span class="p">)</span>
@@ -1321,7 +1365,7 @@
         <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXUnbounded</span><span class="p">(</span><span class="s2">&quot;Negative cost cycle detected.&quot;</span><span class="p">)</span>
 
     <span class="n">dist</span> <span class="o">=</span> <span class="p">{</span><span class="n">source</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
-    <span class="n">pred</span> <span class="o">=</span> <span class="p">{</span><span class="n">source</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">]}</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="p">{</span><span class="n">source</span><span class="p">:</span> <span class="p">[]}</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">pred</span><span class="p">,</span> <span class="n">dist</span>
@@ -1329,26 +1373,30 @@
     <span class="n">weight</span> <span class="o">=</span> <span class="n">_weight_function</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
 
     <span class="n">dist</span> <span class="o">=</span> <span class="n">_bellman_ford</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="p">[</span><span class="n">source</span><span class="p">],</span> <span class="n">weight</span><span class="p">,</span> <span class="n">pred</span><span class="o">=</span><span class="n">pred</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="n">dist</span><span class="p">,</span>
-                         <span class="n">cutoff</span><span class="o">=</span><span class="n">cutoff</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">)</span>
+                         <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">dist</span><span class="p">)</span></div>
 
 
 <span class="k">def</span> <span class="nf">_bellman_ford</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">pred</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">paths</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                  <span class="n">cutoff</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Relaxation loop for Bellman–Ford algorithm</span>
+                  <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Relaxation loop for Bellman–Ford algorithm.</span>
+
+<span class="sd">    This is an implementation of the SPFA variant.</span>
+<span class="sd">    See https://en.wikipedia.org/wiki/Shortest_Path_Faster_Algorithm</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    G : NetworkX graph</span>
 
 <span class="sd">    source: list</span>
-<span class="sd">        List of source nodes</span>
+<span class="sd">        List of source nodes. The shortest path from any of the source</span>
+<span class="sd">        nodes will be found if multiple sources are provided.</span>
 
 <span class="sd">    weight : function</span>
-<span class="sd">       The weight of an edge is the value returned by the function. The</span>
-<span class="sd">       function must accept exactly three positional arguments: the two</span>
-<span class="sd">       endpoints of an edge and the dictionary of edge attributes for</span>
-<span class="sd">       that edge. The function must return a number.</span>
+<span class="sd">        The weight of an edge is the value returned by the function. The</span>
+<span class="sd">        function must accept exactly three positional arguments: the two</span>
+<span class="sd">        endpoints of an edge and the dictionary of edge attributes for</span>
+<span class="sd">        that edge. The function must return a number.</span>
 
 <span class="sd">    pred: dict of lists, optional (default=None)</span>
 <span class="sd">        dict to store a list of predecessors keyed by that node</span>
@@ -1363,9 +1411,6 @@
 <span class="sd">        If None, returned dist dict contents default to 0 for every node in the</span>
 <span class="sd">        source list</span>
 
-<span class="sd">    cutoff: integer or float, optional</span>
-<span class="sd">        Depth to stop the search. Only paths of length &lt;= cutoff are returned</span>
-
 <span class="sd">    target: node label, optional</span>
 <span class="sd">        Ending node for path. Path lengths to other destinations may (and</span>
 <span class="sd">        probably will) be incorrect.</span>
@@ -1377,15 +1422,21 @@
 
 <span class="sd">    Raises</span>
 <span class="sd">    ------</span>
+<span class="sd">    NodeNotFound</span>
+<span class="sd">        If any of `source` is not in `G`.</span>
+
 <span class="sd">    NetworkXUnbounded</span>
 <span class="sd">       If the (di)graph contains a negative cost (di)cycle, the</span>
 <span class="sd">       algorithm raises an exception to indicate the presence of the</span>
 <span class="sd">       negative cost (di)cycle.  Note: any negative weight edge in an</span>
 <span class="sd">       undirected graph is a negative cost cycle</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">source</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">s</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NodeNotFound</span><span class="p">(</span><span class="s2">&quot;Source </span><span class="si">{}</span><span class="s2"> not in G&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
 
     <span class="k">if</span> <span class="n">pred</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">pred</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">source</span><span class="p">}</span>
+        <span class="n">pred</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">source</span><span class="p">}</span>
 
     <span class="k">if</span> <span class="n">dist</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">dist</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">source</span><span class="p">}</span>
@@ -1406,14 +1457,6 @@
             <span class="n">dist_u</span> <span class="o">=</span> <span class="n">dist</span><span class="p">[</span><span class="n">u</span><span class="p">]</span>
             <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">G_succ</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
                 <span class="n">dist_v</span> <span class="o">=</span> <span class="n">dist_u</span> <span class="o">+</span> <span class="n">weight</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
-
-                <span class="k">if</span> <span class="n">cutoff</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="n">dist_v</span> <span class="o">&gt;</span> <span class="n">cutoff</span><span class="p">:</span>
-                        <span class="k">continue</span>
-
-                <span class="k">if</span> <span class="n">target</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="n">dist_v</span> <span class="o">&gt;</span> <span class="n">dist</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">inf</span><span class="p">):</span>
-                        <span class="k">continue</span>
 
                 <span class="k">if</span> <span class="n">dist_v</span> <span class="o">&lt;</span> <span class="n">dist</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">inf</span><span class="p">):</span>
                     <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">in_q</span><span class="p">:</span>
@@ -1437,7 +1480,7 @@
             <span class="n">path</span> <span class="o">=</span> <span class="p">[</span><span class="n">dst</span><span class="p">]</span>
             <span class="n">cur</span> <span class="o">=</span> <span class="n">dst</span>
 
-            <span class="k">while</span> <span class="n">pred</span><span class="p">[</span><span class="n">cur</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">while</span> <span class="n">pred</span><span class="p">[</span><span class="n">cur</span><span class="p">]:</span>
                 <span class="n">cur</span> <span class="o">=</span> <span class="n">pred</span><span class="p">[</span><span class="n">cur</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
                 <span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cur</span><span class="p">)</span>
 
@@ -1470,6 +1513,9 @@
 
 <span class="sd">    Raises</span>
 <span class="sd">    ------</span>
+<span class="sd">    NodeNotFound</span>
+<span class="sd">        If `source` is not in `G`.</span>
+
 <span class="sd">    NetworkXNoPath</span>
 <span class="sd">       If no path exists between source and target.</span>
 
@@ -1517,6 +1563,9 @@
 
 <span class="sd">    Raises</span>
 <span class="sd">    ------</span>
+<span class="sd">    NodeNotFound</span>
+<span class="sd">        If `source` is not in `G`.</span>
+
 <span class="sd">    NetworkXNoPath</span>
 <span class="sd">        If no path exists between source and target.</span>
 
@@ -1546,10 +1595,10 @@
         <span class="k">return</span> <span class="n">length</span><span class="p">[</span><span class="n">target</span><span class="p">]</span>
     <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXNoPath</span><span class="p">(</span>
-            <span class="s2">&quot;node </span><span class="si">%s</span><span class="s2"> not reachable from </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">))</span></div>
+            <span class="s2">&quot;node </span><span class="si">%s</span><span class="s2"> not reachable from </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">source</span><span class="p">))</span></div>
 
 
-<div class="viewcode-block" id="single_source_bellman_ford_path"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.shortest_paths.weighted.single_source_bellman_ford_path.html#networkx.algorithms.shortest_paths.weighted.single_source_bellman_ford_path">[docs]</a><span class="k">def</span> <span class="nf">single_source_bellman_ford_path</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="single_source_bellman_ford_path"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.shortest_paths.weighted.single_source_bellman_ford_path.html#networkx.algorithms.shortest_paths.weighted.single_source_bellman_ford_path">[docs]</a><span class="k">def</span> <span class="nf">single_source_bellman_ford_path</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Compute shortest path between source and all other reachable</span>
 <span class="sd">    nodes for a weighted graph.</span>
 
@@ -1563,13 +1612,15 @@
 <span class="sd">    weight: string, optional (default=&#39;weight&#39;)</span>
 <span class="sd">       Edge data key corresponding to the edge weight</span>
 
-<span class="sd">    cutoff : integer or float, optional</span>
-<span class="sd">       Depth to stop the search. Only paths of length &lt;= cutoff are returned.</span>
-
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    paths : dictionary</span>
 <span class="sd">       Dictionary of shortest path lengths keyed by target.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    NodeNotFound</span>
+<span class="sd">        If `source` is not in `G`.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -1589,12 +1640,11 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span> <span class="o">=</span> <span class="n">single_source_bellman_ford</span><span class="p">(</span>
-        <span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="n">cutoff</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
+        <span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">path</span></div>
 
 
-<div class="viewcode-block" id="single_source_bellman_ford_path_length"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.shortest_paths.weighted.single_source_bellman_ford_path_length.html#networkx.algorithms.shortest_paths.weighted.single_source_bellman_ford_path_length">[docs]</a><span class="k">def</span> <span class="nf">single_source_bellman_ford_path_length</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span>
-                                           <span class="n">cutoff</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="single_source_bellman_ford_path_length"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.shortest_paths.weighted.single_source_bellman_ford_path_length.html#networkx.algorithms.shortest_paths.weighted.single_source_bellman_ford_path_length">[docs]</a><span class="k">def</span> <span class="nf">single_source_bellman_ford_path_length</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Compute the shortest path length between source and all other</span>
 <span class="sd">    reachable nodes for a weighted graph.</span>
 
@@ -1608,13 +1658,15 @@
 <span class="sd">    weight: string, optional (default=&#39;weight&#39;)</span>
 <span class="sd">       Edge data key corresponding to the edge weight.</span>
 
-<span class="sd">    cutoff : integer or float, optional</span>
-<span class="sd">       Depth to stop the search. Only paths of length &lt;= cutoff are returned.</span>
-
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    length : iterator</span>
 <span class="sd">        (target, shortest path length) iterator</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    NodeNotFound</span>
+<span class="sd">        If `source` is not in `G`.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -1641,11 +1693,10 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">weight</span> <span class="o">=</span> <span class="n">_weight_function</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">_bellman_ford</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="p">[</span><span class="n">source</span><span class="p">],</span> <span class="n">weight</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="n">cutoff</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">_bellman_ford</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="p">[</span><span class="n">source</span><span class="p">],</span> <span class="n">weight</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="single_source_bellman_ford"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.shortest_paths.weighted.single_source_bellman_ford.html#networkx.algorithms.shortest_paths.weighted.single_source_bellman_ford">[docs]</a><span class="k">def</span> <span class="nf">single_source_bellman_ford</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span>
-                               <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="single_source_bellman_ford"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.shortest_paths.weighted.single_source_bellman_ford.html#networkx.algorithms.shortest_paths.weighted.single_source_bellman_ford">[docs]</a><span class="k">def</span> <span class="nf">single_source_bellman_ford</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Compute shortest paths and lengths in a weighted graph G.</span>
 
 <span class="sd">    Uses Bellman-Ford algorithm for shortest paths.</span>
@@ -1660,9 +1711,6 @@
 <span class="sd">    target : node label, optional</span>
 <span class="sd">       Ending node for path</span>
 
-<span class="sd">    cutoff : integer or float, optional</span>
-<span class="sd">       Depth to stop the search. Only paths of length &lt;= cutoff are returned.</span>
-
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    distance, path : pair of dictionaries, or numeric and list</span>
@@ -1673,6 +1721,10 @@
 <span class="sd">       distance is the distance from source to target and path is a list</span>
 <span class="sd">       representing the path from source to target.</span>
 
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    NodeNotFound</span>
+<span class="sd">        If `source` is not in `G`.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -1712,18 +1764,17 @@
     <span class="n">weight</span> <span class="o">=</span> <span class="n">_weight_function</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
 
     <span class="n">paths</span> <span class="o">=</span> <span class="p">{</span><span class="n">source</span><span class="p">:</span> <span class="p">[</span><span class="n">source</span><span class="p">]}</span>  <span class="c1"># dictionary of paths</span>
-    <span class="n">dist</span> <span class="o">=</span> <span class="n">_bellman_ford</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="p">[</span><span class="n">source</span><span class="p">],</span> <span class="n">weight</span><span class="p">,</span> <span class="n">paths</span><span class="o">=</span><span class="n">paths</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="n">cutoff</span><span class="p">,</span>
-                         <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">)</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">_bellman_ford</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="p">[</span><span class="n">source</span><span class="p">],</span> <span class="n">weight</span><span class="p">,</span> <span class="n">paths</span><span class="o">=</span><span class="n">paths</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">target</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">paths</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">dist</span><span class="p">[</span><span class="n">target</span><span class="p">],</span> <span class="n">paths</span><span class="p">[</span><span class="n">target</span><span class="p">])</span>
     <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Node </span><span class="si">%s</span><span class="s2"> not reachable from </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Node </span><span class="si">%s</span><span class="s2"> not reachable from </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">source</span><span class="p">)</span>
         <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXNoPath</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="all_pairs_bellman_ford_path_length"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.shortest_paths.weighted.all_pairs_bellman_ford_path_length.html#networkx.algorithms.shortest_paths.weighted.all_pairs_bellman_ford_path_length">[docs]</a><span class="k">def</span> <span class="nf">all_pairs_bellman_ford_path_length</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="all_pairs_bellman_ford_path_length"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.shortest_paths.weighted.all_pairs_bellman_ford_path_length.html#networkx.algorithms.shortest_paths.weighted.all_pairs_bellman_ford_path_length">[docs]</a><span class="k">def</span> <span class="nf">all_pairs_bellman_ford_path_length</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Compute shortest path lengths between all nodes in a weighted graph.</span>
 
 <span class="sd">    Parameters</span>
@@ -1732,9 +1783,6 @@
 
 <span class="sd">    weight: string, optional (default=&#39;weight&#39;)</span>
 <span class="sd">       Edge data key corresponding to the edge weight</span>
-
-<span class="sd">    cutoff : integer or float, optional</span>
-<span class="sd">       Depth to stop the search. Only paths of length &lt;= cutoff are returned.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -1767,10 +1815,10 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">length</span> <span class="o">=</span> <span class="n">single_source_bellman_ford_path_length</span>
     <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
-        <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">length</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="n">cutoff</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)))</span></div>
+        <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">length</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)))</span></div>
 
 
-<div class="viewcode-block" id="all_pairs_bellman_ford_path"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.shortest_paths.weighted.all_pairs_bellman_ford_path.html#networkx.algorithms.shortest_paths.weighted.all_pairs_bellman_ford_path">[docs]</a><span class="k">def</span> <span class="nf">all_pairs_bellman_ford_path</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="all_pairs_bellman_ford_path"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.shortest_paths.weighted.all_pairs_bellman_ford_path.html#networkx.algorithms.shortest_paths.weighted.all_pairs_bellman_ford_path">[docs]</a><span class="k">def</span> <span class="nf">all_pairs_bellman_ford_path</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Compute shortest paths between all nodes in a weighted graph.</span>
 
 <span class="sd">    Parameters</span>
@@ -1779,9 +1827,6 @@
 
 <span class="sd">    weight: string, optional (default=&#39;weight&#39;)</span>
 <span class="sd">       Edge data key corresponding to the edge weight</span>
-
-<span class="sd">    cutoff : integer or float, optional</span>
-<span class="sd">       Depth to stop the search. Only paths of length &lt;= cutoff are returned.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -1808,10 +1853,10 @@
     <span class="n">path</span> <span class="o">=</span> <span class="n">single_source_bellman_ford_path</span>
     <span class="c1"># TODO This can be trivially parallelized.</span>
     <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
-        <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">path</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="n">cutoff</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">))</span></div>
+        <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">path</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">))</span></div>
 
 
-<span class="k">def</span> <span class="nf">goldberg_radzik</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="goldberg_radzik"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.shortest_paths.weighted.goldberg_radzik.html#networkx.algorithms.shortest_paths.weighted.goldberg_radzik">[docs]</a><span class="k">def</span> <span class="nf">goldberg_radzik</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Compute shortest path lengths and predecessors on shortest paths</span>
 <span class="sd">    in weighted graphs.</span>
 
@@ -1849,6 +1894,9 @@
 
 <span class="sd">    Raises</span>
 <span class="sd">    ------</span>
+<span class="sd">    NodeNotFound</span>
+<span class="sd">        If `source` is not in `G`.</span>
+
 <span class="sd">    NetworkXUnbounded</span>
 <span class="sd">       If the (di)graph contains a negative cost (di)cycle, the</span>
 <span class="sd">       algorithm raises an exception to indicate the presence of the</span>
@@ -1865,10 +1913,11 @@
 <span class="sd">    &gt;&gt;&gt; sorted(dist.items())</span>
 <span class="sd">    [(0, 0), (1, 1), (2, 2), (3, 3), (4, 4)]</span>
 
-<span class="sd">    &gt;&gt;&gt; from nose.tools import assert_raises</span>
+<span class="sd">    &gt;&gt;&gt; import pytest</span>
 <span class="sd">    &gt;&gt;&gt; G = nx.cycle_graph(5, create_using = nx.DiGraph())</span>
 <span class="sd">    &gt;&gt;&gt; G[1][2][&#39;weight&#39;] = -7</span>
-<span class="sd">    &gt;&gt;&gt; assert_raises(nx.NetworkXUnbounded, nx.goldberg_radzik, G, 0)</span>
+<span class="sd">    &gt;&gt;&gt; pytest.raises(nx.NetworkXUnbounded, nx.goldberg_radzik, G, 0)</span>
+<span class="sd">    &lt;ExceptionInfo NetworkXUnbounded tblen=3&gt;</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
@@ -1986,11 +2035,11 @@
         <span class="n">relabeled</span> <span class="o">=</span> <span class="n">relax</span><span class="p">(</span><span class="n">to_scan</span><span class="p">)</span>
 
     <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="n">u</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">pred</span><span class="p">}</span>
-    <span class="k">return</span> <span class="n">pred</span><span class="p">,</span> <span class="n">d</span>
+    <span class="k">return</span> <span class="n">pred</span><span class="p">,</span> <span class="n">d</span></div>
 
 
 <div class="viewcode-block" id="negative_edge_cycle"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.shortest_paths.weighted.negative_edge_cycle.html#networkx.algorithms.shortest_paths.weighted.negative_edge_cycle">[docs]</a><span class="k">def</span> <span class="nf">negative_edge_cycle</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return True if there exists a negative edge cycle anywhere in G.</span>
+    <span class="sd">&quot;&quot;&quot;Returns True if there exists a negative edge cycle anywhere in G.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -2047,7 +2096,7 @@
 
 
 <div class="viewcode-block" id="bidirectional_dijkstra"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.shortest_paths.weighted.bidirectional_dijkstra.html#networkx.algorithms.shortest_paths.weighted.bidirectional_dijkstra">[docs]</a><span class="k">def</span> <span class="nf">bidirectional_dijkstra</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Dijkstra&#39;s algorithm for shortest paths using bidirectional search.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Dijkstra&#39;s algorithm for shortest paths using bidirectional search.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -2080,6 +2129,9 @@
 
 <span class="sd">    Raises</span>
 <span class="sd">    ------</span>
+<span class="sd">    NodeNotFound</span>
+<span class="sd">        If either `source` or `target` is not in `G`.</span>
+
 <span class="sd">    NetworkXNoPath</span>
 <span class="sd">        If no path exists between source and target.</span>
 
@@ -2266,7 +2318,7 @@
         <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s1">&#39;Graph is not weighted.&#39;</span><span class="p">)</span>
 
     <span class="n">dist</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G</span><span class="p">}</span>
-    <span class="n">pred</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G</span><span class="p">}</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G</span><span class="p">}</span>
     <span class="n">weight</span> <span class="o">=</span> <span class="n">_weight_function</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
 
     <span class="c1"># Calculate distance of shortest paths</span>
@@ -2286,9 +2338,7 @@
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -2297,12 +2347,14 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2004-2018, NetworkX Developers.
-      Last updated on Jan 22, 2018.
+        &copy; Copyright 2004-2019, NetworkX Developers
+      <span class="lastupdated">
+        Last updated on Oct 17, 2019.
+      </span>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -2315,38 +2367,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../../',
-            VERSION:'2.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  false,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="../../../../_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

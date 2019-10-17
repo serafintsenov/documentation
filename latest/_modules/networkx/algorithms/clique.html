@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.clique &mdash; NetworkX 2.1 documentation</title>
+  <title>networkx.algorithms.clique &mdash; NetworkX 2.5rc1.dev20191017033512 documentation</title>
   
 
   
@@ -17,45 +17,40 @@
   
 
   
-
-  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.1 documentation" href="../../../_static/opensearch.xml"/>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within NetworkX 2.5rc1.dev20191017033512 documentation"
+          href="../../../_static/opensearch.xml"/>
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="NetworkX 2.1 documentation" href="../../../index.html"/>
-        <link rel="up" title="Module code" href="../../index.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -69,7 +64,7 @@
             
             
               <div class="version">
-                2.1
+                2.5rc1.dev_20191017033512
               </div>
             
           
@@ -115,7 +110,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">NetworkX</a>
@@ -123,9 +118,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -155,8 +151,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -168,7 +162,7 @@
            <div itemprop="articleBody">
             
   <h1>Source code for networkx.algorithms.clique</h1><div class="highlight"><pre>
-<span></span><span class="c1">#    Copyright (C) 2004-2018 by</span>
+<span></span><span class="c1">#    Copyright (C) 2004-2019 by</span>
 <span class="c1">#    Aric Hagberg &lt;hagberg@lanl.gov&gt;</span>
 <span class="c1">#    Dan Schult &lt;dschult@colgate.edu&gt;</span>
 <span class="c1">#    Pieter Swart &lt;swart@lanl.gov&gt;</span>
@@ -191,7 +185,7 @@
     <span class="kn">from</span> <span class="nn">itertools</span> <span class="k">import</span> <span class="n">ifilter</span> <span class="k">as</span> <span class="nb">filter</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="k">pass</span>
-<span class="kn">import</span> <span class="nn">networkx</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="kn">from</span> <span class="nn">networkx.utils</span> <span class="k">import</span> <span class="n">not_implemented_for</span>
 <span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Dan Schult (dschult@colgate.edu)&quot;&quot;&quot;</span>
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;find_cliques&#39;</span><span class="p">,</span> <span class="s1">&#39;find_cliques_recursive&#39;</span><span class="p">,</span> <span class="s1">&#39;make_max_clique_graph&#39;</span><span class="p">,</span>
@@ -244,7 +238,7 @@
 <span class="sd">           Applications in Systems Biology&quot;.</span>
 <span class="sd">           *Supercomputing*, 2005. Proceedings of the ACM/IEEE SC 2005</span>
 <span class="sd">           Conference, pp. 12, 12--18 Nov. 2005.</span>
-<span class="sd">           &lt;http://dx.doi.org/10.1109/SC.2005.29&gt;.</span>
+<span class="sd">           &lt;https://doi.org/10.1109/SC.2005.29&gt;.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">index</span> <span class="o">=</span> <span class="p">{}</span>
@@ -302,9 +296,8 @@
 <span class="sd">    To obtain a list of all maximal cliques, use</span>
 <span class="sd">    `list(find_cliques(G))`. However, be aware that in the worst-case,</span>
 <span class="sd">    the length of this list can be exponential in the number of nodes in</span>
-<span class="sd">    the graph (for example, when the graph is the complete graph). This</span>
-<span class="sd">    function avoids storing all cliques in memory by only keeping</span>
-<span class="sd">    current candidate node lists in memory during its search.</span>
+<span class="sd">    the graph. This function avoids storing all cliques in memory by</span>
+<span class="sd">    only keeping current candidate node lists in memory during its search.</span>
 
 <span class="sd">    This implementation is based on the algorithm published by Bron and</span>
 <span class="sd">    Kerbosch (1973) [1]_, as adapted by Tomita, Tanaka and Takahashi</span>
@@ -330,13 +323,13 @@
 <span class="sd">       Computing and Combinatorics,</span>
 <span class="sd">       10th Annual International Conference on</span>
 <span class="sd">       Computing and Combinatorics (COCOON 2004), 25 October 2006, Pages 28--42</span>
-<span class="sd">       &lt;http://dx.doi.org/10.1016/j.tcs.2006.06.015&gt;</span>
+<span class="sd">       &lt;https://doi.org/10.1016/j.tcs.2006.06.015&gt;</span>
 
 <span class="sd">    .. [3] F. Cazals, C. Karande,</span>
 <span class="sd">       &quot;A note on the problem of reporting maximal cliques&quot;,</span>
 <span class="sd">       *Theoretical Computer Science*,</span>
 <span class="sd">       Volume 407, Issues 1--3, 6 November 2008, Pages 564--568,</span>
-<span class="sd">       &lt;http://dx.doi.org/10.1016/j.tcs.2008.05.010&gt;</span>
+<span class="sd">       &lt;https://doi.org/10.1016/j.tcs.2008.05.010&gt;</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -409,9 +402,8 @@
 <span class="sd">    To obtain a list of all maximal cliques, use</span>
 <span class="sd">    `list(find_cliques_recursive(G))`. However, be aware that in the</span>
 <span class="sd">    worst-case, the length of this list can be exponential in the number</span>
-<span class="sd">    of nodes in the graph (for example, when the graph is the complete</span>
-<span class="sd">    graph). This function avoids storing all cliques in memory by only</span>
-<span class="sd">    keeping current candidate node lists in memory during its search.</span>
+<span class="sd">    of nodes in the graph. This function avoids storing all cliques in memory</span>
+<span class="sd">    by only keeping current candidate node lists in memory during its search.</span>
 
 <span class="sd">    This implementation is based on the algorithm published by Bron and</span>
 <span class="sd">    Kerbosch (1973) [1]_, as adapted by Tomita, Tanaka and Takahashi</span>
@@ -435,13 +427,13 @@
 <span class="sd">       Computing and Combinatorics,</span>
 <span class="sd">       10th Annual International Conference on</span>
 <span class="sd">       Computing and Combinatorics (COCOON 2004), 25 October 2006, Pages 28--42</span>
-<span class="sd">       &lt;http://dx.doi.org/10.1016/j.tcs.2006.06.015&gt;</span>
+<span class="sd">       &lt;https://doi.org/10.1016/j.tcs.2006.06.015&gt;</span>
 
 <span class="sd">    .. [3] F. Cazals, C. Karande,</span>
 <span class="sd">       &quot;A note on the problem of reporting maximal cliques&quot;,</span>
 <span class="sd">       *Theoretical Computer Science*,</span>
 <span class="sd">       Volume 407, Issues 1--3, 6 November 2008, Pages 564--568,</span>
-<span class="sd">       &lt;http://dx.doi.org/10.1016/j.tcs.2008.05.010&gt;</span>
+<span class="sd">       &lt;https://doi.org/10.1016/j.tcs.2008.05.010&gt;</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -479,9 +471,8 @@
 <span class="sd">    ----------</span>
 <span class="sd">    G : NetworkX graph</span>
 
-<span class="sd">    create_using : NetworkX graph</span>
-<span class="sd">        If provided, this graph will be cleared and the nodes and edges</span>
-<span class="sd">        of the maximal clique graph will be added to this graph.</span>
+<span class="sd">    create_using : NetworkX graph constructor, optional (default=nx.Graph)</span>
+<span class="sd">       Graph type to create. If graph instance, then cleared before populated.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -503,8 +494,10 @@
 <span class="sd">    steps.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">B</span> <span class="o">=</span> <span class="n">create_using</span> <span class="k">if</span> <span class="n">create_using</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">networkx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
-    <span class="n">B</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">create_using</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">B</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="vm">__class__</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">B</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">empty_graph</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">create_using</span><span class="p">)</span>
     <span class="n">cliques</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">find_cliques</span><span class="p">(</span><span class="n">G</span><span class="p">)))</span>
     <span class="c1"># Add a numbered node for each clique.</span>
     <span class="n">B</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cliques</span><span class="p">)</span>
@@ -532,9 +525,8 @@
 <span class="sd">        additional attribute, `pos`, a dictionary mapping node to</span>
 <span class="sd">        position in the Euclidean plane.</span>
 
-<span class="sd">    create_using : NetworkX graph</span>
-<span class="sd">        If provided, this graph will be cleared and the nodes and edges</span>
-<span class="sd">        of the bipartite graph will be added to this graph.</span>
+<span class="sd">    create_using : NetworkX graph constructor, optional (default=nx.Graph)</span>
+<span class="sd">       Graph type to create. If graph instance, then cleared before populated.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -549,7 +541,7 @@
 <span class="sd">        convention for bipartite graphs in NetworkX.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">B</span> <span class="o">=</span> <span class="n">create_using</span> <span class="k">if</span> <span class="n">create_using</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">networkx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">empty_graph</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">create_using</span><span class="p">)</span>
     <span class="n">B</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
     <span class="c1"># The &quot;bottom&quot; nodes in the bipartite graph are the nodes of the</span>
     <span class="c1"># original graph, G.</span>
@@ -593,7 +585,9 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">cliques</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">cliques</span> <span class="o">=</span> <span class="n">find_cliques</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-    <span class="k">return</span> <span class="nb">max</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cliques</span><span class="p">])</span></div>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="nb">max</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cliques</span><span class="p">]</span> <span class="ow">or</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span></div>
 
 
 <div class="viewcode-block" id="graph_number_of_cliques"><a class="viewcode-back" href="../../../reference/algorithms/generated/networkx.algorithms.clique.graph_number_of_cliques.html#networkx.algorithms.clique.graph_number_of_cliques">[docs]</a><span class="k">def</span> <span class="nf">graph_number_of_cliques</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">cliques</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -639,10 +633,10 @@
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
                 <span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
                 <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
-                    <span class="n">H</span> <span class="o">=</span> <span class="n">networkx</span><span class="o">.</span><span class="n">ego_graph</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+                    <span class="n">H</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">ego_graph</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
                     <span class="n">d</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">find_cliques</span><span class="p">(</span><span class="n">H</span><span class="p">)))</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">H</span> <span class="o">=</span> <span class="n">networkx</span><span class="o">.</span><span class="n">ego_graph</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="p">)</span>
+                <span class="n">H</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">ego_graph</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodes</span><span class="p">)</span>
                 <span class="n">d</span> <span class="o">=</span> <span class="nb">max</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">find_cliques</span><span class="p">(</span><span class="n">H</span><span class="p">)))</span>
             <span class="k">return</span> <span class="n">d</span>
         <span class="c1"># nodes is None--find all cliques</span>
@@ -724,9 +718,7 @@
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -735,12 +727,14 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2004-2018, NetworkX Developers.
-      Last updated on Jan 22, 2018.
+        &copy; Copyright 2004-2019, NetworkX Developers
+      <span class="lastupdated">
+        Last updated on Oct 17, 2019.
+      </span>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -753,38 +747,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'2.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  false,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="../../../_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

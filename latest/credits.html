@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Credits &mdash; NetworkX 2.1 documentation</title>
+  <title>Credits &mdash; NetworkX 2.5rc1.dev20191017033512 documentation</title>
   
 
   
@@ -17,46 +17,42 @@
   
 
   
-
-  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.1 documentation" href="_static/opensearch.xml"/>
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/copybutton.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within NetworkX 2.5rc1.dev20191017033512 documentation"
+          href="_static/opensearch.xml"/>
 
   
-
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="NetworkX 2.1 documentation" href="index.html"/>
-        <link rel="next" title="Citing" href="citing.html"/>
-        <link rel="prev" title="License" href="license.html"/> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Citing" href="citing.html" />
+    <link rel="prev" title="License" href="license.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -70,7 +66,7 @@
             
             
               <div class="version">
-                2.1
+                2.5rc1.dev_20191017033512
               </div>
             
           
@@ -128,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">NetworkX</a>
@@ -136,9 +132,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -187,7 +184,7 @@ and input on design, features, and the future of NetworkX.</p>
 <div class="section" id="contributions">
 <h2>Contributions<a class="headerlink" href="#contributions" title="Permalink to this headline">¶</a></h2>
 <p>This section aims to provide a list of people and projects that have
-contributed to <code class="docutils literal"><span class="pre">networkx</span></code>. It is intended to be an <em>inclusive</em> list, and
+contributed to <code class="docutils literal notranslate"><span class="pre">networkx</span></code>. It is intended to be an <em>inclusive</em> list, and
 anyone who has contributed and wishes to make that contribution known is
 welcome to add an entry into this file.  Generally, no name should be added to
 this list without the approval of the person associated with that name.</p>
@@ -203,9 +200,9 @@ open an <a class="reference external" href="https://github.com/networkx/networkx
 contact with one of the official team
 <a class="reference external" href="https://github.com/networkx?tab=members">members</a>.</p>
 <p>A supplementary (but still incomplete) list of contributors is given by the
-list of names that have commits in <code class="docutils literal"><span class="pre">networkx</span></code>’s
+list of names that have commits in <code class="docutils literal notranslate"><span class="pre">networkx</span></code>’s
 <a class="reference external" href="http://git-scm.com">git</a> repository. This can be obtained via:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">log</span> <span class="o">--</span><span class="n">raw</span> <span class="o">|</span> <span class="n">grep</span> <span class="s2">&quot;^Author: &quot;</span> <span class="o">|</span> <span class="n">sort</span> <span class="o">|</span> <span class="n">uniq</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">log</span> <span class="o">--</span><span class="n">raw</span> <span class="o">|</span> <span class="n">grep</span> <span class="s2">&quot;^Author: &quot;</span> <span class="o">|</span> <span class="n">sort</span> <span class="o">|</span> <span class="n">uniq</span>
 </pre></div>
 </div>
 <p>A historical, partial listing of contributors and their contributions to some
@@ -225,103 +222,121 @@ of the earlier versions of NetworkX can be found
 <p>Optionally, add your desired name and include a few relevant links. The order
 is partially historical, and now, mostly arbitrary.</p>
 <ul class="simple">
-<li>Aric Hagberg, GitHub: <a class="reference external" href="https://github.com/hagberg">hagberg</a></li>
-<li>Dan Schult, GitHub: <a class="reference external" href="https://github.com/dschult">dschult</a></li>
-<li>Pieter Swart</li>
-<li>Katy Bold</li>
-<li>Hernan Rozenfeld</li>
-<li>Brendt Wohlberg</li>
-<li>Jim Bagrow</li>
-<li>Holly Johnsen</li>
-<li>Arnar Flatberg</li>
-<li>Chris Myers</li>
-<li>Joel Miller</li>
-<li>Keith Briggs</li>
-<li>Ignacio Rozada</li>
-<li>Phillipp Pagel</li>
-<li>Sverre Sundsdal</li>
-<li>Ross M. Richardson</li>
-<li>Eben Kenah</li>
-<li>Sasha Gutfriend</li>
-<li>Udi Weinsberg</li>
-<li>Matteo Dell’Amico</li>
-<li>Andrew Conway</li>
-<li>Raf Guns</li>
-<li>Salim Fadhley</li>
-<li>Fabrice Desclaux</li>
-<li>Arpad Horvath</li>
-<li>Minh Van Nguyen</li>
-<li>Willem Ligtenberg</li>
-<li>Loïc Séguin-C.</li>
-<li>Paul McGuire</li>
-<li>Jesus Cerquides</li>
-<li>Ben Edwards</li>
-<li>Jon Olav Vik</li>
-<li>Hugh Brown</li>
-<li>Ben Reilly</li>
-<li>Leo Lopes</li>
-<li>Jordi Torrents, GitHub: <a class="reference external" href="https://github.com/jtorrents">jtorrents</a></li>
-<li>Dheeraj M R</li>
-<li>Franck Kalala</li>
-<li>Simon Knight</li>
-<li>Conrad Lee</li>
-<li>Sérgio Nery Simões</li>
-<li>Robert King</li>
-<li>Nick Mancuso</li>
-<li>Brian Cloteaux</li>
-<li>Alejandro Weinstein</li>
-<li>Dustin Smith</li>
-<li>Mathieu Larose</li>
-<li>Vincent Gauthier</li>
-<li>chebee7i, GitHub: <a class="reference external" href="https://github.com/chebee7i">chebee7i</a></li>
-<li>Jeffrey Finkelstein</li>
-<li>Jean-Gabriel Young, Github: <a class="reference external" href="https://github.com/jgyou">jg-you</a></li>
-<li>Andrey Paramonov, <a class="reference external" href="http://aparamon.msk.ru">http://aparamon.msk.ru</a></li>
-<li>Mridul Seth, GitHub: <a class="reference external" href="https://github.com/MridulS">MridulS</a></li>
-<li>Thodoris Sotiropoulos, GitHub: <a class="reference external" href="https://github.com/theosotr">theosotr</a></li>
-<li>Konstantinos Karakatsanis, GitHub: <a class="reference external" href="https://github.com/k-karakatsanis">k-karakatsanis</a></li>
-<li>Ryan Nelson, GitHub: <a class="reference external" href="https://github.com/rnelsonchem">rnelsonchem</a></li>
-<li>Niels van Adrichem, GitHub: <a class="reference external" href="https://github.com/NvanAdrichem">NvanAdrichem</a></li>
-<li>Michael E. Rose, GitHub: <a class="reference external" href="https://github.com/Michael-E-Rose">Michael-E-Rose</a></li>
-<li>Jarrod Millman, GitHub: <a class="reference external" href="https://github.com/jarrodmillman">jarrodmillman</a></li>
-<li>Andre Weltsch</li>
+<li><p>Aric Hagberg, GitHub: <a class="reference external" href="https://github.com/hagberg">hagberg</a></p></li>
+<li><p>Dan Schult, GitHub: <a class="reference external" href="https://github.com/dschult">dschult</a></p></li>
+<li><p>Pieter Swart</p></li>
+<li><p>Katy Bold</p></li>
+<li><p>Hernan Rozenfeld</p></li>
+<li><p>Brendt Wohlberg</p></li>
+<li><p>Jim Bagrow</p></li>
+<li><p>Holly Johnsen</p></li>
+<li><p>Arnar Flatberg</p></li>
+<li><p>Chris Myers</p></li>
+<li><p>Joel Miller</p></li>
+<li><p>Keith Briggs</p></li>
+<li><p>Ignacio Rozada</p></li>
+<li><p>Phillipp Pagel</p></li>
+<li><p>Sverre Sundsdal</p></li>
+<li><p>Ross M. Richardson</p></li>
+<li><p>Eben Kenah</p></li>
+<li><p>Sasha Gutfriend</p></li>
+<li><p>Udi Weinsberg</p></li>
+<li><p>Matteo Dell’Amico</p></li>
+<li><p>Andrew Conway</p></li>
+<li><p>Raf Guns</p></li>
+<li><p>Salim Fadhley</p></li>
+<li><p>Fabrice Desclaux</p></li>
+<li><p>Arpad Horvath</p></li>
+<li><p>Minh Van Nguyen</p></li>
+<li><p>Willem Ligtenberg</p></li>
+<li><p>Loïc Séguin-C.</p></li>
+<li><p>Paul McGuire</p></li>
+<li><p>Jesus Cerquides</p></li>
+<li><p>Ben Edwards</p></li>
+<li><p>Jon Olav Vik</p></li>
+<li><p>Hugh Brown</p></li>
+<li><p>Ben Reilly</p></li>
+<li><p>Leo Lopes</p></li>
+<li><p>Jordi Torrents, GitHub: <a class="reference external" href="https://github.com/jtorrents">jtorrents</a></p></li>
+<li><p>Dheeraj M R</p></li>
+<li><p>Franck Kalala</p></li>
+<li><p>Simon Knight</p></li>
+<li><p>Conrad Lee</p></li>
+<li><p>Sérgio Nery Simões</p></li>
+<li><p>Robert King</p></li>
+<li><p>Nick Mancuso</p></li>
+<li><p>Brian Cloteaux</p></li>
+<li><p>Alejandro Weinstein</p></li>
+<li><p>Dustin Smith</p></li>
+<li><p>Mathieu Larose</p></li>
+<li><p>Romain Fontugne</p></li>
+<li><p>Vincent Gauthier</p></li>
+<li><p>chebee7i, GitHub: <a class="reference external" href="https://github.com/chebee7i">chebee7i</a></p></li>
+<li><p>Jeffrey Finkelstein</p></li>
+<li><p>Jean-Gabriel Young, Github: <a class="reference external" href="https://github.com/jgyou">jg-you</a></p></li>
+<li><p>Andrey Paramonov, <a class="reference external" href="http://aparamon.msk.ru">http://aparamon.msk.ru</a></p></li>
+<li><p>Mridul Seth, GitHub: <a class="reference external" href="https://github.com/MridulS">MridulS</a></p></li>
+<li><p>Thodoris Sotiropoulos, GitHub: <a class="reference external" href="https://github.com/theosotr">theosotr</a></p></li>
+<li><p>Konstantinos Karakatsanis, GitHub: <a class="reference external" href="https://github.com/k-karakatsanis">k-karakatsanis</a></p></li>
+<li><p>Ryan Nelson, GitHub: <a class="reference external" href="https://github.com/rnelsonchem">rnelsonchem</a></p></li>
+<li><p>Niels van Adrichem, GitHub: <a class="reference external" href="https://github.com/NvanAdrichem">NvanAdrichem</a></p></li>
+<li><p>Michael E. Rose, GitHub: <a class="reference external" href="https://github.com/Michael-E-Rose">Michael-E-Rose</a></p></li>
+<li><p>Jarrod Millman, GitHub: <a class="reference external" href="https://github.com/jarrodmillman">jarrodmillman</a></p></li>
+<li><p>Andre Weltsch</p></li>
+<li><p>Lewis Robbins</p></li>
+<li><p>Mads Jensen, Github: <a class="reference external" href="https://github.com/atombrella">atombrella</a></p></li>
+<li><p>Edward L. Platt, <a class="reference external" href="https://elplatt.com">elplatt</a></p></li>
+<li><p>James Owen, Github: <a class="reference external" href="https://github.com/leamingrad">leamingrad</a></p></li>
+<li><p>Robert Gmyr, Github: <a class="reference external" href="https://github.com/gmyr">gmyr</a></p></li>
+<li><p>Mike Trenfield</p></li>
+<li><p>Jon Crall, Github: <a class="reference external" href="https://github.com/Erotemic">Erotemic</a></p></li>
+<li><p>Issa Moradnejad, Github <a class="reference external" href="https://github.com/Moradnejad">https://github.com/Moradnejad</a>, LinkedIn <a class="reference external" href="https://linkedin.com/in/moradnejad/">https://linkedin.com/in/moradnejad/</a></p></li>
+<li><p>Brian Kiefer, Github: <a class="reference external" href="https://github.com/bkief">bkief</a></p></li>
+<li><p>Julien Klaus</p></li>
+<li><p>Peter C. Kroon, Github: <a class="reference external" href="https://github.com/pckroon">pckroon</a></p></li>
+<li><p>Weisheng Si, Github: <a class="reference external" href="https://github.com/ws4u">ws4u</a></p></li>
+<li><p>Haakon H. Rød, Gitlab: <a class="reference external" href="https://gitlab.com/haakonhr">haakonhr</a>, <a class="reference external" href="https://haakonhr.gitlab.io">https://haakonhr.gitlab.io</a></p></li>
+<li><p>Efraim Rodrigues, GitHub <a class="reference external" href="https://github.com/efraimrodrigues">https://github.com/efraimrodrigues</a>, LinkedIn <a class="reference external" href="https://linkedin.com/in/efraim-rodrigues/">https://linkedin.com/in/efraim-rodrigues/</a></p></li>
+<li><p>Erwan Le Merrer</p></li>
+<li><p>Søren Fuglede Jørgensen, GitHub: <a class="reference external" href="https://github.com/fuglede">fuglede</a></p></li>
+<li><p>Salim BELHADDAD, LinkedIn <a class="reference external" href="https://www.linkedin.com/in/salymdotme/">https://www.linkedin.com/in/salymdotme/</a></p></li>
 </ul>
 </div>
 </div>
 <div class="section" id="support">
 <h2>Support<a class="headerlink" href="#support" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">networkx</span></code> and those who have contributed to <code class="docutils literal"><span class="pre">networkx</span></code> have received
+<p><code class="docutils literal notranslate"><span class="pre">networkx</span></code> and those who have contributed to <code class="docutils literal notranslate"><span class="pre">networkx</span></code> have received
 support throughout the years from a variety of sources.  We list them below.
-If you have provided support to <code class="docutils literal"><span class="pre">networkx</span></code> and a support acknowledgment does
+If you have provided support to <code class="docutils literal notranslate"><span class="pre">networkx</span></code> and a support acknowledgment does
 not appear below, please help us remedy the situation, and similarly, please
 let us know if you’d like something modified or corrected.</p>
 <div class="section" id="research-groups">
 <h3>Research Groups<a class="headerlink" href="#research-groups" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">networkx</span></code> acknowledges support from the following:</p>
+<p><code class="docutils literal notranslate"><span class="pre">networkx</span></code> acknowledges support from the following:</p>
 <ul class="simple">
-<li><a class="reference external" href="http://cnls.lanl.gov">Center for Nonlinear Studies</a>, Los Alamos National
-Laboratory, PI: Aric Hagberg</li>
-<li><a class="reference external" href="https://developers.google.com/open-source/">Open Source Programs Office</a>,
-Google</li>
-<li><a class="reference external" href="http://csc.ucdavis.edu/">Complexity Sciences Center</a>, Department of
-Physics, University of California-Davis, PI: James P. Crutchfield</li>
-<li><a class="reference external" href="http://c4.discovery.wisc.edu">Center for Complexity and Collective Computation</a>,
+<li><p><a class="reference external" href="http://cnls.lanl.gov">Center for Nonlinear Studies</a>, Los Alamos National
+Laboratory, PI: Aric Hagberg</p></li>
+<li><p><a class="reference external" href="https://developers.google.com/open-source/">Open Source Programs Office</a>,
+Google</p></li>
+<li><p><a class="reference external" href="http://csc.ucdavis.edu/">Complexity Sciences Center</a>, Department of
+Physics, University of California-Davis, PI: James P. Crutchfield</p></li>
+<li><p><a class="reference external" href="http://c4.discovery.wisc.edu">Center for Complexity and Collective Computation</a>,
 Wisconsin Institute for Discovery, University of Wisconsin-Madison,
-PIs: Jessica C. Flack and David C. Krakauer</li>
+PIs: Jessica C. Flack and David C. Krakauer</p></li>
 </ul>
 </div>
 <div class="section" id="funding">
 <h3>Funding<a class="headerlink" href="#funding" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">networkx</span></code> acknowledges support from the following:</p>
+<p><code class="docutils literal notranslate"><span class="pre">networkx</span></code> acknowledges support from the following:</p>
 <ul class="simple">
-<li>Google Summer of Code via Python Software Foundation</li>
-<li>U.S. Army Research Office grant W911NF-12-1-0288</li>
-<li>DARPA Physical Intelligence Subcontract No. 9060-000709</li>
-<li>NSF Grant No. PHY-0748828</li>
-<li>John Templeton Foundation through a grant to the Santa Fe Institute to
-study complexity</li>
-<li>U.S. Army Research Laboratory and the U.S. Army Research Office under
-contract number W911NF-13-1-0340</li>
+<li><p>Google Summer of Code via Python Software Foundation</p></li>
+<li><p>U.S. Army Research Office grant W911NF-12-1-0288</p></li>
+<li><p>DARPA Physical Intelligence Subcontract No. 9060-000709</p></li>
+<li><p>NSF Grant No. PHY-0748828</p></li>
+<li><p>John Templeton Foundation through a grant to the Santa Fe Institute to
+study complexity</p></li>
+<li><p>U.S. Army Research Laboratory and the U.S. Army Research Office under
+contract number W911NF-13-1-0340</p></li>
 </ul>
 </div>
 </div>
@@ -329,9 +344,7 @@ contract number W911NF-13-1-0340</li>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -340,7 +353,7 @@ contract number W911NF-13-1-0340</li>
         <a href="citing.html" class="btn btn-neutral float-right" title="Citing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="license.html" class="btn btn-neutral" title="License" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="license.html" class="btn btn-neutral float-left" title="License" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -349,12 +362,14 @@ contract number W911NF-13-1-0340</li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2004-2018, NetworkX Developers.
-      Last updated on Jan 22, 2018.
+        &copy; Copyright 2004-2019, NetworkX Developers
+      <span class="lastupdated">
+        Last updated on Oct 17, 2019.
+      </span>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -367,38 +382,15 @@ contract number W911NF-13-1-0340</li>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'2.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  false,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

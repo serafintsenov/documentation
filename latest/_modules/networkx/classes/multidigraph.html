@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.classes.multidigraph &mdash; NetworkX 2.1 documentation</title>
+  <title>networkx.classes.multidigraph &mdash; NetworkX 2.5rc1.dev20191017033512 documentation</title>
   
 
   
@@ -17,45 +17,40 @@
   
 
   
-
-  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.1 documentation" href="../../../_static/opensearch.xml"/>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within NetworkX 2.5rc1.dev20191017033512 documentation"
+          href="../../../_static/opensearch.xml"/>
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="NetworkX 2.1 documentation" href="../../../index.html"/>
-        <link rel="up" title="Module code" href="../../index.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -69,7 +64,7 @@
             
             
               <div class="version">
-                2.1
+                2.5rc1.dev_20191017033512
               </div>
             
           
@@ -115,7 +110,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">NetworkX</a>
@@ -123,9 +118,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -155,8 +151,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -168,7 +162,7 @@
            <div itemprop="articleBody">
             
   <h1>Source code for networkx.classes.multidigraph</h1><div class="highlight"><pre>
-<span></span><span class="c1">#    Copyright (C) 2004-2018 by</span>
+<span></span><span class="c1">#    Copyright (C) 2004-2019 by</span>
 <span class="c1">#    Aric Hagberg &lt;hagberg@lanl.gov&gt;</span>
 <span class="c1">#    Dan Schult &lt;dschult@colgate.edu&gt;</span>
 <span class="c1">#    Pieter Swart &lt;swart@lanl.gov&gt;</span>
@@ -375,12 +369,18 @@
 <span class="sd">    extra features can be added. To replace one of the dicts create</span>
 <span class="sd">    a new graph class by changing the class(!) variable holding the</span>
 <span class="sd">    factory for that dict-like structure. The variable names are</span>
-<span class="sd">    node_dict_factory, adjlist_inner_dict_factory, adjlist_outer_dict_factory,</span>
-<span class="sd">    and edge_attr_dict_factory.</span>
+<span class="sd">    node_dict_factory, node_attr_dict_factory, adjlist_inner_dict_factory,</span>
+<span class="sd">    adjlist_outer_dict_factory, edge_key_dict_factory, edge_attr_dict_factory</span>
+<span class="sd">    and graph_attr_dict_factory.</span>
 
 <span class="sd">    node_dict_factory : function, (default: dict)</span>
 <span class="sd">        Factory function to be used to create the dict containing node</span>
 <span class="sd">        attributes, keyed by node id.</span>
+<span class="sd">        It should require no arguments and return a dict-like object</span>
+
+<span class="sd">    node_attr_dict_factory: function, (default: dict)</span>
+<span class="sd">        Factory function to be used to create the node attribute</span>
+<span class="sd">        dict which holds attribute values keyed by attribute name.</span>
 <span class="sd">        It should require no arguments and return a dict-like object</span>
 
 <span class="sd">    adjlist_outer_dict_factory : function, (default: dict)</span>
@@ -400,8 +400,27 @@
 
 <span class="sd">    edge_attr_dict_factory : function, (default: dict)</span>
 <span class="sd">        Factory function to be used to create the edge attribute</span>
-<span class="sd">        dict which holds attrbute values keyed by attribute name.</span>
+<span class="sd">        dict which holds attribute values keyed by attribute name.</span>
 <span class="sd">        It should require no arguments and return a dict-like object.</span>
+
+<span class="sd">    graph_attr_dict_factory : function, (default: dict)</span>
+<span class="sd">        Factory function to be used to create the graph attribute</span>
+<span class="sd">        dict which holds attribute values keyed by attribute name.</span>
+<span class="sd">        It should require no arguments and return a dict-like object.</span>
+
+<span class="sd">    Typically, if your extension doesn&#39;t impact the data structure all</span>
+<span class="sd">    methods will inherited without issue except: `to_directed/to_undirected`.</span>
+<span class="sd">    By default these methods create a DiGraph/Graph class and you probably</span>
+<span class="sd">    want them to create your extension of a DiGraph/Graph. To facilitate</span>
+<span class="sd">    this we define two class variables that you can set in your subclass.</span>
+
+<span class="sd">    to_directed_class : callable, (default: DiGraph or MultiDiGraph)</span>
+<span class="sd">        Class to create a new graph structure in the `to_directed` method.</span>
+<span class="sd">        If `None`, a NetworkX class (DiGraph or MultiDiGraph) is used.</span>
+
+<span class="sd">    to_undirected_class : callable, (default: Graph or MultiGraph)</span>
+<span class="sd">        Class to create a new graph structure in the `to_undirected` method.</span>
+<span class="sd">        If `None`, a NetworkX class (Graph or MultiGraph) is used.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -578,11 +597,11 @@
         <span class="k">if</span> <span class="n">u</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_succ</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_succ</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_inner_dict_factory</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_pred</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_inner_dict_factory</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">node_attr_dict_factory</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_succ</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_succ</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_inner_dict_factory</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_pred</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjlist_inner_dict_factory</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">node_attr_dict_factory</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">key</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">new_edge_key</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_succ</span><span class="p">[</span><span class="n">u</span><span class="p">]:</span>
@@ -695,7 +714,7 @@
 <span class="sd">        keys : bool, optional (default=False)</span>
 <span class="sd">            If True, return edge keys with each edge.</span>
 <span class="sd">        default : value, optional (default=None)</span>
-<span class="sd">            Value used for edges that dont have the requested attribute.</span>
+<span class="sd">            Value used for edges that don&#39;t have the requested attribute.</span>
 <span class="sd">            Only relevant if data is not True or False.</span>
 
 <span class="sd">        Returns</span>
@@ -736,9 +755,7 @@
 <span class="sd">        --------</span>
 <span class="sd">        in_edges, out_edges</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s1">&#39;edges&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">edges</span> <span class="o">=</span> <span class="n">OutMultiEdgeView</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s1">&#39;out_edges&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">edges</span>
-        <span class="k">return</span> <span class="n">edges</span>
+        <span class="k">return</span> <span class="n">OutMultiEdgeView</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="c1"># alias out_edges to edges</span>
     <span class="n">out_edges</span> <span class="o">=</span> <span class="n">edges</span>
@@ -760,7 +777,7 @@
 <span class="sd">        keys : bool, optional (default=False)</span>
 <span class="sd">            If True, return edge keys with each edge.</span>
 <span class="sd">        default : value, optional (default=None)</span>
-<span class="sd">            Value used for edges that dont have the requested attribute.</span>
+<span class="sd">            Value used for edges that don&#39;t have the requested attribute.</span>
 <span class="sd">            Only relevant if data is not True or False.</span>
 
 <span class="sd">        Returns</span>
@@ -774,8 +791,7 @@
 <span class="sd">        --------</span>
 <span class="sd">        edges</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s1">&#39;in_edges&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">in_edges</span> <span class="o">=</span> <span class="n">InMultiEdgeView</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">in_edges</span>
+        <span class="k">return</span> <span class="n">InMultiEdgeView</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">degree</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -822,8 +838,7 @@
 <span class="sd">        [(0, 1), (1, 2), (2, 2)]</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s1">&#39;degree&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">degree</span> <span class="o">=</span> <span class="n">DiMultiDegreeView</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">degree</span>
+        <span class="k">return</span> <span class="n">DiMultiDegreeView</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">in_degree</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -870,12 +885,11 @@
 <span class="sd">        [(0, 0), (1, 1), (2, 1)]</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s1">&#39;in_degree&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">in_degree</span> <span class="o">=</span> <span class="n">InMultiDegreeView</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">in_degree</span>
+        <span class="k">return</span> <span class="n">InMultiDegreeView</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">out_degree</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return an iterator for (node, out-degree) or out-degree for single node.</span>
+        <span class="sd">&quot;&quot;&quot;Returns an iterator for (node, out-degree) or out-degree for single node.</span>
 
 <span class="sd">        out_degree(self, nbunch=None, weight=None)</span>
 
@@ -917,122 +931,18 @@
 <span class="sd">        [(0, 1), (1, 1), (2, 1)]</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s1">&#39;out_degree&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">out_degree</span> <span class="o">=</span> <span class="n">OutMultiDegreeView</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">out_degree</span>
+        <span class="k">return</span> <span class="n">OutMultiDegreeView</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">is_multigraph</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return True if graph is a multigraph, False otherwise.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Returns True if graph is a multigraph, False otherwise.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="kc">True</span>
 
     <span class="k">def</span> <span class="nf">is_directed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return True if graph is directed, False otherwise.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Returns True if graph is directed, False otherwise.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="kc">True</span>
 
-<div class="viewcode-block" id="MultiDiGraph.fresh_copy"><a class="viewcode-back" href="../../../reference/classes/generated/networkx.MultiDiGraph.fresh_copy.html#networkx.MultiDiGraph.fresh_copy">[docs]</a>    <span class="k">def</span> <span class="nf">fresh_copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return a fresh copy graph with the same data structure.</span>
-
-<span class="sd">        A fresh copy has no nodes, edges or graph attributes. It is</span>
-<span class="sd">        the same data structure as the current graph. This method is</span>
-<span class="sd">        typically used to create an empty version of the graph.</span>
-
-<span class="sd">        Notes</span>
-<span class="sd">        -----</span>
-<span class="sd">        If you subclass the base class you should overwrite this method</span>
-<span class="sd">        to return your class of graph.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">MultiDiGraph</span><span class="p">()</span></div>
-
-<div class="viewcode-block" id="MultiDiGraph.copy"><a class="viewcode-back" href="../../../reference/classes/generated/networkx.MultiDiGraph.copy.html#networkx.MultiDiGraph.copy">[docs]</a>    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">as_view</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return a copy of the graph.</span>
-
-<span class="sd">        The copy method by default returns a shallow copy of the graph</span>
-<span class="sd">        and attributes. That is, if an attribute is a container, that</span>
-<span class="sd">        container is shared by the original an the copy.</span>
-<span class="sd">        Use Python&#39;s `copy.deepcopy` for new containers.</span>
-
-<span class="sd">        If `as_view` is True then a view is returned instead of a copy.</span>
-
-<span class="sd">        Notes</span>
-<span class="sd">        -----</span>
-<span class="sd">        All copies reproduce the graph structure, but data attributes</span>
-<span class="sd">        may be handled in different ways. There are four types of copies</span>
-<span class="sd">        of a graph that people might want.</span>
-
-<span class="sd">        Deepcopy -- The default behavior is a &quot;deepcopy&quot; where the graph</span>
-<span class="sd">        structure as well as all data attributes and any objects they might</span>
-<span class="sd">        contain are copied. The entire graph object is new so that changes</span>
-<span class="sd">        in the copy do not affect the original object. (see Python&#39;s</span>
-<span class="sd">        copy.deepcopy)</span>
-
-<span class="sd">        Data Reference (Shallow) -- For a shallow copy the graph structure</span>
-<span class="sd">        is copied but the edge, node and graph attribute dicts are</span>
-<span class="sd">        references to those in the original graph. This saves</span>
-<span class="sd">        time and memory but could cause confusion if you change an attribute</span>
-<span class="sd">        in one graph and it changes the attribute in the other.</span>
-<span class="sd">        NetworkX does not provide this level of shallow copy.</span>
-
-<span class="sd">        Independent Shallow -- This copy creates new independent attribute</span>
-<span class="sd">        dicts and then does a shallow copy of the attributes. That is, any</span>
-<span class="sd">        attributes that are containers are shared between the new graph</span>
-<span class="sd">        and the original. This is exactly what `dict.copy()` provides.</span>
-<span class="sd">        You can obtain this style copy using:</span>
-
-<span class="sd">            &gt;&gt;&gt; G = nx.path_graph(5)</span>
-<span class="sd">            &gt;&gt;&gt; H = G.copy()</span>
-<span class="sd">            &gt;&gt;&gt; H = G.copy(as_view=False)</span>
-<span class="sd">            &gt;&gt;&gt; H = nx.Graph(G)</span>
-<span class="sd">            &gt;&gt;&gt; H = G.fresh_copy().__class__(G)</span>
-
-<span class="sd">        Fresh Data -- For fresh data, the graph structure is copied while</span>
-<span class="sd">        new empty data attribute dicts are created. The resulting graph</span>
-<span class="sd">        is independent of the original and it has no edge, node or graph</span>
-<span class="sd">        attributes. Fresh copies are not enabled. Instead use:</span>
-
-<span class="sd">            &gt;&gt;&gt; H = G.fresh_copy()</span>
-<span class="sd">            &gt;&gt;&gt; H.add_nodes_from(G)</span>
-<span class="sd">            &gt;&gt;&gt; H.add_edges_from(G.edges)</span>
-
-<span class="sd">        View -- Inspired by dict-views, graph-views act like read-only</span>
-<span class="sd">        versions of the original graph, providing a copy of the original</span>
-<span class="sd">        structure without requiring any memory for copying the information.</span>
-
-<span class="sd">        See the Python copy module for more information on shallow</span>
-<span class="sd">        and deep copies, https://docs.python.org/2/library/copy.html.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        as_view : bool, optional (default=False)</span>
-<span class="sd">            If True, the returned graph-view provides a read-only view</span>
-<span class="sd">            of the original graph without actually copying any data.</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        G : Graph</span>
-<span class="sd">            A copy of the graph.</span>
-
-<span class="sd">        See Also</span>
-<span class="sd">        --------</span>
-<span class="sd">        to_directed: return a directed copy of the graph.</span>
-
-<span class="sd">        Examples</span>
-<span class="sd">        --------</span>
-<span class="sd">        &gt;&gt;&gt; G = nx.path_graph(4)  # or DiGraph, MultiGraph, MultiDiGraph, etc</span>
-<span class="sd">        &gt;&gt;&gt; H = G.copy()</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">as_view</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">nx</span><span class="o">.</span><span class="n">graphviews</span><span class="o">.</span><span class="n">MultiDiGraphView</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="n">G</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fresh_copy</span><span class="p">()</span>
-        <span class="n">G</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">)</span>
-        <span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
-        <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">datadict</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
-                         <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">nbrs</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adj</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-                         <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">keydict</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-                         <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">datadict</span> <span class="ow">in</span> <span class="n">keydict</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
-        <span class="k">return</span> <span class="n">G</span></div>
-
 <div class="viewcode-block" id="MultiDiGraph.to_undirected"><a class="viewcode-back" href="../../../reference/classes/generated/networkx.MultiDiGraph.to_undirected.html#networkx.MultiDiGraph.to_undirected">[docs]</a>    <span class="k">def</span> <span class="nf">to_undirected</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reciprocal</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">as_view</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return an undirected representation of the digraph.</span>
+        <span class="sd">&quot;&quot;&quot;Returns an undirected representation of the digraph.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1082,10 +992,11 @@
 <span class="sd">        &gt;&gt;&gt; list(G2.edges)</span>
 <span class="sd">        [(0, 1)]</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">graph_class</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_undirected_class</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">as_view</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">nx</span><span class="o">.</span><span class="n">graphviews</span><span class="o">.</span><span class="n">MultiGraphView</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">nx</span><span class="o">.</span><span class="n">graphviews</span><span class="o">.</span><span class="n">generic_graph_view</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graph_class</span><span class="p">)</span>
         <span class="c1"># deepcopy when not a view</span>
-        <span class="n">G</span> <span class="o">=</span> <span class="n">MultiGraph</span><span class="p">()</span>
+        <span class="n">G</span> <span class="o">=</span> <span class="n">graph_class</span><span class="p">()</span>
         <span class="n">G</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">))</span>
         <span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">d</span><span class="p">))</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
         <span class="k">if</span> <span class="n">reciprocal</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
@@ -1101,52 +1012,8 @@
                              <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">keydict</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
         <span class="k">return</span> <span class="n">G</span></div>
 
-<div class="viewcode-block" id="MultiDiGraph.subgraph"><a class="viewcode-back" href="../../../reference/classes/generated/networkx.MultiDiGraph.subgraph.html#networkx.MultiDiGraph.subgraph">[docs]</a>    <span class="k">def</span> <span class="nf">subgraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return a SubGraph view of the subgraph induced on nodes in `nodes`.</span>
-
-<span class="sd">        The induced subgraph of the graph contains the nodes in `nodes`</span>
-<span class="sd">        and the edges between those nodes.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        nodes : list, iterable</span>
-<span class="sd">            A container of nodes which will be iterated through once.</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        G : SubGraph View</span>
-<span class="sd">            A subgraph view of the graph. The graph structure cannot be</span>
-<span class="sd">            changed but node/edge attributes can and are shared with the</span>
-<span class="sd">            original graph.</span>
-
-<span class="sd">        Notes</span>
-<span class="sd">        -----</span>
-<span class="sd">        The graph, edge and node attributes are shared with the original graph.</span>
-<span class="sd">        Changes to the graph structure is ruled out by the view, but changes</span>
-<span class="sd">        to attributes are reflected in the original graph.</span>
-
-<span class="sd">        To create a subgraph with its own copy of the edge/node attributes use:</span>
-<span class="sd">        G.subgraph(nodes).copy()</span>
-
-<span class="sd">        For an inplace reduction of a graph to a subgraph you can remove nodes:</span>
-<span class="sd">        G.remove_nodes_from([n for n in G if n not in set(nodes)])</span>
-
-<span class="sd">        Examples</span>
-<span class="sd">        --------</span>
-<span class="sd">        &gt;&gt;&gt; G = nx.path_graph(4)  # or DiGraph, MultiGraph, MultiDiGraph, etc</span>
-<span class="sd">        &gt;&gt;&gt; H = G.subgraph([0, 1, 2])</span>
-<span class="sd">        &gt;&gt;&gt; list(H.edges)</span>
-<span class="sd">        [(0, 1), (1, 2)]</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">induced_nodes</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">show_nodes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nbunch_iter</span><span class="p">(</span><span class="n">nodes</span><span class="p">))</span>
-        <span class="n">SubGraph</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">graphviews</span><span class="o">.</span><span class="n">SubMultiDiGraph</span>
-        <span class="c1"># if already a subgraph, don&#39;t make a chain</span>
-        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_NODE_OK&#39;</span><span class="p">):</span>
-            <span class="k">return</span> <span class="n">SubGraph</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="p">,</span> <span class="n">induced_nodes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_EDGE_OK</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">SubGraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">induced_nodes</span><span class="p">)</span></div>
-
 <div class="viewcode-block" id="MultiDiGraph.reverse"><a class="viewcode-back" href="../../../reference/classes/generated/networkx.MultiDiGraph.reverse.html#networkx.MultiDiGraph.reverse">[docs]</a>    <span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return the reverse of the graph.</span>
+        <span class="sd">&quot;&quot;&quot;Returns the reverse of the graph.</span>
 
 <span class="sd">        The reverse is a graph with the same nodes and edges</span>
 <span class="sd">        but with the directions of the edges reversed.</span>
@@ -1159,19 +1026,17 @@
 <span class="sd">            the original graph.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">copy</span><span class="p">:</span>
-            <span class="n">H</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fresh_copy</span><span class="p">()</span>
+            <span class="n">H</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">()</span>
             <span class="n">H</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">))</span>
             <span class="n">H</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">d</span><span class="p">))</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
             <span class="n">H</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">((</span><span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">d</span><span class="p">))</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">d</span>
                              <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
             <span class="k">return</span> <span class="n">H</span>
-        <span class="k">return</span> <span class="n">nx</span><span class="o">.</span><span class="n">graphviews</span><span class="o">.</span><span class="n">MultiReverseView</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="n">nx</span><span class="o">.</span><span class="n">graphviews</span><span class="o">.</span><span class="n">reverse_view</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -1180,12 +1045,14 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2004-2018, NetworkX Developers.
-      Last updated on Jan 22, 2018.
+        &copy; Copyright 2004-2019, NetworkX Developers
+      <span class="lastupdated">
+        Last updated on Oct 17, 2019.
+      </span>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1198,38 +1065,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'2.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  false,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="../../../_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

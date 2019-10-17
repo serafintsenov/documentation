@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.readwrite.gml.literal_stringizer &mdash; NetworkX 2.1 documentation</title>
+  <title>networkx.readwrite.gml.literal_stringizer &mdash; NetworkX 2.5rc1.dev20191017033512 documentation</title>
   
 
   
@@ -17,47 +17,42 @@
   
 
   
-
-  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.1 documentation" href="../../../_static/opensearch.xml"/>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/copybutton.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within NetworkX 2.5rc1.dev20191017033512 documentation"
+          href="../../../_static/opensearch.xml"/>
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="NetworkX 2.1 documentation" href="../../../index.html"/>
-        <link rel="up" title="GML" href="../gml.html"/>
-        <link rel="next" title="Pickle" href="../gpickle.html"/>
-        <link rel="prev" title="networkx.readwrite.gml.literal_destringizer" href="networkx.readwrite.gml.literal_destringizer.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Pickle" href="../gpickle.html" />
+    <link rel="prev" title="networkx.readwrite.gml.literal_destringizer" href="networkx.readwrite.gml.literal_destringizer.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -71,7 +66,7 @@
             
             
               <div class="version">
-                2.1
+                2.5rc1.dev_20191017033512
               </div>
             
           
@@ -132,6 +127,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../drawing.html">Drawing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../randomness.html">Randomness</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../exceptions.html">Exceptions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../utils.html">Utilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
@@ -155,7 +151,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">NetworkX</a>
@@ -163,9 +159,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -215,39 +212,37 @@
 <h1>networkx.readwrite.gml.literal_stringizer<a class="headerlink" href="#networkx-readwrite-gml-literal-stringizer" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.readwrite.gml.literal_stringizer">
-<code class="descname">literal_stringizer</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/networkx/readwrite/gml.html#literal_stringizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.readwrite.gml.literal_stringizer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Convert a <code class="xref py py-obj docutils literal"><span class="pre">value</span></code> to a Python literal in GML representation.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>value</strong> (<em>object</em>) – The <code class="xref py py-obj docutils literal"><span class="pre">value</span></code> to be converted to GML representation.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>rep</strong> – A double-quoted Python literal representing value. Unprintable
-characters are replaced by XML character references.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/2/library/string.html#module-string" title="(in Python v2.7)">string</a></td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> – If <code class="xref py py-obj docutils literal"><span class="pre">value</span></code> cannot be converted to GML.</td>
-</tr>
-</tbody>
-</table>
+<code class="sig-name descname">literal_stringizer</code><span class="sig-paren">(</span><em class="sig-param">value</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/networkx/readwrite/gml.html#literal_stringizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.readwrite.gml.literal_stringizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a <code class="xref py py-obj docutils literal notranslate"><span class="pre">value</span></code> to a Python literal in GML representation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>object</em>) – The <code class="xref py py-obj docutils literal notranslate"><span class="pre">value</span></code> to be converted to GML representation.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>rep</strong> – A double-quoted Python literal representing value. Unprintable
+characters are replaced by XML character references.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>string</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If <code class="xref py py-obj docutils literal notranslate"><span class="pre">value</span></code> cannot be converted to GML.</p>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
-<p><a class="reference internal" href="#networkx.readwrite.gml.literal_stringizer" title="networkx.readwrite.gml.literal_stringizer"><code class="xref py py-obj docutils literal"><span class="pre">literal_stringizer</span></code></a> is largely the same as <a class="reference external" href="https://docs.python.org/2/library/functions.html#repr" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">repr</span></code></a> in terms of
-functionality but attempts prefix <a class="reference external" href="https://docs.python.org/2/library/functions.html#unicode" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">unicode</span></code></a> and <code class="xref py py-obj docutils literal"><span class="pre">bytes</span></code> literals with
-<code class="xref py py-obj docutils literal"><span class="pre">u</span></code> and <code class="xref py py-obj docutils literal"><span class="pre">b</span></code> to provide better interoperability of data generated by
+<p><a class="reference internal" href="#networkx.readwrite.gml.literal_stringizer" title="networkx.readwrite.gml.literal_stringizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">literal_stringizer</span></code></a> is largely the same as <a class="reference external" href="https://docs.python.org/2/library/functions.html#repr" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">repr</span></code></a> in terms of
+functionality but attempts prefix <a class="reference external" href="https://docs.python.org/2/library/functions.html#unicode" title="(in Python v2.7)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unicode</span></code></a> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">bytes</span></code> literals with
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">u</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">b</span></code> to provide better interoperability of data generated by
 Python 2 and Python 3.</p>
 <p>The original value can be recovered using the
-<a class="reference internal" href="networkx.readwrite.gml.literal_destringizer.html#networkx.readwrite.gml.literal_destringizer" title="networkx.readwrite.gml.literal_destringizer"><code class="xref py py-func docutils literal"><span class="pre">networkx.readwrite.gml.literal_destringizer()</span></code></a> function.</p>
+<a class="reference internal" href="networkx.readwrite.gml.literal_destringizer.html#networkx.readwrite.gml.literal_destringizer" title="networkx.readwrite.gml.literal_destringizer"><code class="xref py py-func docutils literal notranslate"><span class="pre">networkx.readwrite.gml.literal_destringizer()</span></code></a> function.</p>
 </dd></dl>
 
 </div>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -256,7 +251,7 @@ Python 2 and Python 3.</p>
         <a href="../gpickle.html" class="btn btn-neutral float-right" title="Pickle" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="networkx.readwrite.gml.literal_destringizer.html" class="btn btn-neutral" title="networkx.readwrite.gml.literal_destringizer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="networkx.readwrite.gml.literal_destringizer.html" class="btn btn-neutral float-left" title="networkx.readwrite.gml.literal_destringizer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -265,12 +260,14 @@ Python 2 and Python 3.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2004-2018, NetworkX Developers.
-      Last updated on Jan 22, 2018.
+        &copy; Copyright 2004-2019, NetworkX Developers
+      <span class="lastupdated">
+        Last updated on Oct 17, 2019.
+      </span>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -283,38 +280,15 @@ Python 2 and Python 3.</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'2.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  false,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="../../../_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

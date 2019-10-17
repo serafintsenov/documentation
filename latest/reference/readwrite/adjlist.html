@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Adjacency List &mdash; NetworkX 2.1 documentation</title>
+  <title>Adjacency List &mdash; NetworkX 2.5rc1.dev20191017033512 documentation</title>
   
 
   
@@ -17,47 +17,42 @@
   
 
   
-
-  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
   
     
-      <link rel="search" type="application/opensearchdescription+xml" title="Search within NetworkX 2.1 documentation" href="../../_static/opensearch.xml"/>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/copybutton.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within NetworkX 2.5rc1.dev20191017033512 documentation"
+          href="../../_static/opensearch.xml"/>
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../genindex.html"/>
-        <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="NetworkX 2.1 documentation" href="../../index.html"/>
-        <link rel="up" title="Reading and writing graphs" href="index.html"/>
-        <link rel="next" title="networkx.readwrite.adjlist.read_adjlist" href="generated/networkx.readwrite.adjlist.read_adjlist.html"/>
-        <link rel="prev" title="Reading and writing graphs" href="index.html"/> 
-
-  
-  <script src="../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="networkx.readwrite.adjlist.read_adjlist" href="generated/networkx.readwrite.adjlist.read_adjlist.html" />
+    <link rel="prev" title="Reading and writing graphs" href="index.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -71,7 +66,7 @@
             
             
               <div class="version">
-                2.1
+                2.5rc1.dev_20191017033512
               </div>
             
           
@@ -131,6 +126,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../drawing.html">Drawing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../randomness.html">Randomness</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../exceptions.html">Exceptions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../utils.html">Utilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
@@ -154,7 +150,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">NetworkX</a>
@@ -162,9 +158,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -224,29 +221,29 @@ are considered target nodes and are added to the graph along with an edge
 between the source node and target node.</p>
 <p>The graph with edges a-b, a-c, d-e can be represented as the following
 adjacency list (anything following the # in a line is a comment):</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="c1"># source target target</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="c1"># source target target</span>
 <span class="n">d</span> <span class="n">e</span>
 </pre></div>
 </div>
 </div>
 </div>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.readwrite.adjlist.read_adjlist.html#networkx.readwrite.adjlist.read_adjlist" title="networkx.readwrite.adjlist.read_adjlist"><code class="xref py py-obj docutils literal"><span class="pre">read_adjlist</span></code></a>(path[,&nbsp;comments,&nbsp;delimiter,&nbsp;…])</td>
-<td>Read graph in adjacency list format from path.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/networkx.readwrite.adjlist.read_adjlist.html#networkx.readwrite.adjlist.read_adjlist" title="networkx.readwrite.adjlist.read_adjlist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_adjlist</span></code></a>(path[, comments, delimiter, …])</p></td>
+<td><p>Read graph in adjacency list format from path.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.readwrite.adjlist.write_adjlist.html#networkx.readwrite.adjlist.write_adjlist" title="networkx.readwrite.adjlist.write_adjlist"><code class="xref py py-obj docutils literal"><span class="pre">write_adjlist</span></code></a>(G,&nbsp;path[,&nbsp;comments,&nbsp;…])</td>
-<td>Write graph G in single-line adjacency-list format to path.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/networkx.readwrite.adjlist.write_adjlist.html#networkx.readwrite.adjlist.write_adjlist" title="networkx.readwrite.adjlist.write_adjlist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write_adjlist</span></code></a>(G, path[, comments, …])</p></td>
+<td><p>Write graph G in single-line adjacency-list format to path.</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/networkx.readwrite.adjlist.parse_adjlist.html#networkx.readwrite.adjlist.parse_adjlist" title="networkx.readwrite.adjlist.parse_adjlist"><code class="xref py py-obj docutils literal"><span class="pre">parse_adjlist</span></code></a>(lines[,&nbsp;comments,&nbsp;delimiter,&nbsp;…])</td>
-<td>Parse lines of a graph adjacency list representation.</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/networkx.readwrite.adjlist.parse_adjlist.html#networkx.readwrite.adjlist.parse_adjlist" title="networkx.readwrite.adjlist.parse_adjlist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_adjlist</span></code></a>(lines[, comments, delimiter, …])</p></td>
+<td><p>Parse lines of a graph adjacency list representation.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/networkx.readwrite.adjlist.generate_adjlist.html#networkx.readwrite.adjlist.generate_adjlist" title="networkx.readwrite.adjlist.generate_adjlist"><code class="xref py py-obj docutils literal"><span class="pre">generate_adjlist</span></code></a>(G[,&nbsp;delimiter])</td>
-<td>Generate a single line of the graph G in adjacency list format.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/networkx.readwrite.adjlist.generate_adjlist.html#networkx.readwrite.adjlist.generate_adjlist" title="networkx.readwrite.adjlist.generate_adjlist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_adjlist</span></code></a>(G[, delimiter])</p></td>
+<td><p>Generate a single line of the graph G in adjacency list format.</p></td>
 </tr>
 </tbody>
 </table>
@@ -254,9 +251,7 @@ adjacency list (anything following the # in a line is a comment):</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -265,7 +260,7 @@ adjacency list (anything following the # in a line is a comment):</p>
         <a href="generated/networkx.readwrite.adjlist.read_adjlist.html" class="btn btn-neutral float-right" title="networkx.readwrite.adjlist.read_adjlist" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="Reading and writing graphs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Reading and writing graphs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -274,12 +269,14 @@ adjacency list (anything following the # in a line is a comment):</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2004-2018, NetworkX Developers.
-      Last updated on Jan 22, 2018.
+        &copy; Copyright 2004-2019, NetworkX Developers
+      <span class="lastupdated">
+        Last updated on Oct 17, 2019.
+      </span>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -292,38 +289,15 @@ adjacency list (anything following the # in a line is a comment):</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../',
-            VERSION:'2.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  false,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="../../_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>
