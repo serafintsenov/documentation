@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.utils.decorators &mdash; NetworkX 2.5rc1.dev20191017135321 documentation</title>
+  <title>networkx.utils.decorators &mdash; NetworkX 2.5rc1.dev20191018074935 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191017135321 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191018074935 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191017135321
+                2.5rc1.dev_20191018074935
               </div>
             
           
@@ -168,11 +168,7 @@
 <span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">defaultdict</span>
 <span class="kn">from</span> <span class="nn">os.path</span> <span class="k">import</span> <span class="n">splitext</span>
 <span class="kn">from</span> <span class="nn">contextlib</span> <span class="k">import</span> <span class="n">contextmanager</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">pathlib</span> <span class="k">import</span> <span class="n">Path</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="c1"># Use Path to indicate if pathlib exists (like numpy does)</span>
-    <span class="n">Path</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="k">import</span> <span class="n">Path</span>
 
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="kn">from</span> <span class="nn">decorator</span> <span class="k">import</span> <span class="n">decorator</span>
@@ -381,7 +377,7 @@
             <span class="c1"># path is already a file-like object</span>
             <span class="n">fobj</span> <span class="o">=</span> <span class="n">path</span>
             <span class="n">close_fobj</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="k">elif</span> <span class="n">Path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">Path</span><span class="p">):</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">Path</span><span class="p">):</span>
             <span class="c1"># path is a pathlib reference to a filename</span>
             <span class="n">fobj</span> <span class="o">=</span> <span class="n">_dispatch_dict</span><span class="p">[</span><span class="n">path</span><span class="o">.</span><span class="n">suffix</span><span class="p">](</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span>
             <span class="n">close_fobj</span> <span class="o">=</span> <span class="kc">True</span>
@@ -641,7 +637,7 @@
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Oct 17, 2019.
+        Last updated on Oct 18, 2019.
       </span>
 
     </p>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Javascript &mdash; NetworkX 2.5rc1.dev20191017135321 documentation</title>
+  <title>Javascript &mdash; NetworkX 2.5rc1.dev20191018074935 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191017135321 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191018074935 documentation"
           href="../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191017135321
+                2.5rc1.dev_20191018074935
               </div>
             
           
@@ -216,9 +216,11 @@
 <span class="c1"># Serve the file over http to allow for cross origin requests</span>
 <span class="n">app</span> <span class="o">=</span> <span class="n">flask</span><span class="o">.</span><span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">static_folder</span><span class="o">=</span><span class="s2">&quot;force&quot;</span><span class="p">)</span>
 
+
 <span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">static_proxy</span><span class="p">():</span>
     <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">send_static_file</span><span class="p">(</span><span class="s1">&#39;force.html&#39;</span><span class="p">)</span>
+
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Go to http://localhost:8000 to see the example</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">8000</span><span class="p">)</span>
@@ -258,7 +260,7 @@
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Oct 17, 2019.
+        Last updated on Oct 18, 2019.
       </span>
 
     </p>

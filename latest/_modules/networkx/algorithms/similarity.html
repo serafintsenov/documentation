@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.similarity &mdash; NetworkX 2.5rc1.dev20191017135321 documentation</title>
+  <title>networkx.algorithms.similarity &mdash; NetworkX 2.5rc1.dev20191018074935 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191017135321 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191018074935 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191017135321
+                2.5rc1.dev_20191018074935
               </div>
             
           
@@ -955,9 +955,7 @@
                 <span class="k">continue</span>
             <span class="n">other</span><span class="o">.</span><span class="n">append</span><span class="p">(((</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="n">Cv_ij</span><span class="p">,</span> <span class="n">xy</span><span class="p">,</span> <span class="n">Ce_xy</span><span class="p">,</span> <span class="n">Cv</span><span class="o">.</span><span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">localCe</span><span class="o">.</span><span class="n">ls</span><span class="p">))</span>
 
-        <span class="c1"># yield from</span>
-        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">ls</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">ls</span><span class="p">):</span>
-            <span class="k">yield</span> <span class="n">t</span>
+        <span class="k">yield from</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">ls</span> <span class="o">+</span> <span class="n">t</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">ls</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">get_edit_paths</span><span class="p">(</span><span class="n">matched_uv</span><span class="p">,</span> <span class="n">pending_u</span><span class="p">,</span> <span class="n">pending_v</span><span class="p">,</span> <span class="n">Cv</span><span class="p">,</span>
                        <span class="n">matched_gh</span><span class="p">,</span> <span class="n">pending_g</span><span class="p">,</span> <span class="n">pending_h</span><span class="p">,</span> <span class="n">Ce</span><span class="p">,</span> <span class="n">matched_cost</span><span class="p">):</span>
@@ -991,15 +989,15 @@
         <span class="c1">#debug_print(&#39;matched-cost:&#39;, matched_cost)</span>
         <span class="c1">#debug_print(&#39;pending-u:&#39;, pending_u)</span>
         <span class="c1">#debug_print(&#39;pending-v:&#39;, pending_v)</span>
-        <span class="c1">#debug_print(Cv.C)</span>
+        <span class="c1"># debug_print(Cv.C)</span>
         <span class="c1">#assert list(sorted(G1.nodes)) == list(sorted(list(u for u, v in matched_uv if u is not None) + pending_u))</span>
         <span class="c1">#assert list(sorted(G2.nodes)) == list(sorted(list(v for u, v in matched_uv if v is not None) + pending_v))</span>
         <span class="c1">#debug_print(&#39;pending-g:&#39;, pending_g)</span>
         <span class="c1">#debug_print(&#39;pending-h:&#39;, pending_h)</span>
-        <span class="c1">#debug_print(Ce.C)</span>
+        <span class="c1"># debug_print(Ce.C)</span>
         <span class="c1">#assert list(sorted(G1.edges)) == list(sorted(list(g for g, h in matched_gh if g is not None) + pending_g))</span>
         <span class="c1">#assert list(sorted(G2.edges)) == list(sorted(list(h for g, h in matched_gh if h is not None) + pending_h))</span>
-        <span class="c1">#debug_print()</span>
+        <span class="c1"># debug_print()</span>
 
         <span class="k">if</span> <span class="n">prune</span><span class="p">(</span><span class="n">matched_cost</span> <span class="o">+</span> <span class="n">Cv</span><span class="o">.</span><span class="n">ls</span> <span class="o">+</span> <span class="n">Ce</span><span class="o">.</span><span class="n">ls</span><span class="p">):</span>
             <span class="k">return</span>
@@ -1037,13 +1035,11 @@
                 <span class="n">H</span> <span class="o">=</span> <span class="nb">list</span><span class="p">((</span><span class="n">pending_h</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="k">if</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">pending_h</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span><span class="p">)</span>
                          <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">sortedy</span><span class="p">))</span>
 
-                <span class="c1"># yield from</span>
-                <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">get_edit_paths</span><span class="p">(</span><span class="n">matched_uv</span><span class="p">,</span> <span class="n">pending_u</span><span class="p">,</span> <span class="n">pending_v</span><span class="p">,</span>
-                                        <span class="n">Cv_ij</span><span class="p">,</span>
-                                        <span class="n">matched_gh</span><span class="p">,</span> <span class="n">pending_g</span><span class="p">,</span> <span class="n">pending_h</span><span class="p">,</span>
-                                        <span class="n">Ce_xy</span><span class="p">,</span>
-                                        <span class="n">matched_cost</span> <span class="o">+</span> <span class="n">edit_cost</span><span class="p">):</span>
-                    <span class="k">yield</span> <span class="n">t</span>
+                <span class="k">yield from</span> <span class="n">get_edit_paths</span><span class="p">(</span><span class="n">matched_uv</span><span class="p">,</span> <span class="n">pending_u</span><span class="p">,</span> <span class="n">pending_v</span><span class="p">,</span>
+                                          <span class="n">Cv_ij</span><span class="p">,</span>
+                                          <span class="n">matched_gh</span><span class="p">,</span> <span class="n">pending_g</span><span class="p">,</span> <span class="n">pending_h</span><span class="p">,</span>
+                                          <span class="n">Ce_xy</span><span class="p">,</span>
+                                          <span class="n">matched_cost</span> <span class="o">+</span> <span class="n">edit_cost</span><span class="p">)</span>
 
                 <span class="c1"># backtrack</span>
                 <span class="k">if</span> <span class="n">u</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -1100,7 +1096,7 @@
                                <span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
     <span class="n">Cv</span> <span class="o">=</span> <span class="n">make_CostMatrix</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
     <span class="c1">#debug_print(&#39;Cv: {} x {}&#39;.format(m, n))</span>
-    <span class="c1">#debug_print(Cv.C)</span>
+    <span class="c1"># debug_print(Cv.C)</span>
 
     <span class="n">pending_g</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">G1</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span>
     <span class="n">pending_h</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">G2</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span>
@@ -1140,8 +1136,8 @@
                                <span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
     <span class="n">Ce</span> <span class="o">=</span> <span class="n">make_CostMatrix</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
     <span class="c1">#debug_print(&#39;Ce: {} x {}&#39;.format(m, n))</span>
-    <span class="c1">#debug_print(Ce.C)</span>
-    <span class="c1">#debug_print()</span>
+    <span class="c1"># debug_print(Ce.C)</span>
+    <span class="c1"># debug_print()</span>
 
     <span class="k">class</span> <span class="nc">MaxCost</span><span class="p">:</span>
         <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1432,7 +1428,7 @@
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Oct 17, 2019.
+        Last updated on Oct 18, 2019.
       </span>
 
     </p>

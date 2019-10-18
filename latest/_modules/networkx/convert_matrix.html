@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.convert_matrix &mdash; NetworkX 2.5rc1.dev20191017135321 documentation</title>
+  <title>networkx.convert_matrix &mdash; NetworkX 2.5rc1.dev20191018074935 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191017135321 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191018074935 documentation"
           href="../../_static/opensearch.xml"/>
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191017135321
+                2.5rc1.dev_20191018074935
               </div>
             
           
@@ -288,8 +288,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
     <span class="n">M</span> <span class="o">=</span> <span class="n">to_numpy_array</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span>
-                        <span class="n">multigraph_weight</span><span class="o">=</span><span class="n">multigraph_weight</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">,</span>
-                        <span class="n">nonedge</span><span class="o">=</span><span class="n">nonedge</span><span class="p">)</span>
+                       <span class="n">multigraph_weight</span><span class="o">=</span><span class="n">multigraph_weight</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">,</span>
+                       <span class="n">nonedge</span><span class="o">=</span><span class="n">nonedge</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">nodelist</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">nodelist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">M</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">nodelist</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">nodelist</span><span class="p">)</span></div>
@@ -713,11 +713,7 @@
                            <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="nb">complex</span><span class="p">,</span>
                            <span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
                            <span class="s1">&#39;V&#39;</span><span class="p">:</span> <span class="s1">&#39;void&#39;</span><span class="p">}</span>
-    <span class="k">try</span><span class="p">:</span>  <span class="c1"># Python 3.x</span>
-        <span class="n">blurb</span> <span class="o">=</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">1245</span><span class="p">)</span>  <span class="c1"># just to trigger the exception</span>
-        <span class="n">kind_to_python_type</span><span class="p">[</span><span class="s1">&#39;U&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span>
-    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>  <span class="c1"># Python 2.7</span>
-        <span class="n">kind_to_python_type</span><span class="p">[</span><span class="s1">&#39;U&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">unicode</span>
+    <span class="n">kind_to_python_type</span><span class="p">[</span><span class="s1">&#39;U&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span>
     <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">empty_graph</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">create_using</span><span class="p">)</span>
     <span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">!=</span> <span class="n">m</span><span class="p">:</span>
@@ -1425,7 +1421,7 @@
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Oct 17, 2019.
+        Last updated on Oct 18, 2019.
       </span>
 
     </p>

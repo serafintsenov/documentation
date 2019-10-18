@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.traversal.beamsearch &mdash; NetworkX 2.5rc1.dev20191017135321 documentation</title>
+  <title>networkx.algorithms.traversal.beamsearch &mdash; NetworkX 2.5rc1.dev20191018074935 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191017135321 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191018074935 documentation"
           href="../../../../_static/opensearch.xml"/>
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191017135321
+                2.5rc1.dev_20191018074935
               </div>
             
           
@@ -257,9 +257,7 @@
         <span class="c1"># `bfs_edges(G, source)` but with a sorted enqueue step.</span>
         <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="n">value</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="n">width</span><span class="p">])</span>
 
-    <span class="c1"># TODO In Python 3.3+, this should be `yield from ...`</span>
-    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">generic_bfs_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">successors</span><span class="p">):</span>
-        <span class="k">yield</span> <span class="n">e</span></div>
+    <span class="k">yield from</span> <span class="n">generic_bfs_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">successors</span><span class="p">)</span></div>
 </pre></div>
 
            </div>
@@ -274,7 +272,7 @@
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Oct 17, 2019.
+        Last updated on Oct 18, 2019.
       </span>
 
     </p>
