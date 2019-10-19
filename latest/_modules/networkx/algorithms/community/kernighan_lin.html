@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.community.kernighan_lin &mdash; NetworkX 2.5rc1.dev20191019020531 documentation</title>
+  <title>networkx.algorithms.community.kernighan_lin &mdash; NetworkX 2.5rc1.dev20191019051222 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191019020531 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191019051222 documentation"
           href="../../../../_static/opensearch.xml"/>
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191019020531
+                2.5rc1.dev_20191019051222
               </div>
             
           
@@ -177,7 +177,7 @@
 <span class="sd">&quot;&quot;&quot;Functions for computing the Kernighan–Lin bipartition algorithm.&quot;&quot;&quot;</span>
 
 <span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">defaultdict</span>
-<span class="kn">from</span> <span class="nn">itertools</span> <span class="k">import</span> <span class="n">islice</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="k">import</span> <span class="n">accumulate</span><span class="p">,</span> <span class="n">islice</span>
 <span class="kn">from</span> <span class="nn">operator</span> <span class="k">import</span> <span class="n">itemgetter</span>
 
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
@@ -321,7 +321,7 @@
         <span class="c1"># `gains` is a list of triples of the form (g, u, v) for each</span>
         <span class="c1"># node pair (u, v), where `g` is the gain of that node pair.</span>
         <span class="n">gains</span> <span class="o">=</span> <span class="n">_kernighan_lin_pass</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
-        <span class="n">csum</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">accumulate</span><span class="p">(</span><span class="n">g</span> <span class="k">for</span> <span class="n">g</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">gains</span><span class="p">))</span>
+        <span class="n">csum</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">accumulate</span><span class="p">(</span><span class="n">g</span> <span class="k">for</span> <span class="n">g</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">gains</span><span class="p">))</span>
         <span class="n">max_cgain</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">csum</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">max_cgain</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">break</span>
