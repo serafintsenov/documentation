@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.isomorphism.ismags &mdash; NetworkX 2.5rc1.dev20191018074935 documentation</title>
+  <title>networkx.algorithms.isomorphism.ismags &mdash; NetworkX 2.5rc1.dev20191019020531 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191018074935 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191019020531 documentation"
           href="../../../../_static/opensearch.xml"/>
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191018074935
+                2.5rc1.dev_20191019020531
               </div>
             
           
@@ -762,9 +762,9 @@
         <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">node_partitions</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
         <span class="n">node_partitions</span> <span class="o">=</span> <span class="n">node_partitions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">permutations</span><span class="p">,</span> <span class="n">cosets</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_ordered_pair_partitions</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span>
-                                                 <span class="n">node_partitions</span><span class="p">,</span>
-                                                 <span class="n">node_partitions</span><span class="p">,</span>
-                                                 <span class="n">edge_colors</span><span class="p">)</span>
+                                                                     <span class="n">node_partitions</span><span class="p">,</span>
+                                                                     <span class="n">node_partitions</span><span class="p">,</span>
+                                                                     <span class="n">edge_colors</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_symmetry_cache</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_symmetry_cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">permutations</span><span class="p">,</span> <span class="n">cosets</span>
         <span class="k">return</span> <span class="n">permutations</span><span class="p">,</span> <span class="n">cosets</span></div>
@@ -959,7 +959,7 @@
 
         <span class="c1"># Note, we modify candidates here. Doesn&#39;t seem to affect results, but</span>
         <span class="c1"># remember this.</span>
-        <span class="c1">#candidates = candidates.copy()</span>
+        <span class="c1"># candidates = candidates.copy()</span>
         <span class="n">sgn_candidates</span> <span class="o">=</span> <span class="n">intersect</span><span class="p">(</span><span class="n">candidates</span><span class="p">[</span><span class="n">sgn</span><span class="p">])</span>
         <span class="n">candidates</span><span class="p">[</span><span class="n">sgn</span><span class="p">]</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">([</span><span class="n">sgn_candidates</span><span class="p">])</span>
         <span class="k">for</span> <span class="n">gn</span> <span class="ow">in</span> <span class="n">sgn_candidates</span><span class="p">:</span>
@@ -1017,7 +1017,7 @@
                                        <span class="n">to_be_mapped</span><span class="o">=</span><span class="n">to_be_mapped</span><span class="p">)</span>
             <span class="c1"># Unmap sgn-gn. Strictly not necessary since it&#39;d get overwritten</span>
             <span class="c1"># when making a new mapping for sgn.</span>
-            <span class="c1">#del mapping[sgn]</span>
+            <span class="c1"># del mapping[sgn]</span>
 
     <span class="k">def</span> <span class="nf">_largest_common_subgraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">candidates</span><span class="p">,</span> <span class="n">constraints</span><span class="p">,</span>
                                  <span class="n">to_be_mapped</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -1232,11 +1232,11 @@
                 <span class="n">new_top_partitions</span><span class="p">,</span> <span class="n">new_bottom_partitions</span> <span class="o">=</span> <span class="n">opp</span>
 
                 <span class="n">new_perms</span><span class="p">,</span> <span class="n">new_cosets</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_ordered_pair_partitions</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span>
-                                                          <span class="n">new_top_partitions</span><span class="p">,</span>
-                                                          <span class="n">new_bottom_partitions</span><span class="p">,</span>
-                                                          <span class="n">edge_colors</span><span class="p">,</span>
-                                                          <span class="n">orbits</span><span class="p">,</span>
-                                                          <span class="n">cosets</span><span class="p">)</span>
+                                                                              <span class="n">new_top_partitions</span><span class="p">,</span>
+                                                                              <span class="n">new_bottom_partitions</span><span class="p">,</span>
+                                                                              <span class="n">edge_colors</span><span class="p">,</span>
+                                                                              <span class="n">orbits</span><span class="p">,</span>
+                                                                              <span class="n">cosets</span><span class="p">)</span>
                 <span class="c1"># COMBINATION</span>
                 <span class="n">permutations</span> <span class="o">+=</span> <span class="n">new_perms</span>
                 <span class="n">cosets</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">new_cosets</span><span class="p">)</span>
@@ -1266,7 +1266,7 @@
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Oct 18, 2019.
+        Last updated on Oct 19, 2019.
       </span>
 
     </p>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.readwrite.nx_yaml &mdash; NetworkX 2.5rc1.dev20191018074935 documentation</title>
+  <title>networkx.readwrite.nx_yaml &mdash; NetworkX 2.5rc1.dev20191019020531 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191018074935 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191019020531 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191018074935
+                2.5rc1.dev_20191019020531
               </div>
             
           
@@ -168,7 +168,7 @@
 <span class="sd">****</span>
 <span class="sd">Read and write NetworkX graphs in YAML format.</span>
 
-<span class="sd">&quot;YAML is a data serialization format designed for human readability </span>
+<span class="sd">&quot;YAML is a data serialization format designed for human readability</span>
 <span class="sd">and interaction with scripting languages.&quot;</span>
 <span class="sd">See http://www.yaml.org for documentation.</span>
 
@@ -193,9 +193,9 @@
 
 <div class="viewcode-block" id="write_yaml"><a class="viewcode-back" href="../../../reference/readwrite/generated/networkx.readwrite.nx_yaml.write_yaml.html#networkx.readwrite.nx_yaml.write_yaml">[docs]</a><span class="nd">@open_file</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">write_yaml</span><span class="p">(</span><span class="n">G_to_be_yaml</span><span class="p">,</span> <span class="n">path_for_yaml_output</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Write graph G in YAML format to path. </span>
+    <span class="sd">&quot;&quot;&quot;Write graph G in YAML format to path.</span>
 
-<span class="sd">    YAML is a data serialization format designed for human readability </span>
+<span class="sd">    YAML is a data serialization format designed for human readability</span>
 <span class="sd">    and interaction with scripting languages [1]_.</span>
 
 <span class="sd">    Parameters</span>
@@ -203,7 +203,7 @@
 <span class="sd">    G : graph</span>
 <span class="sd">       A NetworkX graph</span>
 <span class="sd">    path : file or string</span>
-<span class="sd">       File or filename to write. </span>
+<span class="sd">       File or filename to write.</span>
 <span class="sd">       Filenames ending in .gz or .bz2 will be compressed.</span>
 
 <span class="sd">    Notes</span>
@@ -231,13 +231,13 @@
 <span class="k">def</span> <span class="nf">read_yaml</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Read graph in YAML format from path.</span>
 
-<span class="sd">    YAML is a data serialization format designed for human readability </span>
+<span class="sd">    YAML is a data serialization format designed for human readability</span>
 <span class="sd">    and interaction with scripting languages [1]_.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    path : file or string</span>
-<span class="sd">       File or filename to read.  Filenames ending in .gz or .bz2 </span>
+<span class="sd">       File or filename to read.  Filenames ending in .gz or .bz2</span>
 <span class="sd">       will be uncompressed.</span>
 
 <span class="sd">    Returns</span>
@@ -266,13 +266,10 @@
 
 <span class="c1"># fixture for pytest</span>
 <span class="k">def</span> <span class="nf">setup_module</span><span class="p">(</span><span class="n">module</span><span class="p">):</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">yaml</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">pytest</span> <span class="k">import</span> <span class="n">skip</span>
-        <span class="n">skip</span><span class="p">(</span><span class="s2">&quot;PyYAML not available&quot;</span><span class="p">,</span> <span class="n">allow_module_level</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="kn">import</span> <span class="nn">pytest</span>
+    <span class="n">yaml</span> <span class="o">=</span> <span class="n">pytest</span><span class="o">.</span><span class="n">importorskip</span><span class="p">(</span><span class="s1">&#39;yaml&#39;</span><span class="p">)</span>
 
-<span class="c1"># fixture for pytest</span>
+
 <span class="k">def</span> <span class="nf">teardown_module</span><span class="p">(</span><span class="n">module</span><span class="p">):</span>
     <span class="kn">import</span> <span class="nn">os</span>
     <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="s1">&#39;test.yaml&#39;</span><span class="p">)</span>
@@ -290,7 +287,7 @@
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Oct 18, 2019.
+        Last updated on Oct 19, 2019.
       </span>
 
     </p>

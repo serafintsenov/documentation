@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.approximation.connectivity &mdash; NetworkX 2.5rc1.dev20191018074935 documentation</title>
+  <title>networkx.algorithms.approximation.connectivity &mdash; NetworkX 2.5rc1.dev20191019020531 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191018074935 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191019020531 documentation"
           href="../../../../_static/opensearch.xml"/>
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191018074935
+                2.5rc1.dev_20191019020531
               </div>
             
           
@@ -185,14 +185,14 @@
 <div class="viewcode-block" id="local_node_connectivity"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.approximation.connectivity.local_node_connectivity.html#networkx.algorithms.approximation.connectivity.local_node_connectivity">[docs]</a><span class="k">def</span> <span class="nf">local_node_connectivity</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Compute node connectivity between source and target.</span>
 
-<span class="sd">    Pairwise or local node connectivity between two distinct and nonadjacent </span>
-<span class="sd">    nodes is the minimum number of nodes that must be removed (minimum </span>
-<span class="sd">    separating cutset) to disconnect them. By Menger&#39;s theorem, this is equal </span>
+<span class="sd">    Pairwise or local node connectivity between two distinct and nonadjacent</span>
+<span class="sd">    nodes is the minimum number of nodes that must be removed (minimum</span>
+<span class="sd">    separating cutset) to disconnect them. By Menger&#39;s theorem, this is equal</span>
 <span class="sd">    to the number of node independent paths (paths that share no nodes other</span>
 <span class="sd">    than source and target). Which is what we compute in this function.</span>
 
 <span class="sd">    This algorithm is a fast approximation that gives an strict lower</span>
-<span class="sd">    bound on the actual number of node independent paths between two nodes [1]_. </span>
+<span class="sd">    bound on the actual number of node independent paths between two nodes [1]_.</span>
 <span class="sd">    It works for both directed and undirected graphs.</span>
 
 <span class="sd">    Parameters</span>
@@ -224,17 +224,17 @@
 <span class="sd">    &gt;&gt;&gt; approx.local_node_connectivity(G, 0, 5)</span>
 <span class="sd">    4</span>
 
-<span class="sd">    Notes </span>
+<span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-<span class="sd">    This algorithm [1]_ finds node independents paths between two nodes by </span>
-<span class="sd">    computing their shortest path using BFS, marking the nodes of the path </span>
-<span class="sd">    found as &#39;used&#39; and then searching other shortest paths excluding the </span>
-<span class="sd">    nodes marked as used until no more paths exist. It is not exact because </span>
+<span class="sd">    This algorithm [1]_ finds node independents paths between two nodes by</span>
+<span class="sd">    computing their shortest path using BFS, marking the nodes of the path</span>
+<span class="sd">    found as &#39;used&#39; and then searching other shortest paths excluding the</span>
+<span class="sd">    nodes marked as used until no more paths exist. It is not exact because</span>
 <span class="sd">    a shortest path could use nodes that, if the path were longer, may belong</span>
 <span class="sd">    to two different node independent paths. Thus it only guarantees an</span>
 <span class="sd">    strict lower bound on node connectivity.</span>
 
-<span class="sd">    Note that the authors propose a further refinement, losing accuracy and </span>
+<span class="sd">    Note that the authors propose a further refinement, losing accuracy and</span>
 <span class="sd">    gaining speed, which is not implemented yet.</span>
 
 <span class="sd">    See also</span>
@@ -244,7 +244,7 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] White, Douglas R., and Mark Newman. 2001 A Fast Algorithm for </span>
+<span class="sd">    .. [1] White, Douglas R., and Mark Newman. 2001 A Fast Algorithm for</span>
 <span class="sd">        Node-Independent Paths. Santa Fe Institute Working Paper #01-07-035</span>
 <span class="sd">        http://eclectic.ss.uci.edu/~drwhite/working.pdf</span>
 
@@ -282,15 +282,15 @@
 
 <span class="sd">    Node connectivity is equal to the minimum number of nodes that</span>
 <span class="sd">    must be removed to disconnect G or render it trivial. By Menger&#39;s theorem,</span>
-<span class="sd">    this is equal to the number of node independent paths (paths that </span>
+<span class="sd">    this is equal to the number of node independent paths (paths that</span>
 <span class="sd">    share no nodes other than source and target).</span>
 
-<span class="sd">    If source and target nodes are provided, this function returns the </span>
-<span class="sd">    local node connectivity: the minimum number of nodes that must be </span>
+<span class="sd">    If source and target nodes are provided, this function returns the</span>
+<span class="sd">    local node connectivity: the minimum number of nodes that must be</span>
 <span class="sd">    removed to break all paths from source to target in G.</span>
 
 <span class="sd">    This algorithm is based on a fast approximation that gives an strict lower</span>
-<span class="sd">    bound on the actual number of node independent paths between two nodes [1]_. </span>
+<span class="sd">    bound on the actual number of node independent paths between two nodes [1]_.</span>
 <span class="sd">    It works for both directed and undirected graphs.</span>
 
 <span class="sd">    Parameters</span>
@@ -312,7 +312,7 @@
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; # Platonic octahedral graph is 4-node-connected </span>
+<span class="sd">    &gt;&gt;&gt; # Platonic octahedral graph is 4-node-connected</span>
 <span class="sd">    &gt;&gt;&gt; from networkx.algorithms import approximation as approx</span>
 <span class="sd">    &gt;&gt;&gt; G = nx.octahedral_graph()</span>
 <span class="sd">    &gt;&gt;&gt; approx.node_connectivity(G)</span>
@@ -320,10 +320,10 @@
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-<span class="sd">    This algorithm [1]_ finds node independents paths between two nodes by </span>
-<span class="sd">    computing their shortest path using BFS, marking the nodes of the path </span>
-<span class="sd">    found as &#39;used&#39; and then searching other shortest paths excluding the </span>
-<span class="sd">    nodes marked as used until no more paths exist. It is not exact because </span>
+<span class="sd">    This algorithm [1]_ finds node independents paths between two nodes by</span>
+<span class="sd">    computing their shortest path using BFS, marking the nodes of the path</span>
+<span class="sd">    found as &#39;used&#39; and then searching other shortest paths excluding the</span>
+<span class="sd">    nodes marked as used until no more paths exist. It is not exact because</span>
 <span class="sd">    a shortest path could use nodes that, if the path were longer, may belong</span>
 <span class="sd">    to two different node independent paths. Thus it only guarantees an</span>
 <span class="sd">    strict lower bound on node connectivity.</span>
@@ -335,7 +335,7 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] White, Douglas R., and Mark Newman. 2001 A Fast Algorithm for </span>
+<span class="sd">    .. [1] White, Douglas R., and Mark Newman. 2001 A Fast Algorithm for</span>
 <span class="sd">        Node-Independent Paths. Santa Fe Institute Working Paper #01-07-035</span>
 <span class="sd">        http://eclectic.ss.uci.edu/~drwhite/working.pdf</span>
 
@@ -384,14 +384,14 @@
 <div class="viewcode-block" id="all_pairs_node_connectivity"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.approximation.connectivity.all_pairs_node_connectivity.html#networkx.algorithms.approximation.connectivity.all_pairs_node_connectivity">[docs]</a><span class="k">def</span> <span class="nf">all_pairs_node_connectivity</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Compute node connectivity between all pairs of nodes.</span>
 
-<span class="sd">    Pairwise or local node connectivity between two distinct and nonadjacent </span>
-<span class="sd">    nodes is the minimum number of nodes that must be removed (minimum </span>
-<span class="sd">    separating cutset) to disconnect them. By Menger&#39;s theorem, this is equal </span>
+<span class="sd">    Pairwise or local node connectivity between two distinct and nonadjacent</span>
+<span class="sd">    nodes is the minimum number of nodes that must be removed (minimum</span>
+<span class="sd">    separating cutset) to disconnect them. By Menger&#39;s theorem, this is equal</span>
 <span class="sd">    to the number of node independent paths (paths that share no nodes other</span>
 <span class="sd">    than source and target). Which is what we compute in this function.</span>
 
 <span class="sd">    This algorithm is a fast approximation that gives an strict lower</span>
-<span class="sd">    bound on the actual number of node independent paths between two nodes [1]_. </span>
+<span class="sd">    bound on the actual number of node independent paths between two nodes [1]_.</span>
 <span class="sd">    It works for both directed and undirected graphs.</span>
 
 
@@ -420,7 +420,7 @@
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] White, Douglas R., and Mark Newman. 2001 A Fast Algorithm for </span>
+<span class="sd">    .. [1] White, Douglas R., and Mark Newman. 2001 A Fast Algorithm for</span>
 <span class="sd">        Node-Independent Paths. Santa Fe Institute Working Paper #01-07-035</span>
 <span class="sd">        http://eclectic.ss.uci.edu/~drwhite/working.pdf</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -478,13 +478,13 @@
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
 <span class="sd">    This function and its helper are originally from</span>
-<span class="sd">    networkx.algorithms.shortest_paths.unweighted and are modified to </span>
-<span class="sd">    accept the extra parameter &#39;exclude&#39;, which is a container for nodes </span>
+<span class="sd">    networkx.algorithms.shortest_paths.unweighted and are modified to</span>
+<span class="sd">    accept the extra parameter &#39;exclude&#39;, which is a container for nodes</span>
 <span class="sd">    already used in other paths that should be ignored.</span>
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
-<span class="sd">    .. [1] White, Douglas R., and Mark Newman. 2001 A Fast Algorithm for </span>
+<span class="sd">    .. [1] White, Douglas R., and Mark Newman. 2001 A Fast Algorithm for</span>
 <span class="sd">        Node-Independent Paths. Santa Fe Institute Working Paper #01-07-035</span>
 <span class="sd">        http://eclectic.ss.uci.edu/~drwhite/working.pdf</span>
 
@@ -581,7 +581,7 @@
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Oct 18, 2019.
+        Last updated on Oct 19, 2019.
       </span>
 
     </p>

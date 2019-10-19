@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.connectivity.disjoint_paths &mdash; NetworkX 2.5rc1.dev20191018074935 documentation</title>
+  <title>networkx.algorithms.connectivity.disjoint_paths &mdash; NetworkX 2.5rc1.dev20191019020531 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191018074935 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191019020531 documentation"
           href="../../../../_static/opensearch.xml"/>
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191018074935
+                2.5rc1.dev_20191019020531
               </div>
             
           
@@ -182,7 +182,6 @@
 <span class="kn">from</span> <span class="nn">networkx.algorithms.flow</span> <span class="k">import</span> <span class="n">shortest_augmenting_path</span>
 <span class="n">default_flow_func</span> <span class="o">=</span> <span class="n">edmonds_karp</span>
 <span class="c1"># Functions to build auxiliary data structures.</span>
-<span class="kn">from</span> <span class="nn">networkx.algorithms.flow</span> <span class="k">import</span> <span class="n">build_residual_network</span>
 <span class="kn">from</span> <span class="nn">.utils</span> <span class="k">import</span> <span class="n">build_auxiliary_node_connectivity</span>
 <span class="kn">from</span> <span class="nn">.utils</span> <span class="k">import</span> <span class="n">build_auxiliary_edge_connectivity</span>
 
@@ -214,17 +213,17 @@
 
 <span class="sd">    flow_func : function</span>
 <span class="sd">        A function for computing the maximum flow among a pair of nodes.</span>
-<span class="sd">        The function has to accept at least three parameters: a Digraph, </span>
-<span class="sd">        a source node, and a target node. And return a residual network </span>
-<span class="sd">        that follows NetworkX conventions (see :meth:`maximum_flow` for </span>
-<span class="sd">        details). If flow_func is None, the default maximum flow function </span>
+<span class="sd">        The function has to accept at least three parameters: a Digraph,</span>
+<span class="sd">        a source node, and a target node. And return a residual network</span>
+<span class="sd">        that follows NetworkX conventions (see :meth:`maximum_flow` for</span>
+<span class="sd">        details). If flow_func is None, the default maximum flow function</span>
 <span class="sd">        (:meth:`edmonds_karp`) is used. The choice of the default function</span>
 <span class="sd">        may change from version to version and should not be relied on.</span>
 <span class="sd">        Default value: None.</span>
 
 <span class="sd">    cutoff : int</span>
 <span class="sd">        Maximum number of paths to yield. Some of the maximum flow</span>
-<span class="sd">        algorithms, such as :meth:`edmonds_karp` (the default) and </span>
+<span class="sd">        algorithms, such as :meth:`edmonds_karp` (the default) and</span>
 <span class="sd">        :meth:`shortest_augmenting_path` support the cutoff parameter,</span>
 <span class="sd">        and will terminate when the flow value reaches or exceeds the</span>
 <span class="sd">        cutoff. Other algorithms will ignore this parameter.</span>
@@ -275,16 +274,16 @@
 
 <span class="sd">    If you need to compute edge disjoint paths on several pairs of</span>
 <span class="sd">    nodes in the same graph, it is recommended that you reuse the</span>
-<span class="sd">    data structures that NetworkX uses in the computation: the </span>
+<span class="sd">    data structures that NetworkX uses in the computation: the</span>
 <span class="sd">    auxiliary digraph for edge connectivity, and the residual</span>
 <span class="sd">    network for the underlying maximum flow computation.</span>
 
 <span class="sd">    Example of how to compute edge disjoint paths among all pairs of</span>
-<span class="sd">    nodes of the platonic icosahedral graph reusing the data </span>
+<span class="sd">    nodes of the platonic icosahedral graph reusing the data</span>
 <span class="sd">    structures.</span>
 
 <span class="sd">    &gt;&gt;&gt; import itertools</span>
-<span class="sd">    &gt;&gt;&gt; # You also have to explicitly import the function for </span>
+<span class="sd">    &gt;&gt;&gt; # You also have to explicitly import the function for</span>
 <span class="sd">    &gt;&gt;&gt; # building the auxiliary digraph from the connectivity package</span>
 <span class="sd">    &gt;&gt;&gt; from networkx.algorithms.connectivity import (</span>
 <span class="sd">    ...     build_auxiliary_edge_connectivity)</span>
@@ -474,7 +473,7 @@
 <span class="sd">    Example of how to compute node disjoint paths reusing the data</span>
 <span class="sd">    structures:</span>
 
-<span class="sd">    &gt;&gt;&gt; # You also have to explicitly import the function for </span>
+<span class="sd">    &gt;&gt;&gt; # You also have to explicitly import the function for</span>
 <span class="sd">    &gt;&gt;&gt; # building the auxiliary digraph from the connectivity package</span>
 <span class="sd">    &gt;&gt;&gt; from networkx.algorithms.connectivity import (</span>
 <span class="sd">    ...     build_auxiliary_node_connectivity)</span>
@@ -580,7 +579,7 @@
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Oct 18, 2019.
+        Last updated on Oct 19, 2019.
       </span>
 
     </p>

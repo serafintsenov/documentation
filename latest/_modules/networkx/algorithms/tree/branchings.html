@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.tree.branchings &mdash; NetworkX 2.5rc1.dev20191018074935 documentation</title>
+  <title>networkx.algorithms.tree.branchings &mdash; NetworkX 2.5rc1.dev20191019020531 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191018074935 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191019020531 documentation"
           href="../../../../_static/opensearch.xml"/>
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191018074935
+                2.5rc1.dev_20191019020531
               </div>
             
           
@@ -174,7 +174,7 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="c1"># TODO: Implement method from Gabow, Galil, Spence and Tarjan:</span>
 <span class="c1">#</span>
-<span class="c1">#@article{</span>
+<span class="c1"># @article{</span>
 <span class="c1">#    year={1986},</span>
 <span class="c1">#    issn={0209-9683},</span>
 <span class="c1">#    journal={Combinatorica},</span>
@@ -190,17 +190,17 @@
 <span class="c1">#        Robert E.},</span>
 <span class="c1">#    pages={109-122},</span>
 <span class="c1">#    language={English}</span>
-<span class="c1">#}</span>
+<span class="c1"># }</span>
 
 
 <span class="kn">import</span> <span class="nn">string</span>
-<span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">from</span> <span class="nn">operator</span> <span class="k">import</span> <span class="n">itemgetter</span>
 
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="kn">from</span> <span class="nn">networkx.utils</span> <span class="k">import</span> <span class="n">py_random_state</span>
 
-<span class="kn">from</span> <span class="nn">.recognition</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">.recognition</span> <span class="k">import</span> <span class="n">is_arborescence</span><span class="p">,</span> <span class="n">is_branching</span>
+
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">&#39;branching_weight&#39;</span><span class="p">,</span> <span class="s1">&#39;greedy_branching&#39;</span><span class="p">,</span>
@@ -435,7 +435,6 @@
         <span class="c1"># sure that our node names do not conflict with the real node names.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">template</span> <span class="o">=</span> <span class="n">random_string</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;_</span><span class="si">{0}</span><span class="s1">&#39;</span></div>
 
-
     <span class="k">def</span> <span class="nf">_init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">default</span><span class="p">,</span> <span class="n">kind</span><span class="p">,</span> <span class="n">style</span><span class="p">,</span> <span class="n">preserve_attrs</span><span class="p">,</span> <span class="n">seed</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">kind</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">KINDS</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXException</span><span class="p">(</span><span class="s2">&quot;Unknown value for `kind`.&quot;</span><span class="p">)</span>
@@ -585,16 +584,16 @@
                 <span class="k">break</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">D</span><span class="p">:</span>
-                    <span class="c1">#print(&quot;v in D&quot;, v)</span>
+                    <span class="c1"># print(&quot;v in D&quot;, v)</span>
                     <span class="k">continue</span>
 
             <span class="c1"># Put v into bucket D^i.</span>
-            <span class="c1">#print(&quot;Adding node {0}&quot;.format(v))</span>
+            <span class="c1"># print(&quot;Adding node {0}&quot;.format(v))</span>
             <span class="n">D</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
             <span class="n">B</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 
             <span class="n">edge</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="n">desired_edge</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
-            <span class="c1">#print(&quot;Max edge is {0!r}&quot;.format(edge))</span>
+            <span class="c1"># print(&quot;Max edge is {0!r}&quot;.format(edge))</span>
             <span class="k">if</span> <span class="n">edge</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="c1"># If there is no edge, continue with a new node at (I1).</span>
                 <span class="k">continue</span>
@@ -622,15 +621,15 @@
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">acceptable</span> <span class="o">=</span> <span class="kc">True</span>
 
-                <span class="c1">#print(&quot;Edge is acceptable: {0}&quot;.format(acceptable))</span>
+                <span class="c1"># print(&quot;Edge is acceptable: {0}&quot;.format(acceptable))</span>
                 <span class="k">if</span> <span class="n">acceptable</span><span class="p">:</span>
                     <span class="n">dd</span> <span class="o">=</span> <span class="p">{</span><span class="n">attr</span><span class="p">:</span> <span class="n">weight</span><span class="p">}</span>
                     <span class="n">B</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">edge</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="o">**</span><span class="n">dd</span><span class="p">)</span>
                     <span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">][</span><span class="n">edge</span><span class="p">[</span><span class="mi">2</span><span class="p">]][</span><span class="bp">self</span><span class="o">.</span><span class="n">candidate_attr</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
                     <span class="n">uf</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
                     <span class="k">if</span> <span class="n">Q_edges</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                        <span class="c1">#print(&quot;Edge introduced a simple cycle:&quot;)</span>
-                        <span class="c1">#print(Q_nodes, Q_edges)</span>
+                        <span class="c1"># print(&quot;Edge introduced a simple cycle:&quot;)</span>
+                        <span class="c1"># print(Q_nodes, Q_edges)</span>
 
                         <span class="c1"># Move to method</span>
                         <span class="c1"># Previous meaning of u and v is no longer important.</span>
@@ -660,7 +659,7 @@
                         <span class="c1"># Now we mutate it.</span>
                         <span class="n">new_node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">level</span><span class="p">)</span>
 
-                        <span class="c1">#print(minweight, minedge, Q_incoming_weight)</span>
+                        <span class="c1"># print(minweight, minedge, Q_incoming_weight)</span>
 
                         <span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">new_node</span><span class="p">)</span>
                         <span class="n">new_edges</span> <span class="o">=</span> <span class="p">[]</span>
@@ -713,7 +712,7 @@
 
 <span class="sd">            &quot;&quot;&quot;</span>
             <span class="k">if</span> <span class="n">u</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
-                <span class="c1">#print(G.nodes(), u)</span>
+                <span class="c1"># print(G.nodes(), u)</span>
                 <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0!r}</span><span class="s1"> not in G&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">u</span><span class="p">))</span>
             <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">u</span><span class="p">]:</span>
                 <span class="k">for</span> <span class="n">edgekey</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]:</span>
@@ -739,8 +738,8 @@
             <span class="c1"># at level i+1.</span>
             <span class="n">circuit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">circuits</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">level</span><span class="p">]</span>
             <span class="c1"># print</span>
-            <span class="c1">#print(merged_node, self.level, circuit)</span>
-            <span class="c1">#print(&quot;before&quot;, edges)</span>
+            <span class="c1"># print(merged_node, self.level, circuit)</span>
+            <span class="c1"># print(&quot;before&quot;, edges)</span>
             <span class="c1"># Note, we ask if it is a root in the full graph, not the branching.</span>
             <span class="c1"># The branching alone doesn&#39;t have all the edges.</span>
 
@@ -760,8 +759,8 @@
                 <span class="c1"># transitions to some corresponding node at the current level.</span>
                 <span class="c1"># We want to remove an edge from the cycle that transitions</span>
                 <span class="c1"># into the corresponding node.</span>
-                <span class="c1">#print(&quot;edgekey is: &quot;, edgekey)</span>
-                <span class="c1">#print(&quot;circuit is: &quot;, circuit)</span>
+                <span class="c1"># print(&quot;edgekey is: &quot;, edgekey)</span>
+                <span class="c1"># print(&quot;circuit is: &quot;, circuit)</span>
                 <span class="c1"># The branching at level i</span>
                 <span class="n">G</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">graphs</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">level</span><span class="p">]</span>
                 <span class="c1"># print(G.edge_index)</span>
@@ -772,7 +771,7 @@
                         <span class="k">break</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Couldn&#39;t find edge incoming to merged node.&quot;</span><span class="p">)</span>
-                <span class="c1">#print(&quot;not a root. removing {0}&quot;.format(edgekey))</span>
+                <span class="c1"># print(&quot;not a root. removing {0}&quot;.format(edgekey))</span>
 
                 <span class="n">edges</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">edgekey</span><span class="p">)</span>
 
@@ -887,7 +886,7 @@
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Oct 18, 2019.
+        Last updated on Oct 19, 2019.
       </span>
 
     </p>

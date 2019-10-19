@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.assortativity.neighbor_degree &mdash; NetworkX 2.5rc1.dev20191018074935 documentation</title>
+  <title>networkx.algorithms.assortativity.neighbor_degree &mdash; NetworkX 2.5rc1.dev20191019020531 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191018074935 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191019020531 documentation"
           href="../../../../_static/opensearch.xml"/>
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191018074935
+                2.5rc1.dev_20191019020531
               </div>
             
           
@@ -162,7 +162,7 @@
            <div itemprop="articleBody">
             
   <h1>Source code for networkx.algorithms.assortativity.neighbor_degree</h1><div class="highlight"><pre>
-<span></span><span class="c1">#-*- coding: utf-8 -*-</span>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="c1">#    Copyright (C) 2011 by</span>
 <span class="c1">#    Jordi Torrents &lt;jtorrents@milnou.net&gt;</span>
 <span class="c1">#    Aric Hagberg &lt;hagberg@lanl.gov&gt;</span>
@@ -201,7 +201,7 @@
 <span class="sd">        k_{nn,i} = \frac{1}{|N(i)|} \sum_{j \in N(i)} k_j</span>
 
 <span class="sd">    where `N(i)` are the neighbors of node `i` and `k_j` is</span>
-<span class="sd">    the degree of node `j` which belongs to `N(i)`. For weighted </span>
+<span class="sd">    the degree of node `j` which belongs to `N(i)`. For weighted</span>
 <span class="sd">    graphs, an analogous measure can be defined [1]_,</span>
 
 <span class="sd">    .. math::</span>
@@ -219,13 +219,13 @@
 
 <span class="sd">    source : string (&quot;in&quot;|&quot;out&quot;)</span>
 <span class="sd">       Directed graphs only.</span>
-<span class="sd">       Use &quot;in&quot;- or &quot;out&quot;-degree for source node.  </span>
+<span class="sd">       Use &quot;in&quot;- or &quot;out&quot;-degree for source node.</span>
 
 <span class="sd">    target : string (&quot;in&quot;|&quot;out&quot;)</span>
 <span class="sd">       Directed graphs only.</span>
 <span class="sd">       Use &quot;in&quot;- or &quot;out&quot;-degree for target node.</span>
 
-<span class="sd">    nodes : list or iterable, optional </span>
+<span class="sd">    nodes : list or iterable, optional</span>
 <span class="sd">        Compute neighbor degree for specified nodes.  The default is</span>
 <span class="sd">        all nodes in the graph.</span>
 
@@ -259,17 +259,17 @@
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-<span class="sd">    For directed graphs you can also specify in-degree or out-degree </span>
+<span class="sd">    For directed graphs you can also specify in-degree or out-degree</span>
 <span class="sd">    by passing keyword arguments.</span>
 
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
-<span class="sd">    average_degree_connectivity </span>
+<span class="sd">    average_degree_connectivity</span>
 
 <span class="sd">    References</span>
-<span class="sd">    ----------    </span>
-<span class="sd">    .. [1] A. Barrat, M. Barthélemy, R. Pastor-Satorras, and A. Vespignani, </span>
-<span class="sd">       &quot;The architecture of complex weighted networks&quot;. </span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] A. Barrat, M. Barthélemy, R. Pastor-Satorras, and A. Vespignani,</span>
+<span class="sd">       &quot;The architecture of complex weighted networks&quot;.</span>
 <span class="sd">       PNAS 101 (11): 3747–3752 (2004).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">source_degree</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">degree</span>
@@ -308,7 +308,7 @@
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Oct 18, 2019.
+        Last updated on Oct 19, 2019.
       </span>
 
     </p>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.generators.classic &mdash; NetworkX 2.5rc1.dev20191018074935 documentation</title>
+  <title>networkx.generators.classic &mdash; NetworkX 2.5rc1.dev20191019020531 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191018074935 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191019020531 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191018074935
+                2.5rc1.dev_20191019020531
               </div>
             
           
@@ -359,11 +359,12 @@
         <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">m1</span> <span class="o">+</span> <span class="n">m2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">m1</span> <span class="o">+</span> <span class="n">m2</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">G</span></div>
 
+
 <div class="viewcode-block" id="binomial_tree"><a class="viewcode-back" href="../../../reference/generated/networkx.generators.classic.binomial_tree.html#networkx.generators.classic.binomial_tree">[docs]</a><span class="k">def</span> <span class="nf">binomial_tree</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the Binomial Tree of order n.</span>
-<span class="sd">    </span>
-<span class="sd">    The binomial tree of order 0 consists of a single vertex. A binomial tree of order k </span>
-<span class="sd">    is defined recursively by linking two binomial trees of order k-1: the root of one is </span>
+
+<span class="sd">    The binomial tree of order 0 consists of a single vertex. A binomial tree of order k</span>
+<span class="sd">    is defined recursively by linking two binomial trees of order k-1: the root of one is</span>
 <span class="sd">    the leftmost child of the root of the other.</span>
 
 <span class="sd">    Parameters</span>
@@ -380,11 +381,12 @@
     <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">empty_graph</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">N</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="n">edges</span> <span class="o">=</span> <span class="p">[(</span><span class="n">u</span> <span class="o">+</span> <span class="n">N</span><span class="p">,</span> <span class="n">v</span> <span class="o">+</span> <span class="n">N</span><span class="p">)</span>  <span class="k">for</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">]</span>
+        <span class="n">edges</span> <span class="o">=</span> <span class="p">[(</span><span class="n">u</span> <span class="o">+</span> <span class="n">N</span><span class="p">,</span> <span class="n">v</span> <span class="o">+</span> <span class="n">N</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">]</span>
         <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
-        <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+        <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
         <span class="n">N</span> <span class="o">*=</span> <span class="mi">2</span>
     <span class="k">return</span> <span class="n">G</span></div>
+
 
 <div class="viewcode-block" id="complete_graph"><a class="viewcode-back" href="../../../reference/generated/networkx.generators.classic.complete_graph.html#networkx.generators.classic.complete_graph">[docs]</a><span class="nd">@nodes_or_number</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">complete_graph</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -932,7 +934,7 @@
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Oct 18, 2019.
+        Last updated on Oct 19, 2019.
       </span>
 
     </p>

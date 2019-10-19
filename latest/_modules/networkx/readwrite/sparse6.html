@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.readwrite.sparse6 &mdash; NetworkX 2.5rc1.dev20191018074935 documentation</title>
+  <title>networkx.readwrite.sparse6 &mdash; NetworkX 2.5rc1.dev20191019020531 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191018074935 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191019020531 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191018074935
+                2.5rc1.dev_20191019020531
               </div>
             
           
@@ -185,10 +185,6 @@
 <span class="sd">.. _sparse6: http://users.cecs.anu.edu.au/~bdm/data/formats.html</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">itertools</span> <span class="k">import</span> <span class="n">chain</span>
-<span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="kn">from</span> <span class="nn">networkx.exception</span> <span class="k">import</span> <span class="n">NetworkXError</span>
 <span class="kn">from</span> <span class="nn">networkx.utils</span> <span class="k">import</span> <span class="n">open_file</span><span class="p">,</span> <span class="n">not_implemented_for</span>
@@ -333,7 +329,7 @@
             <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">d</span> <span class="o">&gt;&gt;</span> <span class="n">dLen</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mi">1</span>  <span class="c1"># grab top remaining bit</span>
 
             <span class="n">x</span> <span class="o">=</span> <span class="n">d</span> <span class="o">&amp;</span> <span class="p">((</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">dLen</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># partially built up value of x</span>
-            <span class="n">xLen</span> <span class="o">=</span> <span class="n">dLen</span>		<span class="c1"># how many bits included so far in x</span>
+            <span class="n">xLen</span> <span class="o">=</span> <span class="n">dLen</span>         <span class="c1"># how many bits included so far in x</span>
             <span class="k">while</span> <span class="n">xLen</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">:</span>  <span class="c1"># now grab full chunks until we have enough</span>
                 <span class="k">try</span><span class="p">:</span>
                     <span class="n">d</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">chunks</span><span class="p">)</span>
@@ -557,7 +553,7 @@
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Oct 18, 2019.
+        Last updated on Oct 19, 2019.
       </span>
 
     </p>

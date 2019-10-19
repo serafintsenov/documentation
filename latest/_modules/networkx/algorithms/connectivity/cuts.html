@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.connectivity.cuts &mdash; NetworkX 2.5rc1.dev20191018074935 documentation</title>
+  <title>networkx.algorithms.connectivity.cuts &mdash; NetworkX 2.5rc1.dev20191019020531 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191018074935 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191019020531 documentation"
           href="../../../../_static/opensearch.xml"/>
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191018074935
+                2.5rc1.dev_20191019020531
               </div>
             
           
@@ -213,10 +213,10 @@
 
 <span class="sd">    flow_func : function</span>
 <span class="sd">        A function for computing the maximum flow among a pair of nodes.</span>
-<span class="sd">        The function has to accept at least three parameters: a Digraph, </span>
-<span class="sd">        a source node, and a target node. And return a residual network </span>
-<span class="sd">        that follows NetworkX conventions (see :meth:`maximum_flow` for </span>
-<span class="sd">        details). If flow_func is None, the default maximum flow function </span>
+<span class="sd">        The function has to accept at least three parameters: a Digraph,</span>
+<span class="sd">        a source node, and a target node. And return a residual network</span>
+<span class="sd">        that follows NetworkX conventions (see :meth:`maximum_flow` for</span>
+<span class="sd">        details). If flow_func is None, the default maximum flow function</span>
 <span class="sd">        (:meth:`edmonds_karp`) is used. See :meth:`node_connectivity` for</span>
 <span class="sd">        details. The choice of the default function may change from version</span>
 <span class="sd">        to version and should not be relied on. Default value: None.</span>
@@ -259,16 +259,16 @@
 
 <span class="sd">    If you need to compute local edge cuts on several pairs of</span>
 <span class="sd">    nodes in the same graph, it is recommended that you reuse the</span>
-<span class="sd">    data structures that NetworkX uses in the computation: the </span>
+<span class="sd">    data structures that NetworkX uses in the computation: the</span>
 <span class="sd">    auxiliary digraph for edge connectivity, and the residual</span>
 <span class="sd">    network for the underlying maximum flow computation.</span>
 
 <span class="sd">    Example of how to compute local edge cuts among all pairs of</span>
-<span class="sd">    nodes of the platonic icosahedral graph reusing the data </span>
+<span class="sd">    nodes of the platonic icosahedral graph reusing the data</span>
 <span class="sd">    structures.</span>
 
 <span class="sd">    &gt;&gt;&gt; import itertools</span>
-<span class="sd">    &gt;&gt;&gt; # You also have to explicitly import the function for </span>
+<span class="sd">    &gt;&gt;&gt; # You also have to explicitly import the function for</span>
 <span class="sd">    &gt;&gt;&gt; # building the auxiliary digraph from the connectivity package</span>
 <span class="sd">    &gt;&gt;&gt; from networkx.algorithms.connectivity import (</span>
 <span class="sd">    ...     build_auxiliary_edge_connectivity)</span>
@@ -339,12 +339,12 @@
 
 <span class="sd">    flow_func : function</span>
 <span class="sd">        A function for computing the maximum flow among a pair of nodes.</span>
-<span class="sd">        The function has to accept at least three parameters: a Digraph, </span>
-<span class="sd">        a source node, and a target node. And return a residual network </span>
-<span class="sd">        that follows NetworkX conventions (see :meth:`maximum_flow` for </span>
-<span class="sd">        details). If flow_func is None, the default maximum flow function </span>
+<span class="sd">        The function has to accept at least three parameters: a Digraph,</span>
+<span class="sd">        a source node, and a target node. And return a residual network</span>
+<span class="sd">        that follows NetworkX conventions (see :meth:`maximum_flow` for</span>
+<span class="sd">        details). If flow_func is None, the default maximum flow function</span>
 <span class="sd">        (:meth:`edmonds_karp`) is used. See below for details. The choice</span>
-<span class="sd">        of the default function may change from version to version and </span>
+<span class="sd">        of the default function may change from version to version and</span>
 <span class="sd">        should not be relied on. Default value: None.</span>
 
 <span class="sd">    auxiliary : NetworkX DiGraph</span>
@@ -386,7 +386,7 @@
 <span class="sd">    Example of how to compute local st node cuts reusing the data</span>
 <span class="sd">    structures:</span>
 
-<span class="sd">    &gt;&gt;&gt; # You also have to explicitly import the function for </span>
+<span class="sd">    &gt;&gt;&gt; # You also have to explicitly import the function for</span>
 <span class="sd">    &gt;&gt;&gt; # building the auxiliary digraph from the connectivity package</span>
 <span class="sd">    &gt;&gt;&gt; from networkx.algorithms.connectivity import (</span>
 <span class="sd">    ...     build_auxiliary_node_connectivity)</span>
@@ -418,7 +418,7 @@
 <span class="sd">    is based in solving a number of maximum flow computations to determine</span>
 <span class="sd">    the capacity of the minimum cut on an auxiliary directed network that</span>
 <span class="sd">    corresponds to the minimum node cut of G. It handles both directed</span>
-<span class="sd">    and undirected graphs. This implementation is based on algorithm 11 </span>
+<span class="sd">    and undirected graphs. This implementation is based on algorithm 11</span>
 <span class="sd">    in [1]_.</span>
 
 <span class="sd">    See also</span>
@@ -480,10 +480,10 @@
 
 <span class="sd">    flow_func : function</span>
 <span class="sd">        A function for computing the maximum flow among a pair of nodes.</span>
-<span class="sd">        The function has to accept at least three parameters: a Digraph, </span>
-<span class="sd">        a source node, and a target node. And return a residual network </span>
-<span class="sd">        that follows NetworkX conventions (see :meth:`maximum_flow` for </span>
-<span class="sd">        details). If flow_func is None, the default maximum flow function </span>
+<span class="sd">        The function has to accept at least three parameters: a Digraph,</span>
+<span class="sd">        a source node, and a target node. And return a residual network</span>
+<span class="sd">        that follows NetworkX conventions (see :meth:`maximum_flow` for</span>
+<span class="sd">        details). If flow_func is None, the default maximum flow function</span>
 <span class="sd">        (:meth:`edmonds_karp`) is used. See below for details. The</span>
 <span class="sd">        choice of the default function may change from version</span>
 <span class="sd">        to version and should not be relied on. Default value: None.</span>
@@ -522,7 +522,7 @@
 
 <span class="sd">    If you need to perform several local st cuts among different</span>
 <span class="sd">    pairs of nodes on the same graph, it is recommended that you reuse</span>
-<span class="sd">    the data structures used in the maximum flow computations. See </span>
+<span class="sd">    the data structures used in the maximum flow computations. See</span>
 <span class="sd">    :meth:`minimum_st_node_cut` for details.</span>
 
 <span class="sd">    Notes</span>
@@ -531,7 +531,7 @@
 <span class="sd">    is based in solving a number of maximum flow computations to determine</span>
 <span class="sd">    the capacity of the minimum cut on an auxiliary directed network that</span>
 <span class="sd">    corresponds to the minimum node cut of G. It handles both directed</span>
-<span class="sd">    and undirected graphs. This implementation is based on algorithm 11 </span>
+<span class="sd">    and undirected graphs. This implementation is based on algorithm 11</span>
 <span class="sd">    in [1]_.</span>
 
 <span class="sd">    See also</span>
@@ -625,10 +625,10 @@
 
 <span class="sd">    flow_func : function</span>
 <span class="sd">        A function for computing the maximum flow among a pair of nodes.</span>
-<span class="sd">        The function has to accept at least three parameters: a Digraph, </span>
-<span class="sd">        a source node, and a target node. And return a residual network </span>
-<span class="sd">        that follows NetworkX conventions (see :meth:`maximum_flow` for </span>
-<span class="sd">        details). If flow_func is None, the default maximum flow function </span>
+<span class="sd">        The function has to accept at least three parameters: a Digraph,</span>
+<span class="sd">        a source node, and a target node. And return a residual network</span>
+<span class="sd">        that follows NetworkX conventions (see :meth:`maximum_flow` for</span>
+<span class="sd">        details). If flow_func is None, the default maximum flow function</span>
 <span class="sd">        (:meth:`edmonds_karp`) is used. See below for details. The</span>
 <span class="sd">        choice of the default function may change from version</span>
 <span class="sd">        to version and should not be relied on. Default value: None.</span>
@@ -647,10 +647,10 @@
 <span class="sd">    &gt;&gt;&gt; len(nx.minimum_edge_cut(G))</span>
 <span class="sd">    5</span>
 
-<span class="sd">    You can use alternative flow algorithms for the underlying </span>
-<span class="sd">    maximum flow computation. In dense networks the algorithm </span>
-<span class="sd">    :meth:`shortest_augmenting_path` will usually perform better </span>
-<span class="sd">    than the default :meth:`edmonds_karp`, which is faster for </span>
+<span class="sd">    You can use alternative flow algorithms for the underlying</span>
+<span class="sd">    maximum flow computation. In dense networks the algorithm</span>
+<span class="sd">    :meth:`shortest_augmenting_path` will usually perform better</span>
+<span class="sd">    than the default :meth:`edmonds_karp`, which is faster for</span>
 <span class="sd">    sparse networks with highly skewed degree distributions.</span>
 <span class="sd">    Alternative flow functions have to be explicitly imported</span>
 <span class="sd">    from the flow package.</span>
@@ -667,7 +667,7 @@
 
 <span class="sd">    If you need to perform several local computations among different</span>
 <span class="sd">    pairs of nodes on the same graph, it is recommended that you reuse</span>
-<span class="sd">    the data structures used in the maximum flow computations. See </span>
+<span class="sd">    the data structures used in the maximum flow computations. See</span>
 <span class="sd">    :meth:`local_edge_connectivity` for details.</span>
 
 <span class="sd">    Notes</span>
@@ -676,7 +676,7 @@
 <span class="sd">    undirected graphs the algorithm works by finding a &#39;small&#39; dominating</span>
 <span class="sd">    set of nodes of G (see algorithm 7 in [1]_) and computing the maximum</span>
 <span class="sd">    flow between an arbitrary node in the dominating set and the rest of</span>
-<span class="sd">    nodes in it. This is an implementation of algorithm 6 in [1]_. For </span>
+<span class="sd">    nodes in it. This is an implementation of algorithm 6 in [1]_. For</span>
 <span class="sd">    directed graphs, the algorithm does n calls to the max flow function.</span>
 <span class="sd">    The function raises an error if the directed graph is not weakly</span>
 <span class="sd">    connected and returns an empty set if it is weakly connected.</span>
@@ -780,7 +780,7 @@
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Oct 18, 2019.
+        Last updated on Oct 19, 2019.
       </span>
 
     </p>

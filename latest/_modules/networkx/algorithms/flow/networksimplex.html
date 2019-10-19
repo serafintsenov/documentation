@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.flow.networksimplex &mdash; NetworkX 2.5rc1.dev20191018074935 documentation</title>
+  <title>networkx.algorithms.flow.networksimplex &mdash; NetworkX 2.5rc1.dev20191019020531 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191018074935 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191019020531 documentation"
           href="../../../../_static/opensearch.xml"/>
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191018074935
+                2.5rc1.dev_20191019020531
               </div>
             
           
@@ -427,9 +427,10 @@
     <span class="c1"># feasible spanning tree.</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>  <span class="c1"># number of nodes</span>
     <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">D</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">d</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># Must be greater-than here. Zero-demand nodes must have</span>
-                   <span class="c1"># edges pointing towards the root to ensure strong</span>
-                   <span class="c1"># feasibility.</span>
+        <span class="c1"># Must be greater-than here. Zero-demand nodes must have</span>
+        <span class="c1"># edges pointing towards the root to ensure strong</span>
+        <span class="c1"># feasibility.</span>
+        <span class="k">if</span> <span class="n">d</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">S</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
             <span class="n">T</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
@@ -689,8 +690,8 @@
         <span class="n">Wn</span><span class="p">,</span> <span class="n">We</span> <span class="o">=</span> <span class="n">find_cycle</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
         <span class="n">j</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">find_leaving_edge</span><span class="p">(</span><span class="n">Wn</span><span class="p">,</span> <span class="n">We</span><span class="p">)</span>
         <span class="n">augment_flow</span><span class="p">(</span><span class="n">Wn</span><span class="p">,</span> <span class="n">We</span><span class="p">,</span> <span class="n">residual_capacity</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
-        <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">j</span><span class="p">:</span>  <span class="c1"># Do nothing more if the entering edge is the same as the</span>
-                    <span class="c1"># the leaving edge.</span>
+        <span class="c1"># Do nothing more if the entering edge is the same as the leaving edge.</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">j</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">parent</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">!=</span> <span class="n">s</span><span class="p">:</span>
                 <span class="c1"># Ensure that s is the parent of t.</span>
                 <span class="n">s</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="p">,</span> <span class="n">s</span>
@@ -774,7 +775,7 @@
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Oct 18, 2019.
+        Last updated on Oct 19, 2019.
       </span>
 
     </p>
