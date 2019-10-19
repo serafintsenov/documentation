@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.readwrite.gexf &mdash; NetworkX 2.5rc1.dev20191019051222 documentation</title>
+  <title>networkx.readwrite.gexf &mdash; NetworkX 2.5rc1.dev20191019163954 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191019051222 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191019163954 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191019051222
+                2.5rc1.dev_20191019163954
               </div>
             
           
@@ -520,7 +520,7 @@
             <span class="c1"># add node element and attr subelements</span>
             <span class="n">default</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;node_default&#39;</span><span class="p">,</span> <span class="p">{})</span>
             <span class="n">node_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_parents</span><span class="p">(</span><span class="n">node_element</span><span class="p">,</span> <span class="n">node_data</span><span class="p">)</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">==</span> <span class="s1">&#39;1.1&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">VERSION</span> <span class="o">==</span> <span class="s1">&#39;1.1&#39;</span><span class="p">:</span>
                 <span class="n">node_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_slices</span><span class="p">(</span><span class="n">node_element</span><span class="p">,</span> <span class="n">node_data</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">node_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_spells</span><span class="p">(</span><span class="n">node_element</span><span class="p">,</span> <span class="n">node_data</span><span class="p">)</span>
@@ -584,7 +584,7 @@
             <span class="n">edge_element</span> <span class="o">=</span> <span class="n">Element</span><span class="p">(</span><span class="s1">&#39;edge&#39;</span><span class="p">,</span>
                                    <span class="n">source</span><span class="o">=</span><span class="n">source_id</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">target_id</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
             <span class="n">default</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;edge_default&#39;</span><span class="p">,</span> <span class="p">{})</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">==</span> <span class="s1">&#39;1.1&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">VERSION</span> <span class="o">==</span> <span class="s1">&#39;1.1&#39;</span><span class="p">:</span>
                 <span class="n">edge_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_slices</span><span class="p">(</span><span class="n">edge_element</span><span class="p">,</span> <span class="n">edge_data</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">edge_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_spells</span><span class="p">(</span><span class="n">edge_element</span><span class="p">,</span> <span class="n">edge_data</span><span class="p">)</span>
@@ -932,7 +932,7 @@
         <span class="c1"># get attributes and subattributues for node</span>
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decode_attr_elements</span><span class="p">(</span><span class="n">node_attr</span><span class="p">,</span> <span class="n">node_xml</span><span class="p">)</span>
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_parents</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">node_xml</span><span class="p">)</span>  <span class="c1"># add any parents</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">==</span> <span class="s1">&#39;1.1&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">VERSION</span> <span class="o">==</span> <span class="s1">&#39;1.1&#39;</span><span class="p">:</span>
             <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_slices</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">node_xml</span><span class="p">)</span>  <span class="c1"># add slices</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_spells</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">node_xml</span><span class="p">)</span>  <span class="c1"># add spells</span>
@@ -1063,7 +1063,7 @@
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decode_attr_elements</span><span class="p">(</span><span class="n">edge_attr</span><span class="p">,</span> <span class="n">edge_element</span><span class="p">)</span>
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_start_end</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">edge_element</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">==</span> <span class="s1">&#39;1.1&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">VERSION</span> <span class="o">==</span> <span class="s1">&#39;1.1&#39;</span><span class="p">:</span>
             <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_slices</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">edge_element</span><span class="p">)</span>  <span class="c1"># add slices</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_spells</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">edge_element</span><span class="p">)</span>  <span class="c1"># add spells</span>
