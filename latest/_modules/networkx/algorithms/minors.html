@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.minors &mdash; NetworkX 2.5rc1.dev20191021100808 documentation</title>
+  <title>networkx.algorithms.minors &mdash; NetworkX 2.5rc1.dev20191021201423 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191021100808 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191021201423 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191021100808
+                2.5rc1.dev_20191021201423
               </div>
             
           
@@ -458,7 +458,7 @@
     <span class="k">return</span> <span class="n">H</span>
 
 
-<div class="viewcode-block" id="contracted_nodes"><a class="viewcode-back" href="../../../reference/algorithms/generated/networkx.algorithms.minors.contracted_nodes.html#networkx.algorithms.minors.contracted_nodes">[docs]</a><span class="k">def</span> <span class="nf">contracted_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">self_loops</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="contracted_nodes"><a class="viewcode-back" href="../../../reference/algorithms/generated/networkx.algorithms.minors.contracted_nodes.html#networkx.algorithms.minors.contracted_nodes">[docs]</a><span class="k">def</span> <span class="nf">contracted_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">self_loops</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the graph that results from contracting `u` and `v`.</span>
 
 <span class="sd">    Node contraction identifies the two nodes as a single node incident to any</span>
@@ -475,14 +475,23 @@
 <span class="sd">    self_loops : Boolean</span>
 <span class="sd">       If this is True, any edges joining `u` and `v` in `G` become</span>
 <span class="sd">       self-loops on the new node in the returned graph.</span>
+<span class="sd">    </span>
+<span class="sd">    copy : Boolean</span>
+<span class="sd">        If this is True (default True), make a copy of</span>
+<span class="sd">        `G` and return that instead of directly changing `G`.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    Networkx graph</span>
+<span class="sd">       If Copy is True:</span>
 <span class="sd">       A new graph object of the same type as `G` (leaving `G` unmodified)</span>
 <span class="sd">       with `u` and `v` identified in a single node. The right node `v`</span>
 <span class="sd">       will be merged into the node `u`, so only `u` will appear in the</span>
 <span class="sd">       returned graph.</span>
+<span class="sd">       if Copy is False:</span>
+<span class="sd">       Modifies `G` with `u` and `v` identified in a single node. </span>
+<span class="sd">       The right node `v` will be merged into the node `u`, so</span>
+<span class="sd">       only `u` will appear in the returned graph.</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
@@ -522,7 +531,12 @@
 <span class="sd">    -----</span>
 <span class="sd">    This function is also available as `identified_nodes`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">H</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="c1">#Copying has significant overhead and can be disabled if needed</span>
+    <span class="k">if</span> <span class="n">copy</span><span class="p">:</span>
+        <span class="n">H</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">H</span> <span class="o">=</span> <span class="n">G</span>
+
     <span class="c1"># edge code uses G.edges(v) instead of G.adj[v] to handle multiedges</span>
     <span class="k">if</span> <span class="n">H</span><span class="o">.</span><span class="n">is_directed</span><span class="p">():</span>
         <span class="n">in_edges</span> <span class="o">=</span> <span class="p">((</span><span class="n">w</span> <span class="k">if</span> <span class="n">w</span> <span class="o">!=</span> <span class="n">v</span> <span class="k">else</span> <span class="n">u</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
@@ -536,6 +550,12 @@
         <span class="n">new_edges</span> <span class="o">=</span> <span class="p">((</span><span class="n">u</span><span class="p">,</span> <span class="n">w</span> <span class="k">if</span> <span class="n">w</span> <span class="o">!=</span> <span class="n">v</span> <span class="k">else</span> <span class="n">u</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
                      <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
                      <span class="k">if</span> <span class="n">self_loops</span> <span class="ow">or</span> <span class="n">w</span> <span class="o">!=</span> <span class="n">u</span><span class="p">)</span>
+    
+    <span class="c1">#If the H=G, the generators change as H changes</span>
+    <span class="c1">#This makes the new_edges independent of H</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">copy</span><span class="p">:</span>
+        <span class="n">new_edges</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">new_edges</span><span class="p">)</span>
+    
     <span class="n">v_data</span> <span class="o">=</span> <span class="n">H</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">v</span><span class="p">]</span>
     <span class="n">H</span><span class="o">.</span><span class="n">remove_node</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
     <span class="n">H</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">new_edges</span><span class="p">)</span>

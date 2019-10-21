@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.minors.identified_nodes &mdash; NetworkX 2.5rc1.dev20191021100808 documentation</title>
+  <title>networkx.algorithms.minors.identified_nodes &mdash; NetworkX 2.5rc1.dev20191021201423 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191021100808 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191021201423 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191021100808
+                2.5rc1.dev_20191021201423
               </div>
             
           
@@ -259,7 +259,7 @@
 <h1>networkx.algorithms.minors.identified_nodes<a class="headerlink" href="#networkx-algorithms-minors-identified-nodes" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="networkx.algorithms.minors.identified_nodes">
-<code class="sig-name descname">identified_nodes</code><span class="sig-paren">(</span><em class="sig-param">G</em>, <em class="sig-param">u</em>, <em class="sig-param">v</em>, <em class="sig-param">self_loops=True</em><span class="sig-paren">)</span><a class="headerlink" href="#networkx.algorithms.minors.identified_nodes" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">identified_nodes</code><span class="sig-paren">(</span><em class="sig-param">G</em>, <em class="sig-param">u</em>, <em class="sig-param">v</em>, <em class="sig-param">self_loops=True</em>, <em class="sig-param">copy=True</em><span class="sig-paren">)</span><a class="headerlink" href="#networkx.algorithms.minors.identified_nodes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the graph that results from contracting <code class="xref py py-obj docutils literal notranslate"><span class="pre">u</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">v</span></code>.</p>
 <p>Node contraction identifies the two nodes as a single node incident to any
 edge that was incident to the original two nodes.</p>
@@ -270,13 +270,20 @@ edge that was incident to the original two nodes.</p>
 <li><p><strong>u, v</strong> (<em>nodes</em>) – Must be nodes in <code class="xref py py-obj docutils literal notranslate"><span class="pre">G</span></code>.</p></li>
 <li><p><strong>self_loops</strong> (<em>Boolean</em>) – If this is True, any edges joining <code class="xref py py-obj docutils literal notranslate"><span class="pre">u</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">v</span></code> in <code class="xref py py-obj docutils literal notranslate"><span class="pre">G</span></code> become
 self-loops on the new node in the returned graph.</p></li>
+<li><p><strong>copy</strong> (<em>Boolean</em>) – If this is True (default True), make a copy of
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">G</span></code> and return that instead of directly changing <code class="xref py py-obj docutils literal notranslate"><span class="pre">G</span></code>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A new graph object of the same type as <code class="xref py py-obj docutils literal notranslate"><span class="pre">G</span></code> (leaving <code class="xref py py-obj docutils literal notranslate"><span class="pre">G</span></code> unmodified)
+<dd class="field-even"><p>If Copy is True:
+A new graph object of the same type as <code class="xref py py-obj docutils literal notranslate"><span class="pre">G</span></code> (leaving <code class="xref py py-obj docutils literal notranslate"><span class="pre">G</span></code> unmodified)
 with <code class="xref py py-obj docutils literal notranslate"><span class="pre">u</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">v</span></code> identified in a single node. The right node <code class="xref py py-obj docutils literal notranslate"><span class="pre">v</span></code>
 will be merged into the node <code class="xref py py-obj docutils literal notranslate"><span class="pre">u</span></code>, so only <code class="xref py py-obj docutils literal notranslate"><span class="pre">u</span></code> will appear in the
-returned graph.</p>
+returned graph.
+if Copy is False:
+Modifies <code class="xref py py-obj docutils literal notranslate"><span class="pre">G</span></code> with <code class="xref py py-obj docutils literal notranslate"><span class="pre">u</span></code> and <code class="xref py py-obj docutils literal notranslate"><span class="pre">v</span></code> identified in a single node.
+The right node <code class="xref py py-obj docutils literal notranslate"><span class="pre">v</span></code> will be merged into the node <code class="xref py py-obj docutils literal notranslate"><span class="pre">u</span></code>, so
+only <code class="xref py py-obj docutils literal notranslate"><span class="pre">u</span></code> will appear in the returned graph.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>Networkx graph</p>
