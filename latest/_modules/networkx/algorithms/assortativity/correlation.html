@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.assortativity.correlation &mdash; NetworkX 2.5rc1.dev20191019163954 documentation</title>
+  <title>networkx.algorithms.assortativity.correlation &mdash; NetworkX 2.5rc1.dev20191021092434 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191019163954 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191021092434 documentation"
           href="../../../../_static/opensearch.xml"/>
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191019163954
+                2.5rc1.dev_20191021092434
               </div>
             
           
@@ -165,7 +165,6 @@
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;Node assortativity coefficients and correlation measures.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="kn">from</span> <span class="nn">networkx.algorithms.assortativity.mixing</span> <span class="k">import</span> <span class="n">degree_mixing_matrix</span><span class="p">,</span> \
     <span class="n">attribute_mixing_matrix</span><span class="p">,</span> <span class="n">numeric_mixing_matrix</span>
 <span class="kn">from</span> <span class="nn">networkx.algorithms.assortativity.pairs</span> <span class="k">import</span> <span class="n">node_degree_xy</span>
@@ -210,8 +209,8 @@
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; G=nx.path_graph(4)</span>
-<span class="sd">    &gt;&gt;&gt; r=nx.degree_assortativity_coefficient(G)</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.path_graph(4)</span>
+<span class="sd">    &gt;&gt;&gt; r = nx.degree_assortativity_coefficient(G)</span>
 <span class="sd">    &gt;&gt;&gt; print(&quot;%3.1f&quot;%r)</span>
 <span class="sd">    -0.5</span>
 
@@ -277,8 +276,8 @@
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; G=nx.path_graph(4)</span>
-<span class="sd">    &gt;&gt;&gt; r=nx.degree_pearson_correlation_coefficient(G)</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.path_graph(4)</span>
+<span class="sd">    &gt;&gt;&gt; r = nx.degree_pearson_correlation_coefficient(G)</span>
 <span class="sd">    &gt;&gt;&gt; print(&quot;%3.1f&quot;%r)</span>
 <span class="sd">    -0.5</span>
 
@@ -327,7 +326,7 @@
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; G=nx.Graph()</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.Graph()</span>
 <span class="sd">    &gt;&gt;&gt; G.add_nodes_from([0,1],color=&#39;red&#39;)</span>
 <span class="sd">    &gt;&gt;&gt; G.add_nodes_from([2,3],color=&#39;blue&#39;)</span>
 <span class="sd">    &gt;&gt;&gt; G.add_edges_from([(0,1),(2,3)])</span>
@@ -375,7 +374,7 @@
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; G=nx.Graph()</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.Graph()</span>
 <span class="sd">    &gt;&gt;&gt; G.add_nodes_from([0,1],size=2)</span>
 <span class="sd">    &gt;&gt;&gt; G.add_nodes_from([2,3],size=3)</span>
 <span class="sd">    &gt;&gt;&gt; G.add_edges_from([(0,1),(2,3)])</span>
@@ -449,13 +448,6 @@
     <span class="n">xy</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
     <span class="n">ab</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">xy</span> <span class="o">*</span> <span class="p">(</span><span class="n">M</span> <span class="o">-</span> <span class="n">ab</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">vara</span> <span class="o">*</span> <span class="n">varb</span><span class="p">)</span>
-
-
-<span class="c1"># fixture for pytest</span>
-<span class="k">def</span> <span class="nf">setup_module</span><span class="p">(</span><span class="n">module</span><span class="p">):</span>
-    <span class="kn">import</span> <span class="nn">pytest</span>
-    <span class="n">numpy</span> <span class="o">=</span> <span class="n">pytest</span><span class="o">.</span><span class="n">importorskip</span><span class="p">(</span><span class="s1">&#39;numpy&#39;</span><span class="p">)</span>
-    <span class="n">scipy</span> <span class="o">=</span> <span class="n">pytest</span><span class="o">.</span><span class="n">importorskip</span><span class="p">(</span><span class="s1">&#39;scipy&#39;</span><span class="p">)</span>
 </pre></div>
 
            </div>
@@ -470,7 +462,7 @@
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Oct 19, 2019.
+        Last updated on Oct 21, 2019.
       </span>
 
     </p>

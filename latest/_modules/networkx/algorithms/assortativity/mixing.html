@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.assortativity.mixing &mdash; NetworkX 2.5rc1.dev20191019163954 documentation</title>
+  <title>networkx.algorithms.assortativity.mixing &mdash; NetworkX 2.5rc1.dev20191021092434 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191019163954 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191021092434 documentation"
           href="../../../../_static/opensearch.xml"/>
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191019163954
+                2.5rc1.dev_20191021092434
               </div>
             
           
@@ -166,7 +166,6 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Mixing matrices for node attributes and degree.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="kn">from</span> <span class="nn">networkx.utils</span> <span class="k">import</span> <span class="n">dict_to_numpy_array</span>
 <span class="kn">from</span> <span class="nn">networkx.algorithms.assortativity.pairs</span> <span class="k">import</span> <span class="n">node_degree_xy</span><span class="p">,</span> \
     <span class="n">node_attribute_xy</span>
@@ -399,13 +398,6 @@
             <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">jdict</span><span class="p">:</span>
                 <span class="n">jdict</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">/=</span> <span class="n">psum</span>
     <span class="k">return</span> <span class="n">d</span></div>
-
-
-<span class="c1"># fixture for pytest</span>
-<span class="k">def</span> <span class="nf">setup_module</span><span class="p">(</span><span class="n">module</span><span class="p">):</span>
-    <span class="kn">import</span> <span class="nn">pytest</span>
-    <span class="n">numpy</span> <span class="o">=</span> <span class="n">pytest</span><span class="o">.</span><span class="n">importorskip</span><span class="p">(</span><span class="s1">&#39;numpy&#39;</span><span class="p">)</span>
-    <span class="n">scipy</span> <span class="o">=</span> <span class="n">pytest</span><span class="o">.</span><span class="n">importorskip</span><span class="p">(</span><span class="s1">&#39;scipy&#39;</span><span class="p">)</span>
 </pre></div>
 
            </div>
@@ -420,7 +412,7 @@
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Oct 19, 2019.
+        Last updated on Oct 21, 2019.
       </span>
 
     </p>
