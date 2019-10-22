@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.utils.misc &mdash; NetworkX 2.5rc1.dev20191021201423 documentation</title>
+  <title>networkx.utils.misc &mdash; NetworkX 2.5rc1.dev20191022013905 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191021201423 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191022013905 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191021201423
+                2.5rc1.dev_20191022013905
               </div>
             
           
@@ -169,8 +169,10 @@
 <span class="sd">can be accessed, for example, as</span>
 
 <span class="sd">&gt;&gt;&gt; import networkx</span>
-<span class="sd">&gt;&gt;&gt; networkx.utils.is_string_like(&#39;spam&#39;)</span>
+<span class="sd">&gt;&gt;&gt; networkx.utils.is_list_of_ints([1, 2, 3])</span>
 <span class="sd">True</span>
+<span class="sd">&gt;&gt;&gt; networkx.utils.is_list_of_ints([1, 2, &quot;spam&quot;])</span>
+<span class="sd">False</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="c1"># Authors:      Aric Hagberg (hagberg@lanl.gov),</span>
 <span class="c1">#               Dan Schult(dschult@colgate.edu),</span>
@@ -198,6 +200,9 @@
 
 <div class="viewcode-block" id="is_string_like"><a class="viewcode-back" href="../../../reference/generated/networkx.utils.misc.is_string_like.html#networkx.utils.misc.is_string_like">[docs]</a><span class="k">def</span> <span class="nf">is_string_like</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>  <span class="c1"># from John Hunter, types-free version</span>
     <span class="sd">&quot;&quot;&quot;Check if obj is string.&quot;&quot;&quot;</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;is_string_like is deprecated and will be removed in 2.6.&quot;</span> \
+          <span class="s2">&quot;Use isinstance(obj, str) instead.&quot;</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span></div>
 
 
@@ -271,9 +276,10 @@
     <span class="k">return</span> <span class="kc">True</span></div>
 
 
-<span class="c1"># TODO Remove this?</span>
 <div class="viewcode-block" id="make_str"><a class="viewcode-back" href="../../../reference/generated/networkx.utils.misc.make_str.html#networkx.utils.misc.make_str">[docs]</a><span class="k">def</span> <span class="nf">make_str</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the string representation of t.&quot;&quot;&quot;</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;make_str is deprecated and will be removed in 2.6. Use str instead.&quot;</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></div>
 
 
@@ -575,7 +581,7 @@
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Oct 21, 2019.
+        Last updated on Oct 22, 2019.
       </span>
 
     </p>

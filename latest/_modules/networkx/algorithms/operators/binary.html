@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.operators.binary &mdash; NetworkX 2.5rc1.dev20191021201423 documentation</title>
+  <title>networkx.algorithms.operators.binary &mdash; NetworkX 2.5rc1.dev20191022013905 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191021201423 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191022013905 documentation"
           href="../../../../_static/opensearch.xml"/>
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191021201423
+                2.5rc1.dev_20191022013905
               </div>
             
           
@@ -172,7 +172,6 @@
 <span class="c1">#    All rights reserved.</span>
 <span class="c1">#    BSD license.</span>
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
-<span class="kn">from</span> <span class="nn">networkx.utils</span> <span class="k">import</span> <span class="n">is_string_like</span>
 <span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span><span class="se">\n</span><span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;Aric Hagberg &lt;aric.hagberg@gmail.com&gt;&#39;</span><span class="p">,</span>
                             <span class="s1">&#39;Pieter Swart (swart@lanl.gov)&#39;</span><span class="p">,</span>
                             <span class="s1">&#39;Dan Schult(dschult@colgate.edu)&#39;</span><span class="p">])</span>
@@ -229,7 +228,7 @@
             <span class="k">return</span> <span class="n">graph</span>
 
         <span class="k">def</span> <span class="nf">label</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">is_string_like</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
                 <span class="n">name</span> <span class="o">=</span> <span class="n">prefix</span> <span class="o">+</span> <span class="n">x</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">name</span> <span class="o">=</span> <span class="n">prefix</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -545,7 +544,7 @@
             <span class="k">return</span> <span class="n">graph</span>
 
         <span class="k">def</span> <span class="nf">label</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">is_string_like</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
                 <span class="n">name</span> <span class="o">=</span> <span class="n">prefix</span> <span class="o">+</span> <span class="n">x</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">name</span> <span class="o">=</span> <span class="n">prefix</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -577,7 +576,7 @@
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Oct 21, 2019.
+        Last updated on Oct 22, 2019.
       </span>
 
     </p>

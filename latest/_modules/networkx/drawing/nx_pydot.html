@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.drawing.nx_pydot &mdash; NetworkX 2.5rc1.dev20191021201423 documentation</title>
+  <title>networkx.drawing.nx_pydot &mdash; NetworkX 2.5rc1.dev20191022013905 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191021201423 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191022013905 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191021201423
+                2.5rc1.dev_20191022013905
               </div>
             
           
@@ -187,7 +187,7 @@
 <span class="c1">#    All rights reserved.</span>
 <span class="c1">#    BSD license.</span>
 <span class="kn">from</span> <span class="nn">locale</span> <span class="k">import</span> <span class="n">getpreferredencoding</span>
-<span class="kn">from</span> <span class="nn">networkx.utils</span> <span class="k">import</span> <span class="n">open_file</span><span class="p">,</span> <span class="n">make_str</span>
+<span class="kn">from</span> <span class="nn">networkx.utils</span> <span class="k">import</span> <span class="n">open_file</span>
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;write_dot&#39;</span><span class="p">,</span> <span class="s1">&#39;read_dot&#39;</span><span class="p">,</span> <span class="s1">&#39;graphviz_layout&#39;</span><span class="p">,</span> <span class="s1">&#39;pydot_layout&#39;</span><span class="p">,</span>
@@ -372,22 +372,22 @@
         <span class="k">pass</span>
 
     <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">nodedata</span> <span class="ow">in</span> <span class="n">N</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="n">str_nodedata</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="n">make_str</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">nodedata</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
-        <span class="n">p</span> <span class="o">=</span> <span class="n">pydot</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="n">make_str</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="o">**</span><span class="n">str_nodedata</span><span class="p">)</span>
+        <span class="n">str_nodedata</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">nodedata</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">pydot</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="o">**</span><span class="n">str_nodedata</span><span class="p">)</span>
         <span class="n">P</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">N</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">():</span>
         <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">edgedata</span> <span class="ow">in</span> <span class="n">N</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-            <span class="n">str_edgedata</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="n">make_str</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">edgedata</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+            <span class="n">str_edgedata</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">edgedata</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
                                 <span class="k">if</span> <span class="n">k</span> <span class="o">!=</span> <span class="s1">&#39;key&#39;</span><span class="p">)</span>
-            <span class="n">edge</span> <span class="o">=</span> <span class="n">pydot</span><span class="o">.</span><span class="n">Edge</span><span class="p">(</span><span class="n">make_str</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">make_str</span><span class="p">(</span><span class="n">v</span><span class="p">),</span>
-                              <span class="n">key</span><span class="o">=</span><span class="n">make_str</span><span class="p">(</span><span class="n">key</span><span class="p">),</span> <span class="o">**</span><span class="n">str_edgedata</span><span class="p">)</span>
+            <span class="n">edge</span> <span class="o">=</span> <span class="n">pydot</span><span class="o">.</span><span class="n">Edge</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">),</span>
+                              <span class="n">key</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">),</span> <span class="o">**</span><span class="n">str_edgedata</span><span class="p">)</span>
             <span class="n">P</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
 
     <span class="k">else</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">edgedata</span> <span class="ow">in</span> <span class="n">N</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-            <span class="n">str_edgedata</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="n">make_str</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">edgedata</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
-            <span class="n">edge</span> <span class="o">=</span> <span class="n">pydot</span><span class="o">.</span><span class="n">Edge</span><span class="p">(</span><span class="n">make_str</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">make_str</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="o">**</span><span class="n">str_edgedata</span><span class="p">)</span>
+            <span class="n">str_edgedata</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">edgedata</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+            <span class="n">edge</span> <span class="o">=</span> <span class="n">pydot</span><span class="o">.</span><span class="n">Edge</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="o">**</span><span class="n">str_edgedata</span><span class="p">)</span>
             <span class="n">P</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">P</span></div>
 
@@ -466,7 +466,7 @@
     <span class="kn">import</span> <span class="nn">pydot</span>
     <span class="n">P</span> <span class="o">=</span> <span class="n">to_pydot</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">root</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">P</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;root&quot;</span><span class="p">,</span> <span class="n">make_str</span><span class="p">(</span><span class="n">root</span><span class="p">))</span>
+        <span class="n">P</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;root&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">root</span><span class="p">))</span>
 
     <span class="c1"># List of low-level bytes comprising a string in the dot language converted</span>
     <span class="c1"># from the passed graph with the passed external GraphViz command.</span>
@@ -493,7 +493,7 @@
 
     <span class="n">node_pos</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">():</span>
-        <span class="n">pydot_node</span> <span class="o">=</span> <span class="n">pydot</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="n">make_str</span><span class="p">(</span><span class="n">n</span><span class="p">))</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span>
+        <span class="n">pydot_node</span> <span class="o">=</span> <span class="n">pydot</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">))</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span>
         <span class="n">node</span> <span class="o">=</span> <span class="n">Q</span><span class="o">.</span><span class="n">get_node</span><span class="p">(</span><span class="n">pydot_node</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
@@ -517,7 +517,7 @@
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Oct 21, 2019.
+        Last updated on Oct 22, 2019.
       </span>
 
     </p>

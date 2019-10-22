@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.isomorphism.matchhelpers &mdash; NetworkX 2.5rc1.dev20191021201423 documentation</title>
+  <title>networkx.algorithms.isomorphism.matchhelpers &mdash; NetworkX 2.5rc1.dev20191022013905 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191021201423 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191022013905 documentation"
           href="../../../../_static/opensearch.xml"/>
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191021201423
+                2.5rc1.dev_20191022013905
               </div>
             
           
@@ -167,7 +167,6 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="k">import</span> <span class="n">permutations</span>
 <span class="kn">import</span> <span class="nn">types</span>
-<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;categorical_node_match&#39;</span><span class="p">,</span>
            <span class="s1">&#39;categorical_edge_match&#39;</span><span class="p">,</span>
@@ -183,16 +182,9 @@
 
 <span class="k">def</span> <span class="nf">copyfunc</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns a deepcopy of a function.&quot;&quot;&quot;</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="c1"># Python &lt;3</span>
-        <span class="k">return</span> <span class="n">types</span><span class="o">.</span><span class="n">FunctionType</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">func_code</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">func_globals</span><span class="p">,</span>
-                                  <span class="n">name</span> <span class="ow">or</span> <span class="n">f</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">func_defaults</span><span class="p">,</span>
-                                  <span class="n">f</span><span class="o">.</span><span class="n">func_closure</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-        <span class="c1"># Python &gt;=3</span>
-        <span class="k">return</span> <span class="n">types</span><span class="o">.</span><span class="n">FunctionType</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="vm">__code__</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="vm">__globals__</span><span class="p">,</span>
-                                  <span class="n">name</span> <span class="ow">or</span> <span class="n">f</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="vm">__defaults__</span><span class="p">,</span>
-                                  <span class="n">f</span><span class="o">.</span><span class="vm">__closure__</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">types</span><span class="o">.</span><span class="n">FunctionType</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="vm">__code__</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="vm">__globals__</span><span class="p">,</span>
+                              <span class="n">name</span> <span class="ow">or</span> <span class="n">f</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="vm">__defaults__</span><span class="p">,</span>
+                              <span class="n">f</span><span class="o">.</span><span class="vm">__closure__</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">allclose</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1.0000000000000001e-05</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-08</span><span class="p">):</span>
@@ -259,7 +251,7 @@
 
 
 <div class="viewcode-block" id="categorical_node_match"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.isomorphism.categorical_node_match.html#networkx.algorithms.isomorphism.categorical_node_match">[docs]</a><span class="k">def</span> <span class="nf">categorical_node_match</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">default</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">nx</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">is_string_like</span><span class="p">(</span><span class="n">attr</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
         <span class="k">def</span> <span class="nf">match</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">data1</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span> <span class="o">==</span> <span class="n">data2</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
@@ -281,7 +273,7 @@
 
 
 <div class="viewcode-block" id="categorical_multiedge_match"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.isomorphism.categorical_multiedge_match.html#networkx.algorithms.isomorphism.categorical_multiedge_match">[docs]</a><span class="k">def</span> <span class="nf">categorical_multiedge_match</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">default</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">nx</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">is_string_like</span><span class="p">(</span><span class="n">attr</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
         <span class="k">def</span> <span class="nf">match</span><span class="p">(</span><span class="n">datasets1</span><span class="p">,</span> <span class="n">datasets2</span><span class="p">):</span>
             <span class="n">values1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span> <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">datasets1</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
             <span class="n">values2</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span> <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">datasets2</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
@@ -345,7 +337,7 @@
 
 
 <div class="viewcode-block" id="numerical_node_match"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.isomorphism.numerical_node_match.html#networkx.algorithms.isomorphism.numerical_node_match">[docs]</a><span class="k">def</span> <span class="nf">numerical_node_match</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">default</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1.0000000000000001e-05</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-08</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">nx</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">is_string_like</span><span class="p">(</span><span class="n">attr</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
         <span class="k">def</span> <span class="nf">match</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">close</span><span class="p">(</span><span class="n">data1</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">default</span><span class="p">),</span>
                          <span class="n">data2</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">default</span><span class="p">),</span>
@@ -371,7 +363,7 @@
 
 
 <div class="viewcode-block" id="numerical_multiedge_match"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.isomorphism.numerical_multiedge_match.html#networkx.algorithms.isomorphism.numerical_multiedge_match">[docs]</a><span class="k">def</span> <span class="nf">numerical_multiedge_match</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">default</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1.0000000000000001e-05</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-08</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">nx</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">is_string_like</span><span class="p">(</span><span class="n">attr</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
         <span class="k">def</span> <span class="nf">match</span><span class="p">(</span><span class="n">datasets1</span><span class="p">,</span> <span class="n">datasets2</span><span class="p">):</span>
             <span class="n">values1</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span> <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">datasets1</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
             <span class="n">values2</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span> <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">datasets2</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
@@ -443,7 +435,7 @@
 
 
 <div class="viewcode-block" id="generic_node_match"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.isomorphism.generic_node_match.html#networkx.algorithms.isomorphism.generic_node_match">[docs]</a><span class="k">def</span> <span class="nf">generic_node_match</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">default</span><span class="p">,</span> <span class="n">op</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">nx</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">is_string_like</span><span class="p">(</span><span class="n">attr</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
         <span class="k">def</span> <span class="nf">match</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">op</span><span class="p">(</span><span class="n">data1</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">default</span><span class="p">),</span> <span class="n">data2</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">default</span><span class="p">))</span>
     <span class="k">else</span><span class="p">:</span>
@@ -510,7 +502,7 @@
 
     <span class="c1"># This is slow, but generic.</span>
     <span class="c1"># We must test every possible isomorphism between the edges.</span>
-    <span class="k">if</span> <span class="n">nx</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">is_string_like</span><span class="p">(</span><span class="n">attr</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
         <span class="n">attr</span> <span class="o">=</span> <span class="p">[</span><span class="n">attr</span><span class="p">]</span>
         <span class="n">default</span> <span class="o">=</span> <span class="p">[</span><span class="n">default</span><span class="p">]</span>
         <span class="n">op</span> <span class="o">=</span> <span class="p">[</span><span class="n">op</span><span class="p">]</span>
@@ -556,7 +548,7 @@
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Oct 21, 2019.
+        Last updated on Oct 22, 2019.
       </span>
 
     </p>
