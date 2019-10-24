@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.shortest_paths.unweighted &mdash; NetworkX 2.5rc1.dev20191024001434 documentation</title>
+  <title>networkx.algorithms.shortest_paths.unweighted &mdash; NetworkX 2.5rc1.dev20191024005224 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191024001434 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191024005224 documentation"
           href="../../../../_static/opensearch.xml"/>
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191024001434
+                2.5rc1.dev_20191024005224
               </div>
             
           
@@ -243,18 +243,23 @@
 <span class="sd">        cutoff : int or float</span>
 <span class="sd">            level at which we stop the process</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">seen</span> <span class="o">=</span> <span class="p">{}</span>                  <span class="c1"># level (number of hops) when seen in BFS</span>
-    <span class="n">level</span> <span class="o">=</span> <span class="mi">0</span>                  <span class="c1"># the current level</span>
-    <span class="n">nextlevel</span> <span class="o">=</span> <span class="n">firstlevel</span>     <span class="c1"># dict of nodes to check at next level</span>
-
+    <span class="n">seen</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># level (number of hops) when seen in BFS</span>
+    <span class="n">level</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># the current level</span>
+    <span class="n">nextlevel</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">firstlevel</span><span class="p">)</span>  <span class="c1"># set of nodes to check at next level</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">adj</span><span class="p">)</span>
     <span class="k">while</span> <span class="n">nextlevel</span> <span class="ow">and</span> <span class="n">cutoff</span> <span class="o">&gt;=</span> <span class="n">level</span><span class="p">:</span>
         <span class="n">thislevel</span> <span class="o">=</span> <span class="n">nextlevel</span>  <span class="c1"># advance to next level</span>
-        <span class="n">nextlevel</span> <span class="o">=</span> <span class="p">{}</span>         <span class="c1"># and start a new list (fringe)</span>
+        <span class="n">nextlevel</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([])</span>  <span class="c1"># and start a new set (fringe)</span>
+        <span class="n">found</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">thislevel</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
                 <span class="n">seen</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">level</span>  <span class="c1"># set the level of vertex v</span>
-                <span class="n">nextlevel</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">adj</span><span class="p">[</span><span class="n">v</span><span class="p">])</span>  <span class="c1"># add neighbors of v</span>
+                <span class="n">found</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
                 <span class="k">yield</span> <span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">seen</span><span class="p">)</span> <span class="o">==</span> <span class="n">n</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">found</span><span class="p">:</span>
+            <span class="n">nextlevel</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">adj</span><span class="p">[</span><span class="n">v</span><span class="p">])</span>
         <span class="n">level</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">del</span> <span class="n">seen</span>
 
