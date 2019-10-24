@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.generators.small &mdash; NetworkX 2.5rc1.dev20191024005224 documentation</title>
+  <title>networkx.generators.small &mdash; NetworkX 2.5rc1.dev20191024011009 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191024005224 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191024011009 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191024005224
+                2.5rc1.dev_20191024011009
               </div>
             
           
@@ -247,6 +247,10 @@
 
 <span class="sd">    Use the create_using argument to choose the graph class/type.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">graph_description</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;adjacencylist&quot;</span><span class="p">,</span> <span class="s2">&quot;edgelist&quot;</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="s2">&quot;ltype must be either adjacencylist or edgelist&quot;</span><span class="p">)</span>
+
     <span class="n">ltype</span> <span class="o">=</span> <span class="n">graph_description</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">graph_description</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">n</span> <span class="o">=</span> <span class="n">graph_description</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
