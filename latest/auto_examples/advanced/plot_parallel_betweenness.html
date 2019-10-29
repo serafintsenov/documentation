@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Parallel Betweenness &mdash; NetworkX 2.5rc1.dev20191029132024 documentation</title>
+  <title>Parallel Betweenness &mdash; NetworkX 2.5rc1.dev20191029191738 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191029132024 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191029191738 documentation"
           href="../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191029132024
+                2.5rc1.dev_20191029191738
               </div>
             
           
@@ -196,27 +196,50 @@ multiprocessing module from Python Standard Library.</p>
 the contribution of those nodes to the betweenness centrality of the whole
 network. Here we divide the network in chunks of nodes and we compute their
 contribution to the betweenness centrality of the whole network.</p>
-<div class="highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
-  File <span class="nb">&quot;/home/travis/venv/lib/python3.7/site-packages/sphinx_gallery/gen_rst.py&quot;</span>, line <span class="m">480</span>, in <span class="n">_memory_usage</span>
-    <span class="n">out</span> <span class="o">=</span> <span class="n">func</span><span class="p">()</span>
-  File <span class="nb">&quot;/home/travis/venv/lib/python3.7/site-packages/sphinx_gallery/gen_rst.py&quot;</span>, line <span class="m">465</span>, in <span class="n">__call__</span>
-    <span class="k">exec</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">globals</span><span class="p">)</span>
-  File <span class="nb">&quot;/home/travis/build/networkx/networkx/examples/advanced/plot_parallel_betweenness.py&quot;</span>, line <span class="m">72</span>, in <span class="n">&lt;module&gt;</span>
-    <span class="n">bt</span> <span class="o">=</span> <span class="n">betweenness_centrality_parallel</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-  File <span class="nb">&quot;/home/travis/build/networkx/networkx/examples/advanced/plot_parallel_betweenness.py&quot;</span>, line <span class="m">52</span>, in <span class="n">betweenness_centrality_parallel</span>
-    <span class="n">node_chunks</span><span class="p">))</span>
-  File <span class="nb">&quot;/opt/python/3.7.1/lib/python3.7/multiprocessing/pool.py&quot;</span>, line <span class="m">290</span>, in <span class="n">map</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_map_async</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">iterable</span><span class="p">,</span> <span class="n">mapstar</span><span class="p">,</span> <span class="n">chunksize</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-  File <span class="nb">&quot;/opt/python/3.7.1/lib/python3.7/multiprocessing/pool.py&quot;</span>, line <span class="m">683</span>, in <span class="n">get</span>
-    <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span>
-  File <span class="nb">&quot;/opt/python/3.7.1/lib/python3.7/multiprocessing/pool.py&quot;</span>, line <span class="m">457</span>, in <span class="n">_handle_tasks</span>
-    <span class="n">put</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
-  File <span class="nb">&quot;/opt/python/3.7.1/lib/python3.7/multiprocessing/connection.py&quot;</span>, line <span class="m">206</span>, in <span class="n">send</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_send_bytes</span><span class="p">(</span><span class="n">_ForkingPickler</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span>
-  File <span class="nb">&quot;/opt/python/3.7.1/lib/python3.7/multiprocessing/reduction.py&quot;</span>, line <span class="m">51</span>, in <span class="n">dumps</span>
-    <span class="bp">cls</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">protocol</span><span class="p">)</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
-<span class="gr">_pickle.PicklingError</span>: <span class="n">Can&#39;t pickle &lt;function _betmap at 0x7ffae5b326a8&gt;: attribute lookup _betmap on __main__ failed</span>
+<img alt="../../_images/sphx_glr_plot_parallel_betweenness_001.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_parallel_betweenness_001.png" />
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Computing betweenness centrality for:
+Name:
+Type: Graph
+Number of nodes: 1000
+Number of edges: 2991
+Average degree:   5.9820
+        Parallel version
+                Time: 4.9353
+                Betweenness centrality for node 0: 0.03758
+        Non-Parallel version
+                Time: 4.6343 seconds
+                Betweenness centrality for node 0: 0.03758
+
+Computing betweenness centrality for:
+Name:
+Type: Graph
+Number of nodes: 1000
+Number of edges: 4881
+Average degree:   9.7620
+        Parallel version
+                Time: 6.0286
+                Betweenness centrality for node 0: 0.00475
+        Non-Parallel version
+                Time: 5.6342 seconds
+                Betweenness centrality for node 0: 0.00475
+
+Computing betweenness centrality for:
+Name:
+Type: Graph
+Number of nodes: 1000
+Number of edges: 2000
+Average degree:   4.0000
+        Parallel version
+                Time: 4.4261
+                Betweenness centrality for node 0: 0.01252
+        Non-Parallel version
+                Time: 4.0571 seconds
+                Betweenness centrality for node 0: 0.01252
 </pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="k">import</span> <span class="n">Pool</span>
 <span class="kn">import</span> <span class="nn">time</span>
@@ -236,26 +259,16 @@ contribution to the betweenness centrality of the whole network.</p>
         <span class="k">yield</span> <span class="n">x</span>
 
 
-<span class="k">def</span> <span class="nf">_betmap</span><span class="p">(</span><span class="n">G_normalized_weight_sources_tuple</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Pool for multiprocess only accepts functions with one argument.</span>
-<span class="sd">    This function uses a tuple as its only argument. We use a named tuple for</span>
-<span class="sd">    python 3 compatibility, and then unpack it when we send it to</span>
-<span class="sd">    `betweenness_centrality_source`</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">nx</span><span class="o">.</span><span class="n">betweenness_centrality_source</span><span class="p">(</span><span class="o">*</span><span class="n">G_normalized_weight_sources_tuple</span><span class="p">)</span>
-
-
 <span class="k">def</span> <span class="nf">betweenness_centrality_parallel</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Parallel betweenness centrality  function&quot;&quot;&quot;</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">Pool</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="n">processes</span><span class="p">)</span>
     <span class="n">node_divisor</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">_pool</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span>
     <span class="n">node_chunks</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">chunks</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">(),</span> <span class="nb">int</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">order</span><span class="p">()</span> <span class="o">/</span> <span class="n">node_divisor</span><span class="p">)))</span>
     <span class="n">num_chunks</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">node_chunks</span><span class="p">)</span>
-    <span class="n">bt_sc</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">_betmap</span><span class="p">,</span>
-                  <span class="nb">zip</span><span class="p">([</span><span class="n">G</span><span class="p">]</span> <span class="o">*</span> <span class="n">num_chunks</span><span class="p">,</span>
-                      <span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">*</span> <span class="n">num_chunks</span><span class="p">,</span>
-                      <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">num_chunks</span><span class="p">,</span>
-                      <span class="n">node_chunks</span><span class="p">))</span>
+    <span class="n">bt_sc</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">starmap</span><span class="p">(</span>
+        <span class="n">nx</span><span class="o">.</span><span class="n">betweenness_centrality_source</span><span class="p">,</span>
+        <span class="nb">zip</span><span class="p">([</span><span class="n">G</span><span class="p">]</span> <span class="o">*</span> <span class="n">num_chunks</span><span class="p">,</span> <span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">*</span> <span class="n">num_chunks</span><span class="p">,</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">num_chunks</span><span class="p">,</span> <span class="n">node_chunks</span><span class="p">),</span>
+    <span class="p">)</span>
 
     <span class="c1"># Reduce the partial solutions</span>
     <span class="n">bt_c</span> <span class="o">=</span> <span class="n">bt_sc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -289,7 +302,7 @@ contribution to the betweenness centrality of the whole network.</p>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.187 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  36.579 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-advanced-plot-parallel-betweenness-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/241b70420ac07b76d632bcc9102648e6/plot_parallel_betweenness.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_parallel_betweenness.py</span></code></a></p>
