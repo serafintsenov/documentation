@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.connectivity.disjoint_paths.edge_disjoint_paths &mdash; NetworkX 2.5rc1.dev20191109042303 documentation</title>
+  <title>networkx.algorithms.connectivity.disjoint_paths.edge_disjoint_paths &mdash; NetworkX 2.5rc1.dev20191110003527 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191109042303 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191110003527 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191109042303
+                2.5rc1.dev_20191110003527
               </div>
             
           
@@ -305,9 +305,13 @@ reused instead of recreated. Default value: None.</p></li>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>generator</p>
 </dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="../../exceptions.html#networkx.NetworkXNoPath" title="networkx.NetworkXNoPath"><strong>NetworkXNoPath</strong></a> – If there is no path between source and target.</p></li>
+<li><p><a class="reference internal" href="../../exceptions.html#networkx.NetworkXError" title="networkx.NetworkXError"><strong>NetworkXError</strong></a> – If source or target are not in the graph G.</p></li>
+</ul>
+</dd>
 </dl>
-<p>:raises NetworkXNoPath : exception: If there is no path between source and target.
-:raises NetworkXError : exception: If source or target are not in the graph G.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="networkx.algorithms.connectivity.disjoint_paths.node_disjoint_paths.html#networkx.algorithms.connectivity.disjoint_paths.node_disjoint_paths" title="networkx.algorithms.connectivity.disjoint_paths.node_disjoint_paths"><code class="xref py py-meth docutils literal notranslate"><span class="pre">node_disjoint_paths()</span></code></a>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">edge_connectivity()</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">maximum_flow()</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">edmonds_karp()</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">preflow_push()</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">shortest_augmenting_path()</span></code></p>
@@ -395,7 +399,7 @@ package.</p>
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Nov 09, 2019.
+        Last updated on Nov 10, 2019.
       </span>
 
     </p>

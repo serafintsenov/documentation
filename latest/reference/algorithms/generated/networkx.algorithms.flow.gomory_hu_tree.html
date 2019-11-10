@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.flow.gomory_hu_tree &mdash; NetworkX 2.5rc1.dev20191109042303 documentation</title>
+  <title>networkx.algorithms.flow.gomory_hu_tree &mdash; NetworkX 2.5rc1.dev20191110003527 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191109042303 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191110003527 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191109042303
+                2.5rc1.dev_20191110003527
               </div>
             
           
@@ -304,9 +304,13 @@ graphs.</p></li>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>NetworkX graph</p>
 </dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="../../exceptions.html#networkx.NetworkXNotImplemented" title="networkx.NetworkXNotImplemented"><strong>NetworkXNotImplemented</strong></a> – Raised if the input graph is directed.</p></li>
+<li><p><a class="reference internal" href="../../exceptions.html#networkx.NetworkXError" title="networkx.NetworkXError"><strong>NetworkXError</strong></a> – Raised if the input graph is an empty Graph.</p></li>
+</ul>
+</dd>
 </dl>
-<p>:raises NetworkXNotImplemented : Exception: Raised if the input graph is directed.
-:raises NetworkXError: Exception: Raised if the input graph is an empty Graph.</p>
 <p class="rubric">Examples</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">karate_club_graph</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nx</span><span class="o">.</span><span class="n">set_edge_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;capacity&#39;</span><span class="p">)</span>
@@ -395,7 +399,7 @@ SIAM J Comput 19(1):143-155, 1990.</p>
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Nov 09, 2019.
+        Last updated on Nov 10, 2019.
       </span>
 
     </p>

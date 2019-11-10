@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.bipartite.matching.minimum_weight_full_matching &mdash; NetworkX 2.5rc1.dev20191109042303 documentation</title>
+  <title>networkx.algorithms.bipartite.matching.minimum_weight_full_matching &mdash; NetworkX 2.5rc1.dev20191110003527 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191109042303 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191110003527 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191109042303
+                2.5rc1.dev_20191110003527
               </div>
             
           
@@ -298,9 +298,13 @@ nodes do not occur as a key in matches.</p>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>dictionary</p>
 </dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – Raised if the input bipartite graph is not complete.</p></li>
+<li><p><strong>ImportError</strong> – Raised if SciPy is not available.</p></li>
+</ul>
+</dd>
 </dl>
-<p>:raises ValueError : Exception: Raised if the input bipartite graph is not complete.
-:raises ImportError : Exception: Raised if SciPy is not available.</p>
 <p class="rubric">Notes</p>
 <p>The problem of determining a minimum weight full matching is also known as
 the rectangular linear assignment problem. This implementation defers the
@@ -340,7 +344,7 @@ Networks, 10(2):143–152, 1980.</p>
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Nov 09, 2019.
+        Last updated on Nov 10, 2019.
       </span>
 
     </p>
