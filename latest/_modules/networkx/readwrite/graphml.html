@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.readwrite.graphml &mdash; NetworkX 2.5rc1.dev20191110003527 documentation</title>
+  <title>networkx.readwrite.graphml &mdash; NetworkX 2.5rc1.dev20191110161229 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191110003527 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191110161229 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191110003527
+                2.5rc1.dev_20191110161229
               </div>
             
           
@@ -262,10 +262,6 @@
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-<span class="sd">    It may be a good idea in Python2 to convert strings to unicode</span>
-<span class="sd">    before giving the graph to write_gml. At least the strings with</span>
-<span class="sd">    either many characters to escape.</span>
-
 <span class="sd">    This implementation does not support mixed graphs (directed</span>
 <span class="sd">    and unidirected edges together) hyperedges, nested graphs, or ports.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -485,17 +481,9 @@
         <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;http://graphml.graphdrawing.org/xmlns&#39;</span><span class="p">,</span>
                   <span class="s1">&#39;http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd&#39;</span><span class="p">])</span>
 
-    <span class="k">try</span><span class="p">:</span>
-        <span class="nb">chr</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>     <span class="c1"># Fails on Py!=3.</span>
-        <span class="n">unicode</span> <span class="o">=</span> <span class="nb">str</span>  <span class="c1"># Py3k&#39;s str is our unicode type</span>
-        <span class="n">long</span> <span class="o">=</span> <span class="nb">int</span>     <span class="c1"># Py3K&#39;s int is our long type</span>
-    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-        <span class="c1"># Python 2.x</span>
-        <span class="k">pass</span>
-
     <span class="n">types</span> <span class="o">=</span> <span class="p">[(</span><span class="nb">int</span><span class="p">,</span> <span class="s2">&quot;integer&quot;</span><span class="p">),</span>  <span class="c1"># for Gephi GraphML bug</span>
-             <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;yfiles&quot;</span><span class="p">),</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;string&quot;</span><span class="p">),</span> <span class="p">(</span><span class="n">unicode</span><span class="p">,</span> <span class="s2">&quot;string&quot;</span><span class="p">),</span>
-             <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="s2">&quot;int&quot;</span><span class="p">),</span> <span class="p">(</span><span class="n">long</span><span class="p">,</span> <span class="s2">&quot;long&quot;</span><span class="p">),</span>
+             <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;yfiles&quot;</span><span class="p">),</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="s2">&quot;string&quot;</span><span class="p">),</span>
+             <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="s2">&quot;int&quot;</span><span class="p">),</span>
              <span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="s2">&quot;float&quot;</span><span class="p">),</span> <span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="s2">&quot;double&quot;</span><span class="p">),</span>
              <span class="p">(</span><span class="nb">bool</span><span class="p">,</span> <span class="s2">&quot;boolean&quot;</span><span class="p">)]</span>
 
@@ -569,24 +557,11 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">infer_numeric_types</span><span class="p">:</span>
             <span class="n">types</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attribute_types</span><span class="p">[(</span><span class="n">name</span><span class="p">,</span> <span class="n">scope</span><span class="p">)]</span>
 
-            <span class="k">try</span><span class="p">:</span>
-                <span class="nb">chr</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>     <span class="c1"># Fails on Py&lt;3.</span>
-                <span class="n">local_long</span> <span class="o">=</span> <span class="nb">int</span>     <span class="c1"># Py3&#39;s int is Py2&#39;s long type</span>
-                <span class="n">local_unicode</span> <span class="o">=</span> <span class="nb">str</span>  <span class="c1"># Py3&#39;s str is Py2&#39;s unicode type</span>
-            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-                <span class="c1"># Python 2.x</span>
-                <span class="n">local_long</span> <span class="o">=</span> <span class="n">long</span>
-                <span class="n">local_unicode</span> <span class="o">=</span> <span class="n">unicode</span>
-
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">types</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
                 <span class="k">if</span> <span class="nb">str</span> <span class="ow">in</span> <span class="n">types</span><span class="p">:</span>
                     <span class="k">return</span> <span class="nb">str</span>
-                <span class="k">elif</span> <span class="n">local_unicode</span> <span class="ow">in</span> <span class="n">types</span><span class="p">:</span>
-                    <span class="k">return</span> <span class="n">local_unicode</span>
                 <span class="k">elif</span> <span class="nb">float</span> <span class="ow">in</span> <span class="n">types</span><span class="p">:</span>
                     <span class="k">return</span> <span class="nb">float</span>
-                <span class="k">elif</span> <span class="n">local_long</span> <span class="ow">in</span> <span class="n">types</span><span class="p">:</span>
-                    <span class="k">return</span> <span class="n">local_long</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="k">return</span> <span class="nb">int</span>
             <span class="k">else</span><span class="p">:</span>

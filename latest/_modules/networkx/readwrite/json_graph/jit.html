@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.readwrite.json_graph.jit &mdash; NetworkX 2.5rc1.dev20191110003527 documentation</title>
+  <title>networkx.readwrite.json_graph.jit &mdash; NetworkX 2.5rc1.dev20191110161229 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191110003527 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191110161229 documentation"
           href="../../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191110003527
+                2.5rc1.dev_20191110161229
               </div>
             
           
@@ -226,7 +226,7 @@
         <span class="n">G</span> <span class="o">=</span> <span class="n">create_using</span>
         <span class="n">G</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
 
-    <span class="k">if</span> <span class="n">nx</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">is_string_like</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
     <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
