@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Chess Masters &mdash; NetworkX 2.5rc1.dev20191110161229 documentation</title>
+  <title>Chess Masters &mdash; NetworkX 2.5rc1.dev20191111214139 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191110161229 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191111214139 documentation"
           href="../../_static/opensearch.xml"/>
 
   
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191110161229
+                2.5rc1.dev_20191111214139
               </div>
             
           
@@ -109,11 +109,11 @@
 <li class="toctree-l3"><a class="reference internal" href="plot_node_colormap.html">Node Colormap</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_edge_colormap.html">Edge Colormap</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_house_with_colors.html">House With Colors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_four_grids.html">Four Grids</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_circular_tree.html">Circular Tree</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_degree_rank.html">Degree Rank</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plot_spectral_grid.html">Spectral Embedding</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plot_four_grids.html">Four Grids</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_ego_graph.html">Ego Graph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_spectral_grid.html">Spectral Embedding</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_degree_histogram.html">Degree histogram</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_random_geometric_graph.html">Random Geometric Graph</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_weighted_graph.html">Weighted Graph</a></li>
@@ -264,23 +264,12 @@ Spassky, Boris V vs Fischer, Robert J
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#    Copyright (C) 2006-2019 by</span>
-<span class="c1">#    Aric Hagberg &lt;hagberg@lanl.gov&gt;</span>
-<span class="c1">#    Dan Schult &lt;dschult@colgate.edu&gt;</span>
-<span class="c1">#    Pieter Swart &lt;swart@lanl.gov&gt;</span>
-<span class="c1">#    All rights reserved.</span>
-<span class="c1">#    BSD license.</span>
-
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 
 <span class="c1"># tag names specifying what game info should be</span>
 <span class="c1"># stored in the dict on each digraph edge</span>
-<span class="n">game_details</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Event&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;Date&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;Result&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;ECO&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;Site&quot;</span><span class="p">]</span>
+<span class="n">game_details</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Event&quot;</span><span class="p">,</span> <span class="s2">&quot;Date&quot;</span><span class="p">,</span> <span class="s2">&quot;Result&quot;</span><span class="p">,</span> <span class="s2">&quot;ECO&quot;</span><span class="p">,</span> <span class="s2">&quot;Site&quot;</span><span class="p">]</span>
 
 
 <span class="k">def</span> <span class="nf">chess_pgn_graph</span><span class="p">(</span><span class="n">pgn_file</span><span class="o">=</span><span class="s2">&quot;chess_masters_WCC.pgn.bz2&quot;</span><span class="p">):</span>
@@ -293,111 +282,111 @@ Spassky, Boris V vs Fischer, Robert J
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">bz2</span>
+
     <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">MultiDiGraph</span><span class="p">()</span>
     <span class="n">game</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">datafile</span> <span class="o">=</span> <span class="n">bz2</span><span class="o">.</span><span class="n">BZ2File</span><span class="p">(</span><span class="n">pgn_file</span><span class="p">)</span>
-    <span class="n">lines</span> <span class="o">=</span> <span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">datafile</span><span class="p">)</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">datafile</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;[&#39;</span><span class="p">):</span>
-            <span class="n">tag</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">line</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;[&quot;</span><span class="p">):</span>
+            <span class="n">tag</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">line</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
             <span class="n">game</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">tag</span><span class="p">)]</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;&quot;&#39;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="c1"># empty line after tag set indicates</span>
             <span class="c1"># we finished reading game info</span>
             <span class="k">if</span> <span class="n">game</span><span class="p">:</span>
-                <span class="n">white</span> <span class="o">=</span> <span class="n">game</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;White&#39;</span><span class="p">)</span>
-                <span class="n">black</span> <span class="o">=</span> <span class="n">game</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;Black&#39;</span><span class="p">)</span>
+                <span class="n">white</span> <span class="o">=</span> <span class="n">game</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;White&quot;</span><span class="p">)</span>
+                <span class="n">black</span> <span class="o">=</span> <span class="n">game</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;Black&quot;</span><span class="p">)</span>
                 <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">white</span><span class="p">,</span> <span class="n">black</span><span class="p">,</span> <span class="o">**</span><span class="n">game</span><span class="p">)</span>
                 <span class="n">game</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">return</span> <span class="n">G</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">G</span> <span class="o">=</span> <span class="n">chess_pgn_graph</span><span class="p">()</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">chess_pgn_graph</span><span class="p">()</span>
 
-    <span class="n">ngames</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">number_of_edges</span><span class="p">()</span>
-    <span class="n">nplayers</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">number_of_nodes</span><span class="p">()</span>
+<span class="n">ngames</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">number_of_edges</span><span class="p">()</span>
+<span class="n">nplayers</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">number_of_nodes</span><span class="p">()</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loaded </span><span class="si">%d</span><span class="s2"> chess games between </span><span class="si">%d</span><span class="s2"> players</span><span class="se">\n</span><span class="s2">&quot;</span>
-          <span class="o">%</span> <span class="p">(</span><span class="n">ngames</span><span class="p">,</span> <span class="n">nplayers</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Loaded </span><span class="si">{ngames}</span><span class="s2"> chess games between </span><span class="si">{nplayers}</span><span class="s2"> players</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
-    <span class="c1"># identify connected components</span>
-    <span class="c1"># of the undirected version</span>
-    <span class="n">H</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">to_undirected</span><span class="p">()</span>
-    <span class="n">Gcc</span> <span class="o">=</span> <span class="p">[</span><span class="n">H</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">nx</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">H</span><span class="p">)]</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">Gcc</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Note the disconnected component consisting of:&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">Gcc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
+<span class="c1"># identify connected components</span>
+<span class="c1"># of the undirected version</span>
+<span class="n">H</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">to_undirected</span><span class="p">()</span>
+<span class="n">Gcc</span> <span class="o">=</span> <span class="p">[</span><span class="n">H</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">nx</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">H</span><span class="p">)]</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">Gcc</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Note the disconnected component consisting of:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">Gcc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
 
-    <span class="c1"># find all games with B97 opening (as described in ECO)</span>
-    <span class="n">openings</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">game_info</span><span class="p">[</span><span class="s1">&#39;ECO&#39;</span><span class="p">]</span>
-                    <span class="k">for</span> <span class="p">(</span><span class="n">white</span><span class="p">,</span> <span class="n">black</span><span class="p">,</span> <span class="n">game_info</span><span class="p">)</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">)])</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">From a total of </span><span class="si">%d</span><span class="s2"> different openings,&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">openings</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the following games used the Sicilian opening&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;with the Najdorff 7...Qb6 &quot;Poisoned Pawn&quot; variation.</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="c1"># find all games with B97 opening (as described in ECO)</span>
+<span class="n">openings</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">game_info</span><span class="p">[</span><span class="s2">&quot;ECO&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="p">(</span><span class="n">white</span><span class="p">,</span> <span class="n">black</span><span class="p">,</span> <span class="n">game_info</span><span class="p">)</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">)])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">From a total of {len(openings)} different openings,&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;the following games used the Sicilian opening&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;with the Najdorff 7...Qb6 &quot;Poisoned Pawn&quot; variation.</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 
-    <span class="k">for</span> <span class="p">(</span><span class="n">white</span><span class="p">,</span> <span class="n">black</span><span class="p">,</span> <span class="n">game_info</span><span class="p">)</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">game_info</span><span class="p">[</span><span class="s1">&#39;ECO&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;B97&#39;</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">white</span><span class="p">,</span> <span class="s2">&quot;vs&quot;</span><span class="p">,</span> <span class="n">black</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">game_info</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   &quot;</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="s2">&quot;: &quot;</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">white</span><span class="p">,</span> <span class="n">black</span><span class="p">,</span> <span class="n">game_info</span><span class="p">)</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">game_info</span><span class="p">[</span><span class="s2">&quot;ECO&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;B97&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">white</span><span class="p">,</span> <span class="s2">&quot;vs&quot;</span><span class="p">,</span> <span class="n">black</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">game_info</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;   &quot;</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="s2">&quot;: &quot;</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
-    <span class="c1"># make new undirected graph H without multi-edges</span>
-    <span class="n">H</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="c1"># make new undirected graph H without multi-edges</span>
+<span class="n">H</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 
-    <span class="c1"># edge width is proportional number of games played</span>
-    <span class="n">edgewidth</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="ow">in</span> <span class="n">H</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="n">edgewidth</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">get_edge_data</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)))</span>
+<span class="c1"># edge width is proportional number of games played</span>
+<span class="n">edgewidth</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="ow">in</span> <span class="n">H</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">edgewidth</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">get_edge_data</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)))</span>
 
-    <span class="c1"># node size is proportional to number of games won</span>
-    <span class="n">wins</span> <span class="o">=</span> <span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">(),</span> <span class="mf">0.0</span><span class="p">)</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="n">r</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;Result&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">:</span>
-            <span class="n">wins</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">1.0</span>
-        <span class="k">elif</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;1/2&#39;</span><span class="p">:</span>
-            <span class="n">wins</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">0.5</span>
-            <span class="n">wins</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">0.5</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">wins</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">1.0</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">nx_agraph</span><span class="o">.</span><span class="n">graphviz_layout</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="c1"># node size is proportional to number of games won</span>
+<span class="n">wins</span> <span class="o">=</span> <span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">(),</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;Result&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span><span class="p">:</span>
+        <span class="n">wins</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">1.0</span>
+    <span class="k">elif</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;1/2&quot;</span><span class="p">:</span>
+        <span class="n">wins</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">0.5</span>
+        <span class="n">wins</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">0.5</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">wins</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">1.0</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">nx_agraph</span><span class="o">.</span><span class="n">graphviz_layout</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 
-    <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;text.usetex&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-    <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">edgewidth</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
-    <span class="n">nodesize</span> <span class="o">=</span> <span class="p">[</span><span class="n">wins</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">*</span> <span class="mi">50</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">H</span><span class="p">]</span>
-    <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="n">nodesize</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
-    <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
-    <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
-    <span class="n">font</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;fontname&#39;</span><span class="p">:</span> <span class="s1">&#39;Helvetica&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;fontweight&#39;</span><span class="p">:</span> <span class="s1">&#39;bold&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;fontsize&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">}</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;World Chess Championship Games: 1886 - 1985&quot;</span><span class="p">,</span> <span class="n">font</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;text.usetex&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">edgewidth</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="s2">&quot;m&quot;</span><span class="p">)</span>
+<span class="n">nodesize</span> <span class="o">=</span> <span class="p">[</span><span class="n">wins</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">*</span> <span class="mi">50</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">H</span><span class="p">]</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="n">nodesize</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">font</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;fontname&quot;</span><span class="p">:</span> <span class="s2">&quot;Helvetica&quot;</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="s2">&quot;fontweight&quot;</span><span class="p">:</span> <span class="s2">&quot;bold&quot;</span><span class="p">,</span> <span class="s2">&quot;fontsize&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">}</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;World Chess Championship Games: 1886 - 1985&quot;</span><span class="p">,</span> <span class="n">font</span><span class="p">)</span>
 
-    <span class="c1"># change font and write text (using data coordinates)</span>
-    <span class="n">font</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;fontname&#39;</span><span class="p">:</span> <span class="s1">&#39;Helvetica&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;fontweight&#39;</span><span class="p">:</span> <span class="s1">&#39;bold&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;fontsize&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">}</span>
+<span class="c1"># change font and write text (using data coordinates)</span>
+<span class="n">font</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;fontname&quot;</span><span class="p">:</span> <span class="s2">&quot;Helvetica&quot;</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;fontweight&quot;</span><span class="p">:</span> <span class="s2">&quot;bold&quot;</span><span class="p">,</span> <span class="s2">&quot;fontsize&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">}</span>
 
-    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.97</span><span class="p">,</span> <span class="s2">&quot;edge width = # games played&quot;</span><span class="p">,</span>
-             <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
-             <span class="n">transform</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.94</span><span class="p">,</span> <span class="s2">&quot;node size = # games won&quot;</span><span class="p">,</span>
-             <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
-             <span class="n">transform</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span>
+    <span class="mf">0.5</span><span class="p">,</span>
+    <span class="mf">0.97</span><span class="p">,</span>
+    <span class="s2">&quot;edge width = # games played&quot;</span><span class="p">,</span>
+    <span class="n">horizontalalignment</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+    <span class="n">transform</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span>
+    <span class="mf">0.5</span><span class="p">,</span>
+    <span class="mf">0.94</span><span class="p">,</span>
+    <span class="s2">&quot;node size = # games won&quot;</span><span class="p">,</span>
+    <span class="n">horizontalalignment</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+    <span class="n">transform</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span>
+<span class="p">)</span>
 
-    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.384 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.386 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-drawing-plot-chess-masters-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/388158421a67216f605c1bbf9aa310bf/plot_chess_masters.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_chess_masters.py</span></code></a></p>
@@ -431,7 +420,7 @@ Spassky, Boris V vs Fischer, Robert J
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Nov 10, 2019.
+        Last updated on Nov 11, 2019.
       </span>
 
     </p>

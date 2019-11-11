@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.bipartite.cluster &mdash; NetworkX 2.5rc1.dev20191110161229 documentation</title>
+  <title>networkx.algorithms.bipartite.cluster &mdash; NetworkX 2.5rc1.dev20191111214139 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191110161229 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191111214139 documentation"
           href="../../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191110161229
+                2.5rc1.dev_20191111214139
               </div>
             
           
@@ -164,22 +164,18 @@
            <div itemprop="articleBody">
             
   <h1>Source code for networkx.algorithms.bipartite.cluster</h1><div class="highlight"><pre>
-<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="c1">#    Copyright (C) 2011 by</span>
-<span class="c1">#    Jordi Torrents &lt;jtorrents@milnou.net&gt;</span>
-<span class="c1">#    Aric Hagberg &lt;hagberg@lanl.gov&gt;</span>
-<span class="c1">#    All rights reserved.</span>
-<span class="c1">#    BSD license.</span>
+<span></span><span class="sd">&quot;&quot;&quot;Functions for computing clustering of pairs</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
 <span class="kn">import</span> <span class="nn">itertools</span>
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
-<span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span><span class="se">\n</span><span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;Jordi Torrents &lt;jtorrents@milnou.net&gt;&#39;</span><span class="p">,</span>
-                            <span class="s1">&#39;Aric Hagberg (hagberg@lanl.gov)&#39;</span><span class="p">])</span>
+
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;clustering&#39;</span><span class="p">,</span>
            <span class="s1">&#39;average_clustering&#39;</span><span class="p">,</span>
            <span class="s1">&#39;latapy_clustering&#39;</span><span class="p">,</span>
            <span class="s1">&#39;robins_alexander_clustering&#39;</span><span class="p">]</span>
 
-<span class="c1"># functions for computing clustering of pairs</span>
 
 
 <span class="k">def</span> <span class="nf">cc_dot</span><span class="p">(</span><span class="n">nu</span><span class="p">,</span> <span class="n">nv</span><span class="p">):</span>
@@ -458,7 +454,7 @@
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Nov 10, 2019.
+        Last updated on Nov 11, 2019.
       </span>
 
     </p>

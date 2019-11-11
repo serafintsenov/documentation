@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Mayavi2 &mdash; NetworkX 2.5rc1.dev20191110161229 documentation</title>
+  <title>Mayavi2 &mdash; NetworkX 2.5rc1.dev20191111214139 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191110161229 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191111214139 documentation"
           href="../../_static/opensearch.xml"/>
 
   
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191110161229
+                2.5rc1.dev_20191111214139
               </div>
             
           
@@ -189,13 +189,9 @@
 </div>
 <div class="sphx-glr-example-title section" id="mayavi2">
 <span id="sphx-glr-auto-examples-3d-drawing-mayavi2-spring-py"></span><h1>Mayavi2<a class="headerlink" href="#mayavi2" title="Permalink to this headline">¶</a></h1>
-<p>This is</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># needs mayavi2</span>
-<span class="c1"># run with ipython -wthread</span>
-<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">mayavi</span> <span class="k">import</span> <span class="n">mlab</span>
-<span class="n">mlab</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">offscreen</span> <span class="o">=</span> <span class="kc">True</span>
 
 <span class="c1"># some graphs to try</span>
 <span class="c1"># H=nx.krackhardt_kite_graph()</span>
@@ -212,22 +208,21 @@
 <span class="c1"># scalar colors</span>
 <span class="n">scalars</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()))</span> <span class="o">+</span> <span class="mi">5</span>
 
-<span class="n">mlab</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">bgcolor</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-<span class="n">mlab</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
-
-<span class="n">pts</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">points3d</span><span class="p">(</span><span class="n">xyz</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">xyz</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">xyz</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span>
-                    <span class="n">scalars</span><span class="p">,</span>
-                    <span class="n">scale_factor</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
-                    <span class="n">scale_mode</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span>
-                    <span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">,</span>
-                    <span class="n">resolution</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">pts</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">points3d</span><span class="p">(</span>
+    <span class="n">xyz</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="n">xyz</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="n">xyz</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="n">scalars</span><span class="p">,</span>
+    <span class="n">scale_factor</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">scale_mode</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span>
+    <span class="n">colormap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">,</span>
+    <span class="n">resolution</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+<span class="p">)</span>
 
 <span class="n">pts</span><span class="o">.</span><span class="n">mlab_source</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">lines</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">()))</span>
 <span class="n">tube</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">pipeline</span><span class="o">.</span><span class="n">tube</span><span class="p">(</span><span class="n">pts</span><span class="p">,</span> <span class="n">tube_radius</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
 <span class="n">mlab</span><span class="o">.</span><span class="n">pipeline</span><span class="o">.</span><span class="n">surface</span><span class="p">(</span><span class="n">tube</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">))</span>
-
-<span class="n">mlab</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;mayavi2_spring.png&#39;</span><span class="p">)</span>
-<span class="c1"># mlab.show() # interactive window</span>
+<span class="n">mlab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.000 seconds)</p>
@@ -264,7 +259,7 @@
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Nov 10, 2019.
+        Last updated on Nov 11, 2019.
       </span>
 
     </p>

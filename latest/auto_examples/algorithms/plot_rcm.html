@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Rcm &mdash; NetworkX 2.5rc1.dev20191110161229 documentation</title>
+  <title>Rcm &mdash; NetworkX 2.5rc1.dev20191111214139 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191110161229 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191111214139 documentation"
           href="../../_static/opensearch.xml"/>
 
   
@@ -43,8 +43,8 @@
   <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Blockmodel" href="plot_blockmodel.html" />
-    <link rel="prev" title="Davis Club" href="plot_davis_club.html" /> 
+    <link rel="next" title="Davis Club" href="plot_davis_club.html" />
+    <link rel="prev" title="Krackhardt Centrality" href="plot_krackhardt_centrality.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191110161229
+                2.5rc1.dev_20191111214139
               </div>
             
           
@@ -108,8 +108,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../index.html#graph">Graph</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html#algorithms">Algorithms</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="plot_krackhardt_centrality.html">Krackhardt Centrality</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plot_davis_club.html">Davis Club</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Rcm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_davis_club.html">Davis Club</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_blockmodel.html">Blockmodel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_beam_search.html">Beam Search</a></li>
 </ul>
@@ -273,10 +273,7 @@ bandwidth: 7
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copyright (C) 2011-2019 by</span>
-<span class="c1"># Author:    Aric Hagberg &lt;aric.hagberg@gmail.com&gt;</span>
-<span class="c1"># BSD License</span>
-<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="kn">from</span> <span class="nn">networkx.utils</span> <span class="k">import</span> <span class="n">reverse_cuthill_mckee_ordering</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -288,21 +285,21 @@ bandwidth: 7
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;unordered Laplacian matrix&quot;</span><span class="p">)</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">laplacian_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-<span class="c1">#print(&quot;lower bandwidth:&quot;,(y-x).max())</span>
-<span class="c1">#print(&quot;upper bandwidth:&quot;,(x-y).max())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;bandwidth: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">((</span><span class="n">y</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+<span class="c1"># print(f&quot;lower bandwidth: {(y - x).max()}&quot;)</span>
+<span class="c1"># print(f&quot;upper bandwidth: {(x - y).max()}&quot;)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;bandwidth: {(y - x).max() + (x - y).max() + 1}&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 
 <span class="n">B</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">laplacian_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">rcm</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;low-bandwidth Laplacian matrix&quot;</span><span class="p">)</span>
 <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
-<span class="c1">#print(&quot;lower bandwidth:&quot;,(y-x).max())</span>
-<span class="c1">#print(&quot;upper bandwidth:&quot;,(x-y).max())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;bandwidth: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">((</span><span class="n">y</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+<span class="c1"># print(f&quot;lower bandwidth: {(y - x).max()}&quot;)</span>
+<span class="c1"># print(f&quot;upper bandwidth: {(x - y).max()}&quot;)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;bandwidth: {(y - x).max() + (x - y).max() + 1}&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.054 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.058 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-algorithms-plot-rcm-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/544d21367fbc1520a180d8891369bb49/plot_rcm.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_rcm.py</span></code></a></p>
@@ -322,10 +319,10 @@ bandwidth: 7
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="plot_blockmodel.html" class="btn btn-neutral float-right" title="Blockmodel" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="plot_davis_club.html" class="btn btn-neutral float-right" title="Davis Club" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="plot_davis_club.html" class="btn btn-neutral float-left" title="Davis Club" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="plot_krackhardt_centrality.html" class="btn btn-neutral float-left" title="Krackhardt Centrality" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -336,7 +333,7 @@ bandwidth: 7
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Nov 10, 2019.
+        Last updated on Nov 11, 2019.
       </span>
 
     </p>

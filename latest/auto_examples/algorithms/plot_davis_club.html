@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Davis Club &mdash; NetworkX 2.5rc1.dev20191110161229 documentation</title>
+  <title>Davis Club &mdash; NetworkX 2.5rc1.dev20191111214139 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191110161229 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191111214139 documentation"
           href="../../_static/opensearch.xml"/>
 
   
@@ -43,8 +43,8 @@
   <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Rcm" href="plot_rcm.html" />
-    <link rel="prev" title="Krackhardt Centrality" href="plot_krackhardt_centrality.html" /> 
+    <link rel="next" title="Blockmodel" href="plot_blockmodel.html" />
+    <link rel="prev" title="Rcm" href="plot_rcm.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191110161229
+                2.5rc1.dev_20191111214139
               </div>
             
           
@@ -108,8 +108,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../index.html#graph">Graph</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html#algorithms">Algorithms</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="plot_krackhardt_centrality.html">Krackhardt Centrality</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Davis Club</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_rcm.html">Rcm</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Davis Club</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_blockmodel.html">Blockmodel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_beam_search.html">Beam Search</a></li>
 </ul>
@@ -303,32 +303,32 @@ The graph is bipartite (clubs, women).</p>
 <span class="kn">import</span> <span class="nn">networkx.algorithms.bipartite</span> <span class="k">as</span> <span class="nn">bipartite</span>
 
 <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">davis_southern_women_graph</span><span class="p">()</span>
-<span class="n">women</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">graph</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span>
-<span class="n">clubs</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">graph</span><span class="p">[</span><span class="s1">&#39;bottom&#39;</span><span class="p">]</span>
+<span class="n">women</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">graph</span><span class="p">[</span><span class="s2">&quot;top&quot;</span><span class="p">]</span>
+<span class="n">clubs</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">graph</span><span class="p">[</span><span class="s2">&quot;bottom&quot;</span><span class="p">]</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Biadjacency matrix&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">bipartite</span><span class="o">.</span><span class="n">biadjacency_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">women</span><span class="p">,</span> <span class="n">clubs</span><span class="p">))</span>
 
 <span class="c1"># project bipartite graph onto women nodes</span>
 <span class="n">W</span> <span class="o">=</span> <span class="n">bipartite</span><span class="o">.</span><span class="n">projected_graph</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">women</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;#Friends, Member&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">women</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">W</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">w</span><span class="p">),</span> <span class="n">w</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;{W.degree(w)} </span><span class="si">{w}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="c1"># project bipartite graph onto women nodes keeping number of co-occurence</span>
 <span class="c1"># the degree computed is weighted and counts the total number of shared contacts</span>
 <span class="n">W</span> <span class="o">=</span> <span class="n">bipartite</span><span class="o">.</span><span class="n">weighted_projected_graph</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">women</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;#Friend meetings, Member&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">women</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">W</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">),</span> <span class="n">w</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;{W.degree(w, weight=&#39;weight&#39;)} </span><span class="si">{w}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.181 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.185 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-algorithms-plot-davis-club-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/6a1e333663010969e61d07b33c7845f0/plot_davis_club.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_davis_club.py</span></code></a></p>
@@ -348,10 +348,10 @@ The graph is bipartite (clubs, women).</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="plot_rcm.html" class="btn btn-neutral float-right" title="Rcm" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="plot_blockmodel.html" class="btn btn-neutral float-right" title="Blockmodel" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="plot_krackhardt_centrality.html" class="btn btn-neutral float-left" title="Krackhardt Centrality" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="plot_rcm.html" class="btn btn-neutral float-left" title="Rcm" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -362,7 +362,7 @@ The graph is bipartite (clubs, women).</p>
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Nov 10, 2019.
+        Last updated on Nov 11, 2019.
       </span>
 
     </p>

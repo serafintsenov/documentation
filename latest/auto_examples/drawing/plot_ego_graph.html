@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Ego Graph &mdash; NetworkX 2.5rc1.dev20191110161229 documentation</title>
+  <title>Ego Graph &mdash; NetworkX 2.5rc1.dev20191111214139 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191110161229 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191111214139 documentation"
           href="../../_static/opensearch.xml"/>
 
   
@@ -43,8 +43,8 @@
   <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Degree histogram" href="plot_degree_histogram.html" />
-    <link rel="prev" title="Four Grids" href="plot_four_grids.html" /> 
+    <link rel="next" title="Spectral Embedding" href="plot_spectral_grid.html" />
+    <link rel="prev" title="Degree Rank" href="plot_degree_rank.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191110161229
+                2.5rc1.dev_20191111214139
               </div>
             
           
@@ -109,11 +109,11 @@
 <li class="toctree-l3"><a class="reference internal" href="plot_node_colormap.html">Node Colormap</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_edge_colormap.html">Edge Colormap</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_house_with_colors.html">House With Colors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_four_grids.html">Four Grids</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_circular_tree.html">Circular Tree</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_degree_rank.html">Degree Rank</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plot_spectral_grid.html">Spectral Embedding</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plot_four_grids.html">Four Grids</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Ego Graph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_spectral_grid.html">Spectral Embedding</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_degree_histogram.html">Degree histogram</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_random_geometric_graph.html">Random Geometric Graph</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_weighted_graph.html">Weighted Graph</a></li>
@@ -212,32 +212,34 @@
 <p>Example using the NetworkX ego_graph() function to return the main egonet of
 the largest hub in a Barabási-Albert network.</p>
 <img alt="../../_images/sphx_glr_plot_ego_graph_001.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_ego_graph_001.png" />
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Author:  Drew Conway (drew.conway@nyu.edu)</span>
-
-<span class="kn">from</span> <span class="nn">operator</span> <span class="k">import</span> <span class="n">itemgetter</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">operator</span> <span class="k">import</span> <span class="n">itemgetter</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="c1"># Create a BA model graph</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span>
-    <span class="n">m</span> <span class="o">=</span> <span class="mi">2</span>
-    <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">barabasi_albert_graph</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
-    <span class="c1"># find node with largest degree</span>
-    <span class="n">node_and_degree</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">()</span>
-    <span class="p">(</span><span class="n">largest_hub</span><span class="p">,</span> <span class="n">degree</span><span class="p">)</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">node_and_degree</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">itemgetter</span><span class="p">(</span><span class="mi">1</span><span class="p">))[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    <span class="c1"># Create ego graph of main hub</span>
-    <span class="n">hub_ego</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">ego_graph</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">largest_hub</span><span class="p">)</span>
-    <span class="c1"># Draw graph</span>
-    <span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">hub_ego</span><span class="p">)</span>
-    <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">hub_ego</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="c1"># Draw ego as large and red</span>
-    <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">hub_ego</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="p">[</span><span class="n">largest_hub</span><span class="p">],</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1"># Create a BA model graph</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">generators</span><span class="o">.</span><span class="n">barabasi_albert_graph</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+
+<span class="c1"># find node with largest degree</span>
+<span class="n">node_and_degree</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">()</span>
+<span class="p">(</span><span class="n">largest_hub</span><span class="p">,</span> <span class="n">degree</span><span class="p">)</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">node_and_degree</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">itemgetter</span><span class="p">(</span><span class="mi">1</span><span class="p">))[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Create ego graph of main hub</span>
+<span class="n">hub_ego</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">ego_graph</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">largest_hub</span><span class="p">)</span>
+
+<span class="c1"># Draw graph</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">hub_ego</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">hub_ego</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Draw ego as large and red</span>
+<span class="n">options</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;node_size&quot;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span> <span class="s2">&quot;node_color&quot;</span><span class="p">:</span> <span class="s2">&quot;r&quot;</span><span class="p">}</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">hub_ego</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="p">[</span><span class="n">largest_hub</span><span class="p">],</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.212 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.207 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-drawing-plot-ego-graph-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/773fa56bdb128b8bd2a4f4a0e4dd38aa/plot_ego_graph.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_ego_graph.py</span></code></a></p>
@@ -257,10 +259,10 @@ the largest hub in a Barabási-Albert network.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="plot_degree_histogram.html" class="btn btn-neutral float-right" title="Degree histogram" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="plot_spectral_grid.html" class="btn btn-neutral float-right" title="Spectral Embedding" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="plot_four_grids.html" class="btn btn-neutral float-left" title="Four Grids" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="plot_degree_rank.html" class="btn btn-neutral float-left" title="Degree Rank" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -271,7 +273,7 @@ the largest hub in a Barabási-Albert network.</p>
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Nov 10, 2019.
+        Last updated on Nov 11, 2019.
       </span>
 
     </p>

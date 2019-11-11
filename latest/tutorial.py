@@ -1,4 +1,3 @@
-# <!-- -*- coding: utf-8 -*- -->
 # ## Tutorial
 #
 # This guide can help you start working with NetworkX.

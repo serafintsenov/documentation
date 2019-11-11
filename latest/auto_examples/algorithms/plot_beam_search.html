@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Beam Search &mdash; NetworkX 2.5rc1.dev20191110161229 documentation</title>
+  <title>Beam Search &mdash; NetworkX 2.5rc1.dev20191111214139 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191110161229 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191111214139 documentation"
           href="../../_static/opensearch.xml"/>
 
   
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191110161229
+                2.5rc1.dev_20191111214139
               </div>
             
           
@@ -108,10 +108,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../index.html#graph">Graph</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html#algorithms">Algorithms</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="plot_krackhardt_centrality.html">Krackhardt Centrality</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plot_davis_club.html">Davis Club</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_rcm.html">Rcm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_davis_club.html">Davis Club</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_blockmodel.html">Blockmodel</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Beam Search</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Beam Search</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#search-for-a-node-with-high-centrality">Search for a node with high centrality.</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../index.html#advanced">Advanced</a></li>
@@ -196,15 +199,9 @@
 <p>Beam search with dynamic beam width.</p>
 <p>The progressive widening beam search repeatedly executes a beam search
 with increasing beam width until the target node is found.</p>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>found node 0 with centrality 0.10755201566074729
-</pre></div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
 
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 
 
@@ -249,9 +246,7 @@ with increasing beam width until the target node is found.</p>
     <span class="c1"># least the number of nodes in the graph, so the final invocation of</span>
     <span class="c1"># `bfs_beam_edges` is equivalent to a plain old breadth-first</span>
     <span class="c1"># search. Therefore, all nodes will eventually be visited.</span>
-    <span class="c1">#</span>
-    <span class="c1"># TODO In Python 3.3+, this should be `math.log2(len(G))`.</span>
-    <span class="n">log_m</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="n">log_m</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)))</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">log_m</span><span class="p">):</span>
         <span class="n">width</span> <span class="o">=</span> <span class="n">initial_width</span> <span class="o">*</span> <span class="nb">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
         <span class="c1"># Since we are always starting from the same source node, this</span>
@@ -262,38 +257,52 @@ with increasing beam width until the target node is found.</p>
                 <span class="k">return</span> <span class="n">v</span>
     <span class="c1"># At this point, since all nodes have been visited, we know that</span>
     <span class="c1"># none of the nodes satisfied the termination condition.</span>
-    <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NodeNotFound</span><span class="p">(</span><span class="s1">&#39;no node satisfied the termination condition&#39;</span><span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Search for a node with high centrality.</span>
-
-<span class="sd">    In this example, we generate a random graph, compute the centrality</span>
-<span class="sd">    of each node, then perform the progressive widening search in order</span>
-<span class="sd">    to find a node of high centrality.</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">gnp_random_graph</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
-    <span class="n">centrality</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">eigenvector_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-    <span class="n">avg_centrality</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">centrality</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">has_high_centrality</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">centrality</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">avg_centrality</span>
-
-    <span class="n">source</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">value</span> <span class="o">=</span> <span class="n">centrality</span><span class="o">.</span><span class="n">get</span>
-    <span class="n">condition</span> <span class="o">=</span> <span class="n">has_high_centrality</span>
-
-    <span class="n">found_node</span> <span class="o">=</span> <span class="n">progressive_widening_search</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">condition</span><span class="p">)</span>
-    <span class="n">c</span> <span class="o">=</span> <span class="n">centrality</span><span class="p">[</span><span class="n">found_node</span><span class="p">]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;found node </span><span class="si">{0}</span><span class="s1"> with centrality </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">found_node</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">()</span>
+    <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NodeNotFound</span><span class="p">(</span><span class="s2">&quot;no node satisfied the termination condition&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.062 seconds)</p>
+<div class="section" id="search-for-a-node-with-high-centrality">
+<h2>Search for a node with high centrality.<a class="headerlink" href="#search-for-a-node-with-high-centrality" title="Permalink to this headline">¶</a></h2>
+<p>We generate a random graph, compute the centrality of each node, then perform
+the progressive widening search in order to find a node of high centrality.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">gnp_random_graph</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">centrality</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">eigenvector_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="n">avg_centrality</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">centrality</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">has_high_centrality</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">centrality</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">avg_centrality</span>
+
+
+<span class="n">source</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">centrality</span><span class="o">.</span><span class="n">get</span>
+<span class="n">condition</span> <span class="o">=</span> <span class="n">has_high_centrality</span>
+
+<span class="n">found_node</span> <span class="o">=</span> <span class="n">progressive_widening_search</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">condition</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">centrality</span><span class="p">[</span><span class="n">found_node</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;found node </span><span class="si">{found_node}</span><span class="s2"> with centrality </span><span class="si">{c}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># Draw graph</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="n">options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;node_color&quot;</span><span class="p">:</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;node_size&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="s2">&quot;line_color&quot;</span><span class="p">:</span> <span class="s2">&quot;grey&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;linewidths&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+<span class="c1"># Draw node with high centrality as large and red</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="p">[</span><span class="n">found_node</span><span class="p">],</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="../../_images/sphx_glr_plot_beam_search_001.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_beam_search_001.png" />
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>found node 46 with centrality 0.12296531967188268
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.389 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-algorithms-plot-beam-search-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/ccbccb63fd600240faf98d07876c0e92/plot_beam_search.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_beam_search.py</span></code></a></p>
@@ -303,6 +312,7 @@ with increasing beam width until the target node is found.</p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
 </div>
 
 
@@ -327,7 +337,7 @@ with increasing beam width until the target node is found.</p>
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Nov 10, 2019.
+        Last updated on Nov 11, 2019.
       </span>
 
     </p>

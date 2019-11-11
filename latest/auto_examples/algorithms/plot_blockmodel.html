@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Blockmodel &mdash; NetworkX 2.5rc1.dev20191110161229 documentation</title>
+  <title>Blockmodel &mdash; NetworkX 2.5rc1.dev20191111214139 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191110161229 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191111214139 documentation"
           href="../../_static/opensearch.xml"/>
 
   
@@ -44,7 +44,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Beam Search" href="plot_beam_search.html" />
-    <link rel="prev" title="Rcm" href="plot_rcm.html" /> 
+    <link rel="prev" title="Davis Club" href="plot_davis_club.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191110161229
+                2.5rc1.dev_20191111214139
               </div>
             
           
@@ -108,8 +108,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../index.html#graph">Graph</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html#algorithms">Algorithms</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="plot_krackhardt_centrality.html">Krackhardt Centrality</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plot_davis_club.html">Davis Club</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_rcm.html">Rcm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_davis_club.html">Davis Club</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Blockmodel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_beam_search.html">Beam Search</a></li>
 </ul>
@@ -210,9 +210,7 @@ used is the Hartford, CT drug users network:</p>
 </pre></div>
 </div>
 <img alt="../../_images/sphx_glr_plot_blockmodel_001.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_blockmodel_001.png" />
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authors:  Drew Conway &lt;drew.conway@nyu.edu&gt;, Aric Hagberg &lt;hagberg@lanl.gov&gt;</span>
-
-<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">defaultdict</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">defaultdict</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
@@ -240,38 +238,37 @@ used is the Hartford, CT drug users network:</p>
     <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">partition</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_edgelist</span><span class="p">(</span><span class="s2">&quot;hartford_drug.edgelist&quot;</span><span class="p">)</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">read_edgelist</span><span class="p">(</span><span class="s2">&quot;hartford_drug.edgelist&quot;</span><span class="p">)</span>
 
-    <span class="c1"># Extract largest connected component into graph H</span>
-    <span class="n">H</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">G</span><span class="p">)))</span>
-    <span class="c1"># Makes life easier to have consecutively labeled integer nodes</span>
-    <span class="n">H</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">convert_node_labels_to_integers</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
-    <span class="c1"># Create parititions with hierarchical clustering</span>
-    <span class="n">partitions</span> <span class="o">=</span> <span class="n">create_hc</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
-    <span class="c1"># Build blockmodel graph</span>
-    <span class="n">BM</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">quotient_graph</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">partitions</span><span class="p">,</span> <span class="n">relabel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># Extract largest connected component into graph H</span>
+<span class="n">H</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">G</span><span class="p">)))</span>
+<span class="c1"># Makes life easier to have consecutively labeled integer nodes</span>
+<span class="n">H</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">convert_node_labels_to_integers</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+<span class="c1"># Create parititions with hierarchical clustering</span>
+<span class="n">partitions</span> <span class="o">=</span> <span class="n">create_hc</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+<span class="c1"># Build blockmodel graph</span>
+<span class="n">BM</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">quotient_graph</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">partitions</span><span class="p">,</span> <span class="n">relabel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-    <span class="c1"># Draw original graph</span>
-    <span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span>
-    <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="c1"># Draw original graph</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 
-    <span class="c1"># Draw block model with weighted edges and nodes sized by number of internal nodes</span>
-    <span class="n">node_size</span> <span class="o">=</span> <span class="p">[</span><span class="n">BM</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="s1">&#39;nnodes&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">BM</span><span class="o">.</span><span class="n">nodes</span><span class="p">()]</span>
-    <span class="n">edge_width</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="ow">in</span> <span class="n">BM</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">)]</span>
-    <span class="c1"># Set positions to mean of positions of internal nodes from original graph</span>
-    <span class="n">posBM</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">BM</span><span class="p">:</span>
-        <span class="n">xy</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">pos</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">BM</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="s1">&#39;graph&#39;</span><span class="p">]])</span>
-        <span class="n">posBM</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">xy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
-    <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">BM</span><span class="p">,</span> <span class="n">posBM</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="n">node_size</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">edge_width</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1"># Draw block model with weighted edges and nodes sized by number of internal nodes</span>
+<span class="n">node_size</span> <span class="o">=</span> <span class="p">[</span><span class="n">BM</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="s2">&quot;nnodes&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">BM</span><span class="o">.</span><span class="n">nodes</span><span class="p">()]</span>
+<span class="n">edge_width</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">d</span><span class="p">[</span><span class="s2">&quot;weight&quot;</span><span class="p">])</span> <span class="k">for</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="ow">in</span> <span class="n">BM</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">)]</span>
+<span class="c1"># Set positions to mean of positions of internal nodes from original graph</span>
+<span class="n">posBM</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">BM</span><span class="p">:</span>
+    <span class="n">xy</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">pos</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">BM</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="s2">&quot;graph&quot;</span><span class="p">]])</span>
+    <span class="n">posBM</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">xy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">BM</span><span class="p">,</span> <span class="n">posBM</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="n">node_size</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">edge_width</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.523 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.525 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-algorithms-plot-blockmodel-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/efbe368eaa1e457c6c03d3f5a636063a/plot_blockmodel.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_blockmodel.py</span></code></a></p>
@@ -294,7 +291,7 @@ used is the Hartford, CT drug users network:</p>
         <a href="plot_beam_search.html" class="btn btn-neutral float-right" title="Beam Search" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="plot_rcm.html" class="btn btn-neutral float-left" title="Rcm" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="plot_davis_club.html" class="btn btn-neutral float-left" title="Davis Club" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -305,7 +302,7 @@ used is the Hartford, CT drug users network:</p>
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Nov 10, 2019.
+        Last updated on Nov 11, 2019.
       </span>
 
     </p>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Iterated Dynamical Systems &mdash; NetworkX 2.5rc1.dev20191110161229 documentation</title>
+  <title>Iterated Dynamical Systems &mdash; NetworkX 2.5rc1.dev20191111214139 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191110161229 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191111214139 documentation"
           href="../../_static/opensearch.xml"/>
 
   
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191110161229
+                2.5rc1.dev_20191111214139
               </div>
             
           
@@ -248,7 +248,7 @@ starts repeating itself.</p>
 associated with discrete dynamical systems.  The most famous
 is the Collatz 3n+1 problem. See the function
 collatz_problem_digraph below. The Collatz conjecture
-— that every orbit returrns to the fixed point 1 in finite time
+— that every orbit returns to the fixed point 1 in finite time
 — is still unproven. Even the great Paul Erdos said “Mathematics
 is not yet ready for such problems”, and offered $500
 for its solution.</p>
@@ -278,7 +278,7 @@ fixed points are []
         <span class="k">return</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="n">dlist</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="c1"># Prepend next least-significant digit</span>
         <span class="n">dlist</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="o">%</span> <span class="n">b</span><span class="p">]</span> <span class="o">+</span> <span class="n">dlist</span>
         <span class="c1"># Floor-division</span>
@@ -291,7 +291,7 @@ fixed points are []
     <span class="n">dlist</span> <span class="o">=</span> <span class="n">digitsrep</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
     <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">dlist</span><span class="p">:</span>
-        <span class="nb">sum</span> <span class="o">+=</span> <span class="n">k</span><span class="o">**</span><span class="n">p</span>
+        <span class="nb">sum</span> <span class="o">+=</span> <span class="n">k</span> <span class="o">**</span> <span class="n">p</span>
     <span class="k">return</span> <span class="nb">sum</span>
 
 
@@ -328,17 +328,23 @@ fixed points are []
 
 
 <span class="k">def</span> <span class="nf">sum_of_digits_graph</span><span class="p">(</span><span class="n">nmax</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="k">return</span> <span class="n">powersum</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">powersum</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
     <span class="k">return</span> <span class="n">discrete_dynamics_digraph</span><span class="p">(</span><span class="n">nmax</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">squaring_cycle_digraph</span><span class="p">(</span><span class="n">nmax</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="k">return</span> <span class="n">powersum</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">powersum</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
     <span class="k">return</span> <span class="n">discrete_dynamics_digraph</span><span class="p">(</span><span class="n">nmax</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">cubing_153_digraph</span><span class="p">(</span><span class="n">nmax</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="k">return</span> <span class="n">powersum</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">powersum</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
     <span class="k">return</span> <span class="n">discrete_dynamics_digraph</span><span class="p">(</span><span class="n">nmax</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
 
 
@@ -366,6 +372,7 @@ fixed points are []
             <span class="k">return</span> <span class="n">n</span> <span class="o">//</span> <span class="mi">2</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+
     <span class="k">return</span> <span class="n">discrete_dynamics_digraph</span><span class="p">(</span><span class="n">nmax</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
 
 
@@ -376,18 +383,16 @@ fixed points are []
     <span class="k">return</span> <span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">G</span> <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">out_degree</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">nmax</span> <span class="o">=</span> <span class="mi">10000</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Building cubing_153_digraph(</span><span class="si">%d</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">nmax</span><span class="p">)</span>
-    <span class="n">G</span> <span class="o">=</span> <span class="n">cubing_153_digraph</span><span class="p">(</span><span class="n">nmax</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Resulting digraph has&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="s2">&quot;nodes and&quot;</span><span class="p">,</span>
-          <span class="n">G</span><span class="o">.</span><span class="n">size</span><span class="p">(),</span> <span class="s2">&quot; edges&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Shortest path from 177 to 153 is:&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">shortest_path</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">177</span><span class="p">,</span> <span class="mi">153</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;fixed points are </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">fixed_points</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
+<span class="n">nmax</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Building cubing_153_digraph(</span><span class="si">{nmax}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">cubing_153_digraph</span><span class="p">(</span><span class="n">nmax</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Resulting digraph has&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="s2">&quot;nodes and&quot;</span><span class="p">,</span> <span class="n">G</span><span class="o">.</span><span class="n">size</span><span class="p">(),</span> <span class="s2">&quot; edges&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Shortest path from 177 to 153 is:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">shortest_path</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">177</span><span class="p">,</span> <span class="mi">153</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;fixed points are {fixed_points(G)}&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.209 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.212 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-advanced-plot-iterated-dynamical-systems-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/c05a7eaf59aea94f53843d386116c1a3/plot_iterated_dynamical_systems.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_iterated_dynamical_systems.py</span></code></a></p>
@@ -422,7 +427,7 @@ fixed points are []
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Nov 10, 2019.
+        Last updated on Nov 11, 2019.
       </span>
 
     </p>
