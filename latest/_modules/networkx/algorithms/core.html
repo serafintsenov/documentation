@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.core &mdash; NetworkX 2.5rc1.dev20191111214139 documentation</title>
+  <title>networkx.algorithms.core &mdash; NetworkX 2.5rc1.dev20191112170144 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191111214139 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191112170144 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191111214139
+                2.5rc1.dev_20191112170144
               </div>
             
           
@@ -523,8 +523,8 @@
 <span class="k">def</span> <span class="nf">k_truss</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the k-truss of `G`.</span>
 
-<span class="sd">    The k-truss is the maximal subgraph of `G` which contains at least three</span>
-<span class="sd">    vertices where every edge is incident to at least `k` triangles.</span>
+<span class="sd">    The k-truss is the maximal induced subgraph of `G` which contains at least</span>
+<span class="sd">    three vertices where every edge is incident to at least `k-2` triangles.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -553,6 +553,12 @@
 
 <span class="sd">    Graph, node, and edge attributes are copied to the subgraph.</span>
 
+<span class="sd">    K-trusses were originally defined in [2] which states that the k-truss</span>
+<span class="sd">    is the maximal induced subgraph where each edge belongs to at least</span>
+<span class="sd">    `k-2` triangles. A more recent paper, [1], uses a slightly different</span>
+<span class="sd">    definition requiring that each edge belong to at least `k` triangles.</span>
+<span class="sd">    This implementation uses the original definition of `k-2` triangles.</span>
+
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
 <span class="sd">    .. [1] Bounds and Algorithms for k-truss. Paul Burkhardt, Vance Faber,</span>
@@ -572,7 +578,7 @@
             <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
             <span class="n">new_nbrs</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">nbrs_u</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">]</span>
             <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">new_nbrs</span><span class="p">:</span>
-                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">nbrs_u</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">H</span><span class="p">[</span><span class="n">v</span><span class="p">]))</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">:</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nbrs_u</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">H</span><span class="p">[</span><span class="n">v</span><span class="p">]))</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">k</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)):</span>
                     <span class="n">to_drop</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
         <span class="n">H</span><span class="o">.</span><span class="n">remove_edges_from</span><span class="p">(</span><span class="n">to_drop</span><span class="p">)</span>
         <span class="n">n_dropped</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">to_drop</span><span class="p">)</span>
@@ -584,7 +590,7 @@
 <div class="viewcode-block" id="onion_layers"><a class="viewcode-back" href="../../../reference/algorithms/generated/networkx.algorithms.core.onion_layers.html#networkx.algorithms.core.onion_layers">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s1">&#39;multigraph&#39;</span><span class="p">)</span>
 <span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s1">&#39;directed&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">onion_layers</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns the layer of each vertex in the onion decomposition of the graph.</span>
+    <span class="sd">&quot;&quot;&quot;Returns the layer of each vertex in an onion decomposition of the graph.</span>
 
 <span class="sd">    The onion decomposition refines the k-core decomposition by providing</span>
 <span class="sd">    information on the internal organization of each k-shell. It is usually</span>
@@ -688,7 +694,7 @@
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Nov 11, 2019.
+        Last updated on Nov 12, 2019.
       </span>
 
     </p>

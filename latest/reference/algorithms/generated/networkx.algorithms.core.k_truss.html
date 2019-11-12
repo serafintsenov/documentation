@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.core.k_truss &mdash; NetworkX 2.5rc1.dev20191111214139 documentation</title>
+  <title>networkx.algorithms.core.k_truss &mdash; NetworkX 2.5rc1.dev20191112170144 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191111214139 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191112170144 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191111214139
+                2.5rc1.dev_20191112170144
               </div>
             
           
@@ -266,8 +266,8 @@
 <dt id="networkx.algorithms.core.k_truss">
 <code class="sig-name descname">k_truss</code><span class="sig-paren">(</span><em class="sig-param">G</em>, <em class="sig-param">k</em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/networkx/algorithms/core.html#k_truss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#networkx.algorithms.core.k_truss" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the k-truss of <code class="xref py py-obj docutils literal notranslate"><span class="pre">G</span></code>.</p>
-<p>The k-truss is the maximal subgraph of <code class="xref py py-obj docutils literal notranslate"><span class="pre">G</span></code> which contains at least three
-vertices where every edge is incident to at least <code class="xref py py-obj docutils literal notranslate"><span class="pre">k</span></code> triangles.</p>
+<p>The k-truss is the maximal induced subgraph of <code class="xref py py-obj docutils literal notranslate"><span class="pre">G</span></code> which contains at least
+three vertices where every edge is incident to at least <code class="xref py py-obj docutils literal notranslate"><span class="pre">k-2</span></code> triangles.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -290,6 +290,11 @@ or directed graphs.</p>
 <p>A k-clique is a (k-2)-truss and a k-truss is a (k+1)-core.</p>
 <p>Not implemented for digraphs or graphs with parallel edges or self loops.</p>
 <p>Graph, node, and edge attributes are copied to the subgraph.</p>
+<p>K-trusses were originally defined in [2] which states that the k-truss
+is the maximal induced subgraph where each edge belongs to at least
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">k-2</span></code> triangles. A more recent paper, [1], uses a slightly different
+definition requiring that each edge belong to at least <code class="xref py py-obj docutils literal notranslate"><span class="pre">k</span></code> triangles.
+This implementation uses the original definition of <code class="xref py py-obj docutils literal notranslate"><span class="pre">k-2</span></code> triangles.</p>
 <p class="rubric">References</p>
 <dl class="footnote brackets">
 <dt class="label" id="id1"><span class="brackets">1</span></dt>
@@ -327,7 +332,7 @@ Cohen, 2005.</p>
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Nov 11, 2019.
+        Last updated on Nov 12, 2019.
       </span>
 
     </p>
