@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Roget &mdash; NetworkX 2.5rc1.dev20191115061957 documentation</title>
+  <title>Roget &mdash; NetworkX 2.5rc1.dev20191116160021 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191115061957 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191116160021 documentation"
           href="../../_static/opensearch.xml"/>
 
   
@@ -43,7 +43,7 @@
   <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Words" href="plot_words.html" />
+    <link rel="next" title="Words/Ladder Graph" href="plot_words.html" />
     <link rel="prev" title="Football" href="plot_football.html" /> 
 </head>
 
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191115061957
+                2.5rc1.dev_20191116160021
               </div>
             
           
@@ -112,11 +112,8 @@
 <li class="toctree-l3"><a class="reference internal" href="dot_atlas.html">Atlas2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_degree_sequence.html">Degree Sequence</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_football.html">Football</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Roget</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#references">References</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="plot_words.html">Words</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Roget</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_words.html">Words/Ladder Graph</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_napoleon_russian_campaign.html">Napoleon Russian Campaign</a></li>
 </ul>
 </li>
@@ -200,26 +197,21 @@
 </div>
 <div class="sphx-glr-example-title section" id="roget">
 <span id="sphx-glr-auto-examples-graph-plot-roget-py"></span><h1>Roget<a class="headerlink" href="#roget" title="Permalink to this headline">¶</a></h1>
-<p>Build a directed graph of 1022 categories and
-5075 cross-references as defined in the 1879 version of Roget’s Thesaurus
-contained in the datafile roget_dat.txt. This example is described in
-Section 1.2 in Knuth’s book (see <a class="footnote-reference brackets" href="#id3" id="id1">1</a> and <a class="footnote-reference brackets" href="#id4" id="id2">2</a>).</p>
-<p>Note that one of the 5075 cross references is a self loop yet
-it is included in the graph built here because
-the standard networkx <code class="xref py py-obj docutils literal notranslate"><span class="pre">DiGraph</span></code> class allows self loops.
-(cf. 400pungency:400 401 403 405).</p>
-<div class="section" id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
-<dl class="footnote brackets">
-<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Donald E. Knuth,
-“The Stanford GraphBase: A Platform for Combinatorial Computing”,
-ACM Press, New York, 1993.</p>
-</dd>
-<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
-<dd><p><a class="reference external" href="http://www-cs-faculty.stanford.edu/~knuth/sgb.html">http://www-cs-faculty.stanford.edu/~knuth/sgb.html</a></p>
-</dd>
-</dl>
+<p>Build a directed graph of 1022 categories and 5075 cross-references as defined
+in the 1879 version of Roget’s Thesaurus. This example is described in Section
+1.2 of</p>
+<blockquote>
+<div><p>Donald E. Knuth, “The Stanford GraphBase: A Platform for Combinatorial
+Computing”, ACM Press, New York, 1993.
+<a class="reference external" href="http://www-cs-faculty.stanford.edu/~knuth/sgb.html">http://www-cs-faculty.stanford.edu/~knuth/sgb.html</a></p>
+</div></blockquote>
+<p>Note that one of the 5075 cross references is a self loop yet it is included in
+the graph built here because the standard networkx <code class="xref py py-obj docutils literal notranslate"><span class="pre">DiGraph</span></code> class allows self
+loops.  (cf. 400pungency:400 401 403 405).</p>
+<p>The data file can be found at:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/networkx/networkx/blob/master/examples/graph/roget_dat.txt.gz">https://github.com/networkx/networkx/blob/master/examples/graph/roget_dat.txt.gz</a></p></li>
+</ul>
 <img alt="../../_images/sphx_glr_plot_roget_001.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_roget_001.png" />
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>skipping self loop 400 400
@@ -243,7 +235,7 @@ digraph has 1022 nodes with 5075 edges
     <span class="sd">&quot;&quot;&quot; Return the thesaurus graph from the roget.dat example in</span>
 <span class="sd">    the Stanford Graph Base.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># open file roget_dat.txt.gz (or roget_dat.txt)</span>
+    <span class="c1"># open file roget_dat.txt.gz</span>
     <span class="n">fh</span> <span class="o">=</span> <span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;roget_dat.txt.gz&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
 
     <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
@@ -291,7 +283,7 @@ digraph has 1022 nodes with 5075 edges
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.442 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.455 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-graph-plot-roget-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/118b3a0c87610e4910d74143c904d290/plot_roget.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_roget.py</span></code></a></p>
@@ -302,7 +294,6 @@ digraph has 1022 nodes with 5075 edges
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
 </div>
-</div>
 
 
            </div>
@@ -312,7 +303,7 @@ digraph has 1022 nodes with 5075 edges
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="plot_words.html" class="btn btn-neutral float-right" title="Words" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="plot_words.html" class="btn btn-neutral float-right" title="Words/Ladder Graph" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="plot_football.html" class="btn btn-neutral float-left" title="Football" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -326,7 +317,7 @@ digraph has 1022 nodes with 5075 edges
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Nov 15, 2019.
+        Last updated on Nov 16, 2019.
       </span>
 
     </p>

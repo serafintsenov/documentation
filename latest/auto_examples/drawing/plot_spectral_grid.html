@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Spectral Embedding &mdash; NetworkX 2.5rc1.dev20191115061957 documentation</title>
+  <title>Spectral Embedding &mdash; NetworkX 2.5rc1.dev20191116160021 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191115061957 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191116160021 documentation"
           href="../../_static/opensearch.xml"/>
 
   
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191115061957
+                2.5rc1.dev_20191116160021
               </div>
             
           
@@ -109,8 +109,8 @@
 <li class="toctree-l3"><a class="reference internal" href="plot_node_colormap.html">Node Colormap</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_edge_colormap.html">Edge Colormap</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_house_with_colors.html">House With Colors</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plot_four_grids.html">Four Grids</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_circular_tree.html">Circular Tree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_four_grids.html">Four Grids</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_degree_rank.html">Degree Rank</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_ego_graph.html">Ego Graph</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Spectral Embedding</a></li>
@@ -118,11 +118,11 @@
 <li class="toctree-l3"><a class="reference internal" href="plot_random_geometric_graph.html">Random Geometric Graph</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_weighted_graph.html">Weighted Graph</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_directed.html">Directed Graph</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plot_labels_and_colors.html">Labels And Colors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_sampson.html">Sampson</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_labels_and_colors.html">Labels And Colors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_unix_email.html">Unix Email</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plot_lanl_routes.html">Lanl Routes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_giant_component.html">Giant Component</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_lanl_routes.html">Lanl Routes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_knuth_miles.html">Knuth Miles</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_atlas.html">Atlas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_chess_masters.html">Chess Masters</a></li>
@@ -228,10 +228,7 @@ As you remove internal nodes, this effect increases.</p>
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 
 
-<span class="n">options</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;node_color&quot;</span><span class="p">:</span> <span class="s2">&quot;C0&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;node_size&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
-<span class="p">}</span>
+<span class="n">options</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;node_color&quot;</span><span class="p">:</span> <span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="s2">&quot;node_size&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">}</span>
 
 <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">grid_2d_graph</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">332</span><span class="p">)</span>
@@ -264,7 +261,7 @@ As you remove internal nodes, this effect increases.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.431 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.438 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-drawing-plot-spectral-grid-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/5479a9bd23bf1ace2ef03c13b4ac9d7f/plot_spectral_grid.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_spectral_grid.py</span></code></a></p>
@@ -298,7 +295,7 @@ As you remove internal nodes, this effect increases.</p>
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Nov 15, 2019.
+        Last updated on Nov 16, 2019.
       </span>
 
     </p>

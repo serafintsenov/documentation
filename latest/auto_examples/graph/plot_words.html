@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Words &mdash; NetworkX 2.5rc1.dev20191115061957 documentation</title>
+  <title>Words/Ladder Graph &mdash; NetworkX 2.5rc1.dev20191116160021 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191115061957 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191116160021 documentation"
           href="../../_static/opensearch.xml"/>
 
   
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191115061957
+                2.5rc1.dev_20191116160021
               </div>
             
           
@@ -113,11 +113,7 @@
 <li class="toctree-l3"><a class="reference internal" href="plot_degree_sequence.html">Degree Sequence</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_football.html">Football</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_roget.html">Roget</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Words</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#words-ladder-graph">Words/Ladder Graph</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#references">References</a></li>
-</ul>
-</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Words/Ladder Graph</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_napoleon_russian_campaign.html">Napoleon Russian Campaign</a></li>
 </ul>
 </li>
@@ -178,7 +174,7 @@
         
           <li><a href="../index.html">Examples</a> &raquo;</li>
         
-      <li>Words</li>
+      <li>Words/Ladder Graph</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -199,27 +195,20 @@
 <p class="admonition-title">Note</p>
 <p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-graph-plot-words-py"><span class="std std-ref">here</span></a> to download the full example code</p>
 </div>
-<div class="sphx-glr-example-title section" id="words">
-<span id="sphx-glr-auto-examples-graph-plot-words-py"></span><h1>Words<a class="headerlink" href="#words" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="words-ladder-graph">
-<h2>Words/Ladder Graph<a class="headerlink" href="#words-ladder-graph" title="Permalink to this headline">¶</a></h2>
-<p>Generate  an undirected graph over the 5757 5-letter words in the
-datafile <code class="xref py py-obj docutils literal notranslate"><span class="pre">words_dat.txt.gz</span></code>.  Two words are connected by an edge
-if they differ in one letter, resulting in 14,135 edges. This example
-is described in Section 1.1 in Knuth’s book (see <a class="footnote-reference brackets" href="#id3" id="id1">1</a> and <a class="footnote-reference brackets" href="#id4" id="id2">2</a>).</p>
-</div>
-<div class="section" id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
-<dl class="footnote brackets">
-<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Donald E. Knuth,
-“The Stanford GraphBase: A Platform for Combinatorial Computing”,
-ACM Press, New York, 1993.</p>
-</dd>
-<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
-<dd><p><a class="reference external" href="http://www-cs-faculty.stanford.edu/~knuth/sgb.html">http://www-cs-faculty.stanford.edu/~knuth/sgb.html</a></p>
-</dd>
-</dl>
+<div class="sphx-glr-example-title section" id="words-ladder-graph">
+<span id="sphx-glr-auto-examples-graph-plot-words-py"></span><h1>Words/Ladder Graph<a class="headerlink" href="#words-ladder-graph" title="Permalink to this headline">¶</a></h1>
+<p>Generate  an undirected graph over the 5757 5-letter words in the datafile
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">words_dat.txt.gz</span></code>.  Two words are connected by an edge if they differ in one
+letter, resulting in 14,135 edges. This example is described in Section 1.1 of</p>
+<blockquote>
+<div><p>Donald E. Knuth, “The Stanford GraphBase: A Platform for Combinatorial
+Computing”, ACM Press, New York, 1993.
+<a class="reference external" href="http://www-cs-faculty.stanford.edu/~knuth/sgb.html">http://www-cs-faculty.stanford.edu/~knuth/sgb.html</a></p>
+</div></blockquote>
+<p>The data file can be found at:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/networkx/networkx/blob/master/examples/graph/words_dat.txt.gz">https://github.com/networkx/networkx/blob/master/examples/graph/words_dat.txt.gz</a></p></li>
+</ul>
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Loaded words_dat.txt containing 5757 five-letter English words.
 Two words are connected if they differ in one letter.
@@ -261,10 +250,6 @@ None
 <span class="kn">from</span> <span class="nn">string</span> <span class="k">import</span> <span class="n">ascii_lowercase</span> <span class="k">as</span> <span class="n">lowercase</span>
 
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
-
-<span class="c1"># -------------------------------------------------------------------</span>
-<span class="c1">#   The Words/Ladder graph of Section 1.1</span>
-<span class="c1"># -------------------------------------------------------------------</span>
 
 
 <span class="k">def</span> <span class="nf">generate_graph</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
@@ -319,7 +304,7 @@ None
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;None&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.269 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.260 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-graph-plot-words-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/e6a489a8b2deb49ed237fac38a28f429/plot_words.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_words.py</span></code></a></p>
@@ -329,7 +314,6 @@ None
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
-</div>
 </div>
 
 
@@ -354,7 +338,7 @@ None
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Nov 15, 2019.
+        Last updated on Nov 16, 2019.
       </span>
 
     </p>

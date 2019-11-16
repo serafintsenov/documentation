@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Giant Component &mdash; NetworkX 2.5rc1.dev20191115061957 documentation</title>
+  <title>Giant Component &mdash; NetworkX 2.5rc1.dev20191116160021 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191115061957 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191116160021 documentation"
           href="../../_static/opensearch.xml"/>
 
   
@@ -43,8 +43,8 @@
   <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Knuth Miles" href="plot_knuth_miles.html" />
-    <link rel="prev" title="Lanl Routes" href="plot_lanl_routes.html" /> 
+    <link rel="next" title="Lanl Routes" href="plot_lanl_routes.html" />
+    <link rel="prev" title="Unix Email" href="plot_unix_email.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191115061957
+                2.5rc1.dev_20191116160021
               </div>
             
           
@@ -109,8 +109,8 @@
 <li class="toctree-l3"><a class="reference internal" href="plot_node_colormap.html">Node Colormap</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_edge_colormap.html">Edge Colormap</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_house_with_colors.html">House With Colors</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plot_four_grids.html">Four Grids</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_circular_tree.html">Circular Tree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_four_grids.html">Four Grids</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_degree_rank.html">Degree Rank</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_ego_graph.html">Ego Graph</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_spectral_grid.html">Spectral Embedding</a></li>
@@ -118,11 +118,11 @@
 <li class="toctree-l3"><a class="reference internal" href="plot_random_geometric_graph.html">Random Geometric Graph</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_weighted_graph.html">Weighted Graph</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_directed.html">Directed Graph</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plot_labels_and_colors.html">Labels And Colors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_sampson.html">Sampson</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_labels_and_colors.html">Labels And Colors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_unix_email.html">Unix Email</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plot_lanl_routes.html">Lanl Routes</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Giant Component</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_lanl_routes.html">Lanl Routes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_knuth_miles.html">Knuth Miles</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_atlas.html">Atlas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_chess_masters.html">Chess Masters</a></li>
@@ -217,23 +217,12 @@ giant connected component in a binomial random graph.</p>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">pygraphviz</span>
-    <span class="kn">from</span> <span class="nn">networkx.drawing.nx_agraph</span> <span class="k">import</span> <span class="n">graphviz_layout</span>
+<span class="c1"># This example needs Graphviz and either PyGraphviz or pydot.</span>
+<span class="c1"># from networkx.drawing.nx_pydot import graphviz_layout as layout</span>
+<span class="kn">from</span> <span class="nn">networkx.drawing.nx_agraph</span> <span class="k">import</span> <span class="n">graphviz_layout</span> <span class="k">as</span> <span class="n">layout</span>
 
-    <span class="n">layout</span> <span class="o">=</span> <span class="n">graphviz_layout</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">pydot</span>
-        <span class="kn">from</span> <span class="nn">networkx.drawing.nx_pydot</span> <span class="k">import</span> <span class="n">graphviz_layout</span>
-
-        <span class="n">layout</span> <span class="o">=</span> <span class="n">graphviz_layout</span>
-    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span>
-            <span class="s2">&quot;PyGraphviz and pydot not found;</span><span class="se">\n</span><span class="s2">&quot;</span>
-            <span class="s2">&quot;drawing with spring layout will be slow.&quot;</span>
-        <span class="p">)</span>
-        <span class="n">layout</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span>
+<span class="c1"># If you don&#39;t have pygraphviz or pydot, you can do this</span>
+<span class="c1"># layout = nx.spring_layout</span>
 
 
 <span class="n">n</span> <span class="o">=</span> <span class="mi">150</span>  <span class="c1"># 150 nodes</span>
@@ -272,7 +261,7 @@ giant connected component in a binomial random graph.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.780 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.824 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-drawing-plot-giant-component-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/00aae4ca929fc98fddb0d504a2e9aa16/plot_giant_component.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_giant_component.py</span></code></a></p>
@@ -292,10 +281,10 @@ giant connected component in a binomial random graph.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="plot_knuth_miles.html" class="btn btn-neutral float-right" title="Knuth Miles" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="plot_lanl_routes.html" class="btn btn-neutral float-right" title="Lanl Routes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="plot_lanl_routes.html" class="btn btn-neutral float-left" title="Lanl Routes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="plot_unix_email.html" class="btn btn-neutral float-left" title="Unix Email" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -306,7 +295,7 @@ giant connected component in a binomial random graph.</p>
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Nov 15, 2019.
+        Last updated on Nov 16, 2019.
       </span>
 
     </p>

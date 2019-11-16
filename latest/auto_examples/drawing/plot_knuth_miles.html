@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Knuth Miles &mdash; NetworkX 2.5rc1.dev20191115061957 documentation</title>
+  <title>Knuth Miles &mdash; NetworkX 2.5rc1.dev20191116160021 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191115061957 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191116160021 documentation"
           href="../../_static/opensearch.xml"/>
 
   
@@ -44,7 +44,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Atlas" href="plot_atlas.html" />
-    <link rel="prev" title="Giant Component" href="plot_giant_component.html" /> 
+    <link rel="prev" title="Lanl Routes" href="plot_lanl_routes.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191115061957
+                2.5rc1.dev_20191116160021
               </div>
             
           
@@ -109,8 +109,8 @@
 <li class="toctree-l3"><a class="reference internal" href="plot_node_colormap.html">Node Colormap</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_edge_colormap.html">Edge Colormap</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_house_with_colors.html">House With Colors</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plot_four_grids.html">Four Grids</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_circular_tree.html">Circular Tree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_four_grids.html">Four Grids</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_degree_rank.html">Degree Rank</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_ego_graph.html">Ego Graph</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_spectral_grid.html">Spectral Embedding</a></li>
@@ -118,15 +118,12 @@
 <li class="toctree-l3"><a class="reference internal" href="plot_random_geometric_graph.html">Random Geometric Graph</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_weighted_graph.html">Weighted Graph</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_directed.html">Directed Graph</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plot_labels_and_colors.html">Labels And Colors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_sampson.html">Sampson</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_labels_and_colors.html">Labels And Colors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_unix_email.html">Unix Email</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plot_lanl_routes.html">Lanl Routes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_giant_component.html">Giant Component</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Knuth Miles</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#references">References.</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="plot_lanl_routes.html">Lanl Routes</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Knuth Miles</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_atlas.html">Atlas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_chess_masters.html">Chess Masters</a></li>
 </ul>
@@ -212,24 +209,19 @@
 </div>
 <div class="sphx-glr-example-title section" id="knuth-miles">
 <span id="sphx-glr-auto-examples-drawing-plot-knuth-miles-py"></span><h1>Knuth Miles<a class="headerlink" href="#knuth-miles" title="Permalink to this headline">¶</a></h1>
-<p><code class="xref py py-obj docutils literal notranslate"><span class="pre">miles_graph()</span></code> returns an undirected graph over the 128 US cities from
-the datafile <code class="xref py py-obj docutils literal notranslate"><span class="pre">miles_dat.txt</span></code>. The cities each have location and population
-data.  The edges are labeled with the distance between the two cities.</p>
-<p>This example is described in Section 1.1 in Knuth’s book (see <a class="footnote-reference brackets" href="#id3" id="id1">1</a> and <a class="footnote-reference brackets" href="#id4" id="id2">2</a>).</p>
-<p>The data file can be found at:
-<a class="reference external" href="https://github.com/networkx/networkx/blob/master/examples/drawing/knuth_miles.txt.gz">https://github.com/networkx/networkx/blob/master/examples/drawing/knuth_miles.txt.gz</a></p>
-<div class="section" id="references">
-<h2>References.<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
-<dl class="footnote brackets">
-<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Donald E. Knuth,
-“The Stanford GraphBase: A Platform for Combinatorial Computing”,
-ACM Press, New York, 1993.</p>
-</dd>
-<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
-<dd><p><a class="reference external" href="http://www-cs-faculty.stanford.edu/~knuth/sgb.html">http://www-cs-faculty.stanford.edu/~knuth/sgb.html</a></p>
-</dd>
-</dl>
+<p><code class="xref py py-obj docutils literal notranslate"><span class="pre">miles_graph()</span></code> returns an undirected graph over the 128 US cities from.  The
+cities each have location and population data.  The edges are labeled with the
+distance between the two cities.</p>
+<p>This example is described in Section 1.1 of</p>
+<blockquote>
+<div><p>Donald E. Knuth, “The Stanford GraphBase: A Platform for Combinatorial
+Computing”, ACM Press, New York, 1993.
+<a class="reference external" href="http://www-cs-faculty.stanford.edu/~knuth/sgb.html">http://www-cs-faculty.stanford.edu/~knuth/sgb.html</a></p>
+</div></blockquote>
+<p>The data file can be found at:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/networkx/networkx/blob/master/examples/drawing/knuth_miles.txt.gz">https://github.com/networkx/networkx/blob/master/examples/drawing/knuth_miles.txt.gz</a></p></li>
+</ul>
 <img alt="../../_images/sphx_glr_plot_knuth_miles_001.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_knuth_miles_001.png" />
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Loaded miles_dat.txt containing 128 cities.
@@ -239,8 +231,8 @@ digraph has 128 nodes with 8128 edges
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">import</span> <span class="nn">sys</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gzip</span>
+<span class="kn">import</span> <span class="nn">re</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
@@ -251,7 +243,6 @@ digraph has 128 nodes with 8128 edges
 <span class="sd">        from the Stanford GraphBase.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># open file miles_dat.txt.gz (or miles_dat.txt)</span>
-    <span class="kn">import</span> <span class="nn">gzip</span>
 
     <span class="n">fh</span> <span class="o">=</span> <span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;knuth_miles.txt.gz&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
 
@@ -318,7 +309,7 @@ digraph has 128 nodes with 8128 edges
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.284 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.288 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-drawing-plot-knuth-miles-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/e921c603ea1764485dc9acff178a2f05/plot_knuth_miles.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_knuth_miles.py</span></code></a></p>
@@ -328,7 +319,6 @@ digraph has 128 nodes with 8128 edges
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
-</div>
 </div>
 
 
@@ -342,7 +332,7 @@ digraph has 128 nodes with 8128 edges
         <a href="plot_atlas.html" class="btn btn-neutral float-right" title="Atlas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="plot_giant_component.html" class="btn btn-neutral float-left" title="Giant Component" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="plot_lanl_routes.html" class="btn btn-neutral float-left" title="Lanl Routes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -353,7 +343,7 @@ digraph has 128 nodes with 8128 edges
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Nov 15, 2019.
+        Last updated on Nov 16, 2019.
       </span>
 
     </p>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Javascript &mdash; NetworkX 2.5rc1.dev20191115061957 documentation</title>
+  <title>Javascript &mdash; NetworkX 2.5rc1.dev20191116160021 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191115061957 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191116160021 documentation"
           href="../../_static/opensearch.xml"/>
 
   
@@ -44,7 +44,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Rgraph" href="../jit/plot_rgraph.html" />
-    <link rel="prev" title="Write Dotfile" href="../pygraphviz/plot_write_dotfile.html" /> 
+    <link rel="prev" title="Pygraphviz Attributes" href="../pygraphviz/plot_pygraphviz_attributes.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191115061957
+                2.5rc1.dev_20191116160021
               </div>
             
           
@@ -201,23 +201,23 @@ to produce an HTML/Javascript drawing.</p>
 <span class="c1"># this d3 example uses the name attribute for the mouse-hover value,</span>
 <span class="c1"># so add a name to each node</span>
 <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
-    <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">n</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">n</span>
 <span class="c1"># write json formatted data</span>
 <span class="n">d</span> <span class="o">=</span> <span class="n">json_graph</span><span class="o">.</span><span class="n">node_link_data</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>  <span class="c1"># node-link format to serialize</span>
 <span class="c1"># write json</span>
-<span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;force/force.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Wrote node-link JSON data to force/force.json&#39;</span><span class="p">)</span>
+<span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;force/force.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Wrote node-link JSON data to force/force.json&quot;</span><span class="p">)</span>
 
 <span class="c1"># Serve the file over http to allow for cross origin requests</span>
 <span class="n">app</span> <span class="o">=</span> <span class="n">flask</span><span class="o">.</span><span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">static_folder</span><span class="o">=</span><span class="s2">&quot;force&quot;</span><span class="p">)</span>
 
 
-<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">static_proxy</span><span class="p">():</span>
-    <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">send_static_file</span><span class="p">(</span><span class="s1">&#39;force.html&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">send_static_file</span><span class="p">(</span><span class="s2">&quot;force.html&quot;</span><span class="p">)</span>
 
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Go to http://localhost:8000 to see the example</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Go to http://localhost:8000 to see the example</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">8000</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -244,7 +244,7 @@ to produce an HTML/Javascript drawing.</p>
         <a href="../jit/plot_rgraph.html" class="btn btn-neutral float-right" title="Rgraph" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../pygraphviz/plot_write_dotfile.html" class="btn btn-neutral float-left" title="Write Dotfile" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../pygraphviz/plot_pygraphviz_attributes.html" class="btn btn-neutral float-left" title="Pygraphviz Attributes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -255,7 +255,7 @@ to produce an HTML/Javascript drawing.</p>
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Nov 15, 2019.
+        Last updated on Nov 16, 2019.
       </span>
 
     </p>

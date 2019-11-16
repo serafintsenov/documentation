@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Write Dotfile &mdash; NetworkX 2.5rc1.dev20191115061957 documentation</title>
+  <title>Write Dotfile &mdash; NetworkX 2.5rc1.dev20191116160021 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191115061957 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191116160021 documentation"
           href="../../_static/opensearch.xml"/>
 
   
@@ -43,8 +43,8 @@
   <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Javascript" href="../javascript/force.html" />
-    <link rel="prev" title="Pygraphviz Attributes" href="plot_pygraphviz_attributes.html" /> 
+    <link rel="next" title="Pygraphviz Simple" href="plot_pygraphviz_simple.html" />
+    <link rel="prev" title="Pygraphviz Draw" href="plot_pygraphviz_draw.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191115061957
+                2.5rc1.dev_20191116160021
               </div>
             
           
@@ -111,9 +111,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../index.html#d-drawing">3D Drawing</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html#pygraphviz">Pygraphviz</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="plot_pygraphviz_draw.html">Pygraphviz Draw</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Write Dotfile</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_pygraphviz_simple.html">Pygraphviz Simple</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_pygraphviz_attributes.html">Pygraphviz Attributes</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Write Dotfile</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../index.html#javascript">Javascript</a></li>
@@ -194,11 +194,9 @@
 <span id="sphx-glr-auto-examples-pygraphviz-plot-write-dotfile-py"></span><h1>Write Dotfile<a class="headerlink" href="#write-dotfile" title="Permalink to this headline">¶</a></h1>
 <p>Write a dot file from a networkx graph for further processing with graphviz.</p>
 <p>You need to have either pygraphviz or pydot for this example.</p>
-<p>See <a class="reference external" href="https://networkx.github.io/documentation/latest/reference/drawing.html">https://networkx.github.io/documentation/latest/reference/drawing.html</a>
-for more info.</p>
+<p>See <a class="reference external" href="https://networkx.github.io/documentation/latest/reference/drawing.html">https://networkx.github.io/documentation/latest/reference/drawing.html</a></p>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>using package pygraphviz
-Now run: neato -Tps grid.dot &gt;grid.ps
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Now run: neato -Tps grid.dot &gt;grid.ps
 </pre></div>
 </div>
 <div class="line-block">
@@ -206,35 +204,17 @@ Now run: neato -Tps grid.dot &gt;grid.ps
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 
-<span class="c1"># and the following code block is not needed</span>
-<span class="c1"># but we want to see which module is used and</span>
-<span class="c1"># if and why it fails</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">pygraphviz</span>
-    <span class="kn">from</span> <span class="nn">networkx.drawing.nx_agraph</span> <span class="k">import</span> <span class="n">write_dot</span>
+<span class="c1"># This example needs Graphviz and either PyGraphviz or pydot.</span>
+<span class="c1"># from networkx.drawing.nx_pydot import write_dot</span>
+<span class="kn">from</span> <span class="nn">networkx.drawing.nx_agraph</span> <span class="k">import</span> <span class="n">write_dot</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;using package pygraphviz&quot;</span><span class="p">)</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="kn">import</span> <span class="nn">pydot</span>
-        <span class="kn">from</span> <span class="nn">networkx.drawing.nx_pydot</span> <span class="k">import</span> <span class="n">write_dot</span>
-
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;using package pydot&quot;</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Both pygraphviz and pydot were not found &quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span>
-            <span class="s2">&quot;see https://networkx.github.io/documentation/latest/reference/drawing.html&quot;</span>
-        <span class="p">)</span>
-        <span class="nb">print</span><span class="p">()</span>
-        <span class="k">raise</span>
 
 <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">grid_2d_graph</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># 5x5 grid</span>
 <span class="n">write_dot</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s2">&quot;grid.dot&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Now run: neato -Tps grid.dot &gt;grid.ps&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.056 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.069 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-pygraphviz-plot-write-dotfile-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/72cc8c156619718379c3e43a6c9c1345/plot_write_dotfile.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_write_dotfile.py</span></code></a></p>
@@ -254,10 +234,10 @@ Now run: neato -Tps grid.dot &gt;grid.ps
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../javascript/force.html" class="btn btn-neutral float-right" title="Javascript" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="plot_pygraphviz_simple.html" class="btn btn-neutral float-right" title="Pygraphviz Simple" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="plot_pygraphviz_attributes.html" class="btn btn-neutral float-left" title="Pygraphviz Attributes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="plot_pygraphviz_draw.html" class="btn btn-neutral float-left" title="Pygraphviz Draw" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -268,7 +248,7 @@ Now run: neato -Tps grid.dot &gt;grid.ps
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Nov 15, 2019.
+        Last updated on Nov 16, 2019.
       </span>
 
     </p>
