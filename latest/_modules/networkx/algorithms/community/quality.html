@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.community.quality &mdash; NetworkX 2.5rc1.dev20191119034314 documentation</title>
+  <title>networkx.algorithms.community.quality &mdash; NetworkX 2.5rc1.dev20191120074019 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191119034314 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191120074019 documentation"
           href="../../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191119034314
+                2.5rc1.dev_20191120074019
               </div>
             
           
@@ -208,15 +208,15 @@
 <span class="sd">        &gt;&gt;&gt; foo(G, partition)</span>
 <span class="sd">        partition is valid!</span>
 <span class="sd">        &gt;&gt;&gt; partition = [{0}, {2, 3}, {4}]</span>
-<span class="sd">        &gt;&gt;&gt; foo(G, partition)  # doctest: +IGNORE_EXCEPTION_DETAIL</span>
+<span class="sd">        &gt;&gt;&gt; foo(G, partition)</span>
 <span class="sd">        Traceback (most recent call last):</span>
 <span class="sd">          ...</span>
-<span class="sd">        NetworkXError: `partition` is not a valid partition of the nodes of G</span>
+<span class="sd">        networkx.exception.NetworkXError: `partition` is not a valid partition of the nodes of G</span>
 <span class="sd">        &gt;&gt;&gt; partition = [{0, 1}, {1, 2, 3}, {4}]</span>
-<span class="sd">        &gt;&gt;&gt; foo(G, partition)  # doctest: +IGNORE_EXCEPTION_DETAIL</span>
+<span class="sd">        &gt;&gt;&gt; foo(G, partition)</span>
 <span class="sd">        Traceback (most recent call last):</span>
 <span class="sd">          ...</span>
-<span class="sd">        NetworkXError: `partition` is not a valid partition of the nodes of G</span>
+<span class="sd">        networkx.exception.NetworkXError: `partition` is not a valid partition of the nodes of G</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
@@ -495,7 +495,7 @@
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Nov 19, 2019.
+        Last updated on Nov 20, 2019.
       </span>
 
     </p>
