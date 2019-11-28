@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.classes.graph &mdash; NetworkX 2.5rc1.dev20191120074019 documentation</title>
+  <title>networkx.classes.graph &mdash; NetworkX 2.5rc1.dev20191128003556 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191120074019 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191128003556 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191120074019
+                2.5rc1.dev_20191128003556
               </div>
             
           
@@ -173,12 +173,12 @@
 
 <span class="sd">For directed graphs see DiGraph and MultiDiGraph.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">copy</span> <span class="k">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
 
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
-<span class="kn">from</span> <span class="nn">networkx.classes.coreviews</span> <span class="k">import</span> <span class="n">AdjacencyView</span>
-<span class="kn">from</span> <span class="nn">networkx.classes.reportviews</span> <span class="k">import</span> <span class="n">NodeView</span><span class="p">,</span> <span class="n">EdgeView</span><span class="p">,</span> <span class="n">DegreeView</span>
-<span class="kn">from</span> <span class="nn">networkx.exception</span> <span class="k">import</span> <span class="n">NetworkXError</span>
+<span class="kn">from</span> <span class="nn">networkx.classes.coreviews</span> <span class="kn">import</span> <span class="n">AdjacencyView</span>
+<span class="kn">from</span> <span class="nn">networkx.classes.reportviews</span> <span class="kn">import</span> <span class="n">NodeView</span><span class="p">,</span> <span class="n">EdgeView</span><span class="p">,</span> <span class="n">DegreeView</span>
+<span class="kn">from</span> <span class="nn">networkx.exception</span> <span class="kn">import</span> <span class="n">NetworkXError</span>
 <span class="kn">import</span> <span class="nn">networkx.convert</span> <span class="k">as</span> <span class="nn">convert</span>
 
 
@@ -450,7 +450,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Graph</span>
 
-<div class="viewcode-block" id="Graph.__init__"><a class="viewcode-back" href="../../../reference/classes/generated/networkx.Graph.__init__.html#networkx.Graph.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">incoming_graph_data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">):</span>
+<div class="viewcode-block" id="Graph.__init__"><a class="viewcode-back" href="../../../reference/classes/generated/networkx.Graph.__init__.html#networkx.Graph.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">incoming_graph_data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Initialize a graph with edges, name, or graph attributes.</span>
 
 <span class="sd">        Parameters</span>
@@ -532,7 +532,7 @@
     <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span>
 
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns the graph name.</span>
 
 <span class="sd">        Returns</span>
@@ -548,7 +548,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
 
-<div class="viewcode-block" id="Graph.__iter__"><a class="viewcode-back" href="../../../reference/classes/generated/networkx.Graph.__iter__.html#networkx.Graph.__iter__">[docs]</a>    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Graph.__iter__"><a class="viewcode-back" href="../../../reference/classes/generated/networkx.Graph.__iter__.html#networkx.Graph.__iter__">[docs]</a>    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Iterate over the nodes. Use: &#39;for n in G&#39;.</span>
 
 <span class="sd">        Returns</span>
@@ -566,7 +566,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Graph.__contains__"><a class="viewcode-back" href="../../../reference/classes/generated/networkx.Graph.__contains__.html#networkx.Graph.__contains__">[docs]</a>    <span class="k">def</span> <span class="nf">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<div class="viewcode-block" id="Graph.__contains__"><a class="viewcode-back" href="../../../reference/classes/generated/networkx.Graph.__contains__.html#networkx.Graph.__contains__">[docs]</a>    <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns True if n is a node, False otherwise. Use: &#39;n in G&#39;.</span>
 
 <span class="sd">        Examples</span>
@@ -580,7 +580,7 @@
         <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">False</span></div>
 
-<div class="viewcode-block" id="Graph.__len__"><a class="viewcode-back" href="../../../reference/classes/generated/networkx.Graph.__len__.html#networkx.Graph.__len__">[docs]</a>    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Graph.__len__"><a class="viewcode-back" href="../../../reference/classes/generated/networkx.Graph.__len__.html#networkx.Graph.__len__">[docs]</a>    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns the number of nodes in the graph. Use: &#39;len(G)&#39;.</span>
 
 <span class="sd">        Returns</span>
@@ -601,7 +601,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Graph.__getitem__"><a class="viewcode-back" href="../../../reference/classes/generated/networkx.Graph.__getitem__.html#networkx.Graph.__getitem__">[docs]</a>    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<div class="viewcode-block" id="Graph.__getitem__"><a class="viewcode-back" href="../../../reference/classes/generated/networkx.Graph.__getitem__.html#networkx.Graph.__getitem__">[docs]</a>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns a dict of neighbors of node n.  Use: &#39;G[n]&#39;.</span>
 
 <span class="sd">        Parameters</span>
@@ -1816,7 +1816,7 @@
 <span class="sd">            # Create a subgraph SG based on a (possibly multigraph) G</span>
 <span class="sd">            SG = G.__class__()</span>
 <span class="sd">            SG.add_nodes_from((n, G.nodes[n]) for n in largest_wcc)</span>
-<span class="sd">            if SG.is_multigraph:</span>
+<span class="sd">            if SG.is_multigraph():</span>
 <span class="sd">                SG.add_edges_from((n, nbr, key, d)</span>
 <span class="sd">                    for n, nbrs in G.adj.items() if n in largest_wcc</span>
 <span class="sd">                    for nbr, keydict in nbrs.items() if nbr in largest_wcc</span>
@@ -2054,7 +2054,7 @@
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Nov 20, 2019.
+        Last updated on Nov 28, 2019.
       </span>
 
     </p>

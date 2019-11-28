@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.linalg.spectrum &mdash; NetworkX 2.5rc1.dev20191120074019 documentation</title>
+  <title>networkx.linalg.spectrum &mdash; NetworkX 2.5rc1.dev20191128003556 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191120074019 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191128003556 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191120074019
+                2.5rc1.dev_20191128003556
               </div>
             
           
@@ -199,7 +199,7 @@
 <span class="sd">    --------</span>
 <span class="sd">    laplacian_matrix</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="k">import</span> <span class="n">eigvalsh</span>
+    <span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">eigvalsh</span>
     <span class="k">return</span> <span class="n">eigvalsh</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">laplacian_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span><span class="o">.</span><span class="n">todense</span><span class="p">())</span></div>
 
 
@@ -229,7 +229,7 @@
 <span class="sd">    --------</span>
 <span class="sd">    normalized_laplacian_matrix</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="k">import</span> <span class="n">eigvalsh</span>
+    <span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">eigvalsh</span>
     <span class="k">return</span> <span class="n">eigvalsh</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">normalized_laplacian_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span><span class="o">.</span><span class="n">todense</span><span class="p">())</span></div>
 
 
@@ -259,7 +259,7 @@
 <span class="sd">    --------</span>
 <span class="sd">    adjacency_matrix</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="k">import</span> <span class="n">eigvals</span>
+    <span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">eigvals</span>
     <span class="k">return</span> <span class="n">eigvals</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">adjacency_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span><span class="o">.</span><span class="n">todense</span><span class="p">())</span></div>
 
 
@@ -285,7 +285,7 @@
 <span class="sd">    .. [1] M. E. J. Newman, &quot;Modularity and community structure in networks&quot;,</span>
 <span class="sd">       Proc. Natl. Acad. Sci. USA, vol. 103, pp. 8577-8582, 2006.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="k">import</span> <span class="n">eigvals</span>
+    <span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">eigvals</span>
     <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_directed</span><span class="p">():</span>
         <span class="k">return</span> <span class="n">eigvals</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">directed_modularity_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
     <span class="k">else</span><span class="p">:</span>
@@ -318,7 +318,7 @@
 <span class="sd">       &quot;Spectral clustering of graphs with the bethe hessian&quot;,</span>
 <span class="sd">       Advances in Neural Information Processing Systems. 2014.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="k">import</span> <span class="n">eigvalsh</span>
+    <span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">eigvalsh</span>
     <span class="k">return</span> <span class="n">eigvalsh</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">bethe_hessian_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span><span class="o">.</span><span class="n">todense</span><span class="p">())</span></div>
 </pre></div>
 
@@ -334,7 +334,7 @@
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Nov 20, 2019.
+        Last updated on Nov 28, 2019.
       </span>
 
     </p>

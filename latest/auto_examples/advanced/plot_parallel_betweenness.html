@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Parallel Betweenness &mdash; NetworkX 2.5rc1.dev20191120074019 documentation</title>
+  <title>Parallel Betweenness &mdash; NetworkX 2.5rc1.dev20191128003556 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191120074019 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191128003556 documentation"
           href="../../_static/opensearch.xml"/>
 
   
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191120074019
+                2.5rc1.dev_20191128003556
               </div>
             
           
@@ -207,24 +207,24 @@ Number of nodes: 1000
 Number of edges: 2991
 Average degree:   5.9820
         Parallel version
-                Time: 5.1442 seconds
-                Betweenness centrality for node 0: 0.05945
+                Time: 5.2402 seconds
+                Betweenness centrality for node 0: 0.05371
         Non-Parallel version
-                Time: 4.6388 seconds
-                Betweenness centrality for node 0: 0.05945
+                Time: 4.8695 seconds
+                Betweenness centrality for node 0: 0.05371
 
 Computing betweenness centrality for:
 Name:
 Type: Graph
 Number of nodes: 1000
-Number of edges: 4991
-Average degree:   9.9820
+Number of edges: 4894
+Average degree:   9.7880
         Parallel version
-                Time: 6.2363 seconds
-                Betweenness centrality for node 0: 0.00409
+                Time: 6.5340 seconds
+                Betweenness centrality for node 0: 0.00407
         Non-Parallel version
-                Time: 5.8588 seconds
-                Betweenness centrality for node 0: 0.00409
+                Time: 6.0529 seconds
+                Betweenness centrality for node 0: 0.00407
 
 Computing betweenness centrality for:
 Name:
@@ -233,17 +233,17 @@ Number of nodes: 1000
 Number of edges: 2000
 Average degree:   4.0000
         Parallel version
-                Time: 4.5315 seconds
-                Betweenness centrality for node 0: 0.00063
+                Time: 4.8307 seconds
+                Betweenness centrality for node 0: 0.01632
         Non-Parallel version
-                Time: 4.1667 seconds
-                Betweenness centrality for node 0: 0.00063
+                Time: 4.3301 seconds
+                Betweenness centrality for node 0: 0.01632
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="k">import</span> <span class="n">Pool</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">itertools</span>
 
@@ -290,20 +290,20 @@ Average degree:   4.0000
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Parallel version&quot;</span><span class="p">)</span>
     <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
     <span class="n">bt</span> <span class="o">=</span> <span class="n">betweenness_centrality_parallel</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">Time: {(time.time() - start):.4F} seconds&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">Betweenness centrality for node 0: </span><span class="si">{bt[0]:.5f}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">Time: {(time.time() - start):.4F} seconds&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">Betweenness centrality for node 0: </span><span class="si">{bt[0]:.5f}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Non-Parallel version&quot;</span><span class="p">)</span>
     <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
     <span class="n">bt</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">betweenness_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">Time: {(time.time() - start):.4F} seconds&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">Betweenness centrality for node 0: </span><span class="si">{bt[0]:.5f}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">Time: {(time.time() - start):.4F} seconds&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">Betweenness centrality for node 0: </span><span class="si">{bt[0]:.5f}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 
 <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G_ba</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  37.532 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  39.203 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-advanced-plot-parallel-betweenness-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/241b70420ac07b76d632bcc9102648e6/plot_parallel_betweenness.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_parallel_betweenness.py</span></code></a></p>
@@ -337,7 +337,7 @@ Average degree:   4.0000
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Nov 20, 2019.
+        Last updated on Nov 28, 2019.
       </span>
 
     </p>

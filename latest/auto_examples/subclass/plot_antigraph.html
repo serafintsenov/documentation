@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Antigraph &mdash; NetworkX 2.5rc1.dev20191120074019 documentation</title>
+  <title>Antigraph &mdash; NetworkX 2.5rc1.dev20191128003556 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191120074019 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191128003556 documentation"
           href="../../_static/opensearch.xml"/>
 
   
@@ -67,7 +67,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191120074019
+                2.5rc1.dev_20191128003556
               </div>
             
           
@@ -199,7 +199,7 @@ and biconnected_components algorithms but might also work for other
 algorithms.</p>
 <img alt="../../_images/sphx_glr_plot_antigraph_001.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_antigraph_001.png" />
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
-<span class="kn">from</span> <span class="nn">networkx.exception</span> <span class="k">import</span> <span class="n">NetworkXError</span>
+<span class="kn">from</span> <span class="nn">networkx.exception</span> <span class="kn">import</span> <span class="n">NetworkXError</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 
@@ -223,7 +223,7 @@ algorithms.</p>
 
     <span class="n">edge_attr_dict_factory</span> <span class="o">=</span> <span class="n">single_edge_dict</span>
 
-    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return a dict of neighbors of node n in the dense graph.</span>
 
 <span class="sd">        Parameters</span>
@@ -250,7 +250,7 @@ algorithms.</p>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="o">-</span> <span class="nb">set</span><span class="p">([</span><span class="n">n</span><span class="p">]))</span>
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;The node </span><span class="si">{n}</span><span class="s2"> is not in the graph.&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The node </span><span class="si">{n}</span><span class="s2"> is not in the graph.&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">degree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return an iterator for (node, degree) in the dense graph.</span>
@@ -375,7 +375,7 @@ algorithms.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.226 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.251 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-subclass-plot-antigraph-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/652afbfc3c52c8cdd7689321df2e696a/plot_antigraph.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_antigraph.py</span></code></a></p>
@@ -407,7 +407,7 @@ algorithms.</p>
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Nov 20, 2019.
+        Last updated on Nov 28, 2019.
       </span>
 
     </p>

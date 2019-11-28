@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.approximation.kcomponents &mdash; NetworkX 2.5rc1.dev20191120074019 documentation</title>
+  <title>networkx.algorithms.approximation.kcomponents &mdash; NetworkX 2.5rc1.dev20191128003556 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191120074019 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191128003556 documentation"
           href="../../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191120074019
+                2.5rc1.dev_20191128003556
               </div>
             
           
@@ -167,14 +167,14 @@
 <span></span><span class="sd">&quot;&quot;&quot; Fast approximation for k-component structure</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">itertools</span>
-<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">defaultdict</span>
-<span class="kn">from</span> <span class="nn">collections.abc</span> <span class="k">import</span> <span class="n">Mapping</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Mapping</span>
 
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
-<span class="kn">from</span> <span class="nn">networkx.exception</span> <span class="k">import</span> <span class="n">NetworkXError</span>
-<span class="kn">from</span> <span class="nn">networkx.utils</span> <span class="k">import</span> <span class="n">not_implemented_for</span>
+<span class="kn">from</span> <span class="nn">networkx.exception</span> <span class="kn">import</span> <span class="n">NetworkXError</span>
+<span class="kn">from</span> <span class="nn">networkx.utils</span> <span class="kn">import</span> <span class="n">not_implemented_for</span>
 
-<span class="kn">from</span> <span class="nn">networkx.algorithms.approximation</span> <span class="k">import</span> <span class="n">local_node_connectivity</span>
+<span class="kn">from</span> <span class="nn">networkx.algorithms.approximation</span> <span class="kn">import</span> <span class="n">local_node_connectivity</span>
 
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;k_components&#39;</span><span class="p">]</span>
@@ -379,7 +379,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_edge_dict</span>
     <span class="n">edge_attr_dict_factory</span> <span class="o">=</span> <span class="n">single_edge_dict</span>
 
-    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns a dict of neighbors of node n in the dense graph.</span>
 
 <span class="sd">        Parameters</span>
@@ -409,18 +409,18 @@
     <span class="k">class</span> <span class="nc">AntiAtlasView</span><span class="p">(</span><span class="n">Mapping</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;An adjacency inner dict for AntiGraph&quot;&quot;&quot;</span>
 
-        <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span> <span class="o">=</span> <span class="n">graph</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_atlas</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">_adj</span><span class="p">[</span><span class="n">node</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_node</span> <span class="o">=</span> <span class="n">node</span>
 
-        <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
             <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_atlas</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
 
-        <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
             <span class="k">return</span> <span class="p">(</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span> <span class="k">if</span> <span class="n">n</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_atlas</span> <span class="ow">and</span> <span class="n">n</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">)</span>
 
-        <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbr</span><span class="p">):</span>
+        <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nbr</span><span class="p">):</span>
             <span class="n">nbrs</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="o">.</span><span class="n">_adj</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_atlas</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">])</span>
             <span class="k">if</span> <span class="n">nbr</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="p">:</span>
                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="o">.</span><span class="n">all_edge_dict</span>
@@ -429,17 +429,17 @@
     <span class="k">class</span> <span class="nc">AntiAdjacencyView</span><span class="p">(</span><span class="n">AntiAtlasView</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;An adjacency outer dict for AntiGraph&quot;&quot;&quot;</span>
 
-        <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graph</span><span class="p">):</span>
+        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graph</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span> <span class="o">=</span> <span class="n">graph</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_atlas</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">_adj</span>
 
-        <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
             <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_atlas</span><span class="p">)</span>
 
-        <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
             <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="p">)</span>
 
-        <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">node</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="o">.</span><span class="n">AntiAtlasView</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span>
@@ -464,13 +464,13 @@
         <span class="k">return</span> <span class="n">G</span>
 
     <span class="k">class</span> <span class="nc">AntiDegreeView</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">reportviews</span><span class="o">.</span><span class="n">DegreeView</span><span class="p">):</span>
-        <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
             <span class="n">all_nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_succ</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nodes</span><span class="p">:</span>
                 <span class="n">nbrs</span> <span class="o">=</span> <span class="n">all_nodes</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_succ</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="o">-</span> <span class="nb">set</span><span class="p">([</span><span class="n">n</span><span class="p">])</span>
                 <span class="k">yield</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nbrs</span><span class="p">))</span>
 
-        <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
             <span class="n">nbrs</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_succ</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_succ</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="o">-</span> <span class="nb">set</span><span class="p">([</span><span class="n">n</span><span class="p">])</span>
             <span class="c1"># AntiGraph is a ThinGraph so all edges have weight 1</span>
             <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">nbrs</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">n</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="p">)</span>
@@ -544,7 +544,7 @@
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Nov 20, 2019.
+        Last updated on Nov 28, 2019.
       </span>
 
     </p>

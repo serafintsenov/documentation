@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.generators.degree_seq &mdash; NetworkX 2.5rc1.dev20191120074019 documentation</title>
+  <title>networkx.generators.degree_seq &mdash; NetworkX 2.5rc1.dev20191128003556 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191120074019 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191128003556 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191120074019
+                2.5rc1.dev_20191128003556
               </div>
             
           
@@ -168,14 +168,14 @@
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">heapq</span>
-<span class="kn">from</span> <span class="nn">itertools</span> <span class="k">import</span> <span class="n">chain</span>
-<span class="kn">from</span> <span class="nn">itertools</span> <span class="k">import</span> <span class="n">combinations</span>
-<span class="kn">from</span> <span class="nn">itertools</span> <span class="k">import</span> <span class="n">zip_longest</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">combinations</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">zip_longest</span>
 <span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">from</span> <span class="nn">operator</span> <span class="k">import</span> <span class="n">itemgetter</span>
+<span class="kn">from</span> <span class="nn">operator</span> <span class="kn">import</span> <span class="n">itemgetter</span>
 
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
-<span class="kn">from</span> <span class="nn">networkx.utils</span> <span class="k">import</span> <span class="n">random_weighted_sample</span><span class="p">,</span> <span class="n">py_random_state</span>
+<span class="kn">from</span> <span class="nn">networkx.utils</span> <span class="kn">import</span> <span class="n">random_weighted_sample</span><span class="p">,</span> <span class="n">py_random_state</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;configuration_model&#39;</span><span class="p">,</span>
            <span class="s1">&#39;directed_configuration_model&#39;</span><span class="p">,</span>
@@ -908,7 +908,7 @@
 <span class="k">class</span> <span class="nc">DegreeSequenceRandomGraph</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="c1"># class to generate random graphs with a given degree sequence</span>
     <span class="c1"># use random_degree_sequence_graph()</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">degree</span><span class="p">,</span> <span class="n">rng</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">degree</span><span class="p">,</span> <span class="n">rng</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">nx</span><span class="o">.</span><span class="n">is_graphical</span><span class="p">(</span><span class="n">degree</span><span class="p">):</span>
             <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXUnfeasible</span><span class="p">(</span><span class="s1">&#39;degree sequence is not graphical&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">rng</span> <span class="o">=</span> <span class="n">rng</span>
@@ -1030,7 +1030,7 @@
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Nov 20, 2019.
+        Last updated on Nov 28, 2019.
       </span>
 
     </p>

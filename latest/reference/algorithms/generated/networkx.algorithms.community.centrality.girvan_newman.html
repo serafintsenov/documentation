@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.community.centrality.girvan_newman &mdash; NetworkX 2.5rc1.dev20191120074019 documentation</title>
+  <title>networkx.algorithms.community.centrality.girvan_newman &mdash; NetworkX 2.5rc1.dev20191128003556 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191120074019 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191128003556 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191120074019
+                2.5rc1.dev_20191128003556
               </div>
             
           
@@ -315,7 +315,7 @@ is greater than <em>k</em>, use <a class="reference external" href="https://docs
 </pre></div>
 </div>
 <p>To just choose an edge to remove based on the weight:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">operator</span> <span class="k">import</span> <span class="n">itemgetter</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">operator</span> <span class="kn">import</span> <span class="n">itemgetter</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">path_graph</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">edges</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">nx</span><span class="o">.</span><span class="n">set_edge_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="p">{(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span> <span class="n">v</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">},</span> <span class="s1">&#39;weight&#39;</span><span class="p">)</span>
@@ -330,7 +330,7 @@ is greater than <em>k</em>, use <a class="reference external" href="https://docs
 </div>
 <p>To utilize edge weights when choosing an edge with, for example, the
 highest betweenness centrality:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">networkx</span> <span class="k">import</span> <span class="n">edge_betweenness_centrality</span> <span class="k">as</span> <span class="n">betweenness</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">networkx</span> <span class="kn">import</span> <span class="n">edge_betweenness_centrality</span> <span class="k">as</span> <span class="n">betweenness</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">most_central_edge</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="n">centrality</span> <span class="o">=</span> <span class="n">betweenness</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">centrality</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">centrality</span><span class="o">.</span><span class="n">get</span><span class="p">)</span>
@@ -343,8 +343,8 @@ highest betweenness centrality:</p>
 </div>
 <p>To specify a different ranking algorithm for edges, use the
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">most_valuable_edge</span></code> keyword argument:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">networkx</span> <span class="k">import</span> <span class="n">edge_betweenness_centrality</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">random</span> <span class="k">import</span> <span class="n">random</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">networkx</span> <span class="kn">import</span> <span class="n">edge_betweenness_centrality</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">random</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">most_central_edge</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="n">centrality</span> <span class="o">=</span> <span class="n">edge_betweenness_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="n">max_cent</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">centrality</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
@@ -392,7 +392,7 @@ result can be depicted as a dendrogram.</p>
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Nov 20, 2019.
+        Last updated on Nov 28, 2019.
       </span>
 
     </p>

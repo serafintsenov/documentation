@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.linalg.algebraicconnectivity &mdash; NetworkX 2.5rc1.dev20191120074019 documentation</title>
+  <title>networkx.linalg.algebraicconnectivity &mdash; NetworkX 2.5rc1.dev20191128003556 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191120074019 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191128003556 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191120074019
+                2.5rc1.dev_20191128003556
               </div>
             
           
@@ -167,24 +167,24 @@
 <span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Algebraic connectivity and Fiedler vectors of undirected graphs.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">functools</span> <span class="k">import</span> <span class="n">partial</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
-<span class="kn">from</span> <span class="nn">networkx.utils</span> <span class="k">import</span> <span class="n">not_implemented_for</span>
-<span class="kn">from</span> <span class="nn">networkx.utils</span> <span class="k">import</span> <span class="n">reverse_cuthill_mckee_ordering</span>
-<span class="kn">from</span> <span class="nn">networkx.utils</span> <span class="k">import</span> <span class="n">random_state</span>
+<span class="kn">from</span> <span class="nn">networkx.utils</span> <span class="kn">import</span> <span class="n">not_implemented_for</span>
+<span class="kn">from</span> <span class="nn">networkx.utils</span> <span class="kn">import</span> <span class="n">reverse_cuthill_mckee_ordering</span>
+<span class="kn">from</span> <span class="nn">networkx.utils</span> <span class="kn">import</span> <span class="n">random_state</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">array</span><span class="p">,</span> <span class="n">asmatrix</span><span class="p">,</span> <span class="n">asarray</span><span class="p">,</span> <span class="n">dot</span><span class="p">,</span> <span class="n">ndarray</span><span class="p">,</span> <span class="n">ones</span><span class="p">,</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">zeros</span>
-    <span class="kn">from</span> <span class="nn">numpy.linalg</span> <span class="k">import</span> <span class="n">norm</span><span class="p">,</span> <span class="n">qr</span>
-    <span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="k">import</span> <span class="n">eigh</span><span class="p">,</span> <span class="n">inv</span>
-    <span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="k">import</span> <span class="n">csc_matrix</span><span class="p">,</span> <span class="n">spdiags</span>
-    <span class="kn">from</span> <span class="nn">scipy.sparse.linalg</span> <span class="k">import</span> <span class="n">eigsh</span><span class="p">,</span> <span class="n">lobpcg</span>
+    <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">array</span><span class="p">,</span> <span class="n">asmatrix</span><span class="p">,</span> <span class="n">asarray</span><span class="p">,</span> <span class="n">dot</span><span class="p">,</span> <span class="n">ndarray</span><span class="p">,</span> <span class="n">ones</span><span class="p">,</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">zeros</span>
+    <span class="kn">from</span> <span class="nn">numpy.linalg</span> <span class="kn">import</span> <span class="n">norm</span><span class="p">,</span> <span class="n">qr</span>
+    <span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">eigh</span><span class="p">,</span> <span class="n">inv</span>
+    <span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">csc_matrix</span><span class="p">,</span> <span class="n">spdiags</span>
+    <span class="kn">from</span> <span class="nn">scipy.sparse.linalg</span> <span class="kn">import</span> <span class="n">eigsh</span><span class="p">,</span> <span class="n">lobpcg</span>
     <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;algebraic_connectivity&#39;</span><span class="p">,</span> <span class="s1">&#39;fiedler_vector&#39;</span><span class="p">,</span> <span class="s1">&#39;spectral_ordering&#39;</span><span class="p">]</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="n">__all__</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">scipy.linalg.blas</span> <span class="k">import</span> <span class="n">dasum</span><span class="p">,</span> <span class="n">daxpy</span><span class="p">,</span> <span class="n">ddot</span>
+    <span class="kn">from</span> <span class="nn">scipy.linalg.blas</span> <span class="kn">import</span> <span class="n">dasum</span><span class="p">,</span> <span class="n">daxpy</span><span class="p">,</span> <span class="n">ddot</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">__all__</span><span class="p">:</span>
         <span class="c1"># Make sure the imports succeeded.</span>
@@ -213,7 +213,7 @@
 <span class="sd">    Warning: There is no limit on number of iterations.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">M</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">M</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_A</span> <span class="o">=</span> <span class="n">A</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_M</span> <span class="o">=</span> <span class="n">M</span> <span class="ow">or</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
 
@@ -259,7 +259,7 @@
 <span class="sd">    to match _PCGsolver API.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cholesky</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s1">&#39;Cholesky solver unavailable.&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_chol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cholesky</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
@@ -268,7 +268,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_chol</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
 
     <span class="k">try</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">scikits.sparse.cholmod</span> <span class="k">import</span> <span class="n">cholesky</span>
+        <span class="kn">from</span> <span class="nn">scikits.sparse.cholmod</span> <span class="kn">import</span> <span class="n">cholesky</span>
         <span class="n">_cholesky</span> <span class="o">=</span> <span class="n">cholesky</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
         <span class="n">_cholesky</span> <span class="o">=</span> <span class="kc">None</span>
@@ -285,7 +285,7 @@
 <span class="sd">    to match _PCGsolver API.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">A</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_splu</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s1">&#39;LU solver unavailable.&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_LU</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_splu</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
@@ -298,7 +298,7 @@
         <span class="k">return</span> <span class="n">X</span>
 
     <span class="k">try</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">scipy.sparse.linalg</span> <span class="k">import</span> <span class="n">splu</span>
+        <span class="kn">from</span> <span class="nn">scipy.sparse.linalg</span> <span class="kn">import</span> <span class="n">splu</span>
         <span class="n">_splu</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">splu</span><span class="p">,</span> <span class="n">permc_spec</span><span class="o">=</span><span class="s1">&#39;MMD_AT_PLUS_A&#39;</span><span class="p">,</span> <span class="n">diag_pivot_thresh</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span>
                         <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Equil&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;SymmetricMode&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
@@ -756,7 +756,7 @@
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Nov 20, 2019.
+        Last updated on Nov 28, 2019.
       </span>
 
     </p>

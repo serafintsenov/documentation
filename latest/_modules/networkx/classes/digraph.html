@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.classes.digraph &mdash; NetworkX 2.5rc1.dev20191120074019 documentation</title>
+  <title>networkx.classes.digraph &mdash; NetworkX 2.5rc1.dev20191128003556 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191120074019 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191128003556 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191120074019
+                2.5rc1.dev_20191128003556
               </div>
             
           
@@ -165,14 +165,14 @@
             
   <h1>Source code for networkx.classes.digraph</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;Base class for directed graphs.&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">copy</span> <span class="k">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
 
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
-<span class="kn">from</span> <span class="nn">networkx.classes.graph</span> <span class="k">import</span> <span class="n">Graph</span>
-<span class="kn">from</span> <span class="nn">networkx.classes.coreviews</span> <span class="k">import</span> <span class="n">AdjacencyView</span>
-<span class="kn">from</span> <span class="nn">networkx.classes.reportviews</span> <span class="k">import</span> <span class="n">OutEdgeView</span><span class="p">,</span> <span class="n">InEdgeView</span><span class="p">,</span> \
+<span class="kn">from</span> <span class="nn">networkx.classes.graph</span> <span class="kn">import</span> <span class="n">Graph</span>
+<span class="kn">from</span> <span class="nn">networkx.classes.coreviews</span> <span class="kn">import</span> <span class="n">AdjacencyView</span>
+<span class="kn">from</span> <span class="nn">networkx.classes.reportviews</span> <span class="kn">import</span> <span class="n">OutEdgeView</span><span class="p">,</span> <span class="n">InEdgeView</span><span class="p">,</span> \
     <span class="n">DiDegreeView</span><span class="p">,</span> <span class="n">InDegreeView</span><span class="p">,</span> <span class="n">OutDegreeView</span>
-<span class="kn">from</span> <span class="nn">networkx.exception</span> <span class="k">import</span> <span class="n">NetworkXError</span>
+<span class="kn">from</span> <span class="nn">networkx.exception</span> <span class="kn">import</span> <span class="n">NetworkXError</span>
 <span class="kn">import</span> <span class="nn">networkx.convert</span> <span class="k">as</span> <span class="nn">convert</span>
 
 
@@ -423,7 +423,7 @@
 <span class="sd">    a dictionary-like object.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="DiGraph.__init__"><a class="viewcode-back" href="../../../reference/classes/generated/networkx.DiGraph.__init__.html#networkx.DiGraph.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">incoming_graph_data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">):</span>
+<div class="viewcode-block" id="DiGraph.__init__"><a class="viewcode-back" href="../../../reference/classes/generated/networkx.DiGraph.__init__.html#networkx.DiGraph.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">incoming_graph_data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Initialize a graph with edges, name, or graph attributes.</span>
 
 <span class="sd">        Parameters</span>
@@ -1369,7 +1369,7 @@
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Nov 20, 2019.
+        Last updated on Nov 28, 2019.
       </span>
 
     </p>

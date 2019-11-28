@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.generators.trees.prefix_tree &mdash; NetworkX 2.5rc1.dev20191120074019 documentation</title>
+  <title>networkx.generators.trees.prefix_tree &mdash; NetworkX 2.5rc1.dev20191128003556 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191120074019 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191128003556 documentation"
           href="../../_static/opensearch.xml"/>
 
   
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191120074019
+                2.5rc1.dev_20191128003556
               </div>
             
           
@@ -246,7 +246,7 @@ of the root node is None, and the ‘source’ of the nil node is
 and the nil node is the only node of out-degree zero.  For
 convenience, the nil node can be accessed via the <code class="xref py py-data docutils literal notranslate"><span class="pre">NIL</span></code>
 attribute; for example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">networkx.generators.trees</span> <span class="k">import</span> <span class="n">NIL</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">networkx.generators.trees</span> <span class="kn">import</span> <span class="n">NIL</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">paths</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ab&#39;</span><span class="p">,</span> <span class="s1">&#39;abs&#39;</span><span class="p">,</span> <span class="s1">&#39;ad&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">T</span><span class="p">,</span> <span class="n">root</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">prefix_tree</span><span class="p">(</span><span class="n">paths</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">T</span><span class="o">.</span><span class="n">predecessors</span><span class="p">(</span><span class="n">NIL</span><span class="p">)</span>
@@ -271,7 +271,7 @@ prefixes:</p>
 <p>Continuing the above example, to recover the original paths that
 generated the prefix tree, traverse up the tree from the
 <code class="xref py py-data docutils literal notranslate"><span class="pre">NIL</span></code> node to the root:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">networkx.generators.trees</span> <span class="k">import</span> <span class="n">NIL</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">networkx.generators.trees</span> <span class="kn">import</span> <span class="n">NIL</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">strings</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ab&#39;</span><span class="p">,</span> <span class="s1">&#39;abs&#39;</span><span class="p">,</span> <span class="s1">&#39;ad&#39;</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">T</span><span class="p">,</span> <span class="n">root</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">prefix_tree</span><span class="p">(</span><span class="n">strings</span><span class="p">)</span>
@@ -314,7 +314,7 @@ generated the prefix tree, traverse up the tree from the
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Nov 20, 2019.
+        Last updated on Nov 28, 2019.
       </span>
 
     </p>
