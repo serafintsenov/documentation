@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.readwrite.gml &mdash; NetworkX 2.5rc1.dev20191208161747 documentation</title>
+  <title>networkx.readwrite.gml &mdash; NetworkX 2.5rc1.dev20191212152509 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191208161747 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191212152509 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191208161747
+                2.5rc1.dev_20191212152509
               </div>
             
           
@@ -196,6 +196,8 @@
 <span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
 <span class="kn">from</span> <span class="nn">ast</span> <span class="kn">import</span> <span class="n">literal_eval</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">NamedTuple</span>
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="kn">from</span> <span class="nn">networkx.exception</span> <span class="kn">import</span> <span class="n">NetworkXError</span>
 <span class="kn">from</span> <span class="nn">networkx.utils</span> <span class="kn">import</span> <span class="n">open_file</span>
@@ -424,10 +426,30 @@
     <span class="k">return</span> <span class="n">G</span></div>
 
 
+<span class="k">class</span> <span class="nc">Pattern</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; encodes the index of each token-matching pattern in `tokenize`. &quot;&quot;&quot;</span>
+    <span class="n">KEYS</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">REALS</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">INTS</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">STRINGS</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">DICT_START</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="n">DICT_END</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="n">COMMENT_WHITESPACE</span> <span class="o">=</span> <span class="mi">6</span>
+
+
+<span class="k">class</span> <span class="nc">Token</span><span class="p">(</span><span class="n">NamedTuple</span><span class="p">):</span>
+    <span class="n">category</span><span class="p">:</span> <span class="n">Pattern</span>
+    <span class="n">value</span><span class="p">:</span> <span class="n">Any</span>
+    <span class="n">line</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">position</span><span class="p">:</span> <span class="nb">int</span>
+
+
+<span class="n">LIST_START_VALUE</span> <span class="o">=</span> <span class="s2">&quot;_networkx_list_start&quot;</span>
+
+
 <span class="k">def</span> <span class="nf">parse_gml_lines</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">destringizer</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Parse GML `lines` into a graph.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="k">def</span> <span class="nf">tokenize</span><span class="p">():</span>
         <span class="n">patterns</span> <span class="o">=</span> <span class="p">[</span>
             <span class="sa">r</span><span class="s2">&quot;[A-Za-z][0-9A-Za-z_]*\b&quot;</span><span class="p">,</span>  <span class="c1"># keys</span>
@@ -439,74 +461,70 @@
             <span class="sa">r</span><span class="s2">&quot;\]&quot;</span><span class="p">,</span>  <span class="c1"># dict end</span>
             <span class="sa">r</span><span class="s2">&quot;#.*$|\s+&quot;</span><span class="p">,</span>  <span class="c1"># comments and whitespaces</span>
         <span class="p">]</span>
-        <span class="n">tokens</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;|&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;(&quot;</span> <span class="o">+</span> <span class="n">pattern</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span> <span class="k">for</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="n">patterns</span><span class="p">))</span>
+        <span class="n">tokens</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;|&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{pattern}</span><span class="s2">)&quot;</span> <span class="k">for</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="n">patterns</span><span class="p">))</span>
         <span class="n">lineno</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
             <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
             <span class="n">pos</span> <span class="o">=</span> <span class="mi">0</span>
             <span class="k">while</span> <span class="n">pos</span> <span class="o">&lt;</span> <span class="n">length</span><span class="p">:</span>
                 <span class="n">match</span> <span class="o">=</span> <span class="n">tokens</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">match</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">patterns</span><span class="p">)):</span>
-                        <span class="n">group</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-                        <span class="k">if</span> <span class="n">group</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># keys</span>
-                                <span class="n">value</span> <span class="o">=</span> <span class="n">group</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span>
-                            <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># reals</span>
-                                <span class="n">value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
-                            <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>  <span class="c1"># ints</span>
-                                <span class="n">value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
-                            <span class="k">else</span><span class="p">:</span>
-                                <span class="n">value</span> <span class="o">=</span> <span class="n">group</span>
-                            <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="mi">6</span><span class="p">:</span>  <span class="c1"># comments and whitespaces</span>
-                                <span class="k">yield</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">lineno</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">pos</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-                            <span class="n">pos</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
-                            <span class="k">break</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span>
-                        <span class="s2">&quot;cannot tokenize </span><span class="si">%r</span><span class="s2"> at (</span><span class="si">%d</span><span class="s2">, </span><span class="si">%d</span><span class="s2">)&quot;</span>
-                        <span class="o">%</span> <span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="n">pos</span><span class="p">:],</span> <span class="n">lineno</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">pos</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-                    <span class="p">)</span>
+                <span class="k">if</span> <span class="n">match</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">m</span> <span class="o">=</span> <span class="s2">&quot;cannot tokenize </span><span class="si">%r</span><span class="s2"> at (</span><span class="si">%d</span><span class="s2">, </span><span class="si">%d</span><span class="s2">)&quot;</span>
+                    <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="n">m</span> <span class="o">%</span> <span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="n">pos</span><span class="p">:],</span> <span class="n">lineno</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">pos</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">patterns</span><span class="p">)):</span>
+                    <span class="n">group</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">group</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># keys</span>
+                            <span class="n">value</span> <span class="o">=</span> <span class="n">group</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span>
+                        <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># reals</span>
+                            <span class="n">value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
+                        <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>  <span class="c1"># ints</span>
+                            <span class="n">value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">value</span> <span class="o">=</span> <span class="n">group</span>
+                        <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="mi">6</span><span class="p">:</span>    <span class="c1"># comments and whitespaces</span>
+                            <span class="k">yield</span> <span class="n">Token</span><span class="p">(</span><span class="n">Pattern</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">value</span><span class="p">,</span> <span class="n">lineno</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">pos</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                        <span class="n">pos</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
+                        <span class="k">break</span>
             <span class="n">lineno</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">yield</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">lineno</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># EOF</span>
+        <span class="k">yield</span> <span class="n">Token</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">lineno</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># EOF</span>
 
     <span class="k">def</span> <span class="nf">unexpected</span><span class="p">(</span><span class="n">curr_token</span><span class="p">,</span> <span class="n">expected</span><span class="p">):</span>
         <span class="n">category</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">lineno</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">curr_token</span>
-        <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span>
-            <span class="s2">&quot;expected </span><span class="si">%s</span><span class="s2">, found </span><span class="si">%s</span><span class="s2"> at (</span><span class="si">%d</span><span class="s2">, </span><span class="si">%d</span><span class="s2">)&quot;</span>
-            <span class="o">%</span> <span class="p">(</span><span class="n">expected</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;EOF&quot;</span><span class="p">,</span> <span class="n">lineno</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
-        <span class="p">)</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="nb">repr</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;EOF&quot;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;expected </span><span class="si">%s</span><span class="s2">, found </span><span class="si">%s</span><span class="s2"> at (</span><span class="si">%d</span><span class="s2">, </span><span class="si">%d</span><span class="s2">)&quot;</span>
+        <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="n">msg</span> <span class="o">%</span> <span class="p">(</span><span class="n">expected</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">lineno</span><span class="p">,</span> <span class="n">pos</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="nf">consume</span><span class="p">(</span><span class="n">curr_token</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">expected</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">curr_token</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">category</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">curr_token</span><span class="o">.</span><span class="n">category</span> <span class="o">==</span> <span class="n">category</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
         <span class="n">unexpected</span><span class="p">(</span><span class="n">curr_token</span><span class="p">,</span> <span class="n">expected</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">parse_kv</span><span class="p">(</span><span class="n">curr_token</span><span class="p">):</span>
         <span class="n">dct</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
-        <span class="k">while</span> <span class="n">curr_token</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># keys</span>
-            <span class="n">key</span> <span class="o">=</span> <span class="n">curr_token</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">while</span> <span class="n">curr_token</span><span class="o">.</span><span class="n">category</span> <span class="o">==</span> <span class="n">Pattern</span><span class="o">.</span><span class="n">KEYS</span><span class="p">:</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="n">curr_token</span><span class="o">.</span><span class="n">value</span>
             <span class="n">curr_token</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
-            <span class="n">category</span> <span class="o">=</span> <span class="n">curr_token</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="k">if</span> <span class="n">category</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">category</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>  <span class="c1"># reals or ints</span>
-                <span class="n">value</span> <span class="o">=</span> <span class="n">curr_token</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">category</span> <span class="o">=</span> <span class="n">curr_token</span><span class="o">.</span><span class="n">category</span>
+            <span class="k">if</span> <span class="n">category</span> <span class="o">==</span> <span class="n">Pattern</span><span class="o">.</span><span class="n">REALS</span> <span class="ow">or</span> <span class="n">category</span> <span class="o">==</span> <span class="n">Pattern</span><span class="o">.</span><span class="n">INTS</span><span class="p">:</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">curr_token</span><span class="o">.</span><span class="n">value</span>
                 <span class="n">curr_token</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="n">category</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>  <span class="c1"># strings</span>
-                <span class="n">value</span> <span class="o">=</span> <span class="n">unescape</span><span class="p">(</span><span class="n">curr_token</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">elif</span> <span class="n">category</span> <span class="o">==</span> <span class="n">Pattern</span><span class="o">.</span><span class="n">STRINGS</span><span class="p">:</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">unescape</span><span class="p">(</span><span class="n">curr_token</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
                 <span class="k">if</span> <span class="n">destringizer</span><span class="p">:</span>
                     <span class="k">try</span><span class="p">:</span>
                         <span class="n">value</span> <span class="o">=</span> <span class="n">destringizer</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
                     <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
                         <span class="k">pass</span>
                 <span class="n">curr_token</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="n">category</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>  <span class="c1"># dict start</span>
+            <span class="k">elif</span> <span class="n">category</span> <span class="o">==</span> <span class="n">Pattern</span><span class="o">.</span><span class="n">DICT_START</span><span class="p">:</span>
                 <span class="n">curr_token</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">parse_dict</span><span class="p">(</span><span class="n">curr_token</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="c1"># Allow for string convertible id and label values</span>
                 <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="s2">&quot;source&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="p">):</span>
                     <span class="k">try</span><span class="p">:</span>
                         <span class="c1"># String convert the token value</span>
-                        <span class="n">value</span> <span class="o">=</span> <span class="n">unescape</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">curr_token</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+                        <span class="n">value</span> <span class="o">=</span> <span class="n">unescape</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">curr_token</span><span class="o">.</span><span class="n">value</span><span class="p">))</span>
                         <span class="k">if</span> <span class="n">destringizer</span><span class="p">:</span>
                             <span class="k">try</span><span class="p">:</span>
                                 <span class="n">value</span> <span class="o">=</span> <span class="n">destringizer</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
@@ -522,21 +540,31 @@
                 <span class="k">else</span><span class="p">:</span>  <span class="c1"># Otherwise error out</span>
                     <span class="n">unexpected</span><span class="p">(</span><span class="n">curr_token</span><span class="p">,</span> <span class="s2">&quot;an int, float, string or &#39;[&#39;&quot;</span><span class="p">)</span>
             <span class="n">dct</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-        <span class="n">dct</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="n">key</span><span class="p">:</span> <span class="p">(</span><span class="n">value</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">dct</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-        <span class="p">}</span>
+
+        <span class="k">def</span> <span class="nf">clean_dict_value</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">value</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">LIST_START_VALUE</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+            <span class="k">return</span> <span class="n">value</span>
+
+        <span class="n">dct</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">clean_dict_value</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">dct</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
         <span class="k">return</span> <span class="n">curr_token</span><span class="p">,</span> <span class="n">dct</span>
 
     <span class="k">def</span> <span class="nf">parse_dict</span><span class="p">(</span><span class="n">curr_token</span><span class="p">):</span>
-        <span class="n">curr_token</span> <span class="o">=</span> <span class="n">consume</span><span class="p">(</span><span class="n">curr_token</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;&#39;[&#39;&quot;</span><span class="p">)</span>  <span class="c1"># dict start</span>
+        <span class="c1"># dict start</span>
+        <span class="n">curr_token</span> <span class="o">=</span> <span class="n">consume</span><span class="p">(</span><span class="n">curr_token</span><span class="p">,</span> <span class="n">Pattern</span><span class="o">.</span><span class="n">DICT_START</span><span class="p">,</span> <span class="s2">&quot;&#39;[&#39;&quot;</span><span class="p">)</span>
+        <span class="c1"># dict contents</span>
         <span class="n">curr_token</span><span class="p">,</span> <span class="n">dct</span> <span class="o">=</span> <span class="n">parse_kv</span><span class="p">(</span><span class="n">curr_token</span><span class="p">)</span>
-        <span class="n">curr_token</span> <span class="o">=</span> <span class="n">consume</span><span class="p">(</span><span class="n">curr_token</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;&#39;]&#39;&quot;</span><span class="p">)</span>  <span class="c1"># dict end</span>
+        <span class="c1"># dict end</span>
+        <span class="n">curr_token</span> <span class="o">=</span> <span class="n">consume</span><span class="p">(</span><span class="n">curr_token</span><span class="p">,</span> <span class="n">Pattern</span><span class="o">.</span><span class="n">DICT_END</span><span class="p">,</span> <span class="s2">&quot;&#39;]&#39;&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">curr_token</span><span class="p">,</span> <span class="n">dct</span>
 
     <span class="k">def</span> <span class="nf">parse_graph</span><span class="p">():</span>
         <span class="n">curr_token</span><span class="p">,</span> <span class="n">dct</span> <span class="o">=</span> <span class="n">parse_kv</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">tokens</span><span class="p">))</span>
-        <span class="k">if</span> <span class="n">curr_token</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># EOF</span>
+        <span class="k">if</span> <span class="n">curr_token</span><span class="o">.</span><span class="n">category</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># EOF</span>
             <span class="n">unexpected</span><span class="p">(</span><span class="n">curr_token</span><span class="p">,</span> <span class="s2">&quot;EOF&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="s2">&quot;graph&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dct</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="s2">&quot;input contains no graph&quot;</span><span class="p">)</span>
@@ -554,15 +582,15 @@
         <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span> <span class="k">if</span> <span class="n">directed</span> <span class="k">else</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">MultiDiGraph</span><span class="p">()</span> <span class="k">if</span> <span class="n">directed</span> <span class="k">else</span> <span class="n">nx</span><span class="o">.</span><span class="n">MultiGraph</span><span class="p">()</span>
-    <span class="n">G</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
-        <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">key</span> <span class="o">!=</span> <span class="s2">&quot;node&quot;</span> <span class="ow">and</span> <span class="n">key</span> <span class="o">!=</span> <span class="s2">&quot;edge&quot;</span>
-    <span class="p">)</span>
+    <span class="n">graph_attr</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;node&quot;</span><span class="p">,</span> <span class="s2">&quot;edge&quot;</span><span class="p">)}</span>
+    <span class="n">G</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">graph_attr</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">pop_attr</span><span class="p">(</span><span class="n">dct</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">dct</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> #</span><span class="si">%d</span><span class="s2"> has no &#39;</span><span class="si">%s</span><span class="s2">&#39; attribute&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">category</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">attr</span><span class="p">))</span>
+            <span class="n">outputs</span> <span class="o">=</span> <span class="p">(</span><span class="n">category</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> #</span><span class="si">%d</span><span class="s2"> has no &#39;</span><span class="si">%s</span><span class="s2">&#39; attribute&quot;</span> <span class="o">%</span> <span class="n">outputs</span><span class="p">)</span>
 
     <span class="n">nodes</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;node&quot;</span><span class="p">,</span> <span class="p">[])</span>
     <span class="n">mapping</span> <span class="o">=</span> <span class="p">{}</span>
@@ -574,7 +602,7 @@
         <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">label</span> <span class="o">!=</span> <span class="s2">&quot;id&quot;</span><span class="p">:</span>
             <span class="n">node_label</span> <span class="o">=</span> <span class="n">pop_attr</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s2">&quot;node&quot;</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">node_label</span> <span class="ow">in</span> <span class="n">node_labels</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="s2">&quot;node label </span><span class="si">%r</span><span class="s2"> is duplicated&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">node_label</span><span class="p">,))</span>
+                <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;node label </span><span class="si">{node_label!r}</span><span class="s2"> is duplicated&quot;</span><span class="p">)</span>
             <span class="n">node_labels</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">node_label</span><span class="p">)</span>
             <span class="n">mapping</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_label</span>
         <span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="o">**</span><span class="n">node</span><span class="p">)</span>
@@ -584,24 +612,23 @@
         <span class="n">source</span> <span class="o">=</span> <span class="n">pop_attr</span><span class="p">(</span><span class="n">edge</span><span class="p">,</span> <span class="s2">&quot;edge&quot;</span><span class="p">,</span> <span class="s2">&quot;source&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
         <span class="n">target</span> <span class="o">=</span> <span class="n">pop_attr</span><span class="p">(</span><span class="n">edge</span><span class="p">,</span> <span class="s2">&quot;edge&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">source</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="s2">&quot;edge #</span><span class="si">%d</span><span class="s2"> has an undefined source </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">source</span><span class="p">))</span>
+            <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;edge #</span><span class="si">{i}</span><span class="s2"> has undefined source </span><span class="si">{source!r}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">target</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="s2">&quot;edge #</span><span class="si">%d</span><span class="s2"> has an undefined target </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">target</span><span class="p">))</span>
+            <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;edge #</span><span class="si">{i}</span><span class="s2"> has undefined target </span><span class="si">{target!r}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">multigraph</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">G</span><span class="o">.</span><span class="n">has_edge</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
                 <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="o">**</span><span class="n">edge</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;edge #</span><span class="si">%d</span><span class="s2"> (</span><span class="si">%r%s%r</span><span class="s2">) is duplicated.</span><span class="se">\n</span><span class="s2">&quot;</span>
-                <span class="n">msg2</span> <span class="o">=</span> <span class="s1">&#39;Hint: If multigraph add &quot;multigraph 1&quot; to file header.&#39;</span>
-                <span class="n">info</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="s2">&quot;-&gt;&quot;</span> <span class="k">if</span> <span class="n">directed</span> <span class="k">else</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
-                <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">((</span><span class="n">msg</span> <span class="o">%</span> <span class="n">info</span><span class="p">)</span> <span class="o">+</span> <span class="n">msg2</span><span class="p">)</span>
+                <span class="n">arrow</span> <span class="o">=</span> <span class="s2">&quot;-&gt;&quot;</span> <span class="k">if</span> <span class="n">directed</span> <span class="k">else</span> <span class="s2">&quot;--&quot;</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;edge #</span><span class="si">{i}</span><span class="s2"> (</span><span class="si">{source!r}{arrow}{target!r}</span><span class="s2">) is duplicated&quot;</span>
+                <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">key</span> <span class="o">=</span> <span class="n">edge</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;key&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">key</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">G</span><span class="o">.</span><span class="n">has_edge</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
-                <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span>
-                    <span class="s2">&quot;edge #</span><span class="si">%d</span><span class="s2"> (</span><span class="si">%r%s%r</span><span class="s2">, </span><span class="si">%r</span><span class="s2">) is duplicated&quot;</span>
-                    <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="s2">&quot;-&gt;&quot;</span> <span class="k">if</span> <span class="n">directed</span> <span class="k">else</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
-                <span class="p">)</span>
+                <span class="n">arrow</span> <span class="o">=</span> <span class="s2">&quot;-&gt;&quot;</span> <span class="k">if</span> <span class="n">directed</span> <span class="k">else</span> <span class="s2">&quot;--&quot;</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;edge #</span><span class="si">{i}</span><span class="s2"> (</span><span class="si">{source!r}{arrow}{target!r}</span><span class="s2">, </span><span class="si">{key!r}</span><span class="s2">)&quot;</span>
+                <span class="n">msg2</span> <span class="o">=</span> <span class="s1">&#39;Hint: If multigraph add &quot;multigraph 1&quot; to file header.&#39;</span>
+                <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="n">msg</span> <span class="o">+</span> <span class="s2">&quot; is duplicated</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">msg2</span><span class="p">)</span>
             <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="o">**</span><span class="n">edge</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">label</span> <span class="o">!=</span> <span class="s2">&quot;id&quot;</span><span class="p">:</span>
@@ -709,7 +736,8 @@
                 <span class="n">stringize</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
             <span class="n">buf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;}&quot;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%r</span><span class="s2"> cannot be converted into a Python literal&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">value</span><span class="p">,))</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{value!r}</span><span class="s2"> cannot be converted into a Python literal&quot;</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
     <span class="n">buf</span> <span class="o">=</span> <span class="n">StringIO</span><span class="p">()</span>
     <span class="n">stringize</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
@@ -836,16 +864,13 @@
                 <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">value</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
                     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">stringize</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="p">(),</span> <span class="n">next_indent</span><span class="p">):</span>
                         <span class="k">yield</span> <span class="n">line</span>
-                <span class="k">yield</span> <span class="n">indent</span> <span class="o">+</span> <span class="s2">&quot;]&quot;</span>
-            <span class="k">elif</span> <span class="p">(</span>
-                <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">))</span>
-                <span class="ow">and</span> <span class="n">key</span> <span class="o">!=</span> <span class="s2">&quot;label&quot;</span>
-                <span class="ow">and</span> <span class="n">value</span>
-                <span class="ow">and</span> <span class="ow">not</span> <span class="n">in_list</span>
-            <span class="p">):</span>
-                <span class="n">next_indent</span> <span class="o">=</span> <span class="n">indent</span> <span class="o">+</span> <span class="s2">&quot;  &quot;</span>
+                <span class="k">yield</span> <span class="n">indent</span> <span class="o">+</span> <span class="s1">&#39;]&#39;</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">))</span> <span class="ow">and</span> <span class="n">key</span> <span class="o">!=</span> <span class="s1">&#39;label&#39;</span> \
+                    <span class="ow">and</span> <span class="n">value</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">in_list</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="k">yield</span> <span class="n">indent</span> <span class="o">+</span> <span class="n">key</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="s1">&#39;&quot;</span><span class="si">{}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">LIST_START_VALUE</span><span class="p">)</span>
                 <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
-                    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">stringize</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="p">(),</span> <span class="n">next_indent</span><span class="p">,</span> <span class="kc">True</span><span class="p">):</span>
+                    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">stringize</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="p">(),</span> <span class="n">indent</span><span class="p">,</span> <span class="kc">True</span><span class="p">):</span>
                         <span class="k">yield</span> <span class="n">line</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">stringizer</span><span class="p">:</span>
@@ -981,7 +1006,7 @@
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Dec 08, 2019.
+        Last updated on Dec 12, 2019.
       </span>
 
     </p>
