@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.generators.lattice &mdash; NetworkX 2.5rc1.dev20191224025452 documentation</title>
+  <title>networkx.generators.lattice &mdash; NetworkX 2.5rc1.dev20191224151011 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191224025452 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191224151011 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191224025452
+                2.5rc1.dev_20191224151011
               </div>
             
           
@@ -273,14 +273,13 @@
 <span class="sd">    To produce a 2 by 3 by 4 grid graph, a graph on 24 nodes:</span>
 
 <span class="sd">    &gt;&gt;&gt; from networkx import grid_graph</span>
-<span class="sd">    &gt;&gt;&gt; G = grid_graph(dim=[2, 3, 4])</span>
+<span class="sd">    &gt;&gt;&gt; G = grid_graph(dim=(2, 3, 4))</span>
 <span class="sd">    &gt;&gt;&gt; len(G)</span>
 <span class="sd">    24</span>
-<span class="sd">    &gt;&gt;&gt; G = grid_graph(dim=[range(7, 9), range(3, 6)])</span>
+<span class="sd">    &gt;&gt;&gt; G = grid_graph(dim=(range(7, 9), range(3, 6)))</span>
 <span class="sd">    &gt;&gt;&gt; len(G)</span>
 <span class="sd">    6</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">dlabel</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">dim</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">dim</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">empty_graph</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
