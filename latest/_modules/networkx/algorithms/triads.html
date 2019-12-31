@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.triads &mdash; NetworkX 2.5rc1.dev20191228171718 documentation</title>
+  <title>networkx.algorithms.triads &mdash; NetworkX 2.5rc1.dev20191231022627 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20191228171718 documentation"
+          title="Search within NetworkX 2.5rc1.dev20191231022627 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20191228171718
+                2.5rc1.dev_20191231022627
               </div>
             
           
@@ -170,9 +170,15 @@
 <span class="c1"># Copyright 2011 Diederik van Liere &lt;diederik.vanliere@rotman.utoronto.ca&gt;</span>
 <span class="sd">&quot;&quot;&quot;Functions for analyzing triads of a graph.&quot;&quot;&quot;</span>
 
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">combinations</span><span class="p">,</span> <span class="n">permutations</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">sample</span>
+
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="kn">from</span> <span class="nn">networkx.utils</span> <span class="kn">import</span> <span class="n">not_implemented_for</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;triadic_census&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;triadic_census&#39;</span><span class="p">,</span> <span class="s1">&#39;is_triad&#39;</span><span class="p">,</span> <span class="s1">&#39;all_triplets&#39;</span><span class="p">,</span> <span class="s1">&#39;all_triads&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;triads_by_type&#39;</span><span class="p">,</span> <span class="s1">&#39;triad_type&#39;</span><span class="p">,</span> <span class="s1">&#39;random_triad&#39;</span><span class="p">]</span>
 
 <span class="c1">#: The integer codes representing each type of triad.</span>
 <span class="c1">#:</span>
@@ -220,7 +226,7 @@
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    census : dict</span>
-<span class="sd">       Dictionary with triad names as keys and number of occurrences as values.</span>
+<span class="sd">       Dictionary with triad type as keys and number of occurrences as values.</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
@@ -262,13 +268,259 @@
                                    <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">succ</span><span class="p">[</span><span class="n">w</span><span class="p">]):</span>
                     <span class="n">code</span> <span class="o">=</span> <span class="n">_tricode</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
                     <span class="n">census</span><span class="p">[</span><span class="n">TRICODE_TO_NAME</span><span class="p">[</span><span class="n">code</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
-
     <span class="c1"># null triads = total number of possible triads - all found triads</span>
     <span class="c1">#</span>
     <span class="c1"># Use integer division here, since we know this formula guarantees an</span>
     <span class="c1"># integral value.</span>
     <span class="n">census</span><span class="p">[</span><span class="s1">&#39;003&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">n</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">))</span> <span class="o">//</span> <span class="mi">6</span><span class="p">)</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">census</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
     <span class="k">return</span> <span class="n">census</span></div>
+
+
+<span class="k">def</span> <span class="nf">is_triad</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns True if the graph G is a triad, else False.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : graph</span>
+<span class="sd">       A NetworkX Graph</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    istriad : boolean</span>
+<span class="sd">       Whether G is a valid triad</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">order</span><span class="p">()</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">nx</span><span class="o">.</span><span class="n">is_directed</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">()</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()):</span>
+                <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="kc">False</span>
+
+
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s1">&#39;undirected&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">all_triplets</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a generator of all possible sets of 3 nodes in a DiGraph.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : digraph</span>
+<span class="sd">       A NetworkX DiGraph</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    triplets : generator of 3-tuples</span>
+<span class="sd">       Generator of tuples of 3 nodes</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">triplets</span> <span class="o">=</span> <span class="n">combinations</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">(),</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">triplets</span>
+
+
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s1">&#39;undirected&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">all_triads</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A generator of all possible triads in G.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : digraph</span>
+<span class="sd">       A NetworkX DiGraph</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    all_triads : generator of DiGraphs</span>
+<span class="sd">       Generator of triads (order-3 DiGraphs)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">triplets</span> <span class="o">=</span> <span class="n">combinations</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">(),</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">triplet</span> <span class="ow">in</span> <span class="n">triplets</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">G</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">triplet</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s1">&#39;undirected&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">triads_by_type</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a list of all triads for each triad type in a directed graph.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : digraph</span>
+<span class="sd">       A NetworkX DiGraph</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    tri_by_type : dict</span>
+<span class="sd">       Dictionary with triad types as keys and lists of triads as values.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># num_triads = o * (o - 1) * (o - 2) // 6</span>
+    <span class="c1"># if num_triads &gt; TRIAD_LIMIT: print(WARNING)</span>
+    <span class="n">all_tri</span> <span class="o">=</span> <span class="n">all_triads</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+    <span class="n">tri_by_type</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">triad</span> <span class="ow">in</span> <span class="n">all_tri</span><span class="p">:</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">triad_type</span><span class="p">(</span><span class="n">triad</span><span class="p">)</span>
+        <span class="n">tri_by_type</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">triad</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tri_by_type</span>
+
+
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s1">&#39;undirected&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">triad_type</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the sociological triad type for a triad.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : digraph</span>
+<span class="sd">       A NetworkX DiGraph with 3 nodes</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    triad_type : str</span>
+<span class="sd">       A string identifying the triad type</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    There can be 6 unique edges in a triad (order-3 DiGraph) (so 2^^6=64 unique</span>
+<span class="sd">    triads given 3 nodes). These 64 triads each display exactly 1 of 16</span>
+<span class="sd">    topologies of triads (topologies can be permuted). These topologies are</span>
+<span class="sd">    identified by the following notation:</span>
+
+<span class="sd">    {m}{a}{n}{type} (for example: 111D, 210, 102)</span>
+
+<span class="sd">    Here:</span>
+
+<span class="sd">    {m}     = number of mutual ties (takes 0, 1, 2, 3); a mutual tie is (0,1)</span>
+<span class="sd">              AND (1,0)</span>
+<span class="sd">    {a}     = number of assymmetric ties (takes 0, 1, 2, 3); an assymmetric tie</span>
+<span class="sd">              is (0,1) BUT NOT (1,0) or vice versa</span>
+<span class="sd">    {n}     = number of null ties (takes 0, 1, 2, 3); a null tie is NEITHER</span>
+<span class="sd">              (0,1) NOR (1,0)</span>
+<span class="sd">    {type}  = a letter (takes U, D, C, T) corresponding to up, down, cyclical</span>
+<span class="sd">              and transitive. This is only used for topologies that can have</span>
+<span class="sd">              more than one form (eg: 021D and 021U).</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] Snijders, T. (2012). &quot;Transitivity and triads.&quot; University of</span>
+<span class="sd">        Oxford.</span>
+<span class="sd">        http://www.stats.ox.ac.uk/snijders/Trans_Triads_ha.pdf</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_triad</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXAlgorithmError</span><span class="p">(</span><span class="s2">&quot;G is not a triad (order-3 DiGraph)&quot;</span><span class="p">)</span>
+    <span class="n">num_edges</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">())</span>
+    <span class="k">if</span> <span class="n">num_edges</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;003&quot;</span>
+    <span class="k">elif</span> <span class="n">num_edges</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;012&quot;</span>
+    <span class="k">elif</span> <span class="n">num_edges</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">e1</span><span class="p">,</span> <span class="n">e2</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="n">e1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">set</span><span class="p">(</span><span class="n">e2</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s2">&quot;102&quot;</span>
+        <span class="k">elif</span> <span class="n">e1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">e2</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="s2">&quot;021D&quot;</span>
+        <span class="k">elif</span> <span class="n">e1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">e2</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="s2">&quot;021U&quot;</span>
+        <span class="k">elif</span> <span class="n">e1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">e2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">or</span> <span class="n">e2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">e1</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="s2">&quot;021C&quot;</span>
+    <span class="k">elif</span> <span class="n">num_edges</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">e1</span><span class="p">,</span> <span class="n">e2</span><span class="p">,</span> <span class="n">e3</span><span class="p">)</span> <span class="ow">in</span> <span class="n">permutations</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(),</span> <span class="mi">3</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="n">e1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">set</span><span class="p">(</span><span class="n">e2</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">e3</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">e1</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="s2">&quot;111U&quot;</span>
+                <span class="c1"># e3[1] in e1:</span>
+                <span class="k">return</span> <span class="s2">&quot;111D&quot;</span>
+            <span class="k">elif</span> <span class="nb">set</span><span class="p">(</span><span class="n">e1</span><span class="p">)</span><span class="o">.</span><span class="n">symmetric_difference</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">e2</span><span class="p">))</span> <span class="o">==</span> <span class="nb">set</span><span class="p">(</span><span class="n">e3</span><span class="p">):</span>
+                <span class="k">if</span> <span class="p">{</span><span class="n">e1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">e2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">e3</span><span class="p">[</span><span class="mi">0</span><span class="p">]}</span> <span class="o">==</span> <span class="p">{</span><span class="n">e1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">e2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                             <span class="n">e3</span><span class="p">[</span><span class="mi">0</span><span class="p">]}</span> <span class="o">==</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()):</span>
+                    <span class="k">return</span> <span class="s2">&quot;030C&quot;</span>
+                <span class="c1"># e3 == (e1[0], e2[1]) and e2 == (e1[1], e3[1]):</span>
+                <span class="k">return</span> <span class="s2">&quot;030T&quot;</span>
+    <span class="k">elif</span> <span class="n">num_edges</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">e1</span><span class="p">,</span> <span class="n">e2</span><span class="p">,</span> <span class="n">e3</span><span class="p">,</span> <span class="n">e4</span><span class="p">)</span> <span class="ow">in</span> <span class="n">permutations</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(),</span> <span class="mi">4</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="n">e1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">set</span><span class="p">(</span><span class="n">e2</span><span class="p">):</span>
+                <span class="c1"># identify pair of symmetric edges (which necessarily exists)</span>
+                <span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="n">e3</span><span class="p">)</span> <span class="o">==</span> <span class="nb">set</span><span class="p">(</span><span class="n">e4</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="s2">&quot;201&quot;</span>
+                <span class="k">if</span> <span class="p">{</span><span class="n">e3</span><span class="p">[</span><span class="mi">0</span><span class="p">]}</span> <span class="o">==</span> <span class="p">{</span><span class="n">e4</span><span class="p">[</span><span class="mi">0</span><span class="p">]}</span> <span class="o">==</span> <span class="nb">set</span><span class="p">(</span><span class="n">e3</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">e4</span><span class="p">)):</span>
+                    <span class="k">return</span> <span class="s2">&quot;120D&quot;</span>
+                <span class="k">if</span> <span class="p">{</span><span class="n">e3</span><span class="p">[</span><span class="mi">1</span><span class="p">]}</span> <span class="o">==</span> <span class="p">{</span><span class="n">e4</span><span class="p">[</span><span class="mi">1</span><span class="p">]}</span> <span class="o">==</span> <span class="nb">set</span><span class="p">(</span><span class="n">e3</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">e4</span><span class="p">)):</span>
+                    <span class="k">return</span> <span class="s2">&quot;120U&quot;</span>
+                <span class="k">if</span> <span class="n">e3</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">e4</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                    <span class="k">return</span> <span class="s2">&quot;120C&quot;</span>
+    <span class="k">elif</span> <span class="n">num_edges</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;210&quot;</span>
+    <span class="k">elif</span> <span class="n">num_edges</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;300&quot;</span>
+
+
+<span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s1">&#39;undirected&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">random_triad</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Returns a random triad from a directed graph.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : digraph</span>
+<span class="sd">       A NetworkX DiGraph</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    G2 : subgraph</span>
+<span class="sd">       A randomly selected triad (order-3 NetworkX DiGraph)</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">nodes</span> <span class="o">=</span> <span class="n">sample</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">(),</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">G2</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">G2</span>
+
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">@not_implemented_for(&#39;undirected&#39;)</span>
+<span class="sd">def triadic_closures(G):</span>
+<span class="sd">    &#39;&#39;&#39;Returns a list of order-3 subgraphs of G that are triadic closures.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : digraph</span>
+<span class="sd">       A NetworkX DiGraph</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    closures : list</span>
+<span class="sd">       List of triads of G that are triadic closures</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    pass</span>
+
+
+<span class="sd">@not_implemented_for(&#39;undirected&#39;)</span>
+<span class="sd">def focal_closures(G, attr_name):</span>
+<span class="sd">    &#39;&#39;&#39;Returns a list of order-3 subgraphs of G that are focally closed.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : digraph</span>
+<span class="sd">       A NetworkX DiGraph</span>
+<span class="sd">    attr_name : str</span>
+<span class="sd">        An attribute name</span>
+
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    closures : list</span>
+<span class="sd">       List of triads of G that are focally closed on attr_name</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    pass</span>
+
+
+<span class="sd">@not_implemented_for(&#39;undirected&#39;)</span>
+<span class="sd">def balanced_triads(G, crit_func):</span>
+<span class="sd">    &#39;&#39;&#39;Returns a list of order-3 subgraphs of G that are stable.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    G : digraph</span>
+<span class="sd">       A NetworkX DiGraph</span>
+<span class="sd">    crit_func : function</span>
+<span class="sd">       A function that determines if a triad (order-3 digraph) is stable</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    triads : list</span>
+<span class="sd">       List of triads in G that are stable</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    pass</span>
+<span class="sd">&quot;&quot;&quot;</span>
 </pre></div>
 
            </div>
@@ -283,7 +535,7 @@
     <p>
         &copy; Copyright 2004-2019, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Dec 28, 2019.
+        Last updated on Dec 31, 2019.
       </span>
 
     </p>
