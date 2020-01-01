@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.generators.triads &mdash; NetworkX 2.5rc1.dev20200101051851 documentation</title>
+  <title>networkx.generators.triads &mdash; NetworkX 2.5rc1.dev20200101222012 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200101051851 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200101222012 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200101051851
+                2.5rc1.dev_20200101222012
               </div>
             
           
@@ -230,8 +230,8 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">triad_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">TRIAD_EDGES</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;unknown triad name &quot;</span><span class="si">{}</span><span class="s1">&quot;; use one of the triad names&#39;</span>
-                         <span class="s1">&#39; in the TRIAD_NAMES constant&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">triad_name</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;unknown triad name &quot;</span><span class="si">{triad_name}</span><span class="s1">&quot;; use one of the triad names&#39;</span>
+                         <span class="s1">&#39; in the TRIAD_NAMES constant&#39;</span><span class="p">)</span>
     <span class="n">G</span> <span class="o">=</span> <span class="n">DiGraph</span><span class="p">()</span>
     <span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">)</span>
     <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">TRIAD_EDGES</span><span class="p">[</span><span class="n">triad_name</span><span class="p">])</span>

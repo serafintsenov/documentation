@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.swap &mdash; NetworkX 2.5rc1.dev20200101051851 documentation</title>
+  <title>networkx.algorithms.swap &mdash; NetworkX 2.5rc1.dev20200101222012 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200101051851 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200101222012 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200101051851
+                2.5rc1.dev_20200101222012
               </div>
             
           
@@ -252,8 +252,8 @@
             <span class="n">G</span><span class="o">.</span><span class="n">remove_edge</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
             <span class="n">swapcount</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;=</span> <span class="n">max_tries</span><span class="p">:</span>
-            <span class="n">e</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Maximum number of swap attempts (</span><span class="si">%s</span><span class="s1">) exceeded &#39;</span> <span class="o">%</span> <span class="n">n</span> <span class="o">+</span>
-                 <span class="s1">&#39;before desired swaps achieved (</span><span class="si">%s</span><span class="s1">).&#39;</span> <span class="o">%</span> <span class="n">nswap</span><span class="p">)</span>
+            <span class="n">e</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Maximum number of swap attempts (</span><span class="si">{n}</span><span class="s1">) exceeded &#39;</span>
+                 <span class="sa">f</span><span class="s1">&#39;before desired swaps achieved (</span><span class="si">{nswap}</span><span class="s1">).&#39;</span><span class="p">)</span>
             <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXAlgorithmError</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
         <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">G</span></div>

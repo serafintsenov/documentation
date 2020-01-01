@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.readwrite.adjlist &mdash; NetworkX 2.5rc1.dev20200101051851 documentation</title>
+  <title>networkx.readwrite.adjlist &mdash; NetworkX 2.5rc1.dev20200101222012 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200101051851 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200101222012 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200101051851
+                2.5rc1.dev_20200101222012
               </div>
             
           
@@ -271,13 +271,13 @@
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; G=nx.path_graph(4)</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.path_graph(4)</span>
 <span class="sd">    &gt;&gt;&gt; nx.write_adjlist(G,&quot;test.adjlist&quot;)</span>
 
 <span class="sd">    The path can be a filehandle or a string with the name of the file. If a</span>
 <span class="sd">    filehandle is provided, it has to be opened in &#39;wb&#39; mode.</span>
 
-<span class="sd">    &gt;&gt;&gt; fh=open(&quot;test.adjlist&quot;,&#39;wb&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; fh = open(&quot;test.adjlist&quot;,&#39;wb&#39;)</span>
 <span class="sd">    &gt;&gt;&gt; nx.write_adjlist(G, fh)</span>
 
 <span class="sd">    Notes</span>
@@ -292,8 +292,8 @@
     <span class="kn">import</span> <span class="nn">time</span>
     <span class="n">pargs</span> <span class="o">=</span> <span class="n">comments</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
     <span class="n">header</span> <span class="o">=</span> <span class="p">(</span><span class="n">pargs</span>
-              <span class="o">+</span> <span class="n">comments</span> <span class="o">+</span> <span class="s2">&quot; GMT </span><span class="si">{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">asctime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">()))</span>
-              <span class="o">+</span> <span class="n">comments</span> <span class="o">+</span> <span class="s2">&quot; </span><span class="si">{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+              <span class="o">+</span> <span class="n">comments</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot; GMT {time.asctime(time.gmtime())}</span><span class="se">\n</span><span class="s2">&quot;</span>
+              <span class="o">+</span> <span class="n">comments</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{G.name}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">path</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">header</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">encoding</span><span class="p">))</span>
 
     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">generate_adjlist</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">delimiter</span><span class="p">):</span>
@@ -361,15 +361,13 @@
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">u</span> <span class="o">=</span> <span class="n">nodetype</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
             <span class="k">except</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Failed to convert node (</span><span class="si">{}</span><span class="s2">) to type </span><span class="si">{}</span><span class="s2">&quot;</span>
-                                <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">nodetype</span><span class="p">))</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to convert node (</span><span class="si">{u}</span><span class="s2">) to type </span><span class="si">{nodetype}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">nodetype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">vlist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">nodetype</span><span class="p">,</span> <span class="n">vlist</span><span class="p">))</span>
             <span class="k">except</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Failed to convert nodes (</span><span class="si">{}</span><span class="s2">) to type </span><span class="si">{}</span><span class="s2">&quot;</span>
-                                <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">vlist</span><span class="p">),</span> <span class="n">nodetype</span><span class="p">))</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to convert nodes ({&#39;,&#39;.join(vlist)}) to type </span><span class="si">{nodetype}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vlist</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">G</span></div>
 
@@ -404,26 +402,26 @@
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; G=nx.path_graph(4)</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.path_graph(4)</span>
 <span class="sd">    &gt;&gt;&gt; nx.write_adjlist(G, &quot;test.adjlist&quot;)</span>
-<span class="sd">    &gt;&gt;&gt; G=nx.read_adjlist(&quot;test.adjlist&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.read_adjlist(&quot;test.adjlist&quot;)</span>
 
 <span class="sd">    The path can be a filehandle or a string with the name of the file. If a</span>
 <span class="sd">    filehandle is provided, it has to be opened in &#39;rb&#39; mode.</span>
 
-<span class="sd">    &gt;&gt;&gt; fh=open(&quot;test.adjlist&quot;, &#39;rb&#39;)</span>
-<span class="sd">    &gt;&gt;&gt; G=nx.read_adjlist(fh)</span>
+<span class="sd">    &gt;&gt;&gt; fh = open(&quot;test.adjlist&quot;, &#39;rb&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.read_adjlist(fh)</span>
 
 <span class="sd">    Filenames ending in .gz or .bz2 will be compressed.</span>
 
 <span class="sd">    &gt;&gt;&gt; nx.write_adjlist(G,&quot;test.adjlist.gz&quot;)</span>
-<span class="sd">    &gt;&gt;&gt; G=nx.read_adjlist(&quot;test.adjlist.gz&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.read_adjlist(&quot;test.adjlist.gz&quot;)</span>
 
 <span class="sd">    The optional nodetype is a function to convert node strings to nodetype.</span>
 
 <span class="sd">    For example</span>
 
-<span class="sd">    &gt;&gt;&gt; G=nx.read_adjlist(&quot;test.adjlist&quot;, nodetype=int)</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.read_adjlist(&quot;test.adjlist&quot;, nodetype=int)</span>
 
 <span class="sd">    will attempt to convert all nodes to integer type.</span>
 
@@ -434,7 +432,7 @@
 <span class="sd">    created.  The default is `nx.Graph`, an undirected graph.</span>
 <span class="sd">    To read the data as a directed graph use</span>
 
-<span class="sd">    &gt;&gt;&gt; G=nx.read_adjlist(&quot;test.adjlist&quot;, create_using=nx.DiGraph)</span>
+<span class="sd">    &gt;&gt;&gt; G = nx.read_adjlist(&quot;test.adjlist&quot;, create_using=nx.DiGraph)</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>

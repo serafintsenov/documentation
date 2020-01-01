@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.connectivity.edge_kcomponents &mdash; NetworkX 2.5rc1.dev20200101051851 documentation</title>
+  <title>networkx.algorithms.connectivity.edge_kcomponents &mdash; NetworkX 2.5rc1.dev20200101222012 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200101051851 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200101222012 documentation"
           href="../../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200101051851
+                2.5rc1.dev_20200101222012
               </div>
             
           
@@ -399,11 +399,10 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">H</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="n">H</span><span class="o">.</span><span class="n">remove_edges_from</span><span class="p">(</span><span class="n">bridges</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
-    <span class="k">for</span> <span class="n">cc</span> <span class="ow">in</span> <span class="n">nx</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">H</span><span class="p">):</span>
-        <span class="k">yield</span> <span class="n">cc</span></div>
+    <span class="k">yield from</span> <span class="n">nx</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">H</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="EdgeComponentAuxGraph"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.connectivity.edge_kcomponents.EdgeComponentAuxGraph.html#networkx.algorithms.connectivity.edge_kcomponents.EdgeComponentAuxGraph">[docs]</a><span class="k">class</span> <span class="nc">EdgeComponentAuxGraph</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="EdgeComponentAuxGraph"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.connectivity.edge_kcomponents.EdgeComponentAuxGraph.html#networkx.algorithms.connectivity.edge_kcomponents.EdgeComponentAuxGraph">[docs]</a><span class="k">class</span> <span class="nc">EdgeComponentAuxGraph</span><span class="p">:</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;A simple algorithm to find all k-edge-connected components in a graph.</span>
 
 <span class="sd">    Constructing the AuxillaryGraph (which may take some time) allows for the</span>
@@ -576,8 +575,7 @@
         <span class="n">R</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span><span class="p">,</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">aux_weights</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">w</span> <span class="o">&gt;=</span> <span class="n">k</span><span class="p">)</span>
 
         <span class="c1"># Return the nodes that are k-edge-connected in the original graph</span>
-        <span class="k">for</span> <span class="n">cc</span> <span class="ow">in</span> <span class="n">nx</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">R</span><span class="p">):</span>
-            <span class="k">yield</span> <span class="n">cc</span>
+        <span class="k">yield from</span> <span class="n">nx</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">k_edge_subgraphs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Queries the auxiliary graph for k-edge-connected subgraphs.</span>
@@ -621,8 +619,7 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="c1"># Call subgraph solution to refine the results</span>
                 <span class="n">C</span> <span class="o">=</span> <span class="n">H</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">cc</span><span class="p">)</span>
-                <span class="k">for</span> <span class="n">sub_cc</span> <span class="ow">in</span> <span class="n">k_edge_subgraphs</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
-                    <span class="k">yield</span> <span class="n">sub_cc</span></div>
+                <span class="k">yield from</span> <span class="n">k_edge_subgraphs</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span></div>
 
 
 <span class="k">def</span> <span class="nf">_low_degree_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -666,11 +663,9 @@
 
     <span class="c1"># Note: remaining connected components may not be k-edge-connected</span>
     <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_directed</span><span class="p">():</span>
-        <span class="k">for</span> <span class="n">cc</span> <span class="ow">in</span> <span class="n">nx</span><span class="o">.</span><span class="n">strongly_connected_components</span><span class="p">(</span><span class="n">H</span><span class="p">):</span>
-            <span class="k">yield</span> <span class="n">cc</span>
+        <span class="k">yield from</span> <span class="n">nx</span><span class="o">.</span><span class="n">strongly_connected_components</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">cc</span> <span class="ow">in</span> <span class="n">nx</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">H</span><span class="p">):</span>
-            <span class="k">yield</span> <span class="n">cc</span>
+        <span class="k">yield from</span> <span class="n">nx</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">general_k_edge_subgraphs</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.connectivity.edge_augmentation &mdash; NetworkX 2.5rc1.dev20200101051851 documentation</title>
+  <title>networkx.algorithms.connectivity.edge_augmentation &mdash; NetworkX 2.5rc1.dev20200101222012 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200101051851 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200101222012 documentation"
           href="../../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200101051851
+                2.5rc1.dev_20200101222012
               </div>
             
           
@@ -225,7 +225,7 @@
 <span class="sd">    False</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;k must be positive, not </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;k must be positive, not </span><span class="si">{k}</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="c1"># First try to quickly determine if G is not k-edge-connected</span>
     <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">number_of_nodes</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">False</span>
@@ -284,7 +284,7 @@
 <span class="sd">    True</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;k must be positive, not </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;k must be positive, not </span><span class="si">{k}</span><span class="s1">&#39;</span><span class="p">)</span>
 
     <span class="c1"># First try to quickly determine s, t is not k-locally-edge-connected in G</span>
     <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">k</span> <span class="ow">or</span> <span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">:</span>
@@ -414,10 +414,10 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;k must be a positive integer, not </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;k must be a positive integer, not </span><span class="si">{k}</span><span class="s1">&#39;</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">G</span><span class="o">.</span><span class="n">number_of_nodes</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;impossible to </span><span class="si">{}</span><span class="s1"> connect in graph with less than </span><span class="si">{}</span><span class="s1"> nodes&#39;</span>
-            <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXUnfeasible</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;impossible to </span><span class="si">{k}</span><span class="s2"> connect in graph with less than {k + 1} nodes&quot;</span>
+            <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXUnfeasible</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">avail</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">avail</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">nx</span><span class="o">.</span><span class="n">is_k_edge_connected</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
                 <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXUnfeasible</span><span class="p">(</span><span class="s1">&#39;no available edges&#39;</span><span class="p">)</span>
@@ -428,14 +428,12 @@
         <span class="k">elif</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
             <span class="n">aug_edges</span> <span class="o">=</span> <span class="n">bridge_augmentation</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">avail</span><span class="o">=</span><span class="n">avail</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="c1"># raise NotImplementedError(</span>
-            <span class="c1">#    &#39;not implemented for k&gt;2. k={}&#39;.format(k))</span>
+            <span class="c1"># raise NotImplementedError(f&#39;not implemented for k&gt;2. k={k}&#39;)</span>
             <span class="n">aug_edges</span> <span class="o">=</span> <span class="n">greedy_k_edge_augmentation</span><span class="p">(</span>
                 <span class="n">G</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">avail</span><span class="o">=</span><span class="n">avail</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
         <span class="c1"># Do eager evaulation so we can catch any exceptions</span>
         <span class="c1"># Before executing partial code.</span>
-        <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">aug_edges</span><span class="p">):</span>
-            <span class="k">yield</span> <span class="n">edge</span>
+        <span class="k">yield from</span> <span class="nb">list</span><span class="p">(</span><span class="n">aug_edges</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXUnfeasible</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">partial</span><span class="p">:</span>
             <span class="c1"># Return all available edges</span>
@@ -446,8 +444,7 @@
                 <span class="c1"># k-edge-connect as much as possible</span>
                 <span class="n">aug_edges</span> <span class="o">=</span> <span class="n">partial_k_edge_augmentation</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">avail</span><span class="o">=</span><span class="n">avail</span><span class="p">,</span>
                                                         <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">aug_edges</span><span class="p">:</span>
-                <span class="k">yield</span> <span class="n">edge</span>
+            <span class="k">yield from</span> <span class="n">aug_edges</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span></div>
 
@@ -537,8 +534,7 @@
             <span class="n">C</span><span class="o">.</span><span class="n">remove_edges_from</span><span class="p">(</span><span class="n">sub_avail</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
             <span class="c1"># Find a subset of these edges that makes the compoment</span>
             <span class="c1"># k-edge-connected and ignore the rest</span>
-            <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">nx</span><span class="o">.</span><span class="n">k_edge_augmentation</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">avail</span><span class="o">=</span><span class="n">sub_avail</span><span class="p">):</span>
-                <span class="k">yield</span> <span class="n">edge</span>
+            <span class="k">yield from</span> <span class="n">nx</span><span class="o">.</span><span class="n">k_edge_augmentation</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">avail</span><span class="o">=</span><span class="n">sub_avail</span><span class="p">)</span>
 
     <span class="c1"># Generate all edges between CCs that could not be k-edge-connected</span>
     <span class="k">for</span> <span class="n">cc1</span><span class="p">,</span> <span class="n">cc2</span> <span class="ow">in</span> <span class="n">it</span><span class="o">.</span><span class="n">combinations</span><span class="p">(</span><span class="n">k_edge_subgraphs</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
@@ -1075,8 +1071,7 @@
         <span class="n">connectors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">one_edge_augmentation</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">avail</span><span class="o">=</span><span class="n">avail</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">))</span>
         <span class="n">H</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">connectors</span><span class="p">)</span>
 
-        <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">connectors</span><span class="p">:</span>
-            <span class="k">yield</span> <span class="n">edge</span>
+        <span class="k">yield from</span> <span class="n">connectors</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">connectors</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">H</span> <span class="o">=</span> <span class="n">G</span>
@@ -1168,8 +1163,7 @@
             <span class="n">edge</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;generator&#39;</span><span class="p">]</span>
             <span class="n">bridge_connectors</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">edge</span><span class="p">)</span>
 
-    <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">bridge_connectors</span><span class="p">:</span>
-        <span class="k">yield</span> <span class="n">edge</span>
+    <span class="k">yield from</span> <span class="n">bridge_connectors</span>
 
 
 <span class="k">def</span> <span class="nf">_minimum_rooted_branching</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">root</span><span class="p">):</span>
@@ -1251,7 +1245,7 @@
         <span class="n">mapping</span><span class="o">.</span><span class="n">update</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">group</span><span class="p">)</span>
     <span class="c1"># remaining nodes are in their own group</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">remaining</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="n">group</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">node</span><span class="p">])</span>
+        <span class="n">group</span> <span class="o">=</span> <span class="p">{</span><span class="n">node</span><span class="p">}</span>
         <span class="n">members</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">group</span>
         <span class="n">mapping</span><span class="o">.</span><span class="n">update</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">group</span><span class="p">)</span>
     <span class="n">number_of_groups</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
@@ -1417,8 +1411,7 @@
             <span class="n">aug_edges</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
 
     <span class="c1"># Generate results</span>
-    <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">aug_edges</span><span class="p">:</span>
-        <span class="k">yield</span> <span class="n">edge</span>
+    <span class="k">yield from</span> <span class="n">aug_edges</span>
 </pre></div>
 
            </div>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.components.biconnected &mdash; NetworkX 2.5rc1.dev20200101051851 documentation</title>
+  <title>networkx.algorithms.components.biconnected &mdash; NetworkX 2.5rc1.dev20200101222012 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200101051851 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200101222012 documentation"
           href="../../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200101051851
+                2.5rc1.dev_20200101222012
               </div>
             
           
@@ -318,8 +318,7 @@
 <span class="sd">           Communications of the ACM 16: 372–378. doi:10.1145/362248.362272</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">for</span> <span class="n">comp</span> <span class="ow">in</span> <span class="n">_biconnected_dfs</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="k">yield</span> <span class="n">comp</span></div>
+    <span class="k">yield from</span> <span class="n">_biconnected_dfs</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="biconnected_components"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.components.biconnected_components.html#networkx.algorithms.components.biconnected_components">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s1">&#39;directed&#39;</span><span class="p">)</span>

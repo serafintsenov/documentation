@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.cluster &mdash; NetworkX 2.5rc1.dev20200101051851 documentation</title>
+  <title>networkx.algorithms.cluster &mdash; NetworkX 2.5rc1.dev20200101222012 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200101051851 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200101222012 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200101051851
+                2.5rc1.dev_20200101222012
               </div>
             
           
@@ -293,11 +293,11 @@
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">chain</span><span class="p">(</span><span class="n">ipreds</span><span class="p">,</span> <span class="n">isuccs</span><span class="p">):</span>
             <span class="n">jpreds</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">_pred</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">-</span> <span class="p">{</span><span class="n">j</span><span class="p">}</span>
             <span class="n">jsuccs</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">_succ</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">-</span> <span class="p">{</span><span class="n">j</span><span class="p">}</span>
-            <span class="n">directed_triangles</span> <span class="o">+=</span> <span class="nb">sum</span><span class="p">((</span><span class="mi">1</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span>
+            <span class="n">directed_triangles</span> <span class="o">+=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span>
                                        <span class="n">chain</span><span class="p">((</span><span class="n">ipreds</span> <span class="o">&amp;</span> <span class="n">jpreds</span><span class="p">),</span>
                                              <span class="p">(</span><span class="n">ipreds</span> <span class="o">&amp;</span> <span class="n">jsuccs</span><span class="p">),</span>
                                              <span class="p">(</span><span class="n">isuccs</span> <span class="o">&amp;</span> <span class="n">jpreds</span><span class="p">),</span>
-                                             <span class="p">(</span><span class="n">isuccs</span> <span class="o">&amp;</span> <span class="n">jsuccs</span><span class="p">))))</span>
+                                             <span class="p">(</span><span class="n">isuccs</span> <span class="o">&amp;</span> <span class="n">jsuccs</span><span class="p">)))</span>
         <span class="n">dtotal</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ipreds</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">isuccs</span><span class="p">)</span>
         <span class="n">dbidirectional</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ipreds</span> <span class="o">&amp;</span> <span class="n">isuccs</span><span class="p">)</span>
         <span class="k">yield</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">dtotal</span><span class="p">,</span> <span class="n">dbidirectional</span><span class="p">,</span> <span class="n">directed_triangles</span><span class="p">)</span>
@@ -613,7 +613,7 @@
         <span class="n">clustering</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">potential</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">combinations</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="n">v</span><span class="p">],</span> <span class="mi">2</span><span class="p">):</span>
-            <span class="n">squares</span> <span class="o">=</span> <span class="nb">len</span><span class="p">((</span><span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">])</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="n">w</span><span class="p">]))</span> <span class="o">-</span> <span class="nb">set</span><span class="p">([</span><span class="n">v</span><span class="p">]))</span>
+            <span class="n">squares</span> <span class="o">=</span> <span class="nb">len</span><span class="p">((</span><span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">])</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="n">w</span><span class="p">]))</span> <span class="o">-</span> <span class="p">{</span><span class="n">v</span><span class="p">})</span>
             <span class="n">clustering</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">+=</span> <span class="n">squares</span>
             <span class="n">degm</span> <span class="o">=</span> <span class="n">squares</span> <span class="o">+</span> <span class="mi">1</span>
             <span class="k">if</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">]:</span>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.tree.branchings &mdash; NetworkX 2.5rc1.dev20200101051851 documentation</title>
+  <title>networkx.algorithms.tree.branchings &mdash; NetworkX 2.5rc1.dev20200101222012 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200101051851 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200101222012 documentation"
           href="../../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200101051851
+                2.5rc1.dev_20200101222012
               </div>
             
           
@@ -210,7 +210,7 @@
     <span class="s1">&#39;Edmonds&#39;</span>
 <span class="p">]</span>
 
-<span class="n">KINDS</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">])</span>
+<span class="n">KINDS</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">}</span>
 
 <span class="n">STYLES</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;branching&#39;</span><span class="p">:</span> <span class="s1">&#39;branching&#39;</span><span class="p">,</span>
@@ -341,14 +341,14 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">incoming_graph_data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">):</span>
-        <span class="bp">cls</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">MultiDiGraph_EdgeKey</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+        <span class="bp">cls</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span>
         <span class="bp">cls</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">incoming_graph_data</span><span class="o">=</span><span class="n">incoming_graph_data</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_cls</span> <span class="o">=</span> <span class="bp">cls</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">edge_index</span> <span class="o">=</span> <span class="p">{}</span>
 
     <span class="k">def</span> <span class="nf">remove_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
-        <span class="n">keys</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([])</span>
+        <span class="n">keys</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">keydict</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
             <span class="n">keys</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">keydict</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">keydict</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
@@ -372,7 +372,7 @@
         <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">edge_index</span><span class="p">:</span>
             <span class="n">uu</span><span class="p">,</span> <span class="n">vv</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">edge_index</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">u</span> <span class="o">!=</span> <span class="n">uu</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">v</span> <span class="o">!=</span> <span class="n">vv</span><span class="p">):</span>
-                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Key </span><span class="si">{0!r}</span><span class="s2"> is already in use.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Key </span><span class="si">{key!r}</span><span class="s2"> is already in use.&quot;</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_cls</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">edge_index</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">succ</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">][</span><span class="n">key</span><span class="p">])</span>
@@ -385,7 +385,7 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">edge_index</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="s1">&#39;Invalid edge key </span><span class="si">{0!r}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Invalid edge key </span><span class="si">{key!r}</span><span class="s1">&#39;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">edge_index</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_cls</span><span class="o">.</span><span class="n">remove_edge</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
@@ -417,7 +417,7 @@
     <span class="k">return</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">edges</span>
 
 
-<div class="viewcode-block" id="Edmonds"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.tree.branchings.Edmonds.html#networkx.algorithms.tree.branchings.Edmonds">[docs]</a><span class="k">class</span> <span class="nc">Edmonds</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="Edmonds"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.tree.branchings.Edmonds.html#networkx.algorithms.tree.branchings.Edmonds">[docs]</a><span class="k">class</span> <span class="nc">Edmonds</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Edmonds algorithm for finding optimal branchings and spanning arborescences.</span>
 
@@ -540,7 +540,7 @@
         <span class="c1"># This enormous while loop could use some refactoring...</span>
 
         <span class="n">G</span><span class="p">,</span> <span class="n">B</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">G</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">B</span>
-        <span class="n">D</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([])</span>
+        <span class="n">D</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
         <span class="n">nodes</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()))</span>
         <span class="n">attr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_attr</span>
         <span class="n">G_pred</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">pred</span>
@@ -589,12 +589,12 @@
                     <span class="k">continue</span>
 
             <span class="c1"># Put v into bucket D^i.</span>
-            <span class="c1"># print(&quot;Adding node {0}&quot;.format(v))</span>
+            <span class="c1"># print(f&quot;Adding node {v}&quot;)</span>
             <span class="n">D</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
             <span class="n">B</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 
             <span class="n">edge</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="n">desired_edge</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
-            <span class="c1"># print(&quot;Max edge is {0!r}&quot;.format(edge))</span>
+            <span class="c1"># print(f&quot;Max edge is {edge!r}&quot;)</span>
             <span class="k">if</span> <span class="n">edge</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="c1"># If there is no edge, continue with a new node at (I1).</span>
                 <span class="k">continue</span>
@@ -622,7 +622,7 @@
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">acceptable</span> <span class="o">=</span> <span class="kc">True</span>
 
-                <span class="c1"># print(&quot;Edge is acceptable: {0}&quot;.format(acceptable))</span>
+                <span class="c1"># print(f&quot;Edge is acceptable: {acceptable}&quot;)</span>
                 <span class="k">if</span> <span class="n">acceptable</span><span class="p">:</span>
                     <span class="n">dd</span> <span class="o">=</span> <span class="p">{</span><span class="n">attr</span><span class="p">:</span> <span class="n">weight</span><span class="p">}</span>
                     <span class="n">B</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">edge</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="o">**</span><span class="n">dd</span><span class="p">)</span>
@@ -714,7 +714,7 @@
 <span class="sd">            &quot;&quot;&quot;</span>
             <span class="k">if</span> <span class="n">u</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
                 <span class="c1"># print(G.nodes(), u)</span>
-                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0!r}</span><span class="s1"> not in G&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">u</span><span class="p">))</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{u!r}</span><span class="s1"> not in G&#39;</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">u</span><span class="p">]:</span>
                 <span class="k">for</span> <span class="n">edgekey</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]:</span>
                     <span class="k">if</span> <span class="n">edgekey</span> <span class="ow">in</span> <span class="n">edgekeys</span><span class="p">:</span>
@@ -772,7 +772,7 @@
                         <span class="k">break</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Couldn&#39;t find edge incoming to merged node.&quot;</span><span class="p">)</span>
-                <span class="c1"># print(&quot;not a root. removing {0}&quot;.format(edgekey))</span>
+                <span class="c1"># print(f&quot;not a root. removing {edgekey}&quot;)</span>
 
                 <span class="n">edges</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">edgekey</span><span class="p">)</span>
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.connectivity.cuts &mdash; NetworkX 2.5rc1.dev20200101051851 documentation</title>
+  <title>networkx.algorithms.connectivity.cuts &mdash; NetworkX 2.5rc1.dev20200101222012 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200101051851 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200101222012 documentation"
           href="../../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200101051851
+                2.5rc1.dev_20200101222012
               </div>
             
           
@@ -452,11 +452,11 @@
 
     <span class="c1"># The edge cut in the auxiliary digraph corresponds to the node cut in the</span>
     <span class="c1"># original graph.</span>
-    <span class="n">edge_cut</span> <span class="o">=</span> <span class="n">minimum_st_edge_cut</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">B&#39;</span> <span class="o">%</span> <span class="n">mapping</span><span class="p">[</span><span class="n">s</span><span class="p">],</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">A&#39;</span> <span class="o">%</span> <span class="n">mapping</span><span class="p">[</span><span class="n">t</span><span class="p">],</span>
+    <span class="n">edge_cut</span> <span class="o">=</span> <span class="n">minimum_st_edge_cut</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{mapping[s]}</span><span class="s1">B&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{mapping[t]}</span><span class="s1">A&#39;</span><span class="p">,</span>
                                    <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="c1"># Each node in the original graph maps to two nodes of the auxiliary graph</span>
-    <span class="n">node_cut</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">H</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">edge_cut</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">edge</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">node_cut</span> <span class="o">-</span> <span class="nb">set</span><span class="p">([</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">])</span></div>
+    <span class="n">node_cut</span> <span class="o">=</span> <span class="p">{</span><span class="n">H</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">edge_cut</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">edge</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">node_cut</span> <span class="o">-</span> <span class="p">{</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">}</span></div>
 
 
 <div class="viewcode-block" id="minimum_node_cut"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.connectivity.cuts.minimum_node_cut.html#networkx.algorithms.connectivity.cuts.minimum_node_cut">[docs]</a><span class="k">def</span> <span class="nf">minimum_node_cut</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">flow_func</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -558,9 +558,9 @@
     <span class="c1"># Local minimum node cut.</span>
     <span class="k">if</span> <span class="n">s</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">t</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">s</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s1">&#39;node </span><span class="si">%s</span><span class="s1"> not in graph&#39;</span> <span class="o">%</span> <span class="n">s</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;node </span><span class="si">{s}</span><span class="s2"> not in graph&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">t</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s1">&#39;node </span><span class="si">%s</span><span class="s1"> not in graph&#39;</span> <span class="o">%</span> <span class="n">t</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;node </span><span class="si">{t}</span><span class="s2"> not in graph&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">minimum_st_node_cut</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">flow_func</span><span class="o">=</span><span class="n">flow_func</span><span class="p">)</span>
 
     <span class="c1"># Global minimum node cut.</span>
@@ -589,7 +589,7 @@
     <span class="c1"># Initial node cutset is all neighbors of the node with minimum degree.</span>
     <span class="n">min_cut</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="n">v</span><span class="p">])</span>
     <span class="c1"># Compute st node cuts between v and all its non-neighbors nodes in G.</span>
-    <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">neighbors</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="o">-</span> <span class="nb">set</span><span class="p">([</span><span class="n">v</span><span class="p">]):</span>
+    <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">neighbors</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="o">-</span> <span class="p">{</span><span class="n">v</span><span class="p">}:</span>
         <span class="n">this_cut</span> <span class="o">=</span> <span class="n">minimum_st_node_cut</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">min_cut</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">this_cut</span><span class="p">):</span>
             <span class="n">min_cut</span> <span class="o">=</span> <span class="n">this_cut</span>
@@ -710,9 +710,9 @@
     <span class="c1"># Local minimum edge cut if s and t are not None</span>
     <span class="k">if</span> <span class="n">s</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">t</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">s</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s1">&#39;node </span><span class="si">%s</span><span class="s1"> not in graph&#39;</span> <span class="o">%</span> <span class="n">s</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;node </span><span class="si">{s}</span><span class="s2"> not in graph&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">t</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s1">&#39;node </span><span class="si">%s</span><span class="s1"> not in graph&#39;</span> <span class="o">%</span> <span class="n">t</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;node </span><span class="si">{t}</span><span class="s2"> not in graph&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">minimum_st_edge_cut</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="c1"># Global minimum edge cut</span>

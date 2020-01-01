@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.flow.utils &mdash; NetworkX 2.5rc1.dev20200101051851 documentation</title>
+  <title>networkx.algorithms.flow.utils &mdash; NetworkX 2.5rc1.dev20200101222012 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200101051851 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200101222012 documentation"
           href="../../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200101051851
+                2.5rc1.dev_20200101222012
               </div>
             
           
@@ -175,7 +175,7 @@
            <span class="s1">&#39;build_residual_network&#39;</span><span class="p">,</span> <span class="s1">&#39;detect_unboundedness&#39;</span><span class="p">,</span> <span class="s1">&#39;build_flow_dict&#39;</span><span class="p">]</span>
 
 
-<span class="k">class</span> <span class="nc">CurrentEdge</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">CurrentEdge</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Mechanism for iterating over out-edges incident to a node in a circular</span>
 <span class="sd">    manner. StopIteration exception is raised when wraparound occurs.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -201,7 +201,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_curr</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_it</span><span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">Level</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Level</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Active and inactive nodes in a level.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">,</span> <span class="s1">&#39;inactive&#39;</span><span class="p">)</span>
@@ -211,7 +211,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">inactive</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 
 
-<span class="k">class</span> <span class="nc">GlobalRelabelThreshold</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">GlobalRelabelThreshold</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Measurement of work before the global relabeling heuristic should be</span>
 <span class="sd">    applied.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -306,7 +306,7 @@
     <span class="sd">&quot;&quot;&quot;Detect an infinite-capacity s-t path in R.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">q</span> <span class="o">=</span> <span class="n">deque</span><span class="p">([</span><span class="n">s</span><span class="p">])</span>
-    <span class="n">seen</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">s</span><span class="p">])</span>
+    <span class="n">seen</span> <span class="o">=</span> <span class="p">{</span><span class="n">s</span><span class="p">}</span>
     <span class="n">inf</span> <span class="o">=</span> <span class="n">R</span><span class="o">.</span><span class="n">graph</span><span class="p">[</span><span class="s1">&#39;inf&#39;</span><span class="p">]</span>
     <span class="k">while</span> <span class="n">q</span><span class="p">:</span>
         <span class="n">u</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>

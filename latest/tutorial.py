@@ -172,12 +172,12 @@ FG.add_weighted_edges_from([(1, 2, 0.125), (1, 3, 0.75), (2, 4, 1.2), (3, 4, 0.3
 for n, nbrs in FG.adj.items():
    for nbr, eattr in nbrs.items():
        wt = eattr['weight']
-       if wt < 0.5: print('(%d, %d, %.3f)' % (n, nbr, wt))
+       if wt < 0.5: print(f"({n}, {nbr}, {wt:.3})")
 
 # Convenient access to all edges is achieved with the edges property.
 
 for (u, v, wt) in FG.edges.data('weight'):
-    if wt < 0.5: print('(%d, %d, %.3f)' % (u, v, wt))
+    if wt < 0.5: print(f"({u}, {v}, {wt:.3})")
 
 # # Adding attributes to graphs, nodes, and edges
 #

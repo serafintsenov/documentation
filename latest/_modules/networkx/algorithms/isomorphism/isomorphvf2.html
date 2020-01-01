@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.isomorphism.isomorphvf2 &mdash; NetworkX 2.5rc1.dev20200101051851 documentation</title>
+  <title>networkx.algorithms.isomorphism.isomorphvf2 &mdash; NetworkX 2.5rc1.dev20200101222012 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200101051851 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200101222012 documentation"
           href="../../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200101051851
+                2.5rc1.dev_20200101222012
               </div>
             
           
@@ -311,7 +311,7 @@
            <span class="s1">&#39;DiGraphMatcher&#39;</span><span class="p">]</span>
 
 
-<span class="k">class</span> <span class="nc">GraphMatcher</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">GraphMatcher</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Implementation of VF2 algorithm for matching undirected graphs.</span>
 
 <span class="sd">    Suitable for Graph and MultiGraph instances.</span>
@@ -458,8 +458,7 @@
         <span class="c1"># Declare that we are looking for a graph-graph isomorphism.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">test</span> <span class="o">=</span> <span class="s1">&#39;graph&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">mapping</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">match</span><span class="p">():</span>
-            <span class="k">yield</span> <span class="n">mapping</span></div>
+        <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">match</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="GraphMatcher.match"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.isomorphism.GraphMatcher.match.html#networkx.algorithms.isomorphism.GraphMatcher.match">[docs]</a>    <span class="k">def</span> <span class="nf">match</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Extends the isomorphism mapping.</span>
@@ -481,8 +480,7 @@
                     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">semantic_feasibility</span><span class="p">(</span><span class="n">G1_node</span><span class="p">,</span> <span class="n">G2_node</span><span class="p">):</span>
                         <span class="c1"># Recursive call, adding the feasible state.</span>
                         <span class="n">newstate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">G1_node</span><span class="p">,</span> <span class="n">G2_node</span><span class="p">)</span>
-                        <span class="k">for</span> <span class="n">mapping</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">match</span><span class="p">():</span>
-                            <span class="k">yield</span> <span class="n">mapping</span>
+                        <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">match</span><span class="p">()</span>
 
                         <span class="c1"># restore data structures</span>
                         <span class="n">newstate</span><span class="o">.</span><span class="n">restore</span><span class="p">()</span></div>
@@ -550,16 +548,14 @@
         <span class="c1"># Declare that we are looking for graph-subgraph isomorphism.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">test</span> <span class="o">=</span> <span class="s1">&#39;subgraph&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">mapping</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">match</span><span class="p">():</span>
-            <span class="k">yield</span> <span class="n">mapping</span></div>
+        <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">match</span><span class="p">()</span></div>
 
     <span class="k">def</span> <span class="nf">subgraph_monomorphisms_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Generator over monomorphisms between a subgraph of G1 and G2.&quot;&quot;&quot;</span>
         <span class="c1"># Declare that we are looking for graph-subgraph monomorphism.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">test</span> <span class="o">=</span> <span class="s1">&#39;mono&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">mapping</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">match</span><span class="p">():</span>
-            <span class="k">yield</span> <span class="n">mapping</span>
+        <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">match</span><span class="p">()</span>
 
 <span class="c1">#    subgraph_isomorphisms_iter.__doc__ += &quot;\n&quot; + subgraph.replace(&#39;\n&#39;,&#39;\n&#39;+indent)</span>
 
@@ -682,7 +678,6 @@
 
 <span class="sd">    Suitable for DiGraph and MultiDiGraph instances.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-<span class="c1">#    __doc__ += &quot;Notes\n%s-----&quot; % (indent,) + sources.replace(&#39;\n&#39;,&#39;\n&#39;+indent)</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">G1</span><span class="p">,</span> <span class="n">G2</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Initialize DiGraphMatcher.</span>
@@ -698,7 +693,7 @@
 <span class="sd">        &gt;&gt;&gt; G2 = nx.DiGraph(nx.path_graph(4, create_using=nx.DiGraph()))</span>
 <span class="sd">        &gt;&gt;&gt; DiGM = isomorphism.DiGraphMatcher(G1,G2)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">DiGraphMatcher</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span> <span class="n">G2</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span> <span class="n">G2</span><span class="p">)</span>
 
 <div class="viewcode-block" id="DiGraphMatcher.candidate_pairs_iter"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.isomorphism.DiGraphMatcher.candidate_pairs_iter.html#networkx.algorithms.isomorphism.DiGraphMatcher.candidate_pairs_iter">[docs]</a>    <span class="k">def</span> <span class="nf">candidate_pairs_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Iterator over candidate pairs of nodes in G1 and G2.&quot;&quot;&quot;</span>
@@ -989,7 +984,7 @@
         <span class="k">return</span> <span class="kc">True</span></div>
 
 
-<span class="k">class</span> <span class="nc">GMState</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">GMState</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Internal representation of state for the GraphMatcher class.</span>
 
 <span class="sd">    This class is used internally by the GraphMatcher class.  It is used</span>
@@ -1042,7 +1037,7 @@
             <span class="c1"># Now we add every other node...</span>
 
             <span class="c1"># Updates for T_1^{inout}</span>
-            <span class="n">new_nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([])</span>
+            <span class="n">new_nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
             <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">GM</span><span class="o">.</span><span class="n">core_1</span><span class="p">:</span>
                 <span class="n">new_nodes</span><span class="o">.</span><span class="n">update</span><span class="p">([</span><span class="n">neighbor</span> <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">GM</span><span class="o">.</span><span class="n">G1</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="k">if</span> <span class="n">neighbor</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">GM</span><span class="o">.</span><span class="n">core_1</span><span class="p">])</span>
             <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">new_nodes</span><span class="p">:</span>
@@ -1050,7 +1045,7 @@
                     <span class="n">GM</span><span class="o">.</span><span class="n">inout_1</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">depth</span>
 
             <span class="c1"># Updates for T_2^{inout}</span>
-            <span class="n">new_nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([])</span>
+            <span class="n">new_nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
             <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">GM</span><span class="o">.</span><span class="n">core_2</span><span class="p">:</span>
                 <span class="n">new_nodes</span><span class="o">.</span><span class="n">update</span><span class="p">([</span><span class="n">neighbor</span> <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">GM</span><span class="o">.</span><span class="n">G2</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="k">if</span> <span class="n">neighbor</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">GM</span><span class="o">.</span><span class="n">core_2</span><span class="p">])</span>
             <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">new_nodes</span><span class="p">:</span>
@@ -1073,7 +1068,7 @@
                     <span class="k">del</span> <span class="n">vector</span><span class="p">[</span><span class="n">node</span><span class="p">]</span>
 
 
-<span class="k">class</span> <span class="nc">DiGMState</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">DiGMState</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Internal representation of state for the DiGraphMatcher class.</span>
 
 <span class="sd">    This class is used internally by the DiGraphMatcher class.  It is used</span>
@@ -1131,7 +1126,7 @@
             <span class="c1"># Now we add every other node...</span>
 
             <span class="c1"># Updates for T_1^{in}</span>
-            <span class="n">new_nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([])</span>
+            <span class="n">new_nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
             <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">GM</span><span class="o">.</span><span class="n">core_1</span><span class="p">:</span>
                 <span class="n">new_nodes</span><span class="o">.</span><span class="n">update</span><span class="p">([</span><span class="n">predecessor</span> <span class="k">for</span> <span class="n">predecessor</span> <span class="ow">in</span> <span class="n">GM</span><span class="o">.</span><span class="n">G1</span><span class="o">.</span><span class="n">predecessors</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
                                   <span class="k">if</span> <span class="n">predecessor</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">GM</span><span class="o">.</span><span class="n">core_1</span><span class="p">])</span>
@@ -1140,7 +1135,7 @@
                     <span class="n">GM</span><span class="o">.</span><span class="n">in_1</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">depth</span>
 
             <span class="c1"># Updates for T_2^{in}</span>
-            <span class="n">new_nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([])</span>
+            <span class="n">new_nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
             <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">GM</span><span class="o">.</span><span class="n">core_2</span><span class="p">:</span>
                 <span class="n">new_nodes</span><span class="o">.</span><span class="n">update</span><span class="p">([</span><span class="n">predecessor</span> <span class="k">for</span> <span class="n">predecessor</span> <span class="ow">in</span> <span class="n">GM</span><span class="o">.</span><span class="n">G2</span><span class="o">.</span><span class="n">predecessors</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
                                   <span class="k">if</span> <span class="n">predecessor</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">GM</span><span class="o">.</span><span class="n">core_2</span><span class="p">])</span>
@@ -1149,7 +1144,7 @@
                     <span class="n">GM</span><span class="o">.</span><span class="n">in_2</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">depth</span>
 
             <span class="c1"># Updates for T_1^{out}</span>
-            <span class="n">new_nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([])</span>
+            <span class="n">new_nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
             <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">GM</span><span class="o">.</span><span class="n">core_1</span><span class="p">:</span>
                 <span class="n">new_nodes</span><span class="o">.</span><span class="n">update</span><span class="p">([</span><span class="n">successor</span> <span class="k">for</span> <span class="n">successor</span> <span class="ow">in</span> <span class="n">GM</span><span class="o">.</span><span class="n">G1</span><span class="o">.</span><span class="n">successors</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="k">if</span> <span class="n">successor</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">GM</span><span class="o">.</span><span class="n">core_1</span><span class="p">])</span>
             <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">new_nodes</span><span class="p">:</span>
@@ -1157,7 +1152,7 @@
                     <span class="n">GM</span><span class="o">.</span><span class="n">out_1</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">depth</span>
 
             <span class="c1"># Updates for T_2^{out}</span>
-            <span class="n">new_nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([])</span>
+            <span class="n">new_nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
             <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">GM</span><span class="o">.</span><span class="n">core_2</span><span class="p">:</span>
                 <span class="n">new_nodes</span><span class="o">.</span><span class="n">update</span><span class="p">([</span><span class="n">successor</span> <span class="k">for</span> <span class="n">successor</span> <span class="ow">in</span> <span class="n">GM</span><span class="o">.</span><span class="n">G2</span><span class="o">.</span><span class="n">successors</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="k">if</span> <span class="n">successor</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">GM</span><span class="o">.</span><span class="n">core_2</span><span class="p">])</span>
             <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">new_nodes</span><span class="p">:</span>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.link_prediction &mdash; NetworkX 2.5rc1.dev20200101051851 documentation</title>
+  <title>networkx.algorithms.link_prediction &mdash; NetworkX 2.5rc1.dev20200101222012 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200101051851 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200101222012 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200101051851
+                2.5rc1.dev_20200101222012
               </div>
             
           
@@ -240,10 +240,9 @@
 <span class="sd">    &gt;&gt;&gt; G = nx.complete_graph(5)</span>
 <span class="sd">    &gt;&gt;&gt; preds = nx.resource_allocation_index(G, [(0, 1), (2, 3)])</span>
 <span class="sd">    &gt;&gt;&gt; for u, v, p in preds:</span>
-<span class="sd">    ...     &#39;(%d, %d) -&gt; %.8f&#39; % (u, v, p)</span>
-<span class="sd">    ...</span>
-<span class="sd">    &#39;(0, 1) -&gt; 0.75000000&#39;</span>
-<span class="sd">    &#39;(2, 3) -&gt; 0.75000000&#39;</span>
+<span class="sd">    ...     print(f&#39;({u}, {v}) -&gt; {p:.8f}&#39;)</span>
+<span class="sd">    (0, 1) -&gt; 0.75000000</span>
+<span class="sd">    (2, 3) -&gt; 0.75000000</span>
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
@@ -294,10 +293,9 @@
 <span class="sd">    &gt;&gt;&gt; G = nx.complete_graph(5)</span>
 <span class="sd">    &gt;&gt;&gt; preds = nx.jaccard_coefficient(G, [(0, 1), (2, 3)])</span>
 <span class="sd">    &gt;&gt;&gt; for u, v, p in preds:</span>
-<span class="sd">    ...     &#39;(%d, %d) -&gt; %.8f&#39; % (u, v, p)</span>
-<span class="sd">    ...</span>
-<span class="sd">    &#39;(0, 1) -&gt; 0.60000000&#39;</span>
-<span class="sd">    &#39;(2, 3) -&gt; 0.60000000&#39;</span>
+<span class="sd">    ...     print(f&#39;({u}, {v}) -&gt; {p:.8f}&#39;)</span>
+<span class="sd">    (0, 1) -&gt; 0.60000000</span>
+<span class="sd">    (2, 3) -&gt; 0.60000000</span>
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
@@ -352,10 +350,9 @@
 <span class="sd">    &gt;&gt;&gt; G = nx.complete_graph(5)</span>
 <span class="sd">    &gt;&gt;&gt; preds = nx.adamic_adar_index(G, [(0, 1), (2, 3)])</span>
 <span class="sd">    &gt;&gt;&gt; for u, v, p in preds:</span>
-<span class="sd">    ...     &#39;(%d, %d) -&gt; %.8f&#39; % (u, v, p)</span>
-<span class="sd">    ...</span>
-<span class="sd">    &#39;(0, 1) -&gt; 2.16404256&#39;</span>
-<span class="sd">    &#39;(2, 3) -&gt; 2.16404256&#39;</span>
+<span class="sd">    ...     print(f&#39;({u}, {v}) -&gt; {p:.8f}&#39;)</span>
+<span class="sd">    (0, 1) -&gt; 2.16404256</span>
+<span class="sd">    (2, 3) -&gt; 2.16404256</span>
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
@@ -405,10 +402,9 @@
 <span class="sd">    &gt;&gt;&gt; G = nx.complete_graph(5)</span>
 <span class="sd">    &gt;&gt;&gt; preds = nx.preferential_attachment(G, [(0, 1), (2, 3)])</span>
 <span class="sd">    &gt;&gt;&gt; for u, v, p in preds:</span>
-<span class="sd">    ...     &#39;(%d, %d) -&gt; %d&#39; % (u, v, p)</span>
-<span class="sd">    ...</span>
-<span class="sd">    &#39;(0, 1) -&gt; 16&#39;</span>
-<span class="sd">    &#39;(2, 3) -&gt; 16&#39;</span>
+<span class="sd">    ...     print(f&#39;({u}, {v}) -&gt; {p}&#39;)</span>
+<span class="sd">    (0, 1) -&gt; 16</span>
+<span class="sd">    (2, 3) -&gt; 16</span>
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
@@ -471,8 +467,8 @@
 <span class="sd">    &gt;&gt;&gt; G.nodes[2][&#39;community&#39;] = 0</span>
 <span class="sd">    &gt;&gt;&gt; preds = nx.cn_soundarajan_hopcroft(G, [(0, 2)])</span>
 <span class="sd">    &gt;&gt;&gt; for u, v, p in preds:</span>
-<span class="sd">    ...     &#39;(%d, %d) -&gt; %d&#39; % (u, v, p)</span>
-<span class="sd">    &#39;(0, 2) -&gt; 2&#39;</span>
+<span class="sd">    ...     print(f&#39;({u}, {v}) -&gt; {p}&#39;)</span>
+<span class="sd">    (0, 2) -&gt; 2</span>
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
@@ -545,8 +541,8 @@
 <span class="sd">    &gt;&gt;&gt; G.nodes[3][&#39;community&#39;] = 0</span>
 <span class="sd">    &gt;&gt;&gt; preds = nx.ra_index_soundarajan_hopcroft(G, [(0, 3)])</span>
 <span class="sd">    &gt;&gt;&gt; for u, v, p in preds:</span>
-<span class="sd">    ...     &#39;(%d, %d) -&gt; %.8f&#39; % (u, v, p)</span>
-<span class="sd">    &#39;(0, 3) -&gt; 0.50000000&#39;</span>
+<span class="sd">    ...     print(f&#39;({u}, {v}) -&gt; {p:.8f}&#39;)</span>
+<span class="sd">    (0, 3) -&gt; 0.50000000</span>
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
@@ -621,14 +617,12 @@
 <span class="sd">    &gt;&gt;&gt; G.nodes[4][&#39;community&#39;] = 0</span>
 <span class="sd">    &gt;&gt;&gt; preds = nx.within_inter_cluster(G, [(0, 4)])</span>
 <span class="sd">    &gt;&gt;&gt; for u, v, p in preds:</span>
-<span class="sd">    ...     &#39;(%d, %d) -&gt; %.8f&#39; % (u, v, p)</span>
-<span class="sd">    ...</span>
-<span class="sd">    &#39;(0, 4) -&gt; 1.99800200&#39;</span>
+<span class="sd">    ...     print(f&#39;({u}, {v}) -&gt; {p:.8f}&#39;)</span>
+<span class="sd">    (0, 4) -&gt; 1.99800200</span>
 <span class="sd">    &gt;&gt;&gt; preds = nx.within_inter_cluster(G, [(0, 4)], delta=0.5)</span>
 <span class="sd">    &gt;&gt;&gt; for u, v, p in preds:</span>
-<span class="sd">    ...     &#39;(%d, %d) -&gt; %.8f&#39; % (u, v, p)</span>
-<span class="sd">    ...</span>
-<span class="sd">    &#39;(0, 4) -&gt; 1.33333333&#39;</span>
+<span class="sd">    ...     print(f&#39;({u}, {v}) -&gt; {p:.8f}&#39;)</span>
+<span class="sd">    (0, 4) -&gt; 1.33333333</span>
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
@@ -647,8 +641,8 @@
         <span class="k">if</span> <span class="n">Cu</span> <span class="o">!=</span> <span class="n">Cv</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">0</span>
         <span class="n">cnbors</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">common_neighbors</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
-        <span class="n">within</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">cnbors</span>
-                     <span class="k">if</span> <span class="n">_community</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">community</span><span class="p">)</span> <span class="o">==</span> <span class="n">Cu</span><span class="p">)</span>
+        <span class="n">within</span> <span class="o">=</span> <span class="p">{</span><span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">cnbors</span>
+                     <span class="k">if</span> <span class="n">_community</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">community</span><span class="p">)</span> <span class="o">==</span> <span class="n">Cu</span><span class="p">}</span>
         <span class="n">inter</span> <span class="o">=</span> <span class="n">cnbors</span> <span class="o">-</span> <span class="n">within</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">within</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inter</span><span class="p">)</span> <span class="o">+</span> <span class="n">delta</span><span class="p">)</span>
 

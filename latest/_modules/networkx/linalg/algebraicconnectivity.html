@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.linalg.algebraicconnectivity &mdash; NetworkX 2.5rc1.dev20200101051851 documentation</title>
+  <title>networkx.linalg.algebraicconnectivity &mdash; NetworkX 2.5rc1.dev20200101222012 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200101051851 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200101222012 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200101051851
+                2.5rc1.dev_20200101222012
               </div>
             
           
@@ -197,7 +197,7 @@
             <span class="k">return</span> <span class="n">y</span>
 
 
-<span class="k">class</span> <span class="nc">_PCGSolver</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">_PCGSolver</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Preconditioned conjugate gradient method.</span>
 
 <span class="sd">    To solve Ax = b:</span>
@@ -248,7 +248,7 @@
             <span class="n">p</span> <span class="o">=</span> <span class="n">daxpy</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="n">beta</span><span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">_CholeskySolver</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">_CholeskySolver</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Cholesky factorization.</span>
 
 <span class="sd">    To solve Ax = b:</span>
@@ -274,7 +274,7 @@
         <span class="n">_cholesky</span> <span class="o">=</span> <span class="kc">None</span>
 
 
-<span class="k">class</span> <span class="nc">_LUSolver</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">_LUSolver</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;LU factorization.</span>
 
 <span class="sd">    To solve Ax = b:</span>
@@ -482,7 +482,7 @@
                                   <span class="n">maxiter</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">largest</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
                 <span class="k">return</span> <span class="n">sigma</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s2">&quot;unknown method &#39;</span><span class="si">%s</span><span class="s2">&#39;.&quot;</span> <span class="o">%</span> <span class="n">method</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;unknown method &#39;</span><span class="si">{method}</span><span class="s2">&#39;.&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">find_fiedler</span>
 

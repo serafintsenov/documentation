@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.bipartite.cluster &mdash; NetworkX 2.5rc1.dev20200101051851 documentation</title>
+  <title>networkx.algorithms.bipartite.cluster &mdash; NetworkX 2.5rc1.dev20200101222012 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200101051851 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200101222012 documentation"
           href="../../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200101051851
+                2.5rc1.dev_20200101222012
               </div>
             
           
@@ -286,7 +286,7 @@
     <span class="n">ccs</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
         <span class="n">cc</span> <span class="o">=</span> <span class="mf">0.0</span>
-        <span class="n">nbrs2</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">u</span> <span class="k">for</span> <span class="n">nbr</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="n">nbr</span><span class="p">]])</span> <span class="o">-</span> <span class="nb">set</span><span class="p">([</span><span class="n">v</span><span class="p">])</span>
+        <span class="n">nbrs2</span> <span class="o">=</span> <span class="p">{</span><span class="n">u</span> <span class="k">for</span> <span class="n">nbr</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="n">nbr</span><span class="p">]}</span> <span class="o">-</span> <span class="p">{</span><span class="n">v</span><span class="p">}</span>
         <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">nbrs2</span><span class="p">:</span>
             <span class="n">cc</span> <span class="o">+=</span> <span class="n">cc_func</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">]),</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="n">v</span><span class="p">]))</span>
         <span class="k">if</span> <span class="n">cc</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">:</span>  <span class="c1"># len(nbrs2)&gt;0</span>
@@ -427,7 +427,7 @@
     <span class="n">cycles</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">combinations</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="n">v</span><span class="p">],</span> <span class="mi">2</span><span class="p">):</span>
-            <span class="n">cycles</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">((</span><span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">])</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="n">w</span><span class="p">]))</span> <span class="o">-</span> <span class="nb">set</span><span class="p">([</span><span class="n">v</span><span class="p">]))</span>
+            <span class="n">cycles</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">((</span><span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">])</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="n">w</span><span class="p">]))</span> <span class="o">-</span> <span class="p">{</span><span class="n">v</span><span class="p">})</span>
     <span class="k">return</span> <span class="n">cycles</span> <span class="o">/</span> <span class="mi">4</span>
 
 
@@ -435,8 +435,8 @@
     <span class="n">paths</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="n">v</span><span class="p">]:</span>
-            <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">])</span> <span class="o">-</span> <span class="nb">set</span><span class="p">([</span><span class="n">v</span><span class="p">]):</span>
-                <span class="n">paths</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="n">w</span><span class="p">])</span> <span class="o">-</span> <span class="nb">set</span><span class="p">([</span><span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="p">]))</span>
+            <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">])</span> <span class="o">-</span> <span class="p">{</span><span class="n">v</span><span class="p">}:</span>
+                <span class="n">paths</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="n">w</span><span class="p">])</span> <span class="o">-</span> <span class="p">{</span><span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="p">})</span>
     <span class="c1"># Divide by two because we count each three path twice</span>
     <span class="c1"># one for each possible starting point</span>
     <span class="k">return</span> <span class="n">paths</span> <span class="o">/</span> <span class="mi">2</span>

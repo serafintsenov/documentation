@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.chordal &mdash; NetworkX 2.5rc1.dev20200101051851 documentation</title>
+  <title>networkx.algorithms.chordal &mdash; NetworkX 2.5rc1.dev20200101222012 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200101051851 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200101222012 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200101051851
+                2.5rc1.dev_20200101222012
               </div>
             
           
@@ -456,7 +456,7 @@
     <span class="k">if</span> <span class="n">s</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">s</span> <span class="o">=</span> <span class="n">arbitrary_element</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
     <span class="n">unnumbered</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-    <span class="n">numbered</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">s</span><span class="p">])</span>
+    <span class="n">numbered</span> <span class="o">=</span> <span class="p">{</span><span class="n">s</span><span class="p">}</span>
     <span class="n">current_treewidth</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
     <span class="k">while</span> <span class="n">unnumbered</span><span class="p">:</span>  <span class="c1"># and current_treewidth &lt;= treewidth_bound:</span>
         <span class="n">v</span> <span class="o">=</span> <span class="n">_max_cardinality_node</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">unnumbered</span><span class="p">,</span> <span class="n">numbered</span><span class="p">)</span>
@@ -468,8 +468,7 @@
             <span class="c1"># The graph seems to be chordal by now. We update the treewidth</span>
             <span class="n">current_treewidth</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">current_treewidth</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">clique_wanna_be</span><span class="p">))</span>
             <span class="k">if</span> <span class="n">current_treewidth</span> <span class="o">&gt;</span> <span class="n">treewidth_bound</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXTreewidthBoundExceeded</span><span class="p">(</span>
-                    <span class="s2">&quot;treewidth_bound exceeded: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">current_treewidth</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXTreewidthBoundExceeded</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;treewidth_bound exceeded: </span><span class="si">{current_treewidth}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="c1"># sg is not a clique,</span>
             <span class="c1"># look for an edge that is not included in sg</span>
@@ -482,14 +481,14 @@
     <span class="sd">&quot;&quot;&quot;Returns the set of maximal cliques of a connected chordal graph.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">number_of_nodes</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">x</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
-        <span class="k">return</span> <span class="nb">set</span><span class="p">([</span><span class="n">x</span><span class="p">])</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">x</span><span class="p">}</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">cliques</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
         <span class="n">unnumbered</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
         <span class="n">v</span> <span class="o">=</span> <span class="n">arbitrary_element</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
         <span class="n">unnumbered</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
-        <span class="n">numbered</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">v</span><span class="p">])</span>
-        <span class="n">clique_wanna_be</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">v</span><span class="p">])</span>
+        <span class="n">numbered</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">}</span>
+        <span class="n">clique_wanna_be</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">}</span>
         <span class="k">while</span> <span class="n">unnumbered</span><span class="p">:</span>
             <span class="n">v</span> <span class="o">=</span> <span class="n">_max_cardinality_node</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">unnumbered</span><span class="p">,</span> <span class="n">numbered</span><span class="p">)</span>
             <span class="n">unnumbered</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
@@ -553,7 +552,7 @@
     <span class="n">alpha</span> <span class="o">=</span> <span class="p">{</span><span class="n">node</span><span class="p">:</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">H</span><span class="p">}</span>
     <span class="k">if</span> <span class="n">nx</span><span class="o">.</span><span class="n">is_chordal</span><span class="p">(</span><span class="n">H</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">H</span><span class="p">,</span> <span class="n">alpha</span>
-    <span class="n">chords</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([])</span>
+    <span class="n">chords</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
     <span class="n">weight</span> <span class="o">=</span> <span class="p">{</span><span class="n">node</span><span class="p">:</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">H</span><span class="o">.</span><span class="n">nodes</span><span class="p">()}</span>
     <span class="n">unnumbered_nodes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">H</span><span class="o">.</span><span class="n">nodes</span><span class="p">())</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">H</span><span class="o">.</span><span class="n">nodes</span><span class="p">()),</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>

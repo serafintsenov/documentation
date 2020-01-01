@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.connectivity.disjoint_paths &mdash; NetworkX 2.5rc1.dev20200101051851 documentation</title>
+  <title>networkx.algorithms.connectivity.disjoint_paths &mdash; NetworkX 2.5rc1.dev20200101222012 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200101051851 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200101222012 documentation"
           href="../../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200101051851
+                2.5rc1.dev_20200101222012
               </div>
             
           
@@ -317,9 +317,9 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">s</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s1">&#39;node </span><span class="si">%s</span><span class="s1"> not in graph&#39;</span> <span class="o">%</span> <span class="n">s</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;node </span><span class="si">{s}</span><span class="s2"> not in graph&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">t</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s1">&#39;node </span><span class="si">%s</span><span class="s1"> not in graph&#39;</span> <span class="o">%</span> <span class="n">t</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;node </span><span class="si">{t}</span><span class="s2"> not in graph&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">flow_func</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">flow_func</span> <span class="o">=</span> <span class="n">default_flow_func</span>
@@ -512,9 +512,9 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">s</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s1">&#39;node </span><span class="si">%s</span><span class="s1"> not in graph&#39;</span> <span class="o">%</span> <span class="n">s</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;node </span><span class="si">{s}</span><span class="s2"> not in graph&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">t</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s1">&#39;node </span><span class="si">%s</span><span class="s1"> not in graph&#39;</span> <span class="o">%</span> <span class="n">t</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;node </span><span class="si">{t}</span><span class="s2"> not in graph&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">auxiliary</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">H</span> <span class="o">=</span> <span class="n">build_auxiliary_node_connectivity</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
@@ -526,8 +526,8 @@
         <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s1">&#39;Invalid auxiliary digraph.&#39;</span><span class="p">)</span>
 
     <span class="c1"># Maximum possible edge disjoint paths</span>
-    <span class="n">possible</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">H</span><span class="o">.</span><span class="n">out_degree</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">B&#39;</span> <span class="o">%</span> <span class="n">mapping</span><span class="p">[</span><span class="n">s</span><span class="p">]),</span>
-                   <span class="n">H</span><span class="o">.</span><span class="n">in_degree</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">A&#39;</span> <span class="o">%</span> <span class="n">mapping</span><span class="p">[</span><span class="n">t</span><span class="p">]))</span>
+    <span class="n">possible</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">H</span><span class="o">.</span><span class="n">out_degree</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{mapping[s]}</span><span class="s1">B&#39;</span><span class="p">),</span>
+                   <span class="n">H</span><span class="o">.</span><span class="n">in_degree</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{mapping[t]}</span><span class="s1">A&#39;</span><span class="p">))</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">possible</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">NetworkXNoPath</span>
 
@@ -541,7 +541,7 @@
 
     <span class="c1"># The edge disjoint paths in the auxiliary digraph correspond to the node</span>
     <span class="c1"># disjoint paths in the original graph.</span>
-    <span class="n">paths_edges</span> <span class="o">=</span> <span class="n">edge_disjoint_paths</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">B&#39;</span> <span class="o">%</span> <span class="n">mapping</span><span class="p">[</span><span class="n">s</span><span class="p">],</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">A&#39;</span> <span class="o">%</span> <span class="n">mapping</span><span class="p">[</span><span class="n">t</span><span class="p">],</span>
+    <span class="n">paths_edges</span> <span class="o">=</span> <span class="n">edge_disjoint_paths</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{mapping[s]}</span><span class="s1">B&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{mapping[t]}</span><span class="s1">A&#39;</span><span class="p">,</span>
                                       <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">paths_edges</span><span class="p">:</span>
         <span class="c1"># Each node in the original graph maps to two nodes in auxiliary graph</span>
