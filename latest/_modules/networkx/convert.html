@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.convert &mdash; NetworkX 2.5rc1.dev20200101222012 documentation</title>
+  <title>networkx.convert &mdash; NetworkX 2.5rc1.dev20200103205409 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200101222012 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200103205409 documentation"
           href="../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200101222012
+                2.5rc1.dev_20200103205409
               </div>
             
           
@@ -184,10 +184,15 @@
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;to_networkx_graph&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;from_dict_of_dicts&#39;</span><span class="p">,</span> <span class="s1">&#39;to_dict_of_dicts&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;from_dict_of_lists&#39;</span><span class="p">,</span> <span class="s1">&#39;to_dict_of_lists&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;from_edgelist&#39;</span><span class="p">,</span> <span class="s1">&#39;to_edgelist&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;to_networkx_graph&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;from_dict_of_dicts&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;to_dict_of_dicts&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;from_dict_of_lists&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;to_dict_of_lists&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;from_edgelist&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;to_edgelist&quot;</span><span class="p">,</span>
+<span class="p">]</span>
 
 
 <div class="viewcode-block" id="to_networkx_graph"><a class="viewcode-back" href="../../reference/generated/networkx.convert.to_networkx_graph.html#networkx.convert.to_networkx_graph">[docs]</a><span class="k">def</span> <span class="nf">to_networkx_graph</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">multigraph_input</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -231,12 +236,14 @@
     <span class="c1"># NX graph</span>
     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;adj&quot;</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="n">from_dict_of_dicts</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">adj</span><span class="p">,</span>
-                                        <span class="n">create_using</span><span class="o">=</span><span class="n">create_using</span><span class="p">,</span>
-                                        <span class="n">multigraph_input</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">())</span>
-            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;graph&#39;</span><span class="p">):</span>  <span class="c1"># data.graph should be dict-like</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">from_dict_of_dicts</span><span class="p">(</span>
+                <span class="n">data</span><span class="o">.</span><span class="n">adj</span><span class="p">,</span>
+                <span class="n">create_using</span><span class="o">=</span><span class="n">create_using</span><span class="p">,</span>
+                <span class="n">multigraph_input</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">(),</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;graph&quot;</span><span class="p">):</span>  <span class="c1"># data.graph should be dict-like</span>
                 <span class="n">result</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">graph</span><span class="p">)</span>
-            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;nodes&#39;</span><span class="p">):</span>  <span class="c1"># data.nodes should be dict-like</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;nodes&quot;</span><span class="p">):</span>  <span class="c1"># data.nodes should be dict-like</span>
                 <span class="c1"># result.add_node_from(data.nodes.items()) possible but</span>
                 <span class="c1"># for custom node_attr_dict_factory which may be hashable</span>
                 <span class="c1"># will be unexpected behavior</span>
@@ -256,8 +263,9 @@
     <span class="c1"># dict of dicts/lists</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">from_dict_of_dicts</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">create_using</span><span class="p">,</span>
-                                      <span class="n">multigraph_input</span><span class="o">=</span><span class="n">multigraph_input</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">from_dict_of_dicts</span><span class="p">(</span>
+                <span class="n">data</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">create_using</span><span class="p">,</span> <span class="n">multigraph_input</span><span class="o">=</span><span class="n">multigraph_input</span>
+            <span class="p">)</span>
         <span class="k">except</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">from_dict_of_lists</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">create_using</span><span class="p">)</span>
@@ -266,8 +274,9 @@
 
     <span class="c1"># list or generator of edges</span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">))</span> <span class="ow">or</span>
-            <span class="nb">any</span><span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span> <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;_adjdict&#39;</span><span class="p">,</span> <span class="s1">&#39;next&#39;</span><span class="p">,</span> <span class="s1">&#39;__next__&#39;</span><span class="p">])):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">))</span> <span class="ow">or</span> <span class="nb">any</span><span class="p">(</span>
+        <span class="nb">hasattr</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span> <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;_adjdict&quot;</span><span class="p">,</span> <span class="s2">&quot;next&quot;</span><span class="p">,</span> <span class="s2">&quot;__next__&quot;</span><span class="p">]</span>
+    <span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">from_edgelist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">create_using</span><span class="p">)</span>
         <span class="k">except</span><span class="p">:</span>
@@ -276,6 +285,7 @@
     <span class="c1"># Pandas DataFrame</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
                 <span class="k">try</span><span class="p">:</span>
@@ -285,42 +295,43 @@
                     <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">try</span><span class="p">:</span>
-                    <span class="k">return</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_pandas_edgelist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">edge_attr</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">create_using</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_pandas_edgelist</span><span class="p">(</span>
+                        <span class="n">data</span><span class="p">,</span> <span class="n">edge_attr</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">create_using</span>
+                    <span class="p">)</span>
                 <span class="k">except</span><span class="p">:</span>
                     <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Input is not a correct Pandas DataFrame edge-list.&quot;</span>
                     <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-        <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;pandas not found, skipping conversion test.&#39;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;pandas not found, skipping conversion test.&quot;</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="ne">ImportWarning</span><span class="p">)</span>
 
     <span class="c1"># numpy matrix or ndarray</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="kn">import</span> <span class="nn">numpy</span>
+
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">matrix</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)):</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_numpy_matrix</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">create_using</span><span class="p">)</span>
             <span class="k">except</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span>
-                    <span class="s2">&quot;Input is not a correct numpy matrix or array.&quot;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s2">&quot;Input is not a correct numpy matrix or array.&quot;</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;numpy not found, skipping conversion test.&#39;</span><span class="p">,</span>
-                      <span class="ne">ImportWarning</span><span class="p">)</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;numpy not found, skipping conversion test.&quot;</span><span class="p">,</span> <span class="ne">ImportWarning</span><span class="p">)</span>
 
     <span class="c1"># scipy sparse matrix - any format</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="kn">import</span> <span class="nn">scipy</span>
+
         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;format&quot;</span><span class="p">):</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_scipy_sparse_matrix</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">create_using</span><span class="o">=</span><span class="n">create_using</span><span class="p">)</span>
             <span class="k">except</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span>
-                    <span class="s2">&quot;Input is not a correct scipy sparse matrix type.&quot;</span><span class="p">)</span>
+                    <span class="s2">&quot;Input is not a correct scipy sparse matrix type.&quot;</span>
+                <span class="p">)</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;scipy not found, skipping conversion test.&#39;</span><span class="p">,</span>
-                      <span class="ne">ImportWarning</span><span class="p">)</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;scipy not found, skipping conversion test.&quot;</span><span class="p">,</span> <span class="ne">ImportWarning</span><span class="p">)</span>
 
-    <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span>
-        <span class="s2">&quot;Input is not a known data type for conversion.&quot;</span><span class="p">)</span></div>
+    <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s2">&quot;Input is not a known data type for conversion.&quot;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="to_dict_of_lists"><a class="viewcode-back" href="../../reference/generated/networkx.convert.to_dict_of_lists.html#networkx.convert.to_dict_of_lists">[docs]</a><span class="k">def</span> <span class="nf">to_dict_of_lists</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -382,8 +393,9 @@
                     <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">nbr</span><span class="p">)</span>
             <span class="n">seen</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># don&#39;t allow reverse edge to show up</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(((</span><span class="n">node</span><span class="p">,</span> <span class="n">nbr</span><span class="p">)</span> <span class="k">for</span> <span class="n">node</span><span class="p">,</span> <span class="n">nbrlist</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-                          <span class="k">for</span> <span class="n">nbr</span> <span class="ow">in</span> <span class="n">nbrlist</span><span class="p">))</span>
+        <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span>
+            <span class="p">((</span><span class="n">node</span><span class="p">,</span> <span class="n">nbr</span><span class="p">)</span> <span class="k">for</span> <span class="n">node</span><span class="p">,</span> <span class="n">nbrlist</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">for</span> <span class="n">nbr</span> <span class="ow">in</span> <span class="n">nbrlist</span><span class="p">)</span>
+        <span class="p">)</span>
     <span class="k">return</span> <span class="n">G</span></div>
 
 
@@ -460,31 +472,37 @@
         <span class="c1"># make a copy of the list of edge data (but not the edge data)</span>
         <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_directed</span><span class="p">():</span>
             <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">():</span>
-                <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-                                 <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">nbrs</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-                                 <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">datadict</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-                                 <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">datadict</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+                <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span>
+                    <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">nbrs</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                    <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">datadict</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">datadict</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                <span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-                                 <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">nbrs</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-                                 <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">datadict</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-                                 <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">datadict</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+                <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span>
+                    <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">nbrs</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                    <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">datadict</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">datadict</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>  <span class="c1"># Undirected</span>
             <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">():</span>
-                <span class="n">seen</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>   <span class="c1"># don&#39;t add both directions of undirected graph</span>
+                <span class="n">seen</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>  <span class="c1"># don&#39;t add both directions of undirected graph</span>
                 <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">nbrs</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
                     <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">datadict</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
                         <span class="k">if</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
-                            <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-                                             <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">datadict</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+                            <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span>
+                                <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">datadict</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                            <span class="p">)</span>
                             <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="p">))</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">seen</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>   <span class="c1"># don&#39;t add both directions of undirected graph</span>
+                <span class="n">seen</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>  <span class="c1"># don&#39;t add both directions of undirected graph</span>
                 <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">nbrs</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
                     <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">datadict</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
                         <span class="k">if</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
-                            <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-                                             <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">datadict</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+                            <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span>
+                                <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">datadict</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                            <span class="p">)</span>
                             <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="p">))</span>
 
     <span class="k">else</span><span class="p">:</span>  <span class="c1"># not a multigraph to multigraph transfer</span>
@@ -500,9 +518,9 @@
                         <span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
                     <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-                              <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">nbrs</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-                              <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
+            <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span>
+                <span class="p">((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">nbrs</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+            <span class="p">)</span>
     <span class="k">return</span> <span class="n">G</span></div>
 
 
@@ -561,7 +579,7 @@
     <p>
         &copy; Copyright 2004-2020, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Jan 01, 2020.
+        Last updated on Jan 03, 2020.
       </span>
 
     </p>

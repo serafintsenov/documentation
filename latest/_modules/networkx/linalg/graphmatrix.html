@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.linalg.graphmatrix &mdash; NetworkX 2.5rc1.dev20200101222012 documentation</title>
+  <title>networkx.linalg.graphmatrix &mdash; NetworkX 2.5rc1.dev20200103205409 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200101222012 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200103205409 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200101222012
+                2.5rc1.dev_20200103205409
               </div>
             
           
@@ -169,13 +169,10 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;incidence_matrix&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;adj_matrix&#39;</span><span class="p">,</span> <span class="s1">&#39;adjacency_matrix&#39;</span><span class="p">,</span>
-           <span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;incidence_matrix&quot;</span><span class="p">,</span> <span class="s2">&quot;adj_matrix&quot;</span><span class="p">,</span> <span class="s2">&quot;adjacency_matrix&quot;</span><span class="p">]</span>
 
 
-<div class="viewcode-block" id="incidence_matrix"><a class="viewcode-back" href="../../../reference/generated/networkx.linalg.graphmatrix.incidence_matrix.html#networkx.linalg.graphmatrix.incidence_matrix">[docs]</a><span class="k">def</span> <span class="nf">incidence_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">edgelist</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                     <span class="n">oriented</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="incidence_matrix"><a class="viewcode-back" href="../../../reference/generated/networkx.linalg.graphmatrix.incidence_matrix.html#networkx.linalg.graphmatrix.incidence_matrix">[docs]</a><span class="k">def</span> <span class="nf">incidence_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">edgelist</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">oriented</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns incidence matrix of G.</span>
 
 <span class="sd">    The incidence matrix assigns each row to a node and each column to an edge.</span>
@@ -226,6 +223,7 @@
 <span class="sd">       http://academicearth.org/lectures/network-applications-incidence-matrix</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">scipy.sparse</span>
+
     <span class="k">if</span> <span class="n">nodelist</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">nodelist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">edgelist</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -258,10 +256,10 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">A</span><span class="p">[</span><span class="n">ui</span><span class="p">,</span> <span class="n">ei</span><span class="p">]</span> <span class="o">=</span> <span class="n">wt</span>
             <span class="n">A</span><span class="p">[</span><span class="n">vi</span><span class="p">,</span> <span class="n">ei</span><span class="p">]</span> <span class="o">=</span> <span class="n">wt</span>
-    <span class="k">return</span> <span class="n">A</span><span class="o">.</span><span class="n">asformat</span><span class="p">(</span><span class="s1">&#39;csc&#39;</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">A</span><span class="o">.</span><span class="n">asformat</span><span class="p">(</span><span class="s2">&quot;csc&quot;</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="adjacency_matrix"><a class="viewcode-back" href="../../../reference/generated/networkx.linalg.graphmatrix.adjacency_matrix.html#networkx.linalg.graphmatrix.adjacency_matrix">[docs]</a><span class="k">def</span> <span class="nf">adjacency_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="adjacency_matrix"><a class="viewcode-back" href="../../../reference/generated/networkx.linalg.graphmatrix.adjacency_matrix.html#networkx.linalg.graphmatrix.adjacency_matrix">[docs]</a><span class="k">def</span> <span class="nf">adjacency_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns adjacency matrix of G.</span>
 
 <span class="sd">    Parameters</span>
@@ -334,7 +332,7 @@
     <p>
         &copy; Copyright 2004-2020, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Jan 01, 2020.
+        Last updated on Jan 03, 2020.
       </span>
 
     </p>

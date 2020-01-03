@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.linalg.attrmatrix &mdash; NetworkX 2.5rc1.dev20200101222012 documentation</title>
+  <title>networkx.linalg.attrmatrix &mdash; NetworkX 2.5rc1.dev20200103205409 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200101222012 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200103205409 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200101222012
+                2.5rc1.dev_20200103205409
               </div>
             
           
@@ -168,7 +168,7 @@
 <span class="sd">    Functions for constructing matrix-like objects from graph attributes.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;attr_matrix&#39;</span><span class="p">,</span> <span class="s1">&#39;attr_sparse_matrix&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;attr_matrix&quot;</span><span class="p">,</span> <span class="s2">&quot;attr_sparse_matrix&quot;</span><span class="p">]</span>
 
 
 <span class="k">def</span> <span class="nf">_node_value</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">node_attr</span><span class="p">):</span>
@@ -196,10 +196,15 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">node_attr</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="n">u</span><span class="p">):</span> <span class="k">return</span> <span class="n">u</span>
-    <span class="k">elif</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">node_attr</span><span class="p">,</span> <span class="s1">&#39;__call__&#39;</span><span class="p">):</span>
+
+        <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">u</span>
+
+    <span class="k">elif</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">node_attr</span><span class="p">,</span> <span class="s2">&quot;__call__&quot;</span><span class="p">):</span>
         <span class="c1"># assume it is a key for the node attribute dictionary</span>
-        <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="n">u</span><span class="p">):</span> <span class="k">return</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">node_attr</span><span class="p">]</span>
+        <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">node_attr</span><span class="p">]</span>
+
     <span class="k">else</span><span class="p">:</span>
         <span class="c1"># Advanced:  Allow users to specify something else.</span>
         <span class="c1">#</span>
@@ -246,25 +251,41 @@
         <span class="c1"># topological count of edges</span>
 
         <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">():</span>
-            <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span> <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">])</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span> <span class="k">return</span> <span class="mi">1</span>
 
-    <span class="k">elif</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">edge_attr</span><span class="p">,</span> <span class="s1">&#39;__call__&#39;</span><span class="p">):</span>
+            <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+                <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">])</span>
+
+        <span class="k">else</span><span class="p">:</span>
+
+            <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+                <span class="k">return</span> <span class="mi">1</span>
+
+    <span class="k">elif</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">edge_attr</span><span class="p">,</span> <span class="s2">&quot;__call__&quot;</span><span class="p">):</span>
         <span class="c1"># assume it is a key for the edge attribute dictionary</span>
 
-        <span class="k">if</span> <span class="n">edge_attr</span> <span class="o">==</span> <span class="s1">&#39;weight&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">edge_attr</span> <span class="o">==</span> <span class="s2">&quot;weight&quot;</span><span class="p">:</span>
             <span class="c1"># provide a default value</span>
             <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">():</span>
-                <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span> <span class="k">return</span> <span class="nb">sum</span><span class="p">([</span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">edge_attr</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
+
+                <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="nb">sum</span><span class="p">([</span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">edge_attr</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
+
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span> <span class="k">return</span> <span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">edge_attr</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+                <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">edge_attr</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
         <span class="k">else</span><span class="p">:</span>
             <span class="c1"># otherwise, the edge attribute MUST exist for each edge</span>
             <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">():</span>
-                <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span> <span class="k">return</span> <span class="nb">sum</span><span class="p">([</span><span class="n">d</span><span class="p">[</span><span class="n">edge_attr</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
+
+                <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="nb">sum</span><span class="p">([</span><span class="n">d</span><span class="p">[</span><span class="n">edge_attr</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
+
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span> <span class="k">return</span> <span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">][</span><span class="n">edge_attr</span><span class="p">]</span>
+
+                <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">][</span><span class="n">edge_attr</span><span class="p">]</span>
 
     <span class="k">else</span><span class="p">:</span>
         <span class="c1"># Advanced:  Allow users to specify something else.</span>
@@ -286,8 +307,15 @@
     <span class="k">return</span> <span class="n">value</span>
 
 
-<div class="viewcode-block" id="attr_matrix"><a class="viewcode-back" href="../../../reference/generated/networkx.linalg.attrmatrix.attr_matrix.html#networkx.linalg.attrmatrix.attr_matrix">[docs]</a><span class="k">def</span> <span class="nf">attr_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">edge_attr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">node_attr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">normalized</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                <span class="n">rc_order</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="attr_matrix"><a class="viewcode-back" href="../../../reference/generated/networkx.linalg.attrmatrix.attr_matrix.html#networkx.linalg.attrmatrix.attr_matrix">[docs]</a><span class="k">def</span> <span class="nf">attr_matrix</span><span class="p">(</span>
+    <span class="n">G</span><span class="p">,</span>
+    <span class="n">edge_attr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">node_attr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">normalized</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">rc_order</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">order</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns a NumPy matrix using attributes from G.</span>
 
 <span class="sd">    If only `G` is passed in, then the adjacency matrix is constructed.</span>
@@ -408,8 +436,7 @@
     <span class="k">try</span><span class="p">:</span>
         <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
-            <span class="s2">&quot;attr_matrix() requires numpy: http://scipy.org/ &quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;attr_matrix() requires numpy: http://scipy.org/ &quot;</span><span class="p">)</span>
 
     <span class="n">edge_value</span> <span class="o">=</span> <span class="n">_edge_value</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">edge_attr</span><span class="p">)</span>
     <span class="n">node_value</span> <span class="o">=</span> <span class="n">_node_value</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">node_attr</span><span class="p">)</span>
@@ -448,8 +475,9 @@
         <span class="k">return</span> <span class="n">M</span></div>
 
 
-<div class="viewcode-block" id="attr_sparse_matrix"><a class="viewcode-back" href="../../../reference/generated/networkx.linalg.attrmatrix.attr_sparse_matrix.html#networkx.linalg.attrmatrix.attr_sparse_matrix">[docs]</a><span class="k">def</span> <span class="nf">attr_sparse_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">edge_attr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">node_attr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                       <span class="n">normalized</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">rc_order</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="attr_sparse_matrix"><a class="viewcode-back" href="../../../reference/generated/networkx.linalg.attrmatrix.attr_sparse_matrix.html#networkx.linalg.attrmatrix.attr_sparse_matrix">[docs]</a><span class="k">def</span> <span class="nf">attr_sparse_matrix</span><span class="p">(</span>
+    <span class="n">G</span><span class="p">,</span> <span class="n">edge_attr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">node_attr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">normalized</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">rc_order</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns a SciPy sparse matrix using attributes from G.</span>
 
 <span class="sd">    If only `G` is passed in, then the adjacency matrix is constructed.</span>
@@ -572,8 +600,7 @@
         <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
         <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">sparse</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
-            <span class="s2">&quot;attr_sparse_matrix() requires scipy: http://scipy.org/ &quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;attr_sparse_matrix() requires scipy: http://scipy.org/ &quot;</span><span class="p">)</span>
 
     <span class="n">edge_value</span> <span class="o">=</span> <span class="n">_edge_value</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">edge_attr</span><span class="p">)</span>
     <span class="n">node_value</span> <span class="o">=</span> <span class="n">_node_value</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">node_attr</span><span class="p">)</span>
@@ -624,7 +651,7 @@
     <p>
         &copy; Copyright 2004-2020, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Jan 01, 2020.
+        Last updated on Jan 03, 2020.
       </span>
 
     </p>

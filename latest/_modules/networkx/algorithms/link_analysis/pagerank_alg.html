@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.link_analysis.pagerank_alg &mdash; NetworkX 2.5rc1.dev20200101222012 documentation</title>
+  <title>networkx.algorithms.link_analysis.pagerank_alg &mdash; NetworkX 2.5rc1.dev20200103205409 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200101222012 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200103205409 documentation"
           href="../../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200101222012
+                2.5rc1.dev_20200103205409
               </div>
             
           
@@ -578,6 +578,7 @@
 <span class="sd">       The PageRank citation ranking: Bringing order to the Web. 1999</span>
 <span class="sd">       http://dbpubs.stanford.edu:8090/pub/showDoc.Fulltext?lang=en&amp;doc=1999-66&amp;format=pdf</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
     <span class="kn">import</span> <span class="nn">scipy.sparse</span>
 
     <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
@@ -587,23 +588,23 @@
     <span class="n">nodelist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
     <span class="n">M</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_scipy_sparse_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">,</span>
                                   <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-    <span class="n">S</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">M</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">M</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
     <span class="n">S</span><span class="p">[</span><span class="n">S</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">S</span><span class="p">[</span><span class="n">S</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
     <span class="n">Q</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">spdiags</span><span class="p">(</span><span class="n">S</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="n">M</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;csr&#39;</span><span class="p">)</span>
     <span class="n">M</span> <span class="o">=</span> <span class="n">Q</span> <span class="o">*</span> <span class="n">M</span>
 
     <span class="c1"># initial vector</span>
     <span class="k">if</span> <span class="n">nstart</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">nstart</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nodelist</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">nstart</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nodelist</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 
     <span class="c1"># Personalization vector</span>
     <span class="k">if</span> <span class="n">personalization</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">p</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">p</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">personalization</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nodelist</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">personalization</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nodelist</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
         <span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="o">/</span> <span class="n">p</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 
     <span class="c1"># Dangling nodes</span>
@@ -611,10 +612,10 @@
         <span class="n">dangling_weights</span> <span class="o">=</span> <span class="n">p</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="c1"># Convert the dangling dictionary into an array in nodelist order</span>
-        <span class="n">dangling_weights</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">dangling</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nodelist</span><span class="p">],</span>
-                                       <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+        <span class="n">dangling_weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">dangling</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nodelist</span><span class="p">],</span>
+                                    <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
         <span class="n">dangling_weights</span> <span class="o">/=</span> <span class="n">dangling_weights</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-    <span class="n">is_dangling</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">S</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">is_dangling</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">S</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="c1"># power iteration: make up to max_iter iterations</span>
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iter</span><span class="p">):</span>
@@ -622,7 +623,7 @@
         <span class="n">x</span> <span class="o">=</span> <span class="n">alpha</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">M</span> <span class="o">+</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">is_dangling</span><span class="p">])</span> <span class="o">*</span> <span class="n">dangling_weights</span><span class="p">)</span> <span class="o">+</span> \
             <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span>
         <span class="c1"># check convergence, l1 norm</span>
-        <span class="n">err</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">xlast</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="n">err</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">xlast</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">err</span> <span class="o">&lt;</span> <span class="n">N</span> <span class="o">*</span> <span class="n">tol</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">nodelist</span><span class="p">,</span> <span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">x</span><span class="p">)))</span>
     <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">PowerIterationFailedConvergence</span><span class="p">(</span><span class="n">max_iter</span><span class="p">)</span></div>
@@ -640,7 +641,7 @@
     <p>
         &copy; Copyright 2004-2020, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Jan 01, 2020.
+        Last updated on Jan 03, 2020.
       </span>
 
     </p>

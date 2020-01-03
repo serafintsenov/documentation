@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.centrality.eigenvector &mdash; NetworkX 2.5rc1.dev20200101222012 documentation</title>
+  <title>networkx.algorithms.centrality.eigenvector &mdash; NetworkX 2.5rc1.dev20200103205409 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200101222012 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200103205409 documentation"
           href="../../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200101222012
+                2.5rc1.dev_20200103205409
               </div>
             
           
@@ -171,12 +171,11 @@
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="kn">from</span> <span class="nn">networkx.utils</span> <span class="kn">import</span> <span class="n">not_implemented_for</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;eigenvector_centrality&#39;</span><span class="p">,</span> <span class="s1">&#39;eigenvector_centrality_numpy&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;eigenvector_centrality&quot;</span><span class="p">,</span> <span class="s2">&quot;eigenvector_centrality_numpy&quot;</span><span class="p">]</span>
 
 
-<div class="viewcode-block" id="eigenvector_centrality"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.centrality.eigenvector_centrality.html#networkx.algorithms.centrality.eigenvector_centrality">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s1">&#39;multigraph&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">eigenvector_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1.0e-6</span><span class="p">,</span> <span class="n">nstart</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                           <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="eigenvector_centrality"><a class="viewcode-back" href="../../../../reference/algorithms/generated/networkx.algorithms.centrality.eigenvector_centrality.html#networkx.algorithms.centrality.eigenvector_centrality">[docs]</a><span class="nd">@not_implemented_for</span><span class="p">(</span><span class="s2">&quot;multigraph&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">eigenvector_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1.0e-6</span><span class="p">,</span> <span class="n">nstart</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Compute the eigenvector centrality for the graph `G`.</span>
 
 <span class="sd">    Eigenvector centrality computes the centrality for a node based on the</span>
@@ -270,13 +269,14 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXPointlessConcept</span><span class="p">(</span><span class="s1">&#39;cannot compute centrality for the&#39;</span>
-                                          <span class="s1">&#39; null graph&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXPointlessConcept</span><span class="p">(</span>
+            <span class="s2">&quot;cannot compute centrality for the null graph&quot;</span>
+        <span class="p">)</span>
     <span class="c1"># If no initial vector is provided, start with the all-ones vector.</span>
     <span class="k">if</span> <span class="n">nstart</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">nstart</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G</span><span class="p">}</span>
     <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">v</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">nstart</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
-        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s1">&#39;initial vector cannot have all zero values&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="s2">&quot;initial vector cannot have all zero values&quot;</span><span class="p">)</span>
     <span class="c1"># Normalize the initial vector so that each entry is in [0, 1]. This is</span>
     <span class="c1"># guaranteed to never have a divide-by-zero error by the previous line.</span>
     <span class="n">nstart_sum</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">nstart</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
@@ -343,7 +343,7 @@
 <span class="sd">    --------</span>
 <span class="sd">    &gt;&gt;&gt; G = nx.path_graph(4)</span>
 <span class="sd">    &gt;&gt;&gt; centrality = nx.eigenvector_centrality_numpy(G)</span>
-<span class="sd">    &gt;&gt;&gt; print([f&quot;{node} {centrality[node]:0.2f}&quot; for node in centrality]) </span>
+<span class="sd">    &gt;&gt;&gt; print([f&quot;{node} {centrality[node]:0.2f}&quot; for node in centrality])</span>
 <span class="sd">    [&#39;0 0.37&#39;, &#39;1 0.60&#39;, &#39;2 0.60&#39;, &#39;3 0.37&#39;]</span>
 
 <span class="sd">    See Also</span>
@@ -378,17 +378,20 @@
 <span class="sd">       Networks: An Introduction.</span>
 <span class="sd">       Oxford University Press, USA, 2010, pp. 169.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
     <span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
     <span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">linalg</span>
+
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXPointlessConcept</span><span class="p">(</span><span class="s1">&#39;cannot compute centrality for the&#39;</span>
-                                          <span class="s1">&#39; null graph&#39;</span><span class="p">)</span>
-    <span class="n">M</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_scipy_sparse_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">,</span>
-                                  <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-    <span class="n">eigenvalue</span><span class="p">,</span> <span class="n">eigenvector</span> <span class="o">=</span> <span class="n">linalg</span><span class="o">.</span><span class="n">eigs</span><span class="p">(</span><span class="n">M</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;LR&#39;</span><span class="p">,</span>
-                                          <span class="n">maxiter</span><span class="o">=</span><span class="n">max_iter</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="n">tol</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXPointlessConcept</span><span class="p">(</span>
+            <span class="s2">&quot;cannot compute centrality for the null graph&quot;</span>
+        <span class="p">)</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">to_scipy_sparse_matrix</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">eigenvalue</span><span class="p">,</span> <span class="n">eigenvector</span> <span class="o">=</span> <span class="n">linalg</span><span class="o">.</span><span class="n">eigs</span><span class="p">(</span>
+        <span class="n">M</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s2">&quot;LR&quot;</span><span class="p">,</span> <span class="n">maxiter</span><span class="o">=</span><span class="n">max_iter</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="n">tol</span>
+    <span class="p">)</span>
     <span class="n">largest</span> <span class="o">=</span> <span class="n">eigenvector</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">.</span><span class="n">real</span>
-    <span class="n">norm</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">largest</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span> <span class="o">*</span> <span class="n">sp</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">largest</span><span class="p">)</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">largest</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span> <span class="o">*</span> <span class="n">sp</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">largest</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">largest</span> <span class="o">/</span> <span class="n">norm</span><span class="p">))</span></div>
 </pre></div>
 
@@ -404,7 +407,7 @@
     <p>
         &copy; Copyright 2004-2020, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Jan 01, 2020.
+        Last updated on Jan 03, 2020.
       </span>
 
     </p>
