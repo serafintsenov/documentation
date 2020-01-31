@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.shortest_paths.weighted &mdash; NetworkX 2.5rc1.dev20200126180050 documentation</title>
+  <title>networkx.algorithms.shortest_paths.weighted &mdash; NetworkX 2.5rc1.dev20200131190937 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200126180050 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200131190937 documentation"
           href="../../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200126180050
+                2.5rc1.dev_20200131190937
               </div>
             
           
@@ -1445,7 +1445,7 @@
         <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">pred_u</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">in_q</span> <span class="k">for</span> <span class="n">pred_u</span> <span class="ow">in</span> <span class="n">pred</span><span class="p">[</span><span class="n">u</span><span class="p">]):</span>
             <span class="n">dist_u</span> <span class="o">=</span> <span class="n">dist</span><span class="p">[</span><span class="n">u</span><span class="p">]</span>
             <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">G_succ</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="n">dist_v</span> <span class="o">=</span> <span class="n">dist_u</span> <span class="o">+</span> <span class="n">weight</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+                <span class="n">dist_v</span> <span class="o">=</span> <span class="n">dist_u</span> <span class="o">+</span> <span class="n">weight</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
 
                 <span class="k">if</span> <span class="n">dist_v</span> <span class="o">&lt;</span> <span class="n">dist</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">inf</span><span class="p">):</span>
                     <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">in_q</span><span class="p">:</span>
@@ -2163,6 +2163,8 @@
 
     <span class="k">if</span> <span class="n">source</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="n">source</span><span class="p">])</span>
+
+    <span class="n">weight</span> <span class="o">=</span> <span class="n">_weight_function</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
     <span class="n">push</span> <span class="o">=</span> <span class="n">heappush</span>
     <span class="n">pop</span> <span class="o">=</span> <span class="n">heappop</span>
     <span class="c1"># Init:  [Forward, Backward]</span>
@@ -2176,9 +2178,9 @@
     <span class="n">push</span><span class="p">(</span><span class="n">fringe</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="n">target</span><span class="p">))</span>
     <span class="c1"># neighs for extracting correct neighbor information</span>
     <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_directed</span><span class="p">():</span>
-        <span class="n">neighs</span> <span class="o">=</span> <span class="p">[</span><span class="n">G</span><span class="o">.</span><span class="n">successors</span><span class="p">,</span> <span class="n">G</span><span class="o">.</span><span class="n">predecessors</span><span class="p">]</span>
+        <span class="n">neighs</span> <span class="o">=</span> <span class="p">[</span><span class="n">G</span><span class="o">.</span><span class="n">_succ</span><span class="p">,</span> <span class="n">G</span><span class="o">.</span><span class="n">_pred</span><span class="p">]</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">neighs</span> <span class="o">=</span> <span class="p">[</span><span class="n">G</span><span class="o">.</span><span class="n">neighbors</span><span class="p">,</span> <span class="n">G</span><span class="o">.</span><span class="n">neighbors</span><span class="p">]</span>
+        <span class="n">neighs</span> <span class="o">=</span> <span class="p">[</span><span class="n">G</span><span class="o">.</span><span class="n">_adj</span><span class="p">,</span> <span class="n">G</span><span class="o">.</span><span class="n">_adj</span><span class="p">]</span>
     <span class="c1"># variables to hold shortest discovered path</span>
     <span class="c1"># finaldist = 1e30000</span>
     <span class="n">finalpath</span> <span class="o">=</span> <span class="p">[]</span>
@@ -2199,22 +2201,11 @@
             <span class="c1"># we have now discovered the shortest path</span>
             <span class="k">return</span> <span class="p">(</span><span class="n">finaldist</span><span class="p">,</span> <span class="n">finalpath</span><span class="p">)</span>
 
-        <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">neighs</span><span class="p">[</span><span class="nb">dir</span><span class="p">](</span><span class="n">v</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">neighs</span><span class="p">[</span><span class="nb">dir</span><span class="p">][</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">if</span><span class="p">(</span><span class="nb">dir</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>  <span class="c1"># forward</span>
-                <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">():</span>
-                    <span class="n">minweight</span> <span class="o">=</span> <span class="nb">min</span><span class="p">((</span><span class="n">dd</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-                                     <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">dd</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">w</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">minweight</span> <span class="o">=</span> <span class="n">G</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">w</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-                <span class="n">vwLength</span> <span class="o">=</span> <span class="n">dists</span><span class="p">[</span><span class="nb">dir</span><span class="p">][</span><span class="n">v</span><span class="p">]</span> <span class="o">+</span> <span class="n">minweight</span>  <span class="c1"># G[v][w].get(weight,1)</span>
+                <span class="n">vwLength</span> <span class="o">=</span> <span class="n">dists</span><span class="p">[</span><span class="nb">dir</span><span class="p">][</span><span class="n">v</span><span class="p">]</span> <span class="o">+</span> <span class="n">weight</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>  <span class="c1"># back, must remember to change v,w-&gt;w,v</span>
-                <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">():</span>
-                    <span class="n">minweight</span> <span class="o">=</span> <span class="nb">min</span><span class="p">((</span><span class="n">dd</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-                                     <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">dd</span> <span class="ow">in</span> <span class="n">G</span><span class="p">[</span><span class="n">w</span><span class="p">][</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">minweight</span> <span class="o">=</span> <span class="n">G</span><span class="p">[</span><span class="n">w</span><span class="p">][</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-                <span class="n">vwLength</span> <span class="o">=</span> <span class="n">dists</span><span class="p">[</span><span class="nb">dir</span><span class="p">][</span><span class="n">v</span><span class="p">]</span> <span class="o">+</span> <span class="n">minweight</span>  <span class="c1"># G[w][v].get(weight,1)</span>
-
+                <span class="n">vwLength</span> <span class="o">=</span> <span class="n">dists</span><span class="p">[</span><span class="nb">dir</span><span class="p">][</span><span class="n">v</span><span class="p">]</span> <span class="o">+</span> <span class="n">weight</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">dists</span><span class="p">[</span><span class="nb">dir</span><span class="p">]:</span>
                 <span class="k">if</span> <span class="n">vwLength</span> <span class="o">&lt;</span> <span class="n">dists</span><span class="p">[</span><span class="nb">dir</span><span class="p">][</span><span class="n">w</span><span class="p">]:</span>
                     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
@@ -2338,7 +2329,7 @@
     <p>
         &copy; Copyright 2004-2020, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Jan 26, 2020.
+        Last updated on Jan 31, 2020.
       </span>
 
     </p>
