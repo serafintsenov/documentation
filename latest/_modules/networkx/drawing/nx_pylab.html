@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.drawing.nx_pylab &mdash; NetworkX 2.5rc1.dev20200131190937 documentation</title>
+  <title>networkx.drawing.nx_pylab &mdash; NetworkX 2.5rc1.dev20200131230609 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200131190937 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200131230609 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200131190937
+                2.5rc1.dev_20200131230609
               </div>
             
           
@@ -804,12 +804,13 @@
             <span class="n">shrink_source</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># space from source to tail</span>
             <span class="n">shrink_target</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># space from  head to target</span>
             <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">iterable</span><span class="p">(</span><span class="n">node_size</span><span class="p">):</span>  <span class="c1"># many node sizes</span>
-                <span class="n">src_node</span><span class="p">,</span> <span class="n">dst_node</span> <span class="o">=</span> <span class="n">edgelist</span><span class="p">[</span><span class="n">i</span><span class="p">][:</span><span class="mi">2</span><span class="p">]</span>
-                <span class="n">index_node</span> <span class="o">=</span> <span class="n">nodelist</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">dst_node</span><span class="p">)</span>
-                <span class="n">marker_size</span> <span class="o">=</span> <span class="n">node_size</span><span class="p">[</span><span class="n">index_node</span><span class="p">]</span>
-                <span class="n">shrink_target</span> <span class="o">=</span> <span class="n">to_marker_edge</span><span class="p">(</span><span class="n">marker_size</span><span class="p">,</span> <span class="n">node_shape</span><span class="p">)</span>
+                <span class="n">source</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="n">edgelist</span><span class="p">[</span><span class="n">i</span><span class="p">][:</span><span class="mi">2</span><span class="p">]</span>
+                <span class="n">source_node_size</span> <span class="o">=</span> <span class="n">node_size</span><span class="p">[</span><span class="n">nodelist</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">source</span><span class="p">)]</span>
+                <span class="n">target_node_size</span> <span class="o">=</span> <span class="n">node_size</span><span class="p">[</span><span class="n">nodelist</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">target</span><span class="p">)]</span>
+                <span class="n">shrink_source</span> <span class="o">=</span> <span class="n">to_marker_edge</span><span class="p">(</span><span class="n">source_node_size</span><span class="p">,</span> <span class="n">node_shape</span><span class="p">)</span>
+                <span class="n">shrink_target</span> <span class="o">=</span> <span class="n">to_marker_edge</span><span class="p">(</span><span class="n">target_node_size</span><span class="p">,</span> <span class="n">node_shape</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">shrink_target</span> <span class="o">=</span> <span class="n">to_marker_edge</span><span class="p">(</span><span class="n">node_size</span><span class="p">,</span> <span class="n">node_shape</span><span class="p">)</span>
+                <span class="n">shrink_source</span> <span class="o">=</span> <span class="n">shrink_target</span> <span class="o">=</span> <span class="n">to_marker_edge</span><span class="p">(</span><span class="n">node_size</span><span class="p">,</span> <span class="n">node_shape</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="n">shrink_source</span> <span class="o">&lt;</span> <span class="n">min_source_margin</span><span class="p">:</span>
                 <span class="n">shrink_source</span> <span class="o">=</span> <span class="n">min_source_margin</span>
