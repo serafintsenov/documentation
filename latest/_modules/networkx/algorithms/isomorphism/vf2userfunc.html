@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.isomorphism.vf2userfunc &mdash; NetworkX 2.5rc1.dev20200202011033 documentation</title>
+  <title>networkx.algorithms.isomorphism.vf2userfunc &mdash; NetworkX 2.5rc1.dev20200202045357 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200202011033 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200202045357 documentation"
           href="../../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200202011033
+                2.5rc1.dev_20200202045357
               </div>
             
           
@@ -219,20 +219,21 @@
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">edge_match</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 
         <span class="c1"># Cached lookups</span>
-        <span class="n">G1_adj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">G1_adj</span>
-        <span class="n">G2_adj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">G2_adj</span>
+        <span class="n">G1nbrs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">G1_adj</span><span class="p">[</span><span class="n">G1_node</span><span class="p">]</span>
+        <span class="n">G2nbrs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">G2_adj</span><span class="p">[</span><span class="n">G2_node</span><span class="p">]</span>
         <span class="n">core_1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">core_1</span>
         <span class="n">edge_match</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">edge_match</span>
 
-        <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">G1_adj</span><span class="p">[</span><span class="n">G1_node</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">G1nbrs</span><span class="p">:</span>
             <span class="c1"># G1_node is not in core_1, so we must handle R_self separately</span>
             <span class="k">if</span> <span class="n">neighbor</span> <span class="o">==</span> <span class="n">G1_node</span><span class="p">:</span>
-                <span class="k">if</span> <span class="ow">not</span> <span class="n">edge_match</span><span class="p">(</span><span class="n">G1_adj</span><span class="p">[</span><span class="n">G1_node</span><span class="p">][</span><span class="n">G1_node</span><span class="p">],</span>
-                                  <span class="n">G2_adj</span><span class="p">[</span><span class="n">G2_node</span><span class="p">][</span><span class="n">G2_node</span><span class="p">]):</span>
+                <span class="k">if</span> <span class="n">G2_node</span> <span class="ow">in</span> <span class="n">G2nbrs</span> <span class="ow">and</span> \
+                        <span class="ow">not</span> <span class="n">edge_match</span><span class="p">(</span><span class="n">G1nbrs</span><span class="p">[</span><span class="n">G1_node</span><span class="p">],</span> <span class="n">G2nbrs</span><span class="p">[</span><span class="n">G2_node</span><span class="p">]):</span>
                     <span class="k">return</span> <span class="kc">False</span>
             <span class="k">elif</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">core_1</span><span class="p">:</span>
-                <span class="k">if</span> <span class="ow">not</span> <span class="n">edge_match</span><span class="p">(</span><span class="n">G1_adj</span><span class="p">[</span><span class="n">G1_node</span><span class="p">][</span><span class="n">neighbor</span><span class="p">],</span>
-                                  <span class="n">G2_adj</span><span class="p">[</span><span class="n">G2_node</span><span class="p">][</span><span class="n">core_1</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]]):</span>
+                <span class="n">G2_nbr</span> <span class="o">=</span> <span class="n">core_1</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">G2_nbr</span> <span class="ow">in</span> <span class="n">G2nbrs</span> <span class="ow">and</span> \
+                        <span class="ow">not</span> <span class="n">edge_match</span><span class="p">(</span><span class="n">G1nbrs</span><span class="p">[</span><span class="n">neighbor</span><span class="p">],</span> <span class="n">G2nbrs</span><span class="p">[</span><span class="n">G2_nbr</span><span class="p">]):</span>
                     <span class="k">return</span> <span class="kc">False</span>
         <span class="c1"># syntactic check has already verified that neighbors are symmetric</span>
 
