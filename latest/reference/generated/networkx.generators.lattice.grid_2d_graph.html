@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.generators.lattice.grid_2d_graph &mdash; NetworkX 2.5rc1.dev20200131230609 documentation</title>
+  <title>networkx.generators.lattice.grid_2d_graph &mdash; NetworkX 2.5rc1.dev20200202011033 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200131230609 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200202011033 documentation"
           href="../../_static/opensearch.xml"/>
 
   
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200131230609
+                2.5rc1.dev_20200202011033
               </div>
             
           
@@ -226,8 +226,10 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>m, n</strong> (<em>int or iterable container of nodes</em>) – If an integer, nodes are from <code class="xref py py-obj docutils literal notranslate"><span class="pre">range(n)</span></code>.
 If a container, elements become the coordinate of the nodes.</p></li>
-<li><p><strong>periodic</strong> (<em>bool (default: False)</em>) – If this is <code class="docutils literal notranslate"><span class="pre">True</span></code> the nodes on the grid boundaries are joined
-to the corresponding nodes on the opposite grid boundaries.</p></li>
+<li><p><strong>periodic</strong> (<em>bool or iterable</em>) – If <code class="xref py py-obj docutils literal notranslate"><span class="pre">periodic</span></code> is True, both dimensions are periodic. If False, none
+are periodic.  If <code class="xref py py-obj docutils literal notranslate"><span class="pre">periodic</span></code> is iterable, it should yield 2 bool
+values indicating whether the 1st and 2nd axes, respectively, are
+periodic.</p></li>
 <li><p><strong>create_using</strong> (<em>NetworkX graph constructor, optional (default=nx.Graph)</em>) – Graph type to create. If graph instance, then cleared before populated.</p></li>
 </ul>
 </dd>
@@ -264,7 +266,7 @@ to the corresponding nodes on the opposite grid boundaries.</p></li>
     <p>
         &copy; Copyright 2004-2020, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Jan 31, 2020.
+        Last updated on Feb 02, 2020.
       </span>
 
     </p>
