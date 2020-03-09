@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.shortest_paths.generic &mdash; NetworkX 2.5rc1.dev20200305050900 documentation</title>
+  <title>networkx.algorithms.shortest_paths.generic &mdash; NetworkX 2.5rc1.dev20200309020440 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200305050900 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200309020440 documentation"
           href="../../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200305050900
+                2.5rc1.dev_20200309020440
               </div>
             
           
@@ -284,7 +284,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">method</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;dijkstra&#39;</span><span class="p">,</span> <span class="s1">&#39;bellman-ford&#39;</span><span class="p">):</span>
         <span class="c1"># so we don&#39;t need to check in each branch later</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;method not supported: </span><span class="si">{method}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;method not supported: </span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;unweighted&#39;</span> <span class="k">if</span> <span class="n">weight</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">method</span>
     <span class="k">if</span> <span class="n">source</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">target</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -426,7 +426,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">method</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;dijkstra&#39;</span><span class="p">,</span> <span class="s1">&#39;bellman-ford&#39;</span><span class="p">):</span>
         <span class="c1"># so we don&#39;t need to check in each branch later</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;method not supported: </span><span class="si">{method}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;method not supported: </span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;unweighted&#39;</span> <span class="k">if</span> <span class="n">weight</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">method</span>
     <span class="k">if</span> <span class="n">source</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">target</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -542,7 +542,7 @@
     <span class="k">if</span> <span class="n">method</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;unweighted&#39;</span> <span class="k">if</span> <span class="n">weight</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="s1">&#39;dijkstra&#39;</span>
     <span class="k">if</span> <span class="n">method</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">supported_methods</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;method not supported: </span><span class="si">{method}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;method not supported: </span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
     <span class="c1"># For the special case of the null graph, raise an exception, since</span>
@@ -648,11 +648,11 @@
         <span class="n">pred</span><span class="p">,</span> <span class="n">dist</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">bellman_ford_predecessor_and_distance</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span>
                                                               <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;method not supported: </span><span class="si">{method}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;method not supported: </span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">target</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">pred</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXNoPath</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Target </span><span class="si">{target}</span><span class="s1"> cannot be reached&#39;</span>
-                                <span class="sa">f</span><span class="s1">&#39;from Source </span><span class="si">{source}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXNoPath</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Target </span><span class="si">{</span><span class="n">target</span><span class="si">}</span><span class="s1"> cannot be reached&#39;</span>
+                                <span class="sa">f</span><span class="s1">&#39;from Source </span><span class="si">{</span><span class="n">source</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
     <span class="n">stack</span> <span class="o">=</span> <span class="p">[[</span><span class="n">target</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
     <span class="n">top</span> <span class="o">=</span> <span class="mi">0</span>
@@ -683,7 +683,7 @@
     <p>
         &copy; Copyright 2004-2020, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Mar 05, 2020.
+        Last updated on Mar 09, 2020.
       </span>
 
     </p>

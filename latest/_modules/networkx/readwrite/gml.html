@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.readwrite.gml &mdash; NetworkX 2.5rc1.dev20200305050900 documentation</title>
+  <title>networkx.readwrite.gml &mdash; NetworkX 2.5rc1.dev20200309020440 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200305050900 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200309020440 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200305050900
+                2.5rc1.dev_20200309020440
               </div>
             
           
@@ -274,9 +274,9 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">literal_eval</span><span class="p">(</span><span class="n">rep</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">SyntaxError</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{orig_rep!r}</span><span class="s2"> is not a valid Python literal&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">orig_rep</span><span class="si">!r}</span><span class="s2"> is not a valid Python literal&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{rep!r}</span><span class="s2"> is not a string&quot;</span><span class="p">)</span></div>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">rep</span><span class="si">!r}</span><span class="s2"> is not a string&quot;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="read_gml"><a class="viewcode-back" href="../../../reference/readwrite/generated/networkx.readwrite.gml.read_gml.html#networkx.readwrite.gml.read_gml">[docs]</a><span class="nd">@open_file</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;rb&quot;</span><span class="p">)</span>
@@ -460,7 +460,7 @@
             <span class="sa">r</span><span class="s2">&quot;\]&quot;</span><span class="p">,</span>  <span class="c1"># dict end</span>
             <span class="sa">r</span><span class="s2">&quot;#.*$|\s+&quot;</span><span class="p">,</span>  <span class="c1"># comments and whitespaces</span>
         <span class="p">]</span>
-        <span class="n">tokens</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;|&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{pattern}</span><span class="s2">)&quot;</span> <span class="k">for</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="n">patterns</span><span class="p">))</span>
+        <span class="n">tokens</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;|&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">pattern</span><span class="si">}</span><span class="s2">)&quot;</span> <span class="k">for</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="n">patterns</span><span class="p">))</span>
         <span class="n">lineno</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
             <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
@@ -468,7 +468,7 @@
             <span class="k">while</span> <span class="n">pos</span> <span class="o">&lt;</span> <span class="n">length</span><span class="p">:</span>
                 <span class="n">match</span> <span class="o">=</span> <span class="n">tokens</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">match</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                    <span class="n">m</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;cannot tokenize </span><span class="si">{line[pos:]}</span><span class="s2"> at ({lineno + 1}, {pos + 1})&quot;</span>
+                    <span class="n">m</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;cannot tokenize </span><span class="si">{</span><span class="n">line</span><span class="p">[</span><span class="n">pos</span><span class="p">:]</span><span class="si">}</span><span class="s2"> at (</span><span class="si">{</span><span class="n">lineno</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">pos</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2">)&quot;</span>
                     <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
                 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">patterns</span><span class="p">)):</span>
                     <span class="n">group</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
@@ -491,7 +491,7 @@
     <span class="k">def</span> <span class="nf">unexpected</span><span class="p">(</span><span class="n">curr_token</span><span class="p">,</span> <span class="n">expected</span><span class="p">):</span>
         <span class="n">category</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">lineno</span><span class="p">,</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">curr_token</span>
         <span class="n">value</span> <span class="o">=</span> <span class="nb">repr</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;EOF&quot;</span>
-        <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;expected </span><span class="si">{expected}</span><span class="s2">, found </span><span class="si">{value}</span><span class="s2"> at (</span><span class="si">{lineno}</span><span class="s2">, </span><span class="si">{pos}</span><span class="s2">)&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;expected </span><span class="si">{</span><span class="n">expected</span><span class="si">}</span><span class="s2">, found </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2"> at (</span><span class="si">{</span><span class="n">lineno</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">pos</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">consume</span><span class="p">(</span><span class="n">curr_token</span><span class="p">,</span> <span class="n">category</span><span class="p">,</span> <span class="n">expected</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">curr_token</span><span class="o">.</span><span class="n">category</span> <span class="o">==</span> <span class="n">category</span><span class="p">:</span>
@@ -587,7 +587,7 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">dct</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{category}</span><span class="s2"> #</span><span class="si">{i}</span><span class="s2"> has no &#39;</span><span class="si">{attr}</span><span class="s2">&#39; attribute&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">category</span><span class="si">}</span><span class="s2"> #</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> has no &#39;</span><span class="si">{</span><span class="n">attr</span><span class="si">}</span><span class="s2">&#39; attribute&quot;</span><span class="p">)</span>
 
     <span class="n">nodes</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;node&quot;</span><span class="p">,</span> <span class="p">[])</span>
     <span class="n">mapping</span> <span class="o">=</span> <span class="p">{}</span>
@@ -595,11 +595,11 @@
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nodes</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="k">else</span> <span class="p">[</span><span class="n">nodes</span><span class="p">]):</span>
         <span class="nb">id</span> <span class="o">=</span> <span class="n">pop_attr</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s2">&quot;node&quot;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;node id </span><span class="si">{id!r}</span><span class="s2"> is duplicated&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;node id </span><span class="si">{</span><span class="nb">id</span><span class="si">!r}</span><span class="s2"> is duplicated&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">label</span> <span class="o">!=</span> <span class="s2">&quot;id&quot;</span><span class="p">:</span>
             <span class="n">node_label</span> <span class="o">=</span> <span class="n">pop_attr</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="s2">&quot;node&quot;</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">node_label</span> <span class="ow">in</span> <span class="n">node_labels</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;node label </span><span class="si">{node_label!r}</span><span class="s2"> is duplicated&quot;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;node label </span><span class="si">{</span><span class="n">node_label</span><span class="si">!r}</span><span class="s2"> is duplicated&quot;</span><span class="p">)</span>
             <span class="n">node_labels</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">node_label</span><span class="p">)</span>
             <span class="n">mapping</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_label</span>
         <span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="o">**</span><span class="n">node</span><span class="p">)</span>
@@ -609,21 +609,21 @@
         <span class="n">source</span> <span class="o">=</span> <span class="n">pop_attr</span><span class="p">(</span><span class="n">edge</span><span class="p">,</span> <span class="s2">&quot;edge&quot;</span><span class="p">,</span> <span class="s2">&quot;source&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
         <span class="n">target</span> <span class="o">=</span> <span class="n">pop_attr</span><span class="p">(</span><span class="n">edge</span><span class="p">,</span> <span class="s2">&quot;edge&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">source</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;edge #</span><span class="si">{i}</span><span class="s2"> has undefined source </span><span class="si">{source!r}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;edge #</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> has undefined source </span><span class="si">{</span><span class="n">source</span><span class="si">!r}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">target</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;edge #</span><span class="si">{i}</span><span class="s2"> has undefined target </span><span class="si">{target!r}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;edge #</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> has undefined target </span><span class="si">{</span><span class="n">target</span><span class="si">!r}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">multigraph</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">G</span><span class="o">.</span><span class="n">has_edge</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
                 <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="o">**</span><span class="n">edge</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">arrow</span> <span class="o">=</span> <span class="s2">&quot;-&gt;&quot;</span> <span class="k">if</span> <span class="n">directed</span> <span class="k">else</span> <span class="s2">&quot;--&quot;</span>
-                <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;edge #</span><span class="si">{i}</span><span class="s2"> (</span><span class="si">{source!r}{arrow}{target!r}</span><span class="s2">) is duplicated&quot;</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;edge #</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">source</span><span class="si">!r}{</span><span class="n">arrow</span><span class="si">}{</span><span class="n">target</span><span class="si">!r}</span><span class="s2">) is duplicated&quot;</span>
                 <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">key</span> <span class="o">=</span> <span class="n">edge</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;key&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">key</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">G</span><span class="o">.</span><span class="n">has_edge</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
                 <span class="n">arrow</span> <span class="o">=</span> <span class="s2">&quot;-&gt;&quot;</span> <span class="k">if</span> <span class="n">directed</span> <span class="k">else</span> <span class="s2">&quot;--&quot;</span>
-                <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;edge #</span><span class="si">{i}</span><span class="s2"> (</span><span class="si">{source!r}{arrow}{target!r}</span><span class="s2">, </span><span class="si">{key!r}</span><span class="s2">)&quot;</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;edge #</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">source</span><span class="si">!r}{</span><span class="n">arrow</span><span class="si">}{</span><span class="n">target</span><span class="si">!r}</span><span class="s2">, </span><span class="si">{</span><span class="n">key</span><span class="si">!r}</span><span class="s2">)&quot;</span>
                 <span class="n">msg2</span> <span class="o">=</span> <span class="s1">&#39;Hint: If multigraph add &quot;multigraph 1&quot; to file header.&#39;</span>
                 <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="n">msg</span> <span class="o">+</span> <span class="s2">&quot; is duplicated</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">msg2</span><span class="p">)</span>
             <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="o">**</span><span class="n">edge</span><span class="p">)</span>
@@ -824,9 +824,9 @@
 
     <span class="k">def</span> <span class="nf">stringize</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">ignored_keys</span><span class="p">,</span> <span class="n">indent</span><span class="p">,</span> <span class="n">in_list</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{key!r}</span><span class="s2"> is not a string&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">!r}</span><span class="s2"> is not a string&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">valid_keys</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{key!r}</span><span class="s2"> is not a valid key&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">!r}</span><span class="s2"> is not a valid key&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
             <span class="n">key</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ignored_keys</span><span class="p">:</span>
@@ -864,7 +864,7 @@
             <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">))</span> <span class="ow">and</span> <span class="n">key</span> <span class="o">!=</span> <span class="s1">&#39;label&#39;</span> \
                     <span class="ow">and</span> <span class="n">value</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">in_list</span><span class="p">:</span>
                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-                    <span class="k">yield</span> <span class="n">indent</span> <span class="o">+</span> <span class="n">key</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;&quot;</span><span class="si">{LIST_START_VALUE}</span><span class="s1">&quot;&#39;</span>
+                    <span class="k">yield</span> <span class="n">indent</span> <span class="o">+</span> <span class="n">key</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;&quot;</span><span class="si">{</span><span class="n">LIST_START_VALUE</span><span class="si">}</span><span class="s1">&quot;&#39;</span>
                 <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
                     <span class="k">yield from</span> <span class="n">stringize</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="p">(),</span> <span class="n">indent</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
@@ -873,10 +873,10 @@
                         <span class="n">value</span> <span class="o">=</span> <span class="n">stringizer</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
                     <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
                         <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span>
-                            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{value!r}</span><span class="s2"> cannot be converted into a string&quot;</span>
+                            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">value</span><span class="si">!r}</span><span class="s2"> cannot be converted into a string&quot;</span>
                         <span class="p">)</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-                    <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{value!r}</span><span class="s2"> is not a string&quot;</span><span class="p">)</span>
+                    <span class="k">raise</span> <span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">value</span><span class="si">!r}</span><span class="s2"> is not a string&quot;</span><span class="p">)</span>
                 <span class="k">yield</span> <span class="n">indent</span> <span class="o">+</span> <span class="n">key</span> <span class="o">+</span> <span class="s1">&#39; &quot;&#39;</span> <span class="o">+</span> <span class="n">escape</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&quot;&#39;</span>
 
     <span class="n">multigraph</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">is_multigraph</span><span class="p">()</span>
@@ -996,7 +996,7 @@
     <p>
         &copy; Copyright 2004-2020, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Mar 05, 2020.
+        Last updated on Mar 09, 2020.
       </span>
 
     </p>

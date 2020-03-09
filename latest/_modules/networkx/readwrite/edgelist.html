@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.readwrite.edgelist &mdash; NetworkX 2.5rc1.dev20200305050900 documentation</title>
+  <title>networkx.readwrite.edgelist &mdash; NetworkX 2.5rc1.dev20200309020440 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200305050900 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200309020440 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200305050900
+                2.5rc1.dev_20200309020440
               </div>
             
           
@@ -423,7 +423,7 @@
                 <span class="n">u</span> <span class="o">=</span> <span class="n">nodetype</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
                 <span class="n">v</span> <span class="o">=</span> <span class="n">nodetype</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
             <span class="k">except</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to convert nodes </span><span class="si">{u}</span><span class="s2">,</span><span class="si">{v}</span><span class="s2"> to type </span><span class="si">{nodetype}</span><span class="s2">.&quot;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to convert nodes </span><span class="si">{</span><span class="n">u</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2"> to type </span><span class="si">{</span><span class="n">nodetype</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
             <span class="c1"># no data or data type specified</span>
@@ -433,17 +433,17 @@
             <span class="k">try</span><span class="p">:</span>  <span class="c1"># try to evaluate as dictionary</span>
                 <span class="n">edgedata</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">literal_eval</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">d</span><span class="p">)))</span>
             <span class="k">except</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to convert edge data (</span><span class="si">{d}</span><span class="s2">) to dictionary.&quot;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to convert edge data (</span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s2">) to dictionary.&quot;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="c1"># convert edge data to dictionary with specified keys and type</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
-                <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Edge data </span><span class="si">{d}</span><span class="s2"> and data_keys </span><span class="si">{data}</span><span class="s2"> are not the same length&quot;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Edge data </span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s2"> and data_keys </span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2"> are not the same length&quot;</span><span class="p">)</span>
             <span class="n">edgedata</span> <span class="o">=</span> <span class="p">{}</span>
             <span class="k">for</span> <span class="p">(</span><span class="n">edge_key</span><span class="p">,</span> <span class="n">edge_type</span><span class="p">),</span> <span class="n">edge_value</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
                 <span class="k">try</span><span class="p">:</span>
                     <span class="n">edge_value</span> <span class="o">=</span> <span class="n">edge_type</span><span class="p">(</span><span class="n">edge_value</span><span class="p">)</span>
                 <span class="k">except</span><span class="p">:</span>
-                    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to convert </span><span class="si">{edge_key}</span><span class="s2"> data </span><span class="si">{edge_value}</span><span class="s2"> to type </span><span class="si">{edge_type}</span><span class="s2">.&quot;</span><span class="p">)</span>
+                    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to convert </span><span class="si">{</span><span class="n">edge_key</span><span class="si">}</span><span class="s2"> data </span><span class="si">{</span><span class="n">edge_value</span><span class="si">}</span><span class="s2"> to type </span><span class="si">{</span><span class="n">edge_type</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
                 <span class="n">edgedata</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">edge_key</span><span class="p">:</span> <span class="n">edge_value</span><span class="p">})</span>
         <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="o">**</span><span class="n">edgedata</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">G</span></div>
@@ -625,7 +625,7 @@
     <p>
         &copy; Copyright 2004-2020, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Mar 05, 2020.
+        Last updated on Mar 09, 2020.
       </span>
 
     </p>

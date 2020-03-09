@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.connectivity.utils &mdash; NetworkX 2.5rc1.dev20200305050900 documentation</title>
+  <title>networkx.algorithms.connectivity.utils &mdash; NetworkX 2.5rc1.dev20200309020440 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200305050900 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200309020440 documentation"
           href="../../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200305050900
+                2.5rc1.dev_20200309020440
               </div>
             
           
@@ -208,15 +208,15 @@
 
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
         <span class="n">mapping</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
-        <span class="n">H</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{i}</span><span class="s2">A&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">node</span><span class="p">)</span>
-        <span class="n">H</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{i}</span><span class="s2">B&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">node</span><span class="p">)</span>
-        <span class="n">H</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{i}</span><span class="s2">A&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{i}</span><span class="s2">B&quot;</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">H</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">A&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">node</span><span class="p">)</span>
+        <span class="n">H</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">B&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">node</span><span class="p">)</span>
+        <span class="n">H</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">A&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">B&quot;</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="n">edges</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">():</span>
-        <span class="n">edges</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{mapping[source]}</span><span class="s2">B&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{mapping[target]}</span><span class="s2">A&quot;</span><span class="p">))</span>
+        <span class="n">edges</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mapping</span><span class="p">[</span><span class="n">source</span><span class="p">]</span><span class="si">}</span><span class="s2">B&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mapping</span><span class="p">[</span><span class="n">target</span><span class="p">]</span><span class="si">}</span><span class="s2">A&quot;</span><span class="p">))</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">directed</span><span class="p">:</span>
-            <span class="n">edges</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{mapping[target]}</span><span class="s2">B&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{mapping[source]}</span><span class="s2">A&quot;</span><span class="p">))</span>
+            <span class="n">edges</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mapping</span><span class="p">[</span><span class="n">target</span><span class="p">]</span><span class="si">}</span><span class="s2">B&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mapping</span><span class="p">[</span><span class="n">source</span><span class="p">]</span><span class="si">}</span><span class="s2">A&quot;</span><span class="p">))</span>
     <span class="n">H</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">edges</span><span class="p">,</span> <span class="n">capacity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="c1"># Store mapping as graph attribute</span>
@@ -263,7 +263,7 @@
     <p>
         &copy; Copyright 2004-2020, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Mar 05, 2020.
+        Last updated on Mar 09, 2020.
       </span>
 
     </p>

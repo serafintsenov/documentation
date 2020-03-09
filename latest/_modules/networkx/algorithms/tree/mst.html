@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.tree.mst &mdash; NetworkX 2.5rc1.dev20200305050900 documentation</title>
+  <title>networkx.algorithms.tree.mst &mdash; NetworkX 2.5rc1.dev20200309020440 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200305050900 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200309020440 documentation"
           href="../../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200305050900
+                2.5rc1.dev_20200309020440
               </div>
             
           
@@ -233,7 +233,7 @@
             <span class="k">if</span> <span class="n">isnan</span><span class="p">(</span><span class="n">wt</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">ignore_nan</span><span class="p">:</span>
                     <span class="k">continue</span>
-                <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;NaN found as an edge weight. Edge </span><span class="si">{e}</span><span class="s2">&quot;</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;NaN found as an edge weight. Edge </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">wt</span> <span class="o">&lt;</span> <span class="n">minwt</span><span class="p">:</span>
                 <span class="n">minwt</span> <span class="o">=</span> <span class="n">wt</span>
@@ -318,7 +318,7 @@
                 <span class="k">if</span> <span class="n">isnan</span><span class="p">(</span><span class="n">wt</span><span class="p">):</span>
                     <span class="k">if</span> <span class="n">ignore_nan</span><span class="p">:</span>
                         <span class="k">continue</span>
-                    <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;NaN found as an edge weight. Edge {(u, v, k, d)}&quot;</span>
+                    <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;NaN found as an edge weight. Edge </span><span class="si">{</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
                     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
                 <span class="k">yield</span> <span class="n">wt</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">d</span>
     <span class="k">else</span><span class="p">:</span>
@@ -331,7 +331,7 @@
                 <span class="k">if</span> <span class="n">isnan</span><span class="p">(</span><span class="n">wt</span><span class="p">):</span>
                     <span class="k">if</span> <span class="n">ignore_nan</span><span class="p">:</span>
                         <span class="k">continue</span>
-                    <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;NaN found as an edge weight. Edge {(u, v, d)}&quot;</span>
+                    <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;NaN found as an edge weight. Edge </span><span class="si">{</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
                     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
                 <span class="k">yield</span> <span class="n">wt</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span>
     <span class="n">edges</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">filter_nan_edges</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="n">itemgetter</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
@@ -409,7 +409,7 @@
                     <span class="k">if</span> <span class="n">isnan</span><span class="p">(</span><span class="n">wt</span><span class="p">):</span>
                         <span class="k">if</span> <span class="n">ignore_nan</span><span class="p">:</span>
                             <span class="k">continue</span>
-                        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;NaN found as an edge weight. Edge {(u, v, k, d)}&quot;</span>
+                        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;NaN found as an edge weight. Edge </span><span class="si">{</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
                         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
                     <span class="n">push</span><span class="p">(</span><span class="n">frontier</span><span class="p">,</span> <span class="p">(</span><span class="n">wt</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">d</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
@@ -418,7 +418,7 @@
                 <span class="k">if</span> <span class="n">isnan</span><span class="p">(</span><span class="n">wt</span><span class="p">):</span>
                     <span class="k">if</span> <span class="n">ignore_nan</span><span class="p">:</span>
                         <span class="k">continue</span>
-                    <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;NaN found as an edge weight. Edge {(u, v, d)}&quot;</span>
+                    <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;NaN found as an edge weight. Edge </span><span class="si">{</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
                     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
                 <span class="n">push</span><span class="p">(</span><span class="n">frontier</span><span class="p">,</span> <span class="p">(</span><span class="n">wt</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span><span class="p">))</span>
         <span class="k">while</span> <span class="n">frontier</span><span class="p">:</span>
@@ -550,7 +550,7 @@
     <span class="k">try</span><span class="p">:</span>
         <span class="n">algo</span> <span class="o">=</span> <span class="n">ALGORITHMS</span><span class="p">[</span><span class="n">algorithm</span><span class="p">]</span>
     <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{algorithm}</span><span class="s2"> is not a valid choice for an algorithm.&quot;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">algorithm</span><span class="si">}</span><span class="s2"> is not a valid choice for an algorithm.&quot;</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">algo</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">minimum</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="n">keys</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
@@ -641,7 +641,7 @@
     <span class="k">try</span><span class="p">:</span>
         <span class="n">algo</span> <span class="o">=</span> <span class="n">ALGORITHMS</span><span class="p">[</span><span class="n">algorithm</span><span class="p">]</span>
     <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{algorithm}</span><span class="s2"> is not a valid choice for an algorithm.&quot;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">algorithm</span><span class="si">}</span><span class="s2"> is not a valid choice for an algorithm.&quot;</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">algo</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">minimum</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="n">keys</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
@@ -781,7 +781,7 @@
     <p>
         &copy; Copyright 2004-2020, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Mar 05, 2020.
+        Last updated on Mar 09, 2020.
       </span>
 
     </p>

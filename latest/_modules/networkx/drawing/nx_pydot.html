@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.drawing.nx_pydot &mdash; NetworkX 2.5rc1.dev20200305050900 documentation</title>
+  <title>networkx.drawing.nx_pydot &mdash; NetworkX 2.5rc1.dev20200309020440 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200305050900 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200309020440 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200305050900
+                2.5rc1.dev_20200309020440
               </div>
             
           
@@ -353,7 +353,7 @@
         <span class="n">P</span> <span class="o">=</span> <span class="n">pydot</span><span class="o">.</span><span class="n">Dot</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">graph_type</span><span class="o">=</span><span class="n">graph_type</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="n">strict</span><span class="p">,</span>
                       <span class="o">**</span><span class="n">graph_defaults</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">P</span> <span class="o">=</span> <span class="n">pydot</span><span class="o">.</span><span class="n">Dot</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&quot;</span><span class="si">{name}</span><span class="s1">&quot;&#39;</span><span class="p">,</span> <span class="n">graph_type</span><span class="o">=</span><span class="n">graph_type</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="n">strict</span><span class="p">,</span> <span class="o">**</span><span class="n">graph_defaults</span><span class="p">)</span>
+        <span class="n">P</span> <span class="o">=</span> <span class="n">pydot</span><span class="o">.</span><span class="n">Dot</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">,</span> <span class="n">graph_type</span><span class="o">=</span><span class="n">graph_type</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="n">strict</span><span class="p">,</span> <span class="o">**</span><span class="n">graph_defaults</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">P</span><span class="o">.</span><span class="n">set_node_defaults</span><span class="p">(</span><span class="o">**</span><span class="n">N</span><span class="o">.</span><span class="n">graph</span><span class="p">[</span><span class="s1">&#39;node&#39;</span><span class="p">])</span>
     <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
@@ -468,12 +468,12 @@
     <span class="n">D</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">D_bytes</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">getpreferredencoding</span><span class="p">())</span>
 
     <span class="k">if</span> <span class="n">D</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>  <span class="c1"># no data returned</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Graphviz layout with </span><span class="si">{prog}</span><span class="s2"> failed&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Graphviz layout with </span><span class="si">{</span><span class="n">prog</span><span class="si">}</span><span class="s2"> failed&quot;</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">()</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;To debug what happened try:&quot;</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P = nx.nx_pydot.to_pydot(G)&quot;</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P.write_dot(</span><span class="se">\&quot;</span><span class="s2">file.dot</span><span class="se">\&quot;</span><span class="s2">)&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;And then run </span><span class="si">{prog}</span><span class="s2"> on file.dot&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;And then run </span><span class="si">{</span><span class="n">prog</span><span class="si">}</span><span class="s2"> on file.dot&quot;</span><span class="p">)</span>
         <span class="k">return</span>
 
     <span class="c1"># List of one or more &quot;pydot.Dot&quot; instances deserialized from this string.</span>
@@ -509,7 +509,7 @@
     <p>
         &copy; Copyright 2004-2020, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Mar 05, 2020.
+        Last updated on Mar 09, 2020.
       </span>
 
     </p>

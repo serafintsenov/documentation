@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.readwrite.adjlist &mdash; NetworkX 2.5rc1.dev20200305050900 documentation</title>
+  <title>networkx.readwrite.adjlist &mdash; NetworkX 2.5rc1.dev20200309020440 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200305050900 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200309020440 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200305050900
+                2.5rc1.dev_20200309020440
               </div>
             
           
@@ -292,8 +292,8 @@
     <span class="kn">import</span> <span class="nn">time</span>
     <span class="n">pargs</span> <span class="o">=</span> <span class="n">comments</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
     <span class="n">header</span> <span class="o">=</span> <span class="p">(</span><span class="n">pargs</span>
-              <span class="o">+</span> <span class="n">comments</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot; GMT {time.asctime(time.gmtime())}</span><span class="se">\n</span><span class="s2">&quot;</span>
-              <span class="o">+</span> <span class="n">comments</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{G.name}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+              <span class="o">+</span> <span class="n">comments</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot; GMT </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">asctime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">())</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+              <span class="o">+</span> <span class="n">comments</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">G</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">path</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">header</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">encoding</span><span class="p">))</span>
 
     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">generate_adjlist</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">delimiter</span><span class="p">):</span>
@@ -361,13 +361,13 @@
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">u</span> <span class="o">=</span> <span class="n">nodetype</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
             <span class="k">except</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to convert node (</span><span class="si">{u}</span><span class="s2">) to type </span><span class="si">{nodetype}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to convert node (</span><span class="si">{</span><span class="n">u</span><span class="si">}</span><span class="s2">) to type </span><span class="si">{</span><span class="n">nodetype</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">nodetype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">vlist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">nodetype</span><span class="p">,</span> <span class="n">vlist</span><span class="p">))</span>
             <span class="k">except</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to convert nodes ({&#39;,&#39;.join(vlist)}) to type </span><span class="si">{nodetype}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to convert nodes (</span><span class="si">{</span><span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">vlist</span><span class="p">)</span><span class="si">}</span><span class="s2">) to type </span><span class="si">{</span><span class="n">nodetype</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="n">G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vlist</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">G</span></div>
 
@@ -462,7 +462,7 @@
     <p>
         &copy; Copyright 2004-2020, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Mar 05, 2020.
+        Last updated on Mar 09, 2020.
       </span>
 
     </p>

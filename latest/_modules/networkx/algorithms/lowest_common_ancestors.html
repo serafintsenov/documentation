@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.algorithms.lowest_common_ancestors &mdash; NetworkX 2.5rc1.dev20200305050900 documentation</title>
+  <title>networkx.algorithms.lowest_common_ancestors &mdash; NetworkX 2.5rc1.dev20200309020440 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200305050900 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200309020440 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200305050900
+                2.5rc1.dev_20200309020440
               </div>
             
           
@@ -230,7 +230,7 @@
         <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">pairs</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">n</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
-                    <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;The node {str(n)} is not in the digraph.&quot;</span>
+                    <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;The node </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="si">}</span><span class="s2"> is not in the digraph.&quot;</span>
                     <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NodeNotFound</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
             <span class="n">pair_dict</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
             <span class="n">pair_dict</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
@@ -417,7 +417,7 @@
 
     <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">pairset</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">n</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
-            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;The node {str(n)} is not in the digraph.&quot;</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;The node </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="si">}</span><span class="s2"> is not in the digraph.&quot;</span>
             <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NodeNotFound</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 
     <span class="c1"># Generate the transitive closure over the dag (not G) of all nodes, and</span>
@@ -533,7 +533,7 @@
     <p>
         &copy; Copyright 2004-2020, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Mar 05, 2020.
+        Last updated on Mar 09, 2020.
       </span>
 
     </p>

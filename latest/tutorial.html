@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Tutorial &mdash; NetworkX 2.5rc1.dev20200305050900 documentation</title>
+  <title>Tutorial &mdash; NetworkX 2.5rc1.dev20200309020440 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200305050900 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200309020440 documentation"
           href="_static/opensearch.xml"/>
 
   
@@ -68,7 +68,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200305050900
+                2.5rc1.dev_20200309020440
               </div>
             
           
@@ -377,7 +377,7 @@ Note that for undirected graphs, adjacency iteration sees each edge twice.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">nbrs</span> <span class="ow">in</span> <span class="n">FG</span><span class="o">.</span><span class="n">adj</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
 <span class="gp">... </span>   <span class="k">for</span> <span class="n">nbr</span><span class="p">,</span> <span class="n">eattr</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
 <span class="gp">... </span>       <span class="n">wt</span> <span class="o">=</span> <span class="n">eattr</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span>
-<span class="gp">... </span>       <span class="k">if</span> <span class="n">wt</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{n}</span><span class="s2">, </span><span class="si">{nbr}</span><span class="s2">, </span><span class="si">{wt:.3}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="gp">... </span>       <span class="k">if</span> <span class="n">wt</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">nbr</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">wt</span><span class="si">:</span><span class="s2">.3</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
 <span class="go">(1, 2, 0.125)</span>
 <span class="go">(2, 1, 0.125)</span>
 <span class="go">(3, 4, 0.375)</span>
@@ -386,7 +386,7 @@ Note that for undirected graphs, adjacency iteration sees each edge twice.</p>
 </div>
 <p>Convenient access to all edges is achieved with the edges property.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">wt</span><span class="p">)</span> <span class="ow">in</span> <span class="n">FG</span><span class="o">.</span><span class="n">edges</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="s1">&#39;weight&#39;</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="k">if</span> <span class="n">wt</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{u}</span><span class="s2">, </span><span class="si">{v}</span><span class="s2">, </span><span class="si">{wt:.3}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="n">wt</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">u</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">wt</span><span class="si">:</span><span class="s2">.3</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
 <span class="go">(1, 2, 0.125)</span>
 <span class="go">(3, 4, 0.375)</span>
 </pre></div>
@@ -700,7 +700,7 @@ node positions, or write the graph in dot format for further processing.</p>
     <p>
         &copy; Copyright 2004-2020, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Mar 05, 2020.
+        Last updated on Mar 09, 2020.
       </span>
 
     </p>

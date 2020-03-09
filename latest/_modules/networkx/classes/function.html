@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>networkx.classes.function &mdash; NetworkX 2.5rc1.dev20200305050900 documentation</title>
+  <title>networkx.classes.function &mdash; NetworkX 2.5rc1.dev20200309020440 documentation</title>
   
 
   
@@ -34,7 +34,7 @@
 
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within NetworkX 2.5rc1.dev20200305050900 documentation"
+          title="Search within NetworkX 2.5rc1.dev20200309020440 documentation"
           href="../../../_static/opensearch.xml"/>
 
   
@@ -66,7 +66,7 @@
             
             
               <div class="version">
-                2.5rc1.dev_20200305050900
+                2.5rc1.dev_20200309020440
               </div>
             
           
@@ -702,26 +702,26 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">info</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>  <span class="c1"># append this all to a string</span>
     <span class="k">if</span> <span class="n">n</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">info</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;Name: </span><span class="si">{G.name}</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">info</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;Name: </span><span class="si">{</span><span class="n">G</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
         <span class="n">type_name</span> <span class="o">=</span> <span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="n">G</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">]</span>
-        <span class="n">info</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;Type: {&#39;,&#39;.join(type_name)}</span><span class="se">\n</span><span class="s2">&quot;</span>
-        <span class="n">info</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;Number of nodes: {G.number_of_nodes()}</span><span class="se">\n</span><span class="s2">&quot;</span>
-        <span class="n">info</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;Number of edges: {G.number_of_edges()}</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">info</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;Type: </span><span class="si">{</span><span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">type_name</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">info</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;Number of nodes: </span><span class="si">{</span><span class="n">G</span><span class="o">.</span><span class="n">number_of_nodes</span><span class="p">()</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">info</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;Number of edges: </span><span class="si">{</span><span class="n">G</span><span class="o">.</span><span class="n">number_of_edges</span><span class="p">()</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
         <span class="n">nnodes</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">number_of_nodes</span><span class="p">()</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_directed</span><span class="p">():</span>
                 <span class="n">deg</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">d</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">in_degree</span><span class="p">())</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">nnodes</span><span class="p">)</span>
-                <span class="n">info</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;Average in degree: </span><span class="si">{deg:8.4f}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="n">info</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;Average in degree: </span><span class="si">{</span><span class="n">deg</span><span class="si">:</span><span class="s2">8.4f</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
                 <span class="n">deg</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">d</span> <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">out_degree</span><span class="p">())</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">nnodes</span><span class="p">)</span>
-                <span class="n">info</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;Average out degree: </span><span class="si">{deg:8.4f}</span><span class="s2">&quot;</span>
+                <span class="n">info</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;Average out degree: </span><span class="si">{</span><span class="n">deg</span><span class="si">:</span><span class="s2">8.4f</span><span class="si">}</span><span class="s2">&quot;</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">s</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">())</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-                <span class="n">info</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;Average degree: {(float(s) / float(nnodes)):8.4f}&quot;</span>
+                <span class="n">info</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;Average degree: </span><span class="si">{</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">nnodes</span><span class="p">))</span><span class="si">:</span><span class="s2">8.4f</span><span class="si">}</span><span class="s2">&quot;</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">n</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;node </span><span class="si">{n}</span><span class="s2"> not in graph&quot;</span><span class="p">)</span>
-        <span class="n">info</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;Node </span><span class="si">{n}</span><span class="s2"> has the following properties:</span><span class="se">\n</span><span class="s2">&quot;</span>
-        <span class="n">info</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;Degree: {G.degree(n)}</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;node </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> not in graph&quot;</span><span class="p">)</span>
+        <span class="n">info</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;Node </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> has the following properties:</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">info</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;Degree: </span><span class="si">{</span><span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
         <span class="n">info</span> <span class="o">+=</span> <span class="s2">&quot;Neighbors: &quot;</span>
         <span class="n">info</span> <span class="o">+=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">nbr</span><span class="p">)</span> <span class="k">for</span> <span class="n">nbr</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">info</span></div>
@@ -1124,7 +1124,7 @@
     <span class="k">if</span> <span class="n">edge</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">get_edge_data</span><span class="p">(</span><span class="o">*</span><span class="n">edge</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Edge </span><span class="si">{edge!r}</span><span class="s1"> does not exist.&#39;</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Edge </span><span class="si">{</span><span class="n">edge</span><span class="si">!r}</span><span class="s1"> does not exist.&#39;</span>
             <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">data</span>
 
@@ -1181,7 +1181,7 @@
     <span class="k">if</span> <span class="n">edge</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">get_edge_data</span><span class="p">(</span><span class="o">*</span><span class="n">edge</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Edge </span><span class="si">{edge!r}</span><span class="s1"> does not exist.&#39;</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Edge </span><span class="si">{</span><span class="n">edge</span><span class="si">!r}</span><span class="s1"> does not exist.&#39;</span>
             <span class="k">raise</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">data</span> <span class="ow">and</span> <span class="n">data</span><span class="p">[</span><span class="n">weight</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span>
 
@@ -1355,7 +1355,7 @@
     <p>
         &copy; Copyright 2004-2020, NetworkX Developers
       <span class="lastupdated">
-        Last updated on Mar 05, 2020.
+        Last updated on Mar 09, 2020.
       </span>
 
     </p>
